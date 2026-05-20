@@ -423,54 +423,7 @@
         html {
             scroll-behavior: smooth;
         }
-        /* --- KODE DARK MODE --- */
-
-/* 1. Mengubah variabel warna saat class .dark-mode aktif */
-body.dark-mode {
-    --white: #121212; /* Background utama berubah jadi gelap */
-    --dark: #ffffff;  /* Teks utama berubah jadi putih terang */
-}
-
-/* 2. Mengubah background navbar agar ikut gelap */
-body.dark-mode nav {
-    background: rgba(18, 18, 18, 0.95);
-}
-
-/* 3. Desain tombol toggle Dark Mode agar rapi di navbar */
-#dark-mode-toggle {
-    background: transparent;
-    border: 1px solid var(--dark);
-    color: var(--dark);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    cursor: pointer;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-}
-
-#dark-mode-toggle:hover {
-    background: var(--dark);
-    color: var(--white);
-}
-    </style>
-</head>
-    <button id="dark-mode-toggle">🌙 Dark Mode</button>
-<body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="#" class="logo">RN</a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#social-media">Social Media</a></li>
-                <li><a href="#data-analytics">Data Analytics</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-
+     
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-container">
@@ -815,13 +768,13 @@ body.dark-mode nav {
         </div>
 
    <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: var(--light); border-radius: 16px;">
-    <h3 style="margin-bottom: 1.5rem;">📜 Certified Data Analyst</h3>
+    <h3 style="margin-bottom: 1.5rem;">🎓 Certified Data Analyst</h3>
     <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
         <a href="sertifikat-ruangguru.pdf" target="_blank" class="cert-button">
-            🎓 Ruangguru - Business & Data Analyst Bootcamp
+             Ruangguru - Business & Data Analyst Bootcamp
         </a>
         <a href="sertifikat-revou.pdf" target="_blank" class="cert-button">
-            🚀 RevoU - Intro to Digital Marketing
+             RevoU - Intro to Digital Marketing
         </a>  
     </div>
 </div>
@@ -973,54 +926,7 @@ body.dark-mode nav {
             });
         });
     </script>
-    <script>
-        const toggleButton = document.getElementById('dark-mode-toggle');
-        const currentTheme = localStorage.getItem('theme');
 
-        if (currentTheme === 'dark') {
-            document.body.classList.add('dark-mode');
-            toggleButton.textContent = '☀️ Light Mode';
-        }
-
-        toggleButton.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            
-            let theme = 'light';
-            if (document.body.classList.contains('dark-mode')) {
-                theme = 'dark';
-                toggleButton.textContent = '☀️ Light Mode';
-            } else {
-                toggleButton.textContent = '🌙 Dark Mode';
-            }
-            localStorage.setItem('theme', theme);
-        });
-    </script>
-    <script>
-    const toggleButton = document.getElementById('dark-mode-toggle');
-    const currentTheme = localStorage.getItem('theme');
-
-    // Cek apakah user sebelumnya sudah pernah memilih dark mode
-    if (currentTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-        toggleButton.textContent = '☀️ Light Mode';
-    }
-
-    // Logika ketika tombol toggle diklik
-    toggleButton.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        
-        let theme = 'light';
-        if (document.body.classList.contains('dark-mode')) {
-            theme = 'dark';
-            toggleButton.textContent = '☀️ Light Mode';
-        } else {
-            toggleButton.textContent = '🌙 Dark Mode';
-        }
-        
-        // Simpan pilihan user ke browser penyimpanan lokal
-        localStorage.setItem('theme', theme);
-    });
-</script>
 </body>
 </html>
 </body>
