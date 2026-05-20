@@ -784,13 +784,13 @@
         </div>
 
        <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: var(--light); border-radius: 16px;">
-            <h3 style="margin-bottom: 1.5rem;">📜 Certified Data Analyst</h3>
+            <h3 style="margin-bottom: 1.5rem;">🎓 Certified Data Analyst</h3>
             <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
                 <a href="sertifikat-ruangguru.pdf" target="_blank" class="cert-button">
-                    🎓 Ruangguru - Business & Data Analyst Bootcamp
+                     Ruangguru - Business & Data Analyst Bootcamp
                 </a>
                 <a href="sertifikat-revou.pdf" target="_blank" class="cert-button">
-                    🚀 RevoU - Intro to Digital Marketing
+                     RevoU - Intro to Digital Marketing
                 </a>  
             </div>
         </div>
@@ -877,28 +877,7 @@
                 }
             });
         });
-    </script>
-    <script>
-        const toggleButton = document.getElementById('dark-mode-toggle');
-        const currentTheme = localStorage.getItem('theme');
 
-        if (currentTheme === 'dark') {
-            document.body.classList.add('dark-mode');
-            toggleButton.textContent = '☀️ Light Mode';
-        }
-
-        toggleButton.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            
-            let theme = 'light';
-            if (document.body.classList.contains('dark-mode')) {
-                theme = 'dark';
-                toggleButton.textContent = '☀️ Light Mode';
-            } else {
-                toggleButton.textContent = '🌙 Dark Mode';
-            }
-            localStorage.setItem('theme', theme);
-        });
     </script>
 </body>
 </html>
