@@ -24,7 +24,6 @@
         }
         
         body {
-            
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6;
             color: var(--dark);
@@ -63,6 +62,7 @@
             display: flex;
             gap: 2rem;
             list-style: none;
+            align-items: center;
         }
         
         .nav-links a {
@@ -300,7 +300,7 @@
             color: var(--gray);
         }
         
-        /* Skills Section */
+        /* Skills Grid Section */
         .skills-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -423,8 +423,56 @@
         html {
             scroll-behavior: smooth;
         }
-     
-    <!-- Hero Section -->
+
+        /* --- KODE DARK MODE --- */
+        body.dark-mode {
+            --white: #121212;
+            --dark: #ffffff; 
+            --light: #1e293b;
+            --gray: #94a3b8;
+        }
+
+        body.dark-mode nav {
+            background: rgba(18, 18, 18, 0.95);
+        }
+        
+        body.dark-mode .portfolio-card {
+            background: #1e293b;
+        }
+
+        #dark-mode-toggle {
+            background: transparent;
+            border: 1px solid var(--dark);
+            color: var(--dark);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        #dark-mode-toggle:hover {
+            background: var(--dark);
+            color: var(--white);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">RN</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#social-media">Social Media</a></li>
+                <li><a href="#data-analytics">Data Analytics</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><button id="dark-mode-toggle">🌙 Dark Mode</button></li>
+            </ul>
+        </div>
+    </nav>
+
     <section class="hero" id="home">
         <div class="hero-container">
             <h1>👋 Hi, I'm Rizal</h1>
@@ -450,22 +498,19 @@
                 </div>
             </div>
             
-<div class="cta-buttons">
-    <a href="#social-media" class="btn btn-primary">View Social Media Work</a>
-     <a href="CV_Muhammad_Rizal.pdf" target="_blank" class="btn btn-primary">View CV</a>
-    <a href="#data-analytics" class="btn btn-primary">View Data Projects</a>
-</div>
+            <div class="cta-buttons">
+                <a href="#social-media" class="btn btn-primary">View Social Media Work</a>
+                <a href="CV_Muhammad_Rizal.pdf" target="_blank" class="btn btn-primary">View CV</a>
+                <a href="#data-analytics" class="btn btn-primary">View Data Projects</a>
             </div>
         </div>
     </section>
 
-    <!-- Social Media Portfolio -->
     <section id="social-media">
         <h2 class="section-title">📱 Social Media Portfolio</h2>
         <p class="section-subtitle">Creating engaging content that drives real results through data-driven strategies</p>
         
         <div class="portfolio-grid">
-            <!-- Project 1: Verda Harvest -->
             <div class="portfolio-card">
                 <div class="card-image">🌱</div>
                 <div class="card-content">
@@ -492,7 +537,6 @@
                 </div>
             </div>
 
-            <!-- Project 2: Hooked0n -->
             <div class="portfolio-card">
                 <div class="card-image">👔</div>
                 <div class="card-content">
@@ -519,7 +563,6 @@
                 </div>
             </div>
 
-            <!-- Project 3: Freelance -->
             <div class="portfolio-card">
                 <div class="card-image">💼</div>
                 <div class="card-content">
@@ -546,7 +589,6 @@
                 </div>
             </div>
 
-            <!-- Project 4: BIGIO Internship -->
             <div class="portfolio-card">
                 <div class="card-image">🚀</div>
                 <div class="card-content">
@@ -573,7 +615,6 @@
                 </div>
             </div>
 
-            <!-- Project 5: Octricubla -->
             <div class="portfolio-card">
                 <div class="card-image">👟</div>
                 <div class="card-content">
@@ -600,7 +641,6 @@
                 </div>
             </div>
 
-            <!-- Project 6: Murinushop -->
             <div class="portfolio-card">
                 <div class="card-image">🛍️</div>
                 <div class="card-content">
@@ -629,13 +669,11 @@
         </div>
     </section>
 
-    <!-- Data Analytics Portfolio -->
     <section id="data-analytics">
         <h2 class="section-title">📊 Data Analytics Portfolio</h2>
         <p class="section-subtitle">Transforming raw data into strategic recommendations using SQL, Excel, and Looker Studio</p>
         
         <div class="portfolio-grid">
-            <!-- Data Project 1: Digital Marketing -->
             <div class="portfolio-card">
                 <div class="card-image">📈</div>
                 <div class="card-content">
@@ -656,7 +694,7 @@
                         </ul>
                     </div>
 
-                    <div class="card-stats">
+                    <div class="stats" style="margin: 1rem 0; display: grid; gap: 1rem;">
                         <div class="card-stat">
                             <span class="card-stat-value">2,300</span>
                             <span class="card-stat-label">Rows Analyzed</span>
@@ -678,7 +716,6 @@
                 </div>
             </div>
 
-            <!-- Data Project 2: E-Commerce -->
             <div class="portfolio-card">
                 <div class="card-image">🛒</div>
                 <div class="card-content">
@@ -701,7 +738,7 @@
                         </ul>
                     </div>
 
-                    <div class="card-stats">
+                    <div class="stats" style="margin: 1rem 0; display: grid; gap: 1rem;">
                         <div class="card-stat">
                             <span class="card-stat-value">2,500</span>
                             <span class="card-stat-label">Transactions</span>
@@ -723,7 +760,6 @@
                 </div>
             </div>
 
-            <!-- Data Project 3: SQL Skills Showcase -->
             <div class="portfolio-card">
                 <div class="card-image">💻</div>
                 <div class="card-content">
@@ -745,7 +781,7 @@
                         </ul>
                     </div>
 
-                    <div class="card-stats">
+                    <div class="stats" style="margin: 1rem 0; display: grid; gap: 1rem;">
                         <div class="card-stat">
                             <span class="card-stat-value">50+</span>
                             <span class="card-stat-label">SQL Queries</span>
@@ -767,37 +803,34 @@
             </div>
         </div>
 
-   <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: var(--light); border-radius: 16px;">
-    <h3 style="margin-bottom: 1.5rem;">🎓 Certified Data Analyst</h3>
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
-        <a href="sertifikat-ruangguru.pdf" target="_blank" class="cert-button">
-             Ruangguru - Business & Data Analyst Bootcamp
-        </a>
-        <a href="sertifikat-revou.pdf" target="_blank" class="cert-button">
-             RevoU - Intro to Digital Marketing
-        </a>  
-    </div>
-</div>
-        
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem; text-align: center;">
-    <div>
-        <strong style="display: block; margin-bottom: 0.5rem;">Data Analysis</strong>
-        <p style="color: var(--gray); font-size: 0.9rem;">SQL • Excel • Google Sheets</p>
-    </div>
-    <div>
-        <strong style="display: block; margin-bottom: 0.5rem;">Visualization</strong>
-        <p style="color: var(--gray); font-size: 0.9rem;">Looker Studio • Tableau</p>
-    </div>
-    <div>
-        <strong style="display: block; margin-bottom: 0.5rem;">Programming</strong>
-        <p style="color: var(--gray); font-size: 0.9rem;">Python (Pandas, Matplotlib)</p>
-    </div>
-</div>
-    </section>
-
+        <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: var(--light); border-radius: 16px;">
+            <h3 style="margin-bottom: 1.5rem;">📜 Certified Data Analyst</h3>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+                <a href="sertifikat-ruangguru.pdf" target="_blank" class="cert-button">
+                    🎓 Ruangguru - Business & Data Analyst Bootcamp
+                </a>
+                <a href="sertifikat-revou.pdf" target="_blank" class="cert-button">
+                    🚀 RevoU - Intro to Digital Marketing
+                </a>  
+            </div>
+        </div>
+            
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem; text-align: center;">
+            <div>
+                <strong style="display: block; margin-bottom: 0.5rem;">Data Analysis</strong>
+                <p style="color: var(--gray); font-size: 0.9rem;">SQL • Excel • Google Sheets</p>
+            </div>
+            <div>
+                <strong style="display: block; margin-bottom: 0.5rem;">Visualization</strong>
+                <p style="color: var(--gray); font-size: 0.9rem;">Looker Studio • Tableau</p>
+            </div>
+            <div>
+                <strong style="display: block; margin-bottom: 0.5rem;">Programming</strong>
+                <p style="color: var(--gray); font-size: 0.9rem;">Python (Pandas, Matplotlib)</p>
+            </div>
+        </div>
     </section>
    
-    <!-- Skills Section -->
     <section id="skills">
         <h2 class="section-title">🛠️ Skills & Tools</h2>
         <p class="section-subtitle">Bridging creativity and analytics to drive business growth</p>
@@ -855,7 +888,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section class="contact" id="contact">
         <h2 class="section-title">📞 Let's Connect</h2>
         <p class="section-subtitle">Open to opportunities in Social Media Marketing & Data Analytics</p>
@@ -881,12 +913,10 @@
                 <a href="https://tiktok.com/@verda.harvest" class="contact-link" target="_blank">@verda.harvest</a>
             </div>
         </div>
-        
     </section>
 
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Muhammad Rizal Nurfikri. All rights reserved.</p>
+        <p>&copy; 2026 Muhammad Rizal Nurfikri. All rights reserved.</p>
         <p style="margin-top: 0.5rem; opacity: 0.7;">Built with passion for data-driven storytelling ❤️</p>
     </footer>
 
@@ -925,9 +955,29 @@
                 }
             });
         });
-    </script>
 
-</body>
-</html>
+        // Logika Utama Dark Mode (Sudah dibersihkan dari duplikat)
+        const toggleButton = document.getElementById('dark-mode-toggle');
+        const currentTheme = localStorage.getItem('theme');
+
+        if (currentTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            toggleButton.textContent = '☀️ Light Mode';
+        }
+
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            let theme = 'light';
+            if (document.body.classList.contains('dark-mode')) {
+                theme = 'dark';
+                toggleButton.textContent = '☀️ Light Mode';
+            } else {
+                theme = 'light';
+                toggleButton.textContent = '🌙 Dark Mode';
+            }
+            localStorage.setItem('theme', theme);
+        });
+    </script>
 </body>
 </html>
