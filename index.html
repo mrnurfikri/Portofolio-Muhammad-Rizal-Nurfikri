@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Rizal Nurfikri - Social Media Specialist & Data Analyst</title>
-    <meta name="description" content="Social Media Specialist & Data Analyst with proven organic growth: 369K+ views, 88K+ likes. Specializing in data-driven content strategies.">
-    
-    <style>
+<style>
         * {
             margin: 0;
             padding: 0;
@@ -14,31 +6,33 @@
         }
         
         :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary: #ec4899;
-            --dark: #0f172a;
-            --gray: #64748b;
-            --light: #f8fafc;
+            /* Updated color palette - Serendipity inspired */
+            --primary: #4A90E2;
+            --primary-dark: #2E5C8A;
+            --secondary: #7B9FBF;
+            --dark: #1a2332;
+            --gray: #6B7688;
+            --light: #F5F8FA;
             --white: #ffffff;
         }
         
         body {
-            
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.6;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.8;
             color: var(--dark);
-            background: var(--white);
+            background: linear-gradient(to bottom, #0a1929 0%, #1a3a52 50%, #4a7a9e 100%);
+            background-attachment: fixed;
         }
         
-        /* Navigation */
+        /* Navigation - More subtle */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            background: rgba(10, 25, 41, 0.85);
+            backdrop-filter: blur(20px);
+            box-shadow: none;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
             z-index: 1000;
             padding: 1rem 0;
         }
@@ -54,38 +48,44 @@
         
         .logo {
             font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
+            font-weight: 400;
+            color: var(--white);
             text-decoration: none;
+            letter-spacing: 0.1em;
         }
         
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 3rem;
             list-style: none;
         }
         
         .nav-links a {
-            color: var(--dark);
+            color: rgba(255,255,255,0.8);
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
+            font-weight: 400;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
         
         .nav-links a:hover {
-            color: var(--primary);
+            color: var(--white);
         }
         
-        /* Hero Section */
+        /* Hero Section - Serendipity Style */
         .hero {
-            margin-top: 80px;
-            min-height: 90vh;
+            margin-top: 0;
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            justify-content: center;
+            background: transparent;
             color: white;
             position: relative;
             overflow: hidden;
+            text-align: center;
         }
         
         .hero::before {
@@ -95,12 +95,12 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.05)"/></svg>');
-            opacity: 0.3;
+            background: radial-gradient(ellipse at center, rgba(74,144,226,0.15) 0%, transparent 70%);
+            opacity: 0.6;
         }
         
         .hero-container {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 4rem 2rem;
             position: relative;
@@ -108,179 +108,228 @@
         }
         
         .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            line-height: 1.2;
+            font-size: 4.5rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            line-height: 1.3;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            letter-spacing: -0.02em;
         }
         
         .hero .subtitle {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             margin-bottom: 2rem;
-            opacity: 0.95;
+            opacity: 0.9;
+            font-weight: 300;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
         
         .hero p {
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            opacity: 0.85;
+            font-weight: 300;
+            line-height: 1.8;
         }
         
         .stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 2rem;
-            margin: 3rem 0;
+            margin: 4rem 0;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .stat-item {
             text-align: center;
-            padding: 1.5rem;
-            background: rgba(255,255,255,0.1);
-            border-radius: 12px;
+            padding: 2rem 1rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
             backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-item:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-4px);
         }
         
         .stat-number {
             font-size: 2.5rem;
-            font-weight: 700;
+            font-weight: 300;
             display: block;
             margin-bottom: 0.5rem;
+            font-family: 'Georgia', serif;
         }
         
         .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.9;
+            font-size: 0.85rem;
+            opacity: 0.8;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
         
         .cta-buttons {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
-            margin-top: 2rem;
+            margin-top: 3rem;
+            justify-content: center;
         }
         
         .btn {
-            padding: 1rem 2rem;
-            border-radius: 8px;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
+            font-weight: 400;
+            transition: all 0.3s ease;
             display: inline-block;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
         
         .btn-primary {
-            background: white;
-            color: var(--primary);
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(10px);
         }
         
         .btn-primary:hover {
+            background: rgba(255,255,255,0.25);
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
         
         .btn-secondary {
             background: transparent;
             color: white;
-            border: 2px solid white;
+            border: 1px solid rgba(255,255,255,0.3);
         }
         
         .btn-secondary:hover {
-            background: white;
-            color: var(--primary);
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.5);
         }
         
-        /* Section Styles */
+        /* Section Styles - Light background for content */
         section {
-            padding: 5rem 2rem;
+            padding: 6rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
+            background: var(--white);
+            border-radius: 24px 24px 0 0;
+            position: relative;
+            z-index: 2;
+        }
+        
+        section:not(.hero):not(.contact) {
+            background: var(--white);
         }
         
         .section-title {
             font-size: 2.5rem;
-            font-weight: 700;
+            font-weight: 400;
             margin-bottom: 1rem;
             text-align: center;
+            color: var(--dark);
+            font-family: 'Georgia', serif;
         }
         
         .section-subtitle {
             text-align: center;
             color: var(--gray);
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
             font-size: 1.1rem;
+            font-weight: 300;
         }
         
-        /* Portfolio Grid */
+        /* Portfolio Cards - Cleaner design */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+            gap: 2.5rem;
             margin-top: 3rem;
         }
         
         .portfolio-card {
             background: white;
-            border-radius: 16px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: all 0.3s;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+            transition: all 0.4s ease;
             cursor: pointer;
+            border: 1px solid rgba(0,0,0,0.04);
         }
         
         .portfolio-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            transform: translateY(-12px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
         }
         
         .card-image {
             width: 100%;
-            height: 200px;
+            height: 220px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: white;
         }
         
         .card-content {
-            padding: 1.5rem;
+            padding: 2rem;
         }
         
         .card-title {
             font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+            font-family: 'Georgia', serif;
         }
         
         .card-meta {
             display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
             font-size: 0.9rem;
             color: var(--gray);
+            flex-wrap: wrap;
         }
         
         .card-tag {
             background: var(--light);
-            padding: 0.25rem 0.75rem;
+            padding: 0.35rem 1rem;
             border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--primary);
-            font-weight: 600;
+            font-weight: 500;
+            border: 1px solid rgba(74,144,226,0.15);
         }
         
         .card-description {
             color: var(--gray);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            font-size: 0.95rem;
         }
         
         .card-stats {
             display: flex;
-            gap: 1.5rem;
-            padding-top: 1rem;
+            gap: 2rem;
+            padding-top: 1.5rem;
             border-top: 1px solid var(--light);
         }
         
@@ -290,34 +339,41 @@
         }
         
         .card-stat-value {
-            font-size: 1.25rem;
-            font-weight: 700;
+            font-size: 1.4rem;
+            font-weight: 500;
             color: var(--primary);
+            font-family: 'Georgia', serif;
         }
         
         .card-stat-label {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--gray);
+            margin-top: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
         
         /* Skills Section */
         .skills-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
             margin-top: 3rem;
         }
         
         .skill-category {
             background: var(--light);
-            padding: 2rem;
-            border-radius: 16px;
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(0,0,0,0.04);
         }
         
         .skill-category h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            margin-bottom: 1.75rem;
             color: var(--primary);
+            font-weight: 500;
+            font-family: 'Georgia', serif;
         }
         
         .skill-list {
@@ -325,11 +381,13 @@
         }
         
         .skill-list li {
-            padding: 0.75rem 0;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 0.9rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.04);
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
+            color: var(--gray);
+            font-size: 0.95rem;
         }
         
         .skill-list li:last-child {
@@ -339,71 +397,86 @@
         .skill-list li::before {
             content: '✓';
             color: var(--primary);
-            font-weight: 700;
-            font-size: 1.2rem;
+            font-weight: 600;
+            font-size: 1.1rem;
         }
         
         /* Contact Section */
         .contact {
             background: var(--light);
             text-align: center;
+            border-radius: 0;
         }
         
         .contact-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 3rem;
             flex-wrap: wrap;
-            margin-top: 2rem;
+            margin-top: 3rem;
         }
         
         .contact-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
         }
         
         .contact-icon {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             background: var(--primary);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            transition: all 0.3s;
+            font-size: 1.75rem;
+            transition: all 0.3s ease;
         }
         
         .contact-item:hover .contact-icon {
-            transform: scale(1.1);
+            transform: scale(1.08);
             background: var(--primary-dark);
+            box-shadow: 0 10px 30px rgba(74,144,226,0.3);
         }
         
         .contact-link {
             color: var(--dark);
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
+            font-size: 0.95rem;
         }
         
         /* Footer */
         footer {
             background: var(--dark);
-            color: white;
+            color: rgba(255,255,255,0.7);
             text-align: center;
-            padding: 2rem;
+            padding: 3rem 2rem;
+            font-size: 0.9rem;
+        }
+        
+        footer p {
+            font-weight: 300;
+        }
+        
+        /* Link wrapper - maintains colors */
+        .card-link-wrapper {
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
         
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
             
             .hero .subtitle {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
             
             .nav-links {
@@ -415,7 +488,11 @@
             }
             
             .stats {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            section {
+                padding: 4rem 1.5rem;
             }
         }
         
@@ -423,525 +500,13 @@
         html {
             scroll-behavior: smooth;
         }
-        /* Menjaga warna asli teks portofolio meskipun dibungkus link */
-.card-link-wrapper {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-}
-    </style>
-</head>
-<body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="#" class="logo">RN</a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#social-media">Social Media</a></li>
-                <li><a href="#data-analytics">Data Analytics</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-container">
-            <h1>👋 Hi, I'm Rizal</h1>
-            <p class="subtitle">Social Media Specialist & Data Analyst</p>
-            <p>I help brands grow through data-driven content strategies and turn numbers into actionable insights. Proven organic growth: 369K+ views, 88K+ total likes across platforms.</p>
-            
-            <div class="stats">
-                <div class="stat-item">
-                    <span class="stat-number">369K+</span>
-                    <span class="stat-label">Total Views</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">88K+</span>
-                    <span class="stat-label">Total Likes</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">2+</span>
-                    <span class="stat-label">Years Experience</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">6+</span>
-                    <span class="stat-label">Projects Launched</span>
-                </div>
-            </div>
-            
-<div class="cta-buttons">
-    <a href="#social-media" class="btn btn-primary">View Social Media Work</a>
-     <a href="CV_Muhammad_Rizal.pdf" target="_blank" class="btn btn-primary">View CV</a>
-    <a href="#data-analytics" class="btn btn-primary">View Data Projects</a>
-</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Social Media Portfolio -->
-   <section id="social-media">
-        <h2 class="section-title">📱 Social Media Portfolio</h2>
-        <p class="section-subtitle">Creating engaging content that drives real results through data-driven strategies</p>
         
-        <div class="portfolio-grid">
-            <a href="https://www.tiktok.com/@verda.harvest?lang=id-ID" target="_blank" class="card-link-wrapper">
-                <div class="portfolio-card">
-                    <div class="card-image">🌱</div>
-                    <div class="card-content">
-                        <h3 class="card-title">Verda Harvest</h3>
-                        <div class="card-meta">
-                            <span class="card-tag">TikTok</span>
-                            <span class="card-tag">Content Creation</span>
-                        </div>
-                        <p class="card-description">Urban farming brand focused on hydroponics. Educational content from seed to harvest documentation.</p>
-                        <div class="card-stats">
-                            <div class="card-stat">
-                                <span class="card-stat-value">369K+</span>
-                                <span class="card-stat-label">Views</span>
-                            </div>
-                            <div class="card-stat">
-                                <span class="card-stat-value">15.8K+</span>
-                                <span class="card-stat-label">Likes</span>
-                            </div>
-                            <div class="card-stat">
-                                <span class="card-stat-value">1.4K+</span>
-                                <span class="card-stat-label">Followers</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="https://www.tiktok.com/@hooked0n?lang=id-ID" target="_blank" class="card-link-wrapper">
-                <div class="portfolio-card">
-                    <div class="card-image">👔</div>
-                    <div class="card-content">
-                        <h3 class="card-title">HOOKED0N</h3>
-                        <div class="card-meta">
-                            <span class="card-tag">TikTok</span>
-                            <span class="card-tag">Fashion Trends</span>
-                        </div>
-                        <p class="card-description">Fashion trends media providing latest style information and inspirations for fashion enthusiasts.</p>
-                        <div class="card-stats">
-                            <div class="card-stat">
-                                <span class="card-stat-value">530K+</span>
-                                <span class="card-stat-label">Peak Views</span>
-                            </div>
-                            <div class="card-stat">
-                                <span class="card-stat-value">72.2K+</span>
-                                <span class="card-stat-label">Likes</span>
-                            </div>
-                            <div class="card-stat">
-                                <span class="card-stat-value">251</span>
-                                <span class="card-stat-label">Followers</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="potrofolio.pdf" target="_blank" class="card-link-wrapper">
-                <div class="portfolio-card">
-                    <div class="card-image">💼</div>
-                    <div class="card-content">
-                        <h3 class="card-title">Freelance Clients</h3>
-                        <div class="card-meta">
-                            <span class="card-tag">Instagram</span>
-                            <span class="card-tag">Management</span>
-                        </div>
-                        <p class="card-description">Managing multiple brand accounts with content strategy, performance optimization, and analytics.</p>
-                        <div class="card-stats">
-                            <div class="card-stat">
-                                <span class="card-stat-value">25-45%</span>
-                                <span class="card-stat-label">Engagement ↑</span>
-                            </div>
-                            <div class="card-stat">
-                                <span class="card-stat-value">Multi</span>
-                                <span class="card-stat-label">Brands</span>
-                            </div>
-                            <div class="card-stat">
-                                <span class="card-stat-value">2024</span>
-                                <span class="card-stat-label">Present</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="sertifikat.pdf" target="_blank" class="card-link-wrapper">
-                <div class="portfolio-card">
-                    <div class="card-image">🚀</div>
-                    <div class="card-content">
-                        <h3 class="card-title">BIGIO Internship</h3>
-                        <div class="card-meta">
-                            <span class="card-tag">Instagram</span>
-                            <span class="card-tag">Internship</span>
-                        </div>
-                        <p class="card-description">Managed dimulai.id & dzikra.app Instagram accounts for Islamic lifestyle tech apps.</p>
-                        <div class="card-stats">
-                            <div class="card-stat">
-                                <span class="card-stat-value">100K+</span>
-                                <span class="card-stat-label">Views</span>
-                            </div>
-                            <div class="card-stat">
-                                <span class="card-stat-value">1K+</span>
-                                <span class="card-stat-label">Downloads</span>
-                            </div>
-                            <div class="card-stat">
-                                <span class="card-stat-value">2022</span>
-                                <span class="card-stat-label">Aug-Dec</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="https://www.tiktok.com/@octricubla" target="_blank" class="card-link-wrapper">
-                <div class="portfolio-card">
-                    <div class="card-image">👟</div>
-                    <div class="card-content">
-                        <h3 class="card-title">@octricubla</h3>
-                        <div class="card-meta">
-                            <span class="card-tag">TikTok</span>
-                            <span class="card-tag">Personal Brand</span>
-                        </div>
-                        <p class="card-description">Personal brand as fashion enthusiast and sneakerhead sharing tips and shoe reviews.</p>
-                        <div class="card-stats">
-                            <div class="card-stat">
-                                <span class="card-stat-value">828</span>
-                                <span class="card-stat-label">Likes</span>
-                            </div>
-                            <div class="card-stat">
-                                <span class="card-stat-value">83</span>
-                                <span class="card-stat-label">Followers</span>
-                            </div>
-                            <div class="card-stat">
-                                <span class="card-stat-value">Niche</span>
-                                <span class="card-stat-label">Community</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="https://www.instagram.com/murinushop/" target="_blank" class="card-link-wrapper">
-                <div class="portfolio-card">
-                    <div class="card-image">🛍️</div>
-                    <div class="card-content">
-                        <h3 class="card-title">MRN.SHP</h3>
-                        <div class="card-meta">
-                            <span class="card-tag">Instagram</span>
-                            <span class="card-tag">E-commerce</span>
-                        </div>
-                        <p class="card-description">Online fashion retail shop utilizing Instagram and Tokopedia as sales platforms.</p>
-                        <div class="card-stats">
-                            <div class="card-stat">
-                                <span class="card-stat-value">100+</span>
-                                <span class="card-stat-label">Products Sold</span>
-                            </div>
-                            <div class="card-stat">
-                                <span class="card-stat-value">1K+</span>
-                                <span class="card-stat-label">Likes</span>
-                            </div>
-                            <div class="card-stat">
-                                <span class="card-stat-value">3 Yrs</span>
-                                <span class="card-stat-label">Operation</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </section>
-    </section>
-
-       <!-- Data Analytics Portfolio -->
-    <section id="data-analytics">
-        <h2 class="section-title">📊 Data Analytics Portfolio</h2>
-        <p class="section-subtitle">Transforming raw data into strategic recommendations using SQL, Excel, and Looker Studio</p>
+        /* Additional refinements */
+        ul {
+            padding-left: 0;
+        }
         
-        <div class="portfolio-grid">
-            <!-- Data Project 1: Digital Marketing -->
-            <div class="portfolio-card">
-                <div class="card-image">📈</div>
-                <div class="card-content">
-                    <h3 class="card-title">Digital Marketing Campaign Analysis</h3>
-                    <div class="card-meta">
-                        <span class="card-tag">SQL</span>
-                        <span class="card-tag">Looker Studio</span>
-                    </div>
-                    <p class="card-description">Analyzed 2,300 daily performance records across 125 campaigns and 5 platforms (Facebook, Instagram, Google, TikTok, YouTube) to optimize marketing spend and identify inefficiencies.</p>
-                    
-                    <div style="margin: 1rem 0; padding: 1rem; background: var(--light); border-radius: 8px;">
-                        <strong>Key Insights:</strong>
-                        <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
-                            <li>Google has highest CTR (6.22%) and most efficient CPA (Rp 9,174)</li>
-                            <li>Facebook dominates spend (59.9%) with strong ROAS</li>
-                            <li>Identified 16 campaigns exceeding budget</li>
-                            <li>Instagram conversion rate needs optimization (1.98%)</li>
-                        </ul>
-                    </div>
-
-                    <div class="card-stats">
-                        <div class="card-stat">
-                            <span class="card-stat-value">2,300</span>
-                            <span class="card-stat-label">Rows Analyzed</span>
-                        </div>
-                        <div class="card-stat">
-                            <span class="card-stat-value">5</span>
-                            <span class="card-stat-label">Platforms</span>
-                        </div>
-                        <div class="card-stat">
-                            <span class="card-stat-value">125</span>
-                            <span class="card-stat-label">Campaigns</span>
-                        </div>
-                    </div>
-
-                    <div style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                        <a href="https://datastudio.google.com/reporting/40fd5cf3-7f04-4cd2-b594-37ab2759e259" target="_blank" class="btn btn-primary" style="font-size: 0.9rem; padding: 0.5rem 1rem;">📊 View Dashboard</a>
-                        <a href="digital_marketing_analysis.sql" target="_blank" class="btn btn-primary" style="font-size: 0.9rem; padding: 0.5rem 1rem;">💻 View SQL Code</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Data Project 2: E-Commerce -->
-            <div class="portfolio-card">
-                <div class="card-image">🛒</div>
-                <div class="card-content">
-                    <h3 class="card-title">E-Commerce Sales Analysis</h3>
-                    <div class="card-meta">
-                        <span class="card-tag">SQL</span>
-                        <span class="card-tag">Excel</span>
-                        <span class="card-tag">Looker Studio</span>
-                    </div>
-                    <p class="card-description">Analyzed transaction patterns, customer segments, and product performance across 2,500 transactions to identify revenue opportunities and optimize inventory.</p>
-                    
-                    <div style="margin: 1rem 0; padding: 1rem; background: var(--light); border-radius: 8px;">
-                        <strong>Key Findings:</strong>
-                        <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
-                            <li>84.28% conversion rate (healthy standard)</li>
-                            <li>15.72% failure rate needs investigation</li>
-                            <li>March 2024: highest revenue month (Rp 466M)</li>
-                            <li>VIP customers generate 3x more revenue</li>
-                            <li>Elektronik category drives 35% of total revenue</li>
-                        </ul>
-                    </div>
-
-                    <div class="card-stats">
-                        <div class="card-stat">
-                            <span class="card-stat-value">2,500</span>
-                            <span class="card-stat-label">Transactions</span>
-                        </div>
-                        <div class="card-stat">
-                            <span class="card-stat-value">500</span>
-                            <span class="card-stat-label">Customers</span>
-                        </div>
-                        <div class="card-stat">
-                            <span class="card-stat-value">84.28%</span>
-                            <span class="card-stat-label">Conv. Rate</span>
-                        </div>
-                    </div>
-
-                    <div style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                        <a href="https://datastudio.google.com/reporting/44ff30a5-3316-469e-b0ac-547b75278dba" target="_blank" class="btn btn-primary" style="font-size: 0.9rem; padding: 0.5rem 1rem;">📊 View Dashboard</a>
-                        <a href="ecommerce_analysis.sql" starget="_blank" class="btn btn-primary" style="font-size: 0.9rem; padding: 0.5rem 1rem;">💻 View SQL Code</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Data Project 3: SQL Skills Showcase -->
-            <div class="portfolio-card">
-                <div class="card-image">💻</div>
-                <div class="card-content">
-                    <h3 class="card-title">SQL Analysis Showcase</h3>
-                    <div class="card-meta">
-                        <span class="card-tag">SQL</span>
-                        <span class="card-tag">Data Analysis</span>
-                    </div>
-                    <p class="card-description">Comprehensive SQL queries demonstrating JOIN operations, aggregate functions, calculated metrics, and business insights extraction.</p>
-                    
-                    <div style="margin: 1rem 0; padding: 1rem; background: var(--light); border-radius: 8px;">
-                        <strong>SQL Skills Demonstrated:</strong>
-                        <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
-                            <li>Multi-table JOINs for campaign & transaction analysis</li>
-                            <li>GROUP BY with SUM, AVG, COUNT aggregations</li>
-                            <li>Calculated fields: CTR, CVR, CPA, profit margins</li>
-                            <li>HAVING clause for filtering aggregated data</li>
-                            <li>Subqueries for conversion rate calculations</li>
-                        </ul>
-                    </div>
-
-                    <div class="card-stats">
-                        <div class="card-stat">
-                            <span class="card-stat-value">50+</span>
-                            <span class="card-stat-label">SQL Queries</span>
-                        </div>
-                        <div class="card-stat">
-                            <span class="card-stat-value">2</span>
-                            <span class="card-stat-label">Projects</span>
-                        </div>
-                        <div class="card-stat">
-                            <span class="card-stat-value">100%</span>
-                            <span class="card-stat-label">Documented</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-       <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: var(--light); border-radius: 16px;">
-            <h3 style="margin-bottom: 1.5rem;">🎓 Certified</h3>
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
-                <a href="sertifikat-ruangguru.pdf" starget="_blank" class="btn btn-primary" style="font-size: 0.9rem; padding: 0.5rem 1rem;">Ruangguru - Business & Data Analyst Bootcamp</a>
-
-                <a href="sertifikat-revou.pdf="_blank" class="btn btn-primary" style="font-size: 0.9rem; padding: 0.5rem 1rem;">RevoU - Intro to Digital Marketing</a>
-            </div>
-        </div>
-            
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem; text-align: center;">
-            <div>
-                <strong style="display: block; margin-bottom: 0.5rem;">Data Analysis</strong>
-                <p style="color: var(--gray); font-size: 0.9rem;">SQL • Excel • Google Sheets</p>
-            </div>
-            <div>
-                <strong style="display: block; margin-bottom: 0.5rem;">Visualization</strong>
-                <p style="color: var(--gray); font-size: 0.9rem;">Looker Studio • Tableau</p>
-            </div>
-            <div>
-                <strong style="display: block; margin-bottom: 0.5rem;">Programming</strong>
-                <p style="color: var(--gray); font-size: 0.9rem;">Python (Pandas, Matplotlib)</p>
-            </div>
-        </div>
-    </section>
-    </section>
-    
-    <!-- Skills Section -->
-    <section id="skills">
-        <h2 class="section-title">🛠️ Skills & Tools</h2>
-        <p class="section-subtitle">Bridging creativity and analytics to drive business growth</p>
-        
-        <div class="skills-container">
-            <div class="skill-category">
-                <h3>📱 Social Media</h3>
-                <ul class="skill-list">
-                    <li>Content Strategy & Planning</li>
-                    <li>Social Media Management</li>
-                    <li>Copywriting & Storytelling</li>
-                    <li>Community Engagement</li>
-                    <li>Trend Analysis</li>
-                    <li>Performance Analytics</li>
-                    <li>Brand Building</li>
-                </ul>
-            </div>
-
-            <div class="skill-category">
-                <h3>📊 Data Analytics</h3>
-                <ul class="skill-list">
-                    <li>SQL (PostgreSQL, MySQL)</li>
-                    <li>Python (Pandas, Matplotlib)</li>
-                    <li>Data Visualization (Tableau, Looker)</li>
-                    <li>Excel (Advanced Formulas)</li>
-                    <li>Statistical Analysis</li>
-                    <li>Reporting & Dashboards</li>
-                </ul>
-            </div>
-
-            <div class="skill-category">
-                <h3>🎨 Creative Tools</h3>
-                <ul class="skill-list">
-                    <li>Canva (Design)</li>
-                    <li>CapCut (Video Editing)</li>
-                    <li>Adobe Lightroom</li>
-                    <li>Adobe Premiere Pro</li>
-                    <li>Photography</li>
-                    <li>Content Production</li>
-                </ul>
-            </div>
-
-            <div class="skill-category">
-                <h3>🔧 Analytics Tools</h3>
-                <ul class="skill-list">
-                    <li>TikTok Analytics</li>
-                    <li>Instagram Insights</li>
-                    <li>Google Analytics</li>
-                    <li>Google Trends</li>
-                    <li>Looker Studio</li>
-                    <li>Google Sheets (Advanced)</li>
-                    <li>Notion</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <h2 class="section-title">📞 Let's Connect</h2>
-        <p class="section-subtitle">Open to opportunities in Social Media Marketing & Data Analytics</p>
-        
-        <div class="contact-links">
-            <div class="contact-item">
-                <div class="contact-icon">📧</div>
-                <a href="mailto:mrnurfikri@gmail.com" class="contact-link">mrnurfikri@gmail.com</a>
-            </div>
-            
-            <div class="contact-item">
-                <div class="contact-icon">📱</div>
-                <a href="https://wa.me/6285603083435" class="contact-link" target="_blank">+62 856-0308-3435</a>
-            </div>
-            
-            <div class="contact-item">
-                <div class="contact-icon">💼</div>
-                <a href="https://linkedin.com/in/muhammad-rizal-nurfikri" class="contact-link" target="_blank">LinkedIn Profile</a>
-            </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Muhammad Rizal Nurfikri. All rights reserved.</p>
-        <p style="margin-top: 0.5rem; opacity: 0.7;">Built with passion for data-driven storytelling ❤️</p>
-    </footer>
-
-    <script>
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Add active class to nav on scroll
-        window.addEventListener('scroll', () => {
-            let current = '';
-            const sections = document.querySelectorAll('section');
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= sectionTop - 100) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').slice(1) === current) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-    </script>
-</body>
-</html>
-</body>
-</html>
+        a {
+            transition: all 0.3s ease;
+        }
+</style>
