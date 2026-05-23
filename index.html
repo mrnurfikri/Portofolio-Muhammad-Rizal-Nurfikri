@@ -24,7 +24,6 @@
         }
         
         body {
-            
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6;
             color: var(--dark);
@@ -75,15 +74,6 @@
         .nav-links a:hover {
             color: var(--primary);
         }
-
-        <ul class="nav-links">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#social-media">Social Media</a></li>
-    <li><a href="#data-analytics">Data Analytics</a></li>
-    <li><a href="#certifications">Certifications</a></li> <!-- TAMBAH INI -->
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#contact">Contact</a></li>
-</ul>
         
         /* Hero Section */
         .hero {
@@ -432,12 +422,19 @@
         html {
             scroll-behavior: smooth;
         }
+        
         /* Menjaga warna asli teks portofolio meskipun dibungkus link */
-.card-link-wrapper {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-}
+        .card-link-wrapper {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        /* Active navigation link */
+        .nav-links a.active {
+            color: var(--primary);
+            font-weight: 700;
+        }
     </style>
 </head>
 <body>
@@ -449,6 +446,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#social-media">Social Media</a></li>
                 <li><a href="#data-analytics">Data Analytics</a></li>
+                <li><a href="#certifications">Certifications</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -481,17 +479,16 @@
                 </div>
             </div>
             
-<div class="cta-buttons">
-    <a href="#social-media" class="btn btn-primary">View Social Media Work</a>
-     <a href="CV_Muhammad_Rizal.pdf" target="_blank" class="btn btn-primary">View CV</a>
-    <a href="#data-analytics" class="btn btn-primary">View Data Projects</a>
-</div>
+            <div class="cta-buttons">
+                <a href="#social-media" class="btn btn-primary">View Social Media Work</a>
+                <a href="CV_Muhammad_Rizal.pdf" target="_blank" class="btn btn-primary">View CV</a>
+                <a href="#data-analytics" class="btn btn-primary">View Data Projects</a>
             </div>
         </div>
     </section>
 
     <!-- Social Media Portfolio -->
-<section id="social-media">
+    <section id="social-media">
         <h2 class="section-title">📱 Social Media Portfolio</h2>
         <p class="section-subtitle">Creating engaging content that drives real results through data-driven strategies</p>
         
@@ -672,7 +669,7 @@
         </div>
     </section>
 
-       <!-- Data Analytics Portfolio -->
+    <!-- Data Analytics Portfolio -->
     <section id="data-analytics">
         <h2 class="section-title">📊 Data Analytics Portfolio</h2>
         <p class="section-subtitle">Transforming raw data into strategic recommendations using SQL, Excel, and Looker Studio</p>
@@ -761,7 +758,7 @@
 
                     <div style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
                         <a href="https://datastudio.google.com/reporting/44ff30a5-3316-469e-b0ac-547b75278dba" target="_blank" class="btn btn-primary" style="font-size: 0.9rem; padding: 0.5rem 1rem;">📊 View Dashboard</a>
-                        <a href="ecommerce_analysis.sql" starget="_blank" class="btn btn-primary" style="font-size: 0.9rem; padding: 0.5rem 1rem;">💻 View SQL Code</a>
+                        <a href="ecommerce_analysis.sql" target="_blank" class="btn btn-primary" style="font-size: 0.9rem; padding: 0.5rem 1rem;">💻 View SQL Code</a>
                     </div>
                 </div>
             </div>
@@ -805,13 +802,14 @@
                 </div>
             </div>
         </div>
+    </section>
 
-       <!-- Certifications Section - CORRECTED VERSION -->
- <section id="certifications">
+    <!-- Certifications Section -->
+    <section id="certifications">
         <h2 class="section-title">🎓 Certifications & Education</h2>
         <p class="section-subtitle">Formal training and continuous learning in Data Analytics and Digital Marketing</p>
         
-      <div class="portfolio-grid" style="margin-top: 3rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+        <div class="portfolio-grid" style="margin-top: 3rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
             
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
@@ -942,7 +940,7 @@
                 </div>
             </div>
         </div>
-        </section>
+    </section>
     
     <!-- Skills Section -->
     <section id="skills">
@@ -1022,6 +1020,7 @@
                 <div class="contact-icon">💼</div>
                 <a href="https://linkedin.com/in/muhammad-rizal-nurfikri" class="contact-link" target="_blank">LinkedIn Profile</a>
             </div>
+        </div>
     </section>
 
     <!-- Footer -->
@@ -1065,9 +1064,6 @@
                 }
             });
         });
-
     </script>
-</body>
-</html>
 </body>
 </html>
