@@ -1044,26 +1044,35 @@
             });
         });
 
-        // Add active class to nav on scroll
-        window.addEventListener('scroll', () => {
+               // Add active class to nav on scroll
+        function updateActiveNav() {
             let current = '';
             const sections = document.querySelectorAll('section');
+            const scrollPosition = window.pageYOffset + 200;
             
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= sectionTop - 100) {
+                const sectionBottom = sectionTop + section.offsetHeight;
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
                     current = section.getAttribute('id');
                 }
             });
 
             document.querySelectorAll('.nav-links a').forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href').slice(1) === current) {
-                    link.classList.add('active');
-                }
             });
-        });
+
+            if (current) {
+                const activeLink = document.querySelector(`.nav-links a[href="#${current}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+        }
+
+        window.addEventListener('scroll', updateActiveNav);
+        window.addEventListener('load', updateActiveNav);
     </script>
 </body>
 </html>
