@@ -1079,6 +1079,15 @@
                 }
             });
             
+           // Fallback: jika di akhir halaman, set active ke section terakhir
+            if (!current && sections.length > 0) {
+                const lastSection = sections[sections.length - 1];
+                const lastTop = lastSection.offsetTop;
+                if (window.pageYOffset + window.innerHeight >= document.body.offsetHeight - 10) {
+                    current = lastSection.getAttribute('id');
+                }
+            }
+            
             navLinks.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href') === '#' + current) {
