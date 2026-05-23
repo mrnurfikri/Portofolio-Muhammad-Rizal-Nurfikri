@@ -1046,31 +1046,36 @@
         <p style="margin-top: 0.5rem; opacity: 0.5;">Built with passion for data-driven storytelling</p>
     </footer>
 
-    <script>
+        <script>
         function updateActiveNav() {
             const sections = document.querySelectorAll('section');
             const navLinks = document.querySelectorAll('.nav-links a');
             let current = '';
-            const scrollPos = window.scrollY + 150;
-            const docHeight = document.body.scrollHeight;
+
+            // Ambil posisi scroll paling bawah layar
             const windowBottom = window.scrollY + window.innerHeight;
-            
-            sections.forEach(section => {
-                const top = section.offsetTop;
-                const bottom = top + section.offsetHeight;
-                if (scrollPos >= top && scrollPos < bottom) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            // Jika di dasar halaman, set current ke id section terakhir
-            if (!current && windowBottom >= docHeight - 50) {
+            const documentHeight = document.body.scrollHeight;
+
+            // Cek jika sudah di paling bawah halaman (toleransi 5px)
+            if (windowBottom >= documentHeight - 5) {
+                // Ambil id section terakhir
                 const lastSection = sections[sections.length - 1];
                 if (lastSection) {
                     current = lastSection.getAttribute('id');
                 }
+            } else {
+                // Cari section yang sedang aktif berdasarkan posisi scroll
+                const scrollPos = window.scrollY + 100; // offset kecil untuk memperhalus
+                sections.forEach(section => {
+                    const top = section.offsetTop;
+                    const bottom = top + section.offsetHeight;
+                    if (scrollPos >= top && scrollPos < bottom) {
+                        current = section.getAttribute('id');
+                    }
+                });
             }
-            
+
+            // Terapkan class active ke link yang cocok
             navLinks.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href') === '#' + current) {
@@ -1078,11 +1083,12 @@
                 }
             });
         }
-        
+
         window.addEventListener('scroll', updateActiveNav);
         window.addEventListener('load', updateActiveNav);
         window.addEventListener('resize', updateActiveNav);
-        
+
+        // Smooth scroll untuk link jangkar
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
