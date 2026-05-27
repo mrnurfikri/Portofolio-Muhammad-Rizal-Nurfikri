@@ -549,26 +549,150 @@
         html {
             scroll-behavior: smooth;
         }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: var(--accent);
+            transition: all 0.3s;
+        }
+        
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: rgba(10,10,10,0.98);
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 2rem;
+            z-index: 999;
+        }
+        
+        .mobile-menu.open {
+            display: block;
+        }
+        
+        .mobile-menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .mobile-menu a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        
+        .mobile-menu a:hover {
+            color: var(--accent);
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+
+                /* Tambah di CSS */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 45px;
+            height: 45px;
+            background: var(--accent);
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+        }
+        
+        .back-to-top:hover {
+            background: var(--accent-hover);
+            transform: translateY(-3px);
+        }
+
+                /* Tambah di CSS */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        
     </style>
-</head>
-<body>
-    <nav>
-        <div class="nav-container">
-            <a href="#" class="logo">RN</a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#social-media">Social Media</a></li>
-                <li><a href="#data-analytics">Data Analytics</a></li>
-                <li><a href="#certifications">Certifications</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+        </head>
+        <body>
+          <nav>
+            <div class="nav-container">
+                <a href="#" class="logo">RN</a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#social-media">Social Media</a></li>
+                    <li><a href="#data-analytics">Data Analytics</a></li>
+                    <li><a href="#certifications">Certifications</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <!-- TAMBAH INI -->
+                <div class="hamburger" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+
+<!-- TAMBAH INI setelah nav -->
+<div class="mobile-menu" id="mobileMenu">
+    <ul>
+        <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+        <li><a href="#social-media" onclick="toggleMenu()">Social Media</a></li>
+        <li><a href="#data-analytics" onclick="toggleMenu()">Data Analytics</a></li>
+        <li><a href="#certifications" onclick="toggleMenu()">Certifications</a></li>
+        <li><a href="#skills" onclick="toggleMenu()">Skills</a></li>
+        <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+    </ul>
+</div>
 
     <!-- Hero -->
     <section class="hero" id="home">
         <div class="hero-container">
+            
+            <!-- Tambah di hero, sebelum h1 -->
+            <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(173,252,90,0.1); border: 1px solid var(--accent); padding: 0.5rem 1rem; border-radius: 20px; margin-bottom: 1.5rem;">
+                <span style="width: 8px; height: 8px; background: var(--accent); border-radius: 50%; display: inline-block; animation: pulse 2s infinite;"></span>
+                <span style="color: var(--accent); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Open to Work</span>
+            </div>
+            
             <h1>MUHAMMAD RIZAL NURFIKRI</h1>
             <p class="subtitle">Social Media Specialist & Data Analyst</p>
             <p>I help brands grow through data-driven content strategies and turn numbers into actionable insights. Proven organic growth: 369K+ views, 88K+ total likes across platforms.</p>
@@ -1055,7 +1179,10 @@
             </div>
         </div>
     </section>
-
+            
+    <!-- Tambah sebelum footer -->
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
+            
     <footer>
         <p>&copy; 2025 Muhammad Rizal Nurfikri. All rights reserved.</p>
         <p style="margin-top: 0.5rem; opacity: 0.5;">Built with passion for data-driven storytelling</p>
@@ -1111,6 +1238,51 @@
                 if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
+
+                    function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('open');
+        }
+            
+                // Tambah di script
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('backToTop');
+            if (window.scrollY > 500) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
+
+            // Tambah di script untuk animasi angka
+        function animateCounter(el, target, suffix = '') {
+            let start = 0;
+            const duration = 2000;
+            const step = target / (duration / 16);
+            
+            const timer = setInterval(() => {
+                start += step;
+                if (start >= target) {
+                    start = target;
+                    clearInterval(timer);
+                }
+                el.textContent = Math.floor(start).toLocaleString() + suffix;
+            }, 16);
+        }
+        
+        // Observer untuk trigger saat scroll ke stats
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(document.querySelector('.stat-number:nth-child(1)'), 369, 'K+');
+                    animateCounter(document.querySelector('.stat-number:nth-child(2)'), 88, 'K+');
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) observer.observe(statsSection);
+            
     </script>
 </body>
 </html>
