@@ -6,7 +6,6 @@
     <title>Muhammad Rizal Nurfikri - Social Media Specialist & Data Analyst</title>
     <meta name="description" content="Social Media Specialist & Data Analyst with proven organic growth: 369K+ views, 88K+ likes. Specializing in data-driven content strategies.">
     
-    <!-- Google Fonts: Oswald untuk heading, Inter untuk body -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
@@ -19,6 +18,7 @@
         }
         
         :root {
+            /* Dark mode (default) */
             --bg-primary: #0a0a0a;
             --bg-secondary: #111111;
             --text-primary: #ffffff;
@@ -27,6 +27,23 @@
             --accent-hover: #c1e831;
             --border: #222222;
             --card-bg: #111111;
+            --nav-bg: rgba(10, 10, 10, 0.95);
+            --hero-gradient: rgba(173,252,90,0.03);
+            --shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        
+        body.light-mode {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f5f5f5;
+            --text-primary: #0a0a0a;
+            --text-secondary: #555555;
+            --accent: #5A9E1F;
+            --accent-hover: #4A8E17;
+            --border: #dddddd;
+            --card-bg: #ffffff;
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --hero-gradient: rgba(90,158,31,0.03);
+            --shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
         
         body {
@@ -34,6 +51,28 @@
             line-height: 1.6;
             color: var(--text-primary);
             background: var(--bg-primary);
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        
+        /* Theme toggle button */
+        .theme-toggle {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            cursor: pointer;
+            padding: 0.5rem 0.8rem;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 1.5rem;
+        }
+        
+        .theme-toggle:hover {
+            border-color: var(--accent);
+            color: var(--accent);
         }
         
         /* Navigation */
@@ -41,11 +80,12 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(10, 10, 10, 0.95);
+            background: var(--nav-bg);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
             z-index: 1000;
             padding: 1rem 0;
+            transition: background 0.3s ease;
         }
         
         .nav-container {
@@ -55,6 +95,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+        }
+        
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
         
         .logo {
@@ -111,6 +157,7 @@
             background: var(--bg-primary);
             position: relative;
             overflow: hidden;
+            transition: background 0.3s ease;
         }
         
         .hero::before {
@@ -120,7 +167,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 30% 50%, rgba(173,252,90,0.03) 0%, transparent 50%);
+            background: radial-gradient(circle at 30% 50%, var(--hero-gradient) 0%, transparent 50%);
             pointer-events: none;
         }
         
@@ -174,6 +221,7 @@
             text-align: center;
             border-radius: 8px;
             transition: all 0.3s;
+            box-shadow: var(--shadow);
         }
         
         .stat-item:hover {
@@ -281,10 +329,10 @@
             border-radius: 8px;
             overflow: hidden;
             transition: all 0.3s;
-            cursor: pointer;
             display: flex;
             flex-direction: column;
             height: 100%;
+            box-shadow: var(--shadow);
         }
         
         .portfolio-card:hover {
@@ -387,6 +435,7 @@
             border: 1px solid var(--border);
             border-radius: 8px;
             padding: 2rem;
+            box-shadow: var(--shadow);
         }
         
         .skill-category h3 {
@@ -428,6 +477,7 @@
             background: var(--bg-primary);
             text-align: center;
             padding: 6rem 2rem;
+            transition: background 0.3s ease;
         }
         
         .contact-container {
@@ -462,7 +512,6 @@
             width: auto;
             height: auto;
             border: none;
-            border-radius: 0;
             font-size: 2.2rem;
             transition: all 0.3s;
             background: transparent;
@@ -483,14 +532,7 @@
             text-align: center;
             padding: 2rem;
             font-size: 0.8rem;
-        }
-        
-        /* Link wrapper */
-        .card-link-wrapper {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            height: 100%;
+            transition: background 0.3s ease;
         }
         
         /* Insight box */
@@ -534,84 +576,7 @@
             color: var(--accent);
         }
         
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            .nav-links {
-                display: none;
-            }
-            .section-title {
-                font-size: 2.2rem;
-            }
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Hamburger Menu */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 5px;
-        }
-        
-        .hamburger span {
-            width: 25px;
-            height: 2px;
-            background: var(--accent);
-            transition: all 0.3s;
-        }
-        
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 70px;
-            left: 0;
-            right: 0;
-            background: rgba(10,10,10,0.98);
-            border-bottom: 1px solid var(--border);
-            padding: 1.5rem 2rem;
-            z-index: 999;
-        }
-        
-        .mobile-menu.open {
-            display: block;
-        }
-        
-        .mobile-menu ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-        
-        .mobile-menu a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-        }
-        
-        .mobile-menu a:hover {
-            color: var(--accent);
-        }
-        
-        @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-        }
-
-                /* Tambah di CSS */
+        /* Back to top */
         .back-to-top {
             position: fixed;
             bottom: 2rem;
@@ -641,19 +606,88 @@
             background: var(--accent-hover);
             transform: translateY(-3px);
         }
-
-                /* Tambah di CSS */
+        
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: var(--accent);
+            transition: all 0.3s;
+        }
+        
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: var(--nav-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 2rem;
+            z-index: 999;
+        }
+        
+        .mobile-menu.open {
+            display: block;
+        }
+        
+        .mobile-menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .mobile-menu a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        
+        .mobile-menu a:hover {
+            color: var(--accent);
+        }
+        
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.3; }
         }
         
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .section-title {
+                font-size: 2.2rem;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
-        </head>
-        <body>
-          <nav>
-            <div class="nav-container">
-                <a href="#" class="logo">RN</a>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">RN</a>
+            <div class="nav-right">
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#social-media">Social Media</a></li>
@@ -662,32 +696,32 @@
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <!-- TAMBAH INI -->
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    ☀️
+                </button>
                 <div class="hamburger" onclick="toggleMenu()">
                     <span></span>
                     <span></span>
                     <span></span>
                 </div>
             </div>
-        </nav>
+        </div>
+    </nav>
 
-<!-- TAMBAH INI setelah nav -->
-<div class="mobile-menu" id="mobileMenu">
-    <ul>
-        <li><a href="#home" onclick="toggleMenu()">Home</a></li>
-        <li><a href="#social-media" onclick="toggleMenu()">Social Media</a></li>
-        <li><a href="#data-analytics" onclick="toggleMenu()">Data Analytics</a></li>
-        <li><a href="#certifications" onclick="toggleMenu()">Certifications</a></li>
-        <li><a href="#skills" onclick="toggleMenu()">Skills</a></li>
-        <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-    </ul>
-</div>
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+            <li><a href="#social-media" onclick="toggleMenu()">Social Media</a></li>
+            <li><a href="#data-analytics" onclick="toggleMenu()">Data Analytics</a></li>
+            <li><a href="#certifications" onclick="toggleMenu()">Certifications</a></li>
+            <li><a href="#skills" onclick="toggleMenu()">Skills</a></li>
+            <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </ul>
+    </div>
 
     <!-- Hero -->
     <section class="hero" id="home">
         <div class="hero-container">
-            
-            <!-- Tambah di hero, sebelum h1 -->
             <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(173,252,90,0.1); border: 1px solid var(--accent); padding: 0.5rem 1rem; border-radius: 20px; margin-bottom: 1.5rem;">
                 <span style="width: 8px; height: 8px; background: var(--accent); border-radius: 50%; display: inline-block; animation: pulse 2s infinite;"></span>
                 <span style="color: var(--accent); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Open to Work</span>
@@ -724,7 +758,7 @@
         </div>
     </section>
     
-       <!-- Social Media Portfolio -->
+    <!-- Social Media Portfolio -->
     <section id="social-media">
         <h2 class="section-title">Social Media Portfolio</h2>
         <p class="section-subtitle">Creating engaging content that drives real results through data-driven strategies</p>
@@ -990,13 +1024,12 @@
         </div>
     </section>
 
-       <!-- Certifications -->
+    <!-- Certifications -->
     <section id="certifications">
         <h2 class="section-title">Certifications & Education</h2>
         <p class="section-subtitle">Formal training and continuous learning in Data Analytics and Digital Marketing</p>
         
         <div class="portfolio-grid">
-            <!-- Card 1: Ruangguru -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image" style="background: transparent; border-bottom: 1px solid var(--border);">📊</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
@@ -1029,7 +1062,6 @@
                 </div>
             </div>
 
-            <!-- Card 2: RevoU -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image" style="background: transparent; border-bottom: 1px solid var(--border);">📱</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
@@ -1062,7 +1094,6 @@
                 </div>
             </div>
 
-            <!-- Card 3: UPI (Bachelor) -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image" style="background: transparent; border-bottom: 1px solid var(--border);">🎓</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
@@ -1180,7 +1211,6 @@
         </div>
     </section>
             
-    <!-- Tambah sebelum footer -->
     <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
             
     <footer>
@@ -1188,26 +1218,47 @@
         <p style="margin-top: 0.5rem; opacity: 0.5;">Built with passion for data-driven storytelling</p>
     </footer>
 
-        <script>
+    <script>
+        // ========== THEME TOGGLE ==========
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        // Cek preferensi tersimpan di localStorage
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            body.classList.add('light-mode');
+            themeToggle.textContent = '🌙';
+        } else {
+            themeToggle.textContent = '☀️';
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            if (body.classList.contains('light-mode')) {
+                localStorage.setItem('theme', 'light');
+                themeToggle.textContent = '🌙';
+            } else {
+                localStorage.setItem('theme', 'dark');
+                themeToggle.textContent = '☀️';
+            }
+        });
+
+        // ========== ACTIVE NAV ==========
         function updateActiveNav() {
             const sections = document.querySelectorAll('section');
             const navLinks = document.querySelectorAll('.nav-links a');
             let current = '';
 
-            // Ambil posisi scroll paling bawah layar
             const windowBottom = window.scrollY + window.innerHeight;
             const documentHeight = document.body.scrollHeight;
 
-            // Cek jika sudah di paling bawah halaman (toleransi 5px)
             if (windowBottom >= documentHeight - 5) {
-                // Ambil id section terakhir
                 const lastSection = sections[sections.length - 1];
                 if (lastSection) {
                     current = lastSection.getAttribute('id');
                 }
             } else {
-                // Cari section yang sedang aktif berdasarkan posisi scroll
-                const scrollPos = window.scrollY + 100; // offset kecil untuk memperhalus
+                const scrollPos = window.scrollY + 100;
                 sections.forEach(section => {
                     const top = section.offsetTop;
                     const bottom = top + section.offsetHeight;
@@ -1217,7 +1268,6 @@
                 });
             }
 
-            // Terapkan class active ke link yang cocok
             navLinks.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href') === '#' + current) {
@@ -1230,7 +1280,7 @@
         window.addEventListener('load', updateActiveNav);
         window.addEventListener('resize', updateActiveNav);
 
-        // Smooth scroll untuk link jangkar
+        // ========== SMOOTH SCROLL ==========
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1239,12 +1289,13 @@
             });
         });
 
-                    function toggleMenu() {
+        // ========== MOBILE MENU ==========
+        function toggleMenu() {
             const menu = document.getElementById('mobileMenu');
             menu.classList.toggle('open');
         }
-            
-                // Tambah di script
+
+        // ========== BACK TO TOP ==========
         window.addEventListener('scroll', () => {
             const btn = document.getElementById('backToTop');
             if (window.scrollY > 500) {
@@ -1254,7 +1305,7 @@
             }
         });
 
-            // Tambah di script untuk animasi angka
+        // ========== ANIMATE COUNTER ==========
         function animateCounter(el, target, suffix = '') {
             let start = 0;
             const duration = 2000;
@@ -1270,19 +1321,20 @@
             }, 16);
         }
         
-        // Observer untuk trigger saat scroll ke stats
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    animateCounter(document.querySelector('.stat-number:nth-child(1)'), 369, 'K+');
-                    animateCounter(document.querySelector('.stat-number:nth-child(2)'), 88, 'K+');
+                    const statNumbers = document.querySelectorAll('.stat-number');
+                    if (statNumbers.length >= 2) {
+                        animateCounter(statNumbers[0], 369, 'K+');
+                        animateCounter(statNumbers[1], 88, 'K+');
+                    }
                 }
             });
         }, { threshold: 0.5 });
         
         const statsSection = document.querySelector('.stats');
         if (statsSection) observer.observe(statsSection);
-            
     </script>
 </body>
 </html>
