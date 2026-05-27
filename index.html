@@ -18,7 +18,6 @@
         }
         
         :root {
-            /* Dark mode (default) */
             --bg-primary: #0a0a0a;
             --bg-secondary: #111111;
             --text-primary: #ffffff;
@@ -58,7 +57,6 @@
             transition: background 0.3s ease, color 0.3s ease;
         }
         
-        /* Theme toggle switch */
         .theme-switch {
             position: relative;
             display: flex;
@@ -107,7 +105,6 @@
             opacity: 0.8;
         }
         
-        /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -182,7 +179,8 @@
             color: var(--accent);
         }
         
-        .nav-links a.active::after {
+        /* Garis bawah hanya untuk link biasa, bukan dropdown */
+        .nav-links > li > a:not(.dropdown-trigger).active::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -192,7 +190,6 @@
             background: var(--accent);
         }
         
-        /* Dropdown */
         .dropdown {
             position: absolute;
             top: 120%;
@@ -231,12 +228,12 @@
             transition: all 0.2s;
         }
         
-        .dropdown a:hover {
-            background: rgba(173,252,90,0.05);
+        .dropdown a:hover,
+        .dropdown a.active {
             color: var(--accent);
+            background: transparent;
         }
         
-        /* Hero Section */
         .hero {
             margin-top: 80px;
             min-height: 90vh;
@@ -375,7 +372,6 @@
             border-color: var(--accent);
         }
         
-        /* Section Styles */
         section {
             padding: 6rem 2rem;
             max-width: 1200px;
@@ -403,7 +399,6 @@
             margin-right: auto;
         }
         
-        /* Portfolio Grid */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -510,7 +505,6 @@
             color: var(--text-secondary);
         }
         
-        /* Skills */
         .skills-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -554,13 +548,8 @@
             border-bottom: none;
         }
         
-        .skill-list li::before {
-            content: '▹';
-            color: var(--accent);
-            font-weight: 700;
-        }
+        /* Ikon panah segitiga dihapus */
         
-        /* Contact */
         .contact-section {
             background: var(--bg-primary);
             text-align: center;
@@ -612,7 +601,6 @@
             font-weight: 500;
         }
         
-        /* Footer */
         footer {
             background: var(--bg-secondary);
             border-top: 1px solid var(--border);
@@ -623,7 +611,6 @@
             transition: background 0.3s ease;
         }
         
-        /* Insight box */
         .insight-box {
             margin: 1rem 0;
             padding: 1rem;
@@ -664,7 +651,6 @@
             color: var(--accent);
         }
         
-        /* Back to top */
         .back-to-top {
             position: fixed;
             bottom: 2rem;
@@ -695,7 +681,6 @@
             transform: translateY(-3px);
         }
         
-        /* Hamburger Menu */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -773,7 +758,7 @@
                 display: flex;
             }
             .theme-switch {
-                display: none;
+                display: flex; /* tetap muncul */
             }
         }
         
@@ -1123,127 +1108,61 @@
         </div>
     </section>
     
-   <!-- Skills -->
-<section id="skills">
-    <h2 class="section-title">Skills & Tools</h2>
-    <p class="section-subtitle">Bridging creativity and analytics to drive business growth</p>
-    <div class="skills-container">
-
-        <!-- Social Media -->
-        <div class="skill-category">
-            <h3>📱 Social Media</h3>
-            <ul class="skill-list">
-                <li><span style="font-size:1rem;">📋</span> Content Strategy & Planning</li>
-                <li><span style="font-size:1rem;">⚙️</span> Social Media Management</li>
-                <li><span style="font-size:1rem;">✍️</span> Copywriting & Storytelling</li>
-                <li><span style="font-size:1rem;">🤝</span> Community Engagement</li>
-                <li><span style="font-size:1rem;">📈</span> Trend Analysis</li>
-                <li><span style="font-size:1rem;">🎯</span> Performance Marketing</li>
-                <li><span style="font-size:1rem;">🔍</span> SEO Content Writing</li>
-            </ul>
+    <!-- Skills -->
+    <section id="skills">
+        <h2 class="section-title">Skills & Tools</h2>
+        <p class="section-subtitle">Bridging creativity and analytics to drive business growth</p>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3>📱 Social Media</h3>
+                <ul class="skill-list">
+                    <li>Content Strategy & Planning</li>
+                    <li>Social Media Management</li>
+                    <li>Copywriting & Storytelling</li>
+                    <li>Community Engagement</li>
+                    <li>Trend Analysis</li>
+                    <li>Performance Marketing</li>
+                    <li>SEO Content Writing</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>📊 Data Analytics</h3>
+                <ul class="skill-list">
+                    <li>SQL / MySQL</li>
+                    <li>Python (Pandas, Matplotlib)</li>
+                    <li>Tableau</li>
+                    <li>Looker Studio</li>
+                    <li>Excel (Advanced Formulas)</li>
+                    <li>Google Sheets</li>
+                    <li>SPSS</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>🎨 Creative Tools</h3>
+                <ul class="skill-list">
+                    <li>Canva</li>
+                    <li>CapCut</li>
+                    <li>Adobe Lightroom</li>
+                    <li>Adobe Photoshop</li>
+                    <li>Adobe Premiere Pro</li>
+                    <li>Photography</li>
+                    <li>Video Production</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>🔧 Analytics Platforms</h3>
+                <ul class="skill-list">
+                    <li>TikTok Analytics</li>
+                    <li>Instagram Insights</li>
+                    <li>Google Analytics</li>
+                    <li>Google Trends</li>
+                    <li>Looker Studio</li>
+                    <li>Notion</li>
+                    <li>Microsoft Office</li>
+                </ul>
+            </div>
         </div>
-
-        <!-- Data Analytics -->
-        <div class="skill-category">
-            <h3>📊 Data Analytics</h3>
-            <ul class="skill-list">
-                <li>
-                    <span style="background:#336791;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;letter-spacing:0.5px;">SQL</span>
-                    MySQL / SQL Query
-                </li>
-                <li>
-                    <span style="background:#3776AB;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">PY</span>
-                    Python (Pandas, Matplotlib)
-                </li>
-                <li>
-                    <span style="background:#E97627;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">TB</span>
-                    Tableau
-                </li>
-                <li>
-                    <span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">LS</span>
-                    Looker Studio
-                </li>
-                <li>
-                    <span style="background:#217346;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">XL</span>
-                    Excel (Advanced Formulas)
-                </li>
-                <li>
-                    <span style="background:#EA4335;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GS</span>
-                    Google Sheets
-                </li>
-                <li>
-                    <span style="background:#666;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">SP</span>
-                    SPSS
-                </li>
-            </ul>
-        </div>
-
-        <!-- Creative Tools -->
-        <div class="skill-category">
-            <h3>🎨 Creative Tools</h3>
-            <ul class="skill-list">
-                <li>
-                    <span style="background:#00C4CC;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">CV</span>
-                    Canva
-                </li>
-                <li>
-                    <span style="background:#111;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">CC</span>
-                    CapCut
-                </li>
-                <li>
-                    <span style="background:#31A8FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Lr</span>
-                    Adobe Lightroom
-                </li>
-                <li>
-                    <span style="background:#31A8FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Ps</span>
-                    Adobe Photoshop
-                </li>
-                <li>
-                    <span style="background:#9999FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Pr</span>
-                    Adobe Premiere Pro
-                </li>
-                <li><span style="font-size:1rem;">📸</span> Photography</li>
-                <li><span style="font-size:1rem;">🎬</span> Video Production</li>
-            </ul>
-        </div>
-
-        <!-- Analytics Platforms -->
-        <div class="skill-category">
-            <h3>🔧 Analytics Platforms</h3>
-            <ul class="skill-list">
-                <li>
-                    <span style="background:#111;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">TT</span>
-                    TikTok Analytics
-                </li>
-                <li>
-                    <span style="background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">IG</span>
-                    Instagram Insights
-                </li>
-                <li>
-                    <span style="background:#EA4335;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GA</span>
-                    Google Analytics
-                </li>
-                <li>
-                    <span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GT</span>
-                    Google Trends
-                </li>
-                <li>
-                    <span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">LS</span>
-                    Looker Studio
-                </li>
-                <li>
-                    <span style="background:#000;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">N</span>
-                    Notion
-                </li>
-                <li>
-                    <span style="background:#217346;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">MS</span>
-                    Microsoft Office
-                </li>
-            </ul>
-        </div>
-
-    </div>
-</section>
+    </section>
 
     <!-- Contact -->
     <section id="contact" class="contact-section">
@@ -1320,6 +1239,7 @@
             let current = '';
             const windowBottom = window.scrollY + window.innerHeight;
             const documentHeight = document.body.scrollHeight;
+            
             if (windowBottom >= documentHeight - 5) {
                 const lastSection = sections[sections.length - 1];
                 if (lastSection) current = lastSection.getAttribute('id');
@@ -1331,11 +1251,23 @@
                     if (scrollPos >= top && scrollPos < bottom) current = section.getAttribute('id');
                 });
             }
+
+            // Array section yang termasuk dalam "Work"
+            const workSections = ['social-media', 'data-analytics', 'certifications', 'skills'];
+            
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+                const href = link.getAttribute('href');
+                if (href === '#' + current) {
+                    link.classList.add('active');
+                }
+                // Jika current adalah salah satu work section, aktifkan juga link "Work"
+                if (workSections.includes(current) && href === '#social-media' && link.classList.contains('dropdown-trigger')) {
+                    link.classList.add('active');
+                }
             });
         }
+        
         window.addEventListener('scroll', updateActiveNav);
         window.addEventListener('load', updateActiveNav);
         window.addEventListener('resize', updateActiveNav);
