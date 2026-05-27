@@ -30,6 +30,7 @@
             --nav-bg: rgba(10, 10, 10, 0.95);
             --hero-gradient: rgba(173,252,90,0.03);
             --shadow: 0 4px 6px rgba(0,0,0,0.3);
+            --theme-toggle-bg: rgba(255,255,255,0.05);
         }
         
         body.light-mode {
@@ -37,13 +38,14 @@
             --bg-secondary: #f5f5f5;
             --text-primary: #0a0a0a;
             --text-secondary: #555555;
-            --accent: #5A9E1F;
-            --accent-hover: #4A8E17;
+            --accent: #2991D6;
+            --accent-hover: #1a7ab8;
             --border: #dddddd;
             --card-bg: #ffffff;
             --nav-bg: rgba(255, 255, 255, 0.95);
-            --hero-gradient: rgba(90,158,31,0.03);
+            --hero-gradient: rgba(41,145,214,0.03);
             --shadow: 0 4px 6px rgba(0,0,0,0.05);
+            --theme-toggle-bg: rgba(0,0,0,0.05);
         }
         
         body {
@@ -54,25 +56,53 @@
             transition: background 0.3s ease, color 0.3s ease;
         }
         
-        /* Theme toggle button */
-        .theme-toggle {
-            background: transparent;
+        /* Theme toggle switch */
+        .theme-switch {
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: var(--theme-toggle-bg);
             border: 1px solid var(--border);
-            color: var(--text-primary);
+            border-radius: 30px;
+            padding: 4px;
+            gap: 2px;
             cursor: pointer;
-            padding: 0.5rem 0.8rem;
-            border-radius: 8px;
-            font-size: 1.2rem;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+        
+        .theme-switch:hover {
+            border-color: var(--accent);
+        }
+        
+        .theme-option {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-left: 1.5rem;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
         }
         
-        .theme-toggle:hover {
-            border-color: var(--accent);
-            color: var(--accent);
+        .theme-option.active {
+            background: var(--accent);
+            color: var(--bg-primary);
+        }
+        
+        .theme-option:not(.active) {
+            color: var(--text-secondary);
+            opacity: 0.5;
+        }
+        
+        .theme-option:hover:not(.active) {
+            opacity: 0.8;
         }
         
         /* Navigation */
@@ -95,6 +125,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+        }
+        
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
         }
         
         .nav-right {
@@ -686,7 +722,30 @@
 <body>
     <nav>
         <div class="nav-container">
-            <a href="#" class="logo">RN</a>
+            <div class="nav-left">
+                <a href="#" class="logo">RN</a>
+                <!-- Theme toggle switch di sebelah kiri logo -->
+                <div class="theme-switch" id="themeSwitch" role="switch" aria-checked="false" tabindex="0" aria-label="Toggle theme">
+                    <button class="theme-option active" data-theme="dark" aria-label="Dark mode">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
+                    <button class="theme-option" data-theme="light" aria-label="Light mode">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
             <div class="nav-right">
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
@@ -696,9 +755,6 @@
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    ☀️
-                </button>
                 <div class="hamburger" onclick="toggleMenu()">
                     <span></span>
                     <span></span>
@@ -764,129 +820,69 @@
         <p class="section-subtitle">Creating engaging content that drives real results through data-driven strategies</p>
         
         <div class="portfolio-grid">
-            <!-- Card 1: Verda Harvest -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image">🌱</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
                     <h3 class="card-title">Verda Harvest</h3>
-                    <div class="card-meta">
-                        <span class="card-tag">TikTok</span>
-                        <span class="card-tag">Content Creation</span>
-                    </div>
+                    <div class="card-meta"><span class="card-tag">TikTok</span><span class="card-tag">Content Creation</span></div>
                     <p class="card-description">Urban farming brand focused on hydroponics. Educational content from seed to harvest documentation.</p>
-                    <div class="card-stats" style="margin-top: auto;">
-                        <div class="card-stat"><span class="card-stat-value">369K+</span><span class="card-stat-label">Views</span></div>
-                        <div class="card-stat"><span class="card-stat-value">15.8K+</span><span class="card-stat-label">Likes</span></div>
-                        <div class="card-stat"><span class="card-stat-value">1.4K+</span><span class="card-stat-label">Followers</span></div>
-                    </div>
-                    <div style="margin-top: 1rem;">
-                        <a href="https://www.tiktok.com/@verda.harvest?lang=id-ID" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">Watch on TikTok</a>
-                    </div>
+                    <div class="card-stats" style="margin-top: auto;"><div class="card-stat"><span class="card-stat-value">369K+</span><span class="card-stat-label">Views</span></div><div class="card-stat"><span class="card-stat-value">15.8K+</span><span class="card-stat-label">Likes</span></div><div class="card-stat"><span class="card-stat-value">1.4K+</span><span class="card-stat-label">Followers</span></div></div>
+                    <div style="margin-top: 1rem;"><a href="https://www.tiktok.com/@verda.harvest?lang=id-ID" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">Watch on TikTok</a></div>
                 </div>
             </div>
 
-            <!-- Card 2: HOOKED0N -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image">👔</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
                     <h3 class="card-title">HOOKED0N</h3>
-                    <div class="card-meta">
-                        <span class="card-tag">TikTok</span>
-                        <span class="card-tag">Fashion Trends</span>
-                    </div>
+                    <div class="card-meta"><span class="card-tag">TikTok</span><span class="card-tag">Fashion Trends</span></div>
                     <p class="card-description">Fashion trends media providing latest style information and inspirations for fashion enthusiasts.</p>
-                    <div class="card-stats" style="margin-top: auto;">
-                        <div class="card-stat"><span class="card-stat-value">530K+</span><span class="card-stat-label">Peak Views</span></div>
-                        <div class="card-stat"><span class="card-stat-value">72.2K+</span><span class="card-stat-label">Likes</span></div>
-                        <div class="card-stat"><span class="card-stat-value">251</span><span class="card-stat-label">Followers</span></div>
-                    </div>
-                    <div style="margin-top: 1rem;">
-                        <a href="https://www.tiktok.com/@hooked0n?lang=id-ID" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">See Fashion Trends</a>
-                    </div>
+                    <div class="card-stats" style="margin-top: auto;"><div class="card-stat"><span class="card-stat-value">530K+</span><span class="card-stat-label">Peak Views</span></div><div class="card-stat"><span class="card-stat-value">72.2K+</span><span class="card-stat-label">Likes</span></div><div class="card-stat"><span class="card-stat-value">251</span><span class="card-stat-label">Followers</span></div></div>
+                    <div style="margin-top: 1rem;"><a href="https://www.tiktok.com/@hooked0n?lang=id-ID" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">See Fashion Trends</a></div>
                 </div>
             </div>
 
-            <!-- Card 3: Freelance Clients -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image">💼</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
                     <h3 class="card-title">Freelance Clients</h3>
-                    <div class="card-meta">
-                        <span class="card-tag">Instagram</span>
-                        <span class="card-tag">Management</span>
-                    </div>
+                    <div class="card-meta"><span class="card-tag">Instagram</span><span class="card-tag">Management</span></div>
                     <p class="card-description">Managing multiple brand accounts with content strategy, performance optimization, and analytics.</p>
-                    <div class="card-stats" style="margin-top: auto;">
-                        <div class="card-stat"><span class="card-stat-value">25-45%</span><span class="card-stat-label">Engagement ↑</span></div>
-                        <div class="card-stat"><span class="card-stat-value">Multi</span><span class="card-stat-label">Brands</span></div>
-                        <div class="card-stat"><span class="card-stat-value">2024</span><span class="card-stat-label">Present</span></div>
-                    </div>
-                    <div style="margin-top: 1rem;">
-                        <a href="potrofolio.pdf" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">View Portfolio</a>
-                    </div>
+                    <div class="card-stats" style="margin-top: auto;"><div class="card-stat"><span class="card-stat-value">25-45%</span><span class="card-stat-label">Engagement ↑</span></div><div class="card-stat"><span class="card-stat-value">Multi</span><span class="card-stat-label">Brands</span></div><div class="card-stat"><span class="card-stat-value">2024</span><span class="card-stat-label">Present</span></div></div>
+                    <div style="margin-top: 1rem;"><a href="potrofolio.pdf" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">View Portfolio</a></div>
                 </div>
             </div>
 
-            <!-- Card 4: BIGIO Internship -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image">🚀</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
                     <h3 class="card-title">BIGIO Internship</h3>
-                    <div class="card-meta">
-                        <span class="card-tag">Instagram</span>
-                        <span class="card-tag">Internship</span>
-                    </div>
+                    <div class="card-meta"><span class="card-tag">Instagram</span><span class="card-tag">Internship</span></div>
                     <p class="card-description">Managed dimulai.id & dzikra.app Instagram accounts for Islamic lifestyle tech apps.</p>
-                    <div class="card-stats" style="margin-top: auto;">
-                        <div class="card-stat"><span class="card-stat-value">100K+</span><span class="card-stat-label">Views</span></div>
-                        <div class="card-stat"><span class="card-stat-value">1K+</span><span class="card-stat-label">Downloads</span></div>
-                        <div class="card-stat"><span class="card-stat-value">2022</span><span class="card-stat-label">Aug-Dec</span></div>
-                    </div>
-                    <div style="margin-top: 1rem;">
-                        <a href="sertifikat.pdf" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">See Internship Results</a>
-                    </div>
+                    <div class="card-stats" style="margin-top: auto;"><div class="card-stat"><span class="card-stat-value">100K+</span><span class="card-stat-label">Views</span></div><div class="card-stat"><span class="card-stat-value">1K+</span><span class="card-stat-label">Downloads</span></div><div class="card-stat"><span class="card-stat-value">2022</span><span class="card-stat-label">Aug-Dec</span></div></div>
+                    <div style="margin-top: 1rem;"><a href="sertifikat.pdf" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">See Internship Results</a></div>
                 </div>
             </div>
 
-            <!-- Card 5: @octricubla -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image">👟</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
                     <h3 class="card-title">@octricubla</h3>
-                    <div class="card-meta">
-                        <span class="card-tag">TikTok</span>
-                        <span class="card-tag">Personal Brand</span>
-                    </div>
+                    <div class="card-meta"><span class="card-tag">TikTok</span><span class="card-tag">Personal Brand</span></div>
                     <p class="card-description">Personal brand as fashion enthusiast and sneakerhead sharing tips and shoe reviews.</p>
-                    <div class="card-stats" style="margin-top: auto;">
-                        <div class="card-stat"><span class="card-stat-value">828</span><span class="card-stat-label">Likes</span></div>
-                        <div class="card-stat"><span class="card-stat-value">83</span><span class="card-stat-label">Followers</span></div>
-                        <div class="card-stat"><span class="card-stat-value">Niche</span><span class="card-stat-label">Community</span></div>
-                    </div>
-                    <div style="margin-top: 1rem;">
-                        <a href="https://www.tiktok.com/@octricubla" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">Follow on TikTok</a>
-                    </div>
+                    <div class="card-stats" style="margin-top: auto;"><div class="card-stat"><span class="card-stat-value">828</span><span class="card-stat-label">Likes</span></div><div class="card-stat"><span class="card-stat-value">83</span><span class="card-stat-label">Followers</span></div><div class="card-stat"><span class="card-stat-value">Niche</span><span class="card-stat-label">Community</span></div></div>
+                    <div style="margin-top: 1rem;"><a href="https://www.tiktok.com/@octricubla" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">Follow on TikTok</a></div>
                 </div>
             </div>
 
-            <!-- Card 6: MRN.SHP -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image">🛍️</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
                     <h3 class="card-title">MRN.SHP</h3>
-                    <div class="card-meta">
-                        <span class="card-tag">Instagram</span>
-                        <span class="card-tag">E-commerce</span>
-                    </div>
+                    <div class="card-meta"><span class="card-tag">Instagram</span><span class="card-tag">E-commerce</span></div>
                     <p class="card-description">Online fashion retail shop utilizing Instagram and Tokopedia as sales platforms.</p>
-                    <div class="card-stats" style="margin-top: auto;">
-                        <div class="card-stat"><span class="card-stat-value">100+</span><span class="card-stat-label">Products Sold</span></div>
-                        <div class="card-stat"><span class="card-stat-value">1K+</span><span class="card-stat-label">Likes</span></div>
-                        <div class="card-stat"><span class="card-stat-value">3 Yrs</span><span class="card-stat-label">Operation</span></div>
-                    </div>
-                    <div style="margin-top: 1rem;">
-                        <a href="https://www.instagram.com/murinushop/" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">Visit Shop</a>
-                    </div>
+                    <div class="card-stats" style="margin-top: auto;"><div class="card-stat"><span class="card-stat-value">100+</span><span class="card-stat-label">Products Sold</span></div><div class="card-stat"><span class="card-stat-value">1K+</span><span class="card-stat-label">Likes</span></div><div class="card-stat"><span class="card-stat-value">3 Yrs</span><span class="card-stat-label">Operation</span></div></div>
+                    <div style="margin-top: 1rem;"><a href="https://www.instagram.com/murinushop/" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">Visit Shop</a></div>
                 </div>
             </div>
         </div>
@@ -902,40 +898,11 @@
                 <div class="card-image">📈</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
                     <h3 class="card-title">Digital Marketing Campaign Analysis</h3>
-                    <div class="card-meta">
-                        <span class="card-tag">SQL</span>
-                        <span class="card-tag">Looker Studio</span>
-                    </div>
+                    <div class="card-meta"><span class="card-tag">SQL</span><span class="card-tag">Looker Studio</span></div>
                     <p class="card-description">Analyzed 2,300 daily performance records across 125 campaigns and 5 platforms to optimize marketing spend.</p>
-                    
-                    <div class="insight-box">
-                        <strong>Key Insights:</strong>
-                        <ul>
-                            <li>Google has highest CTR (6.22%) and most efficient CPA (Rp 9,174)</li>
-                            <li>Facebook dominates spend (59.9%) with strong ROAS</li>
-                            <li>Identified 16 campaigns exceeding budget</li>
-                        </ul>
-                    </div>
-
-                    <div class="card-stats" style="margin-top: auto; padding-top: 1rem;">
-                        <div class="card-stat">
-                            <span class="card-stat-value">2,300</span>
-                            <span class="card-stat-label">Rows</span>
-                        </div>
-                        <div class="card-stat">
-                            <span class="card-stat-value">5</span>
-                            <span class="card-stat-label">Platforms</span>
-                        </div>
-                        <div class="card-stat">
-                            <span class="card-stat-value">125</span>
-                            <span class="card-stat-label">Campaigns</span>
-                        </div>
-                    </div>
-
-                    <div style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                        <a href="https://datastudio.google.com/reporting/40fd5cf3-7f04-4cd2-b594-37ab2759e259" target="_blank" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.8rem;">📊 Dashboard</a>
-                        <a href="digital_marketing_analysis.sql" target="_blank" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.8rem;">💻 SQL Code</a>
-                    </div>
+                    <div class="insight-box"><strong>Key Insights:</strong><ul><li>Google has highest CTR (6.22%) and most efficient CPA (Rp 9,174)</li><li>Facebook dominates spend (59.9%) with strong ROAS</li><li>Identified 16 campaigns exceeding budget</li></ul></div>
+                    <div class="card-stats" style="margin-top: auto; padding-top: 1rem;"><div class="card-stat"><span class="card-stat-value">2,300</span><span class="card-stat-label">Rows</span></div><div class="card-stat"><span class="card-stat-value">5</span><span class="card-stat-label">Platforms</span></div><div class="card-stat"><span class="card-stat-value">125</span><span class="card-stat-label">Campaigns</span></div></div>
+                    <div style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;"><a href="https://datastudio.google.com/reporting/40fd5cf3-7f04-4cd2-b594-37ab2759e259" target="_blank" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.8rem;">📊 Dashboard</a><a href="digital_marketing_analysis.sql" target="_blank" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.8rem;">💻 SQL Code</a></div>
                 </div>
             </div>
 
@@ -943,41 +910,11 @@
                 <div class="card-image">🛒</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
                     <h3 class="card-title">E-Commerce Sales Analysis</h3>
-                    <div class="card-meta">
-                        <span class="card-tag">SQL</span>
-                        <span class="card-tag">Excel</span>
-                        <span class="card-tag">Looker Studio</span>
-                    </div>
+                    <div class="card-meta"><span class="card-tag">SQL</span><span class="card-tag">Excel</span><span class="card-tag">Looker Studio</span></div>
                     <p class="card-description">Analyzed 2,500 transactions to identify revenue opportunities and optimize inventory.</p>
-                    
-                    <div class="insight-box">
-                        <strong>Key Findings:</strong>
-                        <ul>
-                            <li>84.28% conversion rate (healthy standard)</li>
-                            <li>March 2024: highest revenue month (Rp 466M)</li>
-                            <li>VIP customers generate 3x more revenue</li>
-                        </ul>
-                    </div>
-
-                    <div class="card-stats" style="margin-top: auto; padding-top: 1rem;">
-                        <div class="card-stat">
-                            <span class="card-stat-value">2,500</span>
-                            <span class="card-stat-label">Transactions</span>
-                        </div>
-                        <div class="card-stat">
-                            <span class="card-stat-value">500</span>
-                            <span class="card-stat-label">Customers</span>
-                        </div>
-                        <div class="card-stat">
-                            <span class="card-stat-value">84.28%</span>
-                            <span class="card-stat-label">Conv. Rate</span>
-                        </div>
-                    </div>
-
-                    <div style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                        <a href="https://datastudio.google.com/reporting/44ff30a5-3316-469e-b0ac-547b75278dba" target="_blank" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.8rem;">📊 Dashboard</a>
-                        <a href="ecommerce_analysis.sql" target="_blank" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.8rem;">💻 SQL Code</a>
-                    </div>
+                    <div class="insight-box"><strong>Key Findings:</strong><ul><li>84.28% conversion rate (healthy standard)</li><li>March 2024: highest revenue month (Rp 466M)</li><li>VIP customers generate 3x more revenue</li></ul></div>
+                    <div class="card-stats" style="margin-top: auto; padding-top: 1rem;"><div class="card-stat"><span class="card-stat-value">2,500</span><span class="card-stat-label">Transactions</span></div><div class="card-stat"><span class="card-stat-value">500</span><span class="card-stat-label">Customers</span></div><div class="card-stat"><span class="card-stat-value">84.28%</span><span class="card-stat-label">Conv. Rate</span></div></div>
+                    <div style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;"><a href="https://datastudio.google.com/reporting/44ff30a5-3316-469e-b0ac-547b75278dba" target="_blank" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.8rem;">📊 Dashboard</a><a href="ecommerce_analysis.sql" target="_blank" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.8rem;">💻 SQL Code</a></div>
                 </div>
             </div>
 
@@ -985,40 +922,11 @@
                 <div class="card-image">💻</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
                     <h3 class="card-title">SQL Analysis Showcase</h3>
-                    <div class="card-meta">
-                        <span class="card-tag">SQL</span>
-                        <span class="card-tag">Data Analysis</span>
-                    </div>
+                    <div class="card-meta"><span class="card-tag">SQL</span><span class="card-tag">Data Analysis</span></div>
                     <p class="card-description">Comprehensive SQL queries demonstrating JOIN operations, aggregate functions, calculated metrics.</p>
-                    
-                    <div class="insight-box">
-                        <strong>SQL Skills Demonstrated:</strong>
-                        <ul>
-                            <li>Multi-table JOINs</li>
-                            <li>GROUP BY with aggregations</li>
-                            <li>Calculated fields: CTR, CVR, CPA</li>
-                            <li>Subqueries for conversion rates</li>
-                        </ul>
-                    </div>
-
-                    <div class="card-stats" style="margin-top: auto; padding-top: 1rem;">
-                        <div class="card-stat">
-                            <span class="card-stat-value">50+</span>
-                            <span class="card-stat-label">Queries</span>
-                        </div>
-                        <div class="card-stat">
-                            <span class="card-stat-value">2</span>
-                            <span class="card-stat-label">Projects</span>
-                        </div>
-                        <div class="card-stat">
-                            <span class="card-stat-value">100%</span>
-                            <span class="card-stat-label">Documented</span>
-                        </div>
-                    </div>
-
-                    <div style="margin-top: 1rem; visibility: hidden;">
-                        <a class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">💻 View SQL Examples</a>
-                    </div>
+                    <div class="insight-box"><strong>SQL Skills Demonstrated:</strong><ul><li>Multi-table JOINs</li><li>GROUP BY with aggregations</li><li>Calculated fields: CTR, CVR, CPA</li><li>Subqueries for conversion rates</li></ul></div>
+                    <div class="card-stats" style="margin-top: auto; padding-top: 1rem;"><div class="card-stat"><span class="card-stat-value">50+</span><span class="card-stat-label">Queries</span></div><div class="card-stat"><span class="card-stat-value">2</span><span class="card-stat-label">Projects</span></div><div class="card-stat"><span class="card-stat-value">100%</span><span class="card-stat-label">Documented</span></div></div>
+                    <div style="margin-top: 1rem; visibility: hidden;"><a class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">💻 View SQL Examples</a></div>
                 </div>
             </div>
         </div>
@@ -1028,101 +936,38 @@
     <section id="certifications">
         <h2 class="section-title">Certifications & Education</h2>
         <p class="section-subtitle">Formal training and continuous learning in Data Analytics and Digital Marketing</p>
-        
         <div class="portfolio-grid">
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image" style="background: transparent; border-bottom: 1px solid var(--border);">📊</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
                     <h3 class="card-title">Business & Data Analyst</h3>
-                    <div class="card-meta">
-                        <span class="card-tag">Ruangguru</span>
-                        <span class="card-tag">Bootcamp</span>
-                    </div>
+                    <div class="card-meta"><span class="card-tag">Ruangguru</span><span class="card-tag">Bootcamp</span></div>
                     <p class="card-description">Intensive bootcamp covering SQL, Excel, data visualization, statistical analysis through Ruangguru's certified program.</p>
-                    
-                    <div class="insight-box">
-                        <strong>Skills Learned:</strong>
-                        <ul>
-                            <li>SQL for data extraction</li>
-                            <li>Excel advanced formulas & Pivot Tables</li>
-                            <li>Data visualization with Looker Studio</li>
-                            <li>Statistical analysis & business reporting</li>
-                        </ul>
-                    </div>
-
-                    <div class="card-stats" style="margin-top: auto; padding-top: 1rem;">
-                        <div class="card-stat"><span class="card-stat-value">Feb-Jul</span><span class="card-stat-label">2022</span></div>
-                        <div class="card-stat"><span class="card-stat-value">6 Months</span><span class="card-stat-label">Duration</span></div>
-                        <div class="card-stat"><span class="card-stat-value">✓</span><span class="card-stat-label">Certified</span></div>
-                    </div>
-
-                   <div style="margin-top: 1rem;">
-                        <a href="sertifikat-ruangguru.pdf" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">📄 View Certificate</a>
-                    </div>
+                    <div class="insight-box"><strong>Skills Learned:</strong><ul><li>SQL for data extraction</li><li>Excel advanced formulas & Pivot Tables</li><li>Data visualization with Looker Studio</li><li>Statistical analysis & business reporting</li></ul></div>
+                    <div class="card-stats" style="margin-top: auto; padding-top: 1rem;"><div class="card-stat"><span class="card-stat-value">Feb-Jul</span><span class="card-stat-label">2022</span></div><div class="card-stat"><span class="card-stat-value">6 Months</span><span class="card-stat-label">Duration</span></div><div class="card-stat"><span class="card-stat-value">✓</span><span class="card-stat-label">Certified</span></div></div>
+                    <div style="margin-top: 1rem;"><a href="sertifikat-ruangguru.pdf" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">📄 View Certificate</a></div>
                 </div>
             </div>
-
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image" style="background: transparent; border-bottom: 1px solid var(--border);">📱</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
                     <h3 class="card-title">Intro to Digital Marketing</h3>
-                    <div class="card-meta">
-                        <span class="card-tag">RevoU</span>
-                        <span class="card-tag">Course</span>
-                    </div>
+                    <div class="card-meta"><span class="card-tag">RevoU</span><span class="card-tag">Course</span></div>
                     <p class="card-description">Comprehensive course covering digital marketing fundamentals, campaign analytics through RevoU's mini course program.</p>
-                    
-                    <div class="insight-box">
-                        <strong>Topics Covered:</strong>
-                        <ul>
-                            <li>Marketing funnel analysis</li>
-                            <li>Customer behavior analytics</li>
-                            <li>Campaign performance measurement</li>
-                            <li>A/B testing fundamentals</li>
-                        </ul>
-                    </div>
-
-                    <div class="card-stats" style="margin-top: auto; padding-top: 1rem;">
-                        <div class="card-stat"><span class="card-stat-value">2022</span><span class="card-stat-label">Year</span></div>
-                        <div class="card-stat"><span class="card-stat-value">Online</span><span class="card-stat-label">Format</span></div>
-                        <div class="card-stat"><span class="card-stat-value">✓</span><span class="card-stat-label">Certified</span></div>
-                    </div>
-
-                    <div style="margin-top: 1rem;">
-                        <a href="sertifikat-revou.pdf" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">📄 View Certificate</a>
-                    </div>
+                    <div class="insight-box"><strong>Topics Covered:</strong><ul><li>Marketing funnel analysis</li><li>Customer behavior analytics</li><li>Campaign performance measurement</li><li>A/B testing fundamentals</li></ul></div>
+                    <div class="card-stats" style="margin-top: auto; padding-top: 1rem;"><div class="card-stat"><span class="card-stat-value">2022</span><span class="card-stat-label">Year</span></div><div class="card-stat"><span class="card-stat-value">Online</span><span class="card-stat-label">Format</span></div><div class="card-stat"><span class="card-stat-value">✓</span><span class="card-stat-label">Certified</span></div></div>
+                    <div style="margin-top: 1rem;"><a href="sertifikat-revou.pdf" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">📄 View Certificate</a></div>
                 </div>
             </div>
-
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image" style="background: transparent; border-bottom: 1px solid var(--border);">🎓</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
                     <h3 class="card-title">Bachelor in Management</h3>
-                    <div class="card-meta">
-                        <span class="card-tag">University</span>
-                        <span class="card-tag">Degree</span>
-                    </div>
+                    <div class="card-meta"><span class="card-tag">University</span><span class="card-tag">Degree</span></div>
                     <p class="card-description">Universitas Pendidikan Indonesia (UPI) - Graduated with strong foundation in business management and analytical skills.</p>
-                    
-                    <div class="insight-box">
-                        <strong>Key Achievements:</strong>
-                        <ul>
-                            <li>GPA: 3.70 / 4.00</li>
-                            <li>Focus: Business Analytics & Marketing</li>
-                            <li>Completed multiple internships</li>
-                            <li>Active in organizational activities</li>
-                        </ul>
-                    </div>
-
-                    <div class="card-stats" style="margin-top: auto; padding-top: 1rem;">
-                        <div class="card-stat"><span class="card-stat-value">2019-2023</span><span class="card-stat-label">Period</span></div>
-                        <div class="card-stat"><span class="card-stat-value">3.70</span><span class="card-stat-label">GPA</span></div>
-                        <div class="card-stat"><span class="card-stat-value">✓</span><span class="card-stat-label">Graduate</span></div>
-                    </div>
-
-                    <div style="margin-top: 1rem;">
-                        <a href="ijazah-upi.pdf" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">🎓 View Degree</a>
-                    </div>
+                    <div class="insight-box"><strong>Key Achievements:</strong><ul><li>GPA: 3.70 / 4.00</li><li>Focus: Business Analytics & Marketing</li><li>Completed multiple internships</li><li>Active in organizational activities</li></ul></div>
+                    <div class="card-stats" style="margin-top: auto; padding-top: 1rem;"><div class="card-stat"><span class="card-stat-value">2019-2023</span><span class="card-stat-label">Period</span></div><div class="card-stat"><span class="card-stat-value">3.70</span><span class="card-stat-label">GPA</span></div><div class="card-stat"><span class="card-stat-value">✓</span><span class="card-stat-label">Graduate</span></div></div>
+                    <div style="margin-top: 1rem;"><a href="ijazah-upi.pdf" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">🎓 View Degree</a></div>
                 </div>
             </div>
         </div>
@@ -1132,57 +977,11 @@
     <section id="skills">
         <h2 class="section-title">Skills & Tools</h2>
         <p class="section-subtitle">Bridging creativity and analytics to drive business growth</p>
-        
         <div class="skills-container">
-            <div class="skill-category">
-                <h3>📱 Social Media</h3>
-                <ul class="skill-list">
-                    <li>Content Strategy & Planning</li>
-                    <li>Social Media Management</li>
-                    <li>Copywriting & Storytelling</li>
-                    <li>Community Engagement</li>
-                    <li>Trend Analysis</li>
-                    <li>Performance Analytics</li>
-                    <li>Brand Building</li>
-                </ul>
-            </div>
-
-            <div class="skill-category">
-                <h3>📊 Data Analytics</h3>
-                <ul class="skill-list">
-                    <li>SQL (PostgreSQL, MySQL)</li>
-                    <li>Python (Pandas, Matplotlib)</li>
-                    <li>Data Visualization (Tableau, Looker)</li>
-                    <li>Excel (Advanced Formulas)</li>
-                    <li>Statistical Analysis</li>
-                    <li>Reporting & Dashboards</li>
-                </ul>
-            </div>
-
-            <div class="skill-category">
-                <h3>🎨 Creative Tools</h3>
-                <ul class="skill-list">
-                    <li>Canva (Design)</li>
-                    <li>CapCut (Video Editing)</li>
-                    <li>Adobe Lightroom</li>
-                    <li>Adobe Premiere Pro</li>
-                    <li>Photography</li>
-                    <li>Content Production</li>
-                </ul>
-            </div>
-
-            <div class="skill-category">
-                <h3>🔧 Analytics Tools</h3>
-                <ul class="skill-list">
-                    <li>TikTok Analytics</li>
-                    <li>Instagram Insights</li>
-                    <li>Google Analytics</li>
-                    <li>Google Trends</li>
-                    <li>Looker Studio</li>
-                    <li>Google Sheets (Advanced)</li>
-                    <li>Notion</li>
-                </ul>
-            </div>
+            <div class="skill-category"><h3>📱 Social Media</h3><ul class="skill-list"><li>Content Strategy & Planning</li><li>Social Media Management</li><li>Copywriting & Storytelling</li><li>Community Engagement</li><li>Trend Analysis</li><li>Performance Analytics</li><li>Brand Building</li></ul></div>
+            <div class="skill-category"><h3>📊 Data Analytics</h3><ul class="skill-list"><li>SQL (PostgreSQL, MySQL)</li><li>Python (Pandas, Matplotlib)</li><li>Data Visualization (Tableau, Looker)</li><li>Excel (Advanced Formulas)</li><li>Statistical Analysis</li><li>Reporting & Dashboards</li></ul></div>
+            <div class="skill-category"><h3>🎨 Creative Tools</h3><ul class="skill-list"><li>Canva (Design)</li><li>CapCut (Video Editing)</li><li>Adobe Lightroom</li><li>Adobe Premiere Pro</li><li>Photography</li><li>Content Production</li></ul></div>
+            <div class="skill-category"><h3>🔧 Analytics Tools</h3><ul class="skill-list"><li>TikTok Analytics</li><li>Instagram Insights</li><li>Google Analytics</li><li>Google Trends</li><li>Looker Studio</li><li>Google Sheets (Advanced)</li><li>Notion</li></ul></div>
         </div>
     </section>
 
@@ -1191,22 +990,10 @@
         <div class="contact-container">
             <h2 class="section-title">Let's Connect</h2>
             <p class="section-subtitle">Open to opportunities in Social Media Marketing & Data Analytics</p>
-            
             <div class="contact-links">
-                <a href="mailto:mrnurfikri@gmail.com" class="contact-item">
-                    <div class="contact-icon">📧</div>
-                    <span class="contact-link">mrnurfikri@gmail.com</span>
-                </a>
-                
-                <a href="https://wa.me/6285603083435" target="_blank" class="contact-item">
-                    <div class="contact-icon">📱</div>
-                    <span class="contact-link">+62 856-0308-3435</span>
-                </a>
-                
-                <a href="https://linkedin.com/in/muhammad-rizal-nurfikri" target="_blank" class="contact-item">
-                    <div class="contact-icon">💼</div>
-                    <span class="contact-link">LinkedIn Profile</span>
-                </a>
+                <a href="mailto:mrnurfikri@gmail.com" class="contact-item"><div class="contact-icon">📧</div><span class="contact-link">mrnurfikri@gmail.com</span></a>
+                <a href="https://wa.me/6285603083435" target="_blank" class="contact-item"><div class="contact-icon">📱</div><span class="contact-link">+62 856-0308-3435</span></a>
+                <a href="https://linkedin.com/in/muhammad-rizal-nurfikri" target="_blank" class="contact-item"><div class="contact-icon">💼</div><span class="contact-link">LinkedIn Profile</span></a>
             </div>
         </div>
     </section>
@@ -1220,62 +1007,70 @@
 
     <script>
         // ========== THEME TOGGLE ==========
-        const themeToggle = document.getElementById('themeToggle');
+        const themeSwitch = document.getElementById('themeSwitch');
+        const themeOptions = document.querySelectorAll('.theme-option');
         const body = document.body;
         
-        // Cek preferensi tersimpan di localStorage
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'light') {
-            body.classList.add('light-mode');
-            themeToggle.textContent = '🌙';
-        } else {
-            themeToggle.textContent = '☀️';
-        }
+        // Cek preferensi tersimpan
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        setTheme(savedTheme);
         
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('light-mode');
-            if (body.classList.contains('light-mode')) {
-                localStorage.setItem('theme', 'light');
-                themeToggle.textContent = '🌙';
-            } else {
-                localStorage.setItem('theme', 'dark');
-                themeToggle.textContent = '☀️';
+        themeOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const theme = option.dataset.theme;
+                setTheme(theme);
+                localStorage.setItem('theme', theme);
+            });
+        });
+        
+        // Keyboard accessibility
+        themeSwitch.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const currentTheme = body.classList.contains('light-mode') ? 'light' : 'dark';
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                setTheme(newTheme);
+                localStorage.setItem('theme', newTheme);
             }
         });
+        
+        function setTheme(theme) {
+            if (theme === 'light') {
+                body.classList.add('light-mode');
+                themeOptions[0].classList.remove('active');  // bulan (dark)
+                themeOptions[1].classList.add('active');     // matahari (light)
+                themeSwitch.setAttribute('aria-checked', 'true');
+            } else {
+                body.classList.remove('light-mode');
+                themeOptions[0].classList.add('active');     // bulan (dark)
+                themeOptions[1].classList.remove('active');  // matahari (light)
+                themeSwitch.setAttribute('aria-checked', 'false');
+            }
+        }
 
         // ========== ACTIVE NAV ==========
         function updateActiveNav() {
             const sections = document.querySelectorAll('section');
             const navLinks = document.querySelectorAll('.nav-links a');
             let current = '';
-
             const windowBottom = window.scrollY + window.innerHeight;
             const documentHeight = document.body.scrollHeight;
-
             if (windowBottom >= documentHeight - 5) {
                 const lastSection = sections[sections.length - 1];
-                if (lastSection) {
-                    current = lastSection.getAttribute('id');
-                }
+                if (lastSection) current = lastSection.getAttribute('id');
             } else {
                 const scrollPos = window.scrollY + 100;
                 sections.forEach(section => {
                     const top = section.offsetTop;
                     const bottom = top + section.offsetHeight;
-                    if (scrollPos >= top && scrollPos < bottom) {
-                        current = section.getAttribute('id');
-                    }
+                    if (scrollPos >= top && scrollPos < bottom) current = section.getAttribute('id');
                 });
             }
-
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
+                if (link.getAttribute('href') === '#' + current) link.classList.add('active');
             });
         }
-
         window.addEventListener('scroll', updateActiveNav);
         window.addEventListener('load', updateActiveNav);
         window.addEventListener('resize', updateActiveNav);
@@ -1291,18 +1086,13 @@
 
         // ========== MOBILE MENU ==========
         function toggleMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('open');
+            document.getElementById('mobileMenu').classList.toggle('open');
         }
 
         // ========== BACK TO TOP ==========
         window.addEventListener('scroll', () => {
             const btn = document.getElementById('backToTop');
-            if (window.scrollY > 500) {
-                btn.classList.add('visible');
-            } else {
-                btn.classList.remove('visible');
-            }
+            btn.classList.toggle('visible', window.scrollY > 500);
         });
 
         // ========== ANIMATE COUNTER ==========
@@ -1310,17 +1100,12 @@
             let start = 0;
             const duration = 2000;
             const step = target / (duration / 16);
-            
             const timer = setInterval(() => {
                 start += step;
-                if (start >= target) {
-                    start = target;
-                    clearInterval(timer);
-                }
+                if (start >= target) { start = target; clearInterval(timer); }
                 el.textContent = Math.floor(start).toLocaleString() + suffix;
             }, 16);
         }
-        
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1332,7 +1117,6 @@
                 }
             });
         }, { threshold: 0.5 });
-        
         const statsSection = document.querySelector('.stats');
         if (statsSection) observer.observe(statsSection);
     </script>
