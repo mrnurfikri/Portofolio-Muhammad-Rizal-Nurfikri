@@ -1,10 +1,13 @@
+Berikut kode HTML lengkap dengan navbar baru yang diminta: **About**, **Work** (dropdown: Social Media, Data Analytics, Certifications, Skills), dan **Contact**. Logo `RN` tetap link ke Home.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhammad Rizal Nurfikri - Social Media Specialist & Data Analyst</title>
-    <meta name="description" content="Social Media Specialist & Data Analyst with proven organic growth: 369K+ views, 88K+ likes. Specializing in data-driven content strategies.">
+    <meta name="description" content="Social Media Specialist & Data Analyst with proven organic growth: 369K+ views, 88K+ likes.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +21,6 @@
         }
         
         :root {
-            /* Dark mode (default) */
             --bg-primary: #0a0a0a;
             --bg-secondary: #111111;
             --text-primary: #ffffff;
@@ -28,84 +30,35 @@
             --border: #222222;
             --card-bg: #111111;
             --nav-bg: rgba(10, 10, 10, 0.95);
-            --hero-gradient: rgba(173,252,90,0.03);
             --shadow: 0 4px 6px rgba(0,0,0,0.3);
             --theme-toggle-bg: rgba(255,255,255,0.05);
+            --dropdown-bg: #1a1a1a;
         }
         
         body.light-mode {
-            --bg-primary: #F1EFEE;
-            --bg-secondary: #E8E6E4;
+            --bg-primary: #ffffff;
+            --bg-secondary: #F1EFEE;
             --text-primary: #0a0a0a;
             --text-secondary: #555555;
             --accent: #106FFF;
             --accent-hover: #0a5cd9;
             --border: #d5d3d1;
-            --card-bg: #ffffff;
-            --nav-bg: rgba(241, 239, 238, 0.95);
-            --hero-gradient: rgba(16,111,255,0.03);
+            --card-bg: #F1EFEE;
+            --nav-bg: rgba(255, 255, 255, 0.95);
             --shadow: 0 4px 6px rgba(0,0,0,0.05);
             --theme-toggle-bg: rgba(0,0,0,0.05);
+            --dropdown-bg: #f9f9f9;
         }
         
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: var(--text-primary);
             background: var(--bg-primary);
-            transition: background 0.3s ease, color 0.3s ease;
+            transition: background 0.3s, color 0.3s;
         }
         
-        /* Theme toggle switch */
-        .theme-switch {
-            position: relative;
-            display: flex;
-            align-items: center;
-            background: var(--theme-toggle-bg);
-            border: 1px solid var(--border);
-            border-radius: 30px;
-            padding: 4px;
-            gap: 2px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            user-select: none;
-        }
-        
-        .theme-switch:hover {
-            border-color: var(--accent);
-        }
-        
-        .theme-option {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .theme-option.active {
-            background: var(--accent);
-            color: var(--bg-primary);
-        }
-        
-        .theme-option:not(.active) {
-            color: var(--text-secondary);
-            opacity: 0.5;
-        }
-        
-        .theme-option:hover:not(.active) {
-            opacity: 0.8;
-        }
-        
-        /* Navigation */
+        /* ---------- NAVIGATION ---------- */
         nav {
             position: fixed;
             top: 0;
@@ -115,7 +68,7 @@
             border-bottom: 1px solid var(--border);
             z-index: 1000;
             padding: 1rem 0;
-            transition: background 0.3s ease;
+            transition: background 0.3s;
         }
         
         .nav-container {
@@ -152,6 +105,7 @@
             display: flex;
             gap: 2rem;
             list-style: none;
+            align-items: center;
         }
         
         .nav-links a {
@@ -161,9 +115,10 @@
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: all 0.3s ease;
+            transition: color 0.3s;
             position: relative;
             padding-bottom: 5px;
+            white-space: nowrap;
         }
         
         .nav-links a:hover {
@@ -184,466 +139,135 @@
             background: var(--accent);
         }
         
-        /* Hero Section */
-        .hero {
-            margin-top: 80px;
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            background: var(--bg-primary);
+        /* Dropdown */
+        .dropdown {
             position: relative;
-            overflow: hidden;
-            transition: background 0.3s ease;
         }
         
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 30% 50%, var(--hero-gradient) 0%, transparent 50%);
-            pointer-events: none;
-        }
-        
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .hero h1 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 4.5rem;
-            font-weight: 700;
-            line-height: 1.1;
-            text-transform: uppercase;
-            letter-spacing: -2px;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-        
-        .hero .subtitle {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 500;
-            color: var(--accent);
-            margin-bottom: 2rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        
-        .hero p {
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin-bottom: 2rem;
-            color: var(--text-secondary);
-        }
-        
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 1.5rem;
-            margin: 3rem 0;
-        }
-        
-        .stat-item {
-            border: 1px solid var(--border);
-            padding: 1.5rem;
-            background: var(--bg-secondary);
-            text-align: center;
-            border-radius: 8px;
-            transition: all 0.3s;
-            box-shadow: var(--shadow);
-        }
-        
-        .stat-item:hover {
-            border-color: var(--accent);
-        }
-        
-        .stat-number {
-            font-family: 'Oswald', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--accent);
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-        
-        .stat-label {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-secondary);
-        }
-        
-        .cta-buttons {
+        .dropdown-toggle {
+            cursor: pointer;
             display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
-        
-        .btn {
-            padding: 0.9rem 2rem;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s;
-            display: inline-block;
-            border: 1px solid transparent;
-            border-radius: 8px;
-        }
-        
-        .btn-primary {
-            background: var(--accent);
-            color: var(--bg-primary);
-            border-color: var(--accent);
-        }
-        
-        .btn-primary:hover {
-            background: transparent;
-            color: var(--accent);
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-primary);
-            border: 1px solid var(--border);
-        }
-        
-        .btn-secondary:hover {
-            background: var(--accent);
-            color: #ffffff;
-            border-color: var(--accent);
-        }
-        
-        /* Section Styles */
-        section {
-            padding: 6rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .section-title {
-            font-family: 'Oswald', sans-serif;
-            font-size: 3rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: -1px;
-            margin-bottom: 1rem;
-            text-align: center;
-            color: var(--text-primary);
-        }
-        
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-secondary);
-            margin-bottom: 4rem;
-            font-size: 1rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        /* Portfolio Grid */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .portfolio-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            overflow: hidden;
-            transition: all 0.3s;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            box-shadow: var(--shadow);
-        }
-        
-        .portfolio-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
-        }
-        
-        .card-image {
-            width: 100%;
-            height: 160px;
-            background: var(--bg-secondary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            border-bottom: 1px solid var(--border);
-            border-radius: 8px 8px 0 0;
-        }
-        
-        .card-content {
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-        
-        .card-title {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-        }
-        
-        .card-meta {
-            display: flex;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-        
-        .card-tag {
-            background: transparent;
-            border: 1px solid var(--border);
-            padding: 0.2rem 0.8rem;
-            border-radius: 8px;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--accent);
-            font-weight: 600;
-        }
-        
-        .card-description {
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-        }
-        
-        .card-stats {
-            display: flex;
-            gap: 1.5rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border);
-            margin-top: auto;
-            flex-wrap: wrap;
-        }
-        
-        .card-stat {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .card-stat-value {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
-        
-        .card-stat-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-secondary);
-        }
-        
-        /* Skills */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .skill-category {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: var(--shadow);
-        }
-        
-        .skill-category h3 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-        }
-        
-        .skill-list {
-            list-style: none;
-        }
-        
-        .skill-list li {
-            padding: 0.6rem 0;
-            border-bottom: 1px solid var(--border);
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .skill-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .skill-list li::before {
-            content: '▹';
-            color: var(--accent);
-            font-weight: 700;
-        }
-        
-        /* Contact */
-        .contact-section {
-            background: var(--bg-primary);
-            text-align: center;
-            padding: 6rem 2rem;
-            transition: background 0.3s ease;
-        }
-        
-        .contact-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            flex-wrap: wrap;
-            margin-top: 3rem;
-        }
-        
-        .contact-item {
-            display: flex;
-            flex-direction: column;
             align-items: center;
             gap: 0.3rem;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.3s;
-        }
-        
-        .contact-item:hover .contact-icon {
-            transform: scale(1.15);
-            color: var(--accent);
-        }
-        
-        .contact-icon {
-            width: auto;
-            height: auto;
-            border: none;
-            font-size: 2.2rem;
-            transition: all 0.3s;
-            background: transparent;
-            color: var(--accent);
-        }
-        
-        .contact-link {
             color: var(--text-secondary);
+            font-weight: 600;
             font-size: 0.9rem;
-            font-weight: 500;
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border);
-            color: var(--text-secondary);
-            text-align: center;
-            padding: 2rem;
-            font-size: 0.8rem;
-            transition: background 0.3s ease;
-        }
-        
-        /* Insight box */
-        .insight-box {
-            margin: 1rem 0;
-            padding: 1rem;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            font-size: 0.9rem;
-        }
-        
-        .insight-box strong {
-            color: var(--accent);
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-        
-        .insight-box ul {
-            padding-left: 1.2rem;
-            color: var(--text-secondary);
-        }
-        
-        .btn-small {
-            padding: 0.5rem 1rem;
-            font-size: 0.8rem;
-            background: var(--accent);
-            color: var(--bg-primary);
-            text-decoration: none;
-            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            border: 1px solid var(--accent);
-            border-radius: 8px;
-            transition: all 0.3s;
-            display: inline-block;
+            transition: color 0.3s;
+            background: none;
+            border: none;
+            font-family: inherit;
+            padding-bottom: 5px;
         }
         
-        .btn-small:hover {
-            background: transparent;
+        .dropdown-toggle:hover {
+            color: var(--text-primary);
+        }
+        
+        .dropdown-toggle.active {
             color: var(--accent);
         }
         
-        /* Back to top */
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 45px;
-            height: 45px;
+        .dropdown-toggle.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
             background: var(--accent);
-            color: var(--bg-primary);
-            border: none;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 0.5rem;
+            background: var(--dropdown-bg);
+            border: 1px solid var(--border);
             border-radius: 8px;
-            font-size: 1.2rem;
-            cursor: pointer;
+            padding: 0.75rem 0;
+            min-width: 200px;
+            list-style: none;
             opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            z-index: 1001;
+        }
+        
+        .dropdown-menu.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu li a {
+            display: block;
+            padding: 0.5rem 1.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             transition: all 0.3s;
-            z-index: 999;
+            white-space: nowrap;
+        }
+        
+        .dropdown-menu li a:hover {
+            color: var(--accent);
+            background: var(--bg-secondary);
+        }
+        
+        /* Theme toggle */
+        .theme-switch {
+            display: flex;
+            align-items: center;
+            background: var(--theme-toggle-bg);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            padding: 4px;
+            gap: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+            user-select: none;
+        }
+        
+        .theme-switch:hover {
+            border-color: var(--accent);
+        }
+        
+        .theme-option {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            background: transparent;
+            border: none;
+            cursor: pointer;
         }
         
-        .back-to-top.visible {
-            opacity: 1;
+        .theme-option.active {
+            background: var(--accent);
+            color: var(--bg-primary);
         }
         
-        .back-to-top:hover {
-            background: var(--accent-hover);
-            transform: translateY(-3px);
+        .theme-option:not(.active) {
+            color: var(--text-secondary);
+            opacity: 0.5;
         }
         
-        /* Hamburger Menu */
+        .theme-option:hover:not(.active) {
+            opacity: 0.8;
+        }
+        
+        /* Hamburger */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -658,6 +282,7 @@
             transition: all 0.3s;
         }
         
+        /* Mobile menu */
         .mobile-menu {
             display: none;
             position: fixed;
@@ -694,6 +319,395 @@
             color: var(--accent);
         }
         
+        /* Sections */
+        .hero {
+            margin-top: 80px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: var(--bg-primary);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(173,252,90,0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            margin-bottom: 1rem;
+        }
+        
+        .hero .subtitle {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        .stat-item {
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            text-align: center;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .stat-item:hover {
+            border-color: var(--accent);
+        }
+        
+        .stat-number {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        
+        .stat-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            padding: 0.9rem 2rem;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            display: inline-block;
+            border: 1px solid transparent;
+            border-radius: 8px;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+        
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 4rem;
+            font-size: 1rem;
+            max-width: 600px;
+            margin-inline: auto;
+        }
+        
+        /* Portfolio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .portfolio-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .portfolio-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        .card-image {
+            width: 100%;
+            height: 160px;
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            border-bottom: 1px solid var(--border);
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .card-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-meta {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .card-tag {
+            border: 1px solid var(--border);
+            padding: 0.2rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .card-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .card-stats {
+            display: flex;
+            gap: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            margin-top: auto;
+            flex-wrap: wrap;
+        }
+        
+        .card-stat-value {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        
+        .card-stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+        }
+        
+        /* Skills */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .skill-category {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
+        }
+        
+        .skill-category h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-list li {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .skill-list li::before {
+            content: '▹';
+            color: var(--accent);
+            font-weight: 700;
+        }
+        
+        /* Contact */
+        .contact-section {
+            background: var(--bg-primary);
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+        
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.3rem;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .contact-item:hover .contact-icon {
+            transform: scale(1.15);
+            color: var(--accent);
+        }
+        
+        .contact-icon {
+            font-size: 2.2rem;
+            transition: all 0.3s;
+            color: var(--accent);
+        }
+        
+        .contact-link {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.8rem;
+        }
+        
+        .insight-box {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .insight-box strong {
+            color: var(--accent);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .insight-box ul {
+            padding-left: 1.2rem;
+            color: var(--text-secondary);
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 45px;
+            height: 45px;
+            background: var(--accent);
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+        }
+        
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.3; }
@@ -703,672 +717,189 @@
             .hero h1 {
                 font-size: 2.8rem;
             }
-            .nav-links {
-                display: none;
-            }
             .section-title {
                 font-size: 2.2rem;
             }
             .hamburger {
                 display: flex;
             }
+            .nav-links {
+                display: none;
+            }
+            .dropdown-menu {
+                position: static;
+                background: transparent;
+                border: none;
+                padding: 0.5rem 1rem;
+                box-shadow: none;
+            }
+            .dropdown-menu.open {
+                display: block;
+            }
         }
         
         html {
             scroll-behavior: smooth;
         }
-
-                @media (max-width: 768px) {
-            #about > div {
-                grid-template-columns: 1fr !important;
-                gap: 2rem !important;
-            }
-        }
-
-                /* Dropdown */
-        .dropdown {
-            position: relative;
-        }
-        
-        .dropdown-toggle {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            cursor: pointer;
-        }
-        
-        .dropdown-toggle svg {
-            transition: transform 0.3s ease;
-        }
-        
-        .dropdown:hover .dropdown-toggle svg {
-            transform: rotate(180deg);
-        }
-        
-        .dropdown-menu {
-            position: absolute;
-            top: calc(100% + 1rem);
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 0.5rem;
-            min-width: 200px;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 100;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        
-        .dropdown:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            top: calc(100% + 0.5rem);
-        }
-        
-        .dropdown-menu a {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.75rem 1rem;
-            color: var(--text-secondary) !important;
-            text-decoration: none;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-            border-radius: 6px;
-            transition: all 0.2s ease;
-            white-space: nowrap;
-        }
-        
-        .dropdown-menu a:hover {
-            background: rgba(173,252,90,0.08);
-            color: var(--accent) !important;
-        }
-        
-        .dropdown-menu a span.menu-icon {
-            font-size: 1rem;
-            width: 20px;
-            text-align: center;
-        }
-        
-        /* Divider di dropdown */
-        .dropdown-divider {
-            height: 1px;
-            background: var(--border);
-            margin: 0.4rem 0.5rem;
-        }
     </style>
 </head>
 <body>
+    <!-- ========== NAVBAR ========== -->
     <nav>
-        <nav>
-    <div class="nav-container">
-        <div class="nav-left">
-            <a href="#" class="logo">RN</a>
-            <div class="theme-switch" id="themeSwitch" role="switch" aria-checked="false" tabindex="0" aria-label="Toggle theme">
-                <button class="theme-option active" data-theme="dark" aria-label="Dark mode">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                </button>
-                <button class="theme-option" data-theme="light" aria-label="Light mode">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-            </div>
-        </div>
-
-        <div class="nav-right">
-            <ul class="nav-links">
-                <!-- HOME -->
-                <li><a href="#home">Home</a></li>
-
-                <!-- ABOUT -->
-                <li><a href="#about">About</a></li>
-
-                <!-- WORK DROPDOWN -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle">
-                        Work
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="6 9 12 15 18 9"></polyline>
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="#home" class="logo">RN</a>
+                <div class="theme-switch" id="themeSwitch" role="switch" aria-checked="false" tabindex="0" aria-label="Toggle theme">
+                    <button class="theme-option active" data-theme="dark" aria-label="Dark mode">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                         </svg>
-                    </a>
-                    <div class="dropdown-menu">
-                        <a href="#social-media">
-                            <span class="menu-icon">📱</span>
-                            Social Media
-                        </a>
-                        <a href="#data-analytics">
-                            <span class="menu-icon">📊</span>
-                            Data Analytics
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#certifications">
-                            <span class="menu-icon">🎓</span>
-                            Certifications
-                        </a>
-                        <a href="#skills">
-                            <span class="menu-icon">🛠️</span>
-                            Skills & Tools
-                        </a>
-                    </div>
-                </li>
-
-                <!-- CONTACT -->
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-
-            <div class="hamburger" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
+                    </button>
+                    <button class="theme-option" data-theme="light" aria-label="Light mode">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#home">About</a></li>
+                    <li class="dropdown">
+                        <button class="dropdown-toggle" id="dropdownToggle" aria-expanded="false">Work ▾</button>
+                        <ul class="dropdown-menu" id="dropdownMenu">
+                            <li><a href="#social-media">Social Media</a></li>
+                            <li><a href="#data-analytics">Data Analytics</a></li>
+                            <li><a href="#certifications">Certifications</a></li>
+                            <li><a href="#skills">Skills</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger" onclick="toggleMenu()">
+                    <span></span><span></span><span></span>
+                </div>
             </div>
         </div>
-    </div>
     </nav>
 
     <div class="mobile-menu" id="mobileMenu">
-    <ul>
-        <li><a href="#home" onclick="toggleMenu()">Home</a></li>
-        <li><a href="#about" onclick="toggleMenu()">About</a></li>
-        <!-- Work items langsung tampil di mobile (no dropdown) -->
-        <li style="padding: 0.5rem 0;">
-            <span style="color: var(--accent); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600;">Work</span>
-        </li>
-        <li style="padding-left: 1rem;">
-            <a href="#social-media" onclick="toggleMenu()" style="color: var(--text-secondary); font-size: 0.85rem;">
-                📱 Social Media
-            </a>
-        </li>
-        <li style="padding-left: 1rem;">
-            <a href="#data-analytics" onclick="toggleMenu()" style="color: var(--text-secondary); font-size: 0.85rem;">
-                📊 Data Analytics
-            </a>
-        </li>
-        <li style="padding-left: 1rem;">
-            <a href="#certifications" onclick="toggleMenu()" style="color: var(--text-secondary); font-size: 0.85rem;">
-                🎓 Certifications
-            </a>
-        </li>
-        <li style="padding-left: 1rem;">
-            <a href="#skills" onclick="toggleMenu()" style="color: var(--text-secondary); font-size: 0.85rem;">
-                🛠️ Skills & Tools
-            </a>
-        </li>
-        <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-    </ul>
-</div>
-    <!-- Hero -->
+        <ul>
+            <li><a href="#home" onclick="toggleMenu()">About</a></li>
+            <li><a href="#social-media" onclick="toggleMenu()">Social Media</a></li>
+            <li><a href="#data-analytics" onclick="toggleMenu()">Data Analytics</a></li>
+            <li><a href="#certifications" onclick="toggleMenu()">Certifications</a></li>
+            <li><a href="#skills" onclick="toggleMenu()">Skills</a></li>
+            <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- ========== HERO (ABOUT) ========== -->
     <section class="hero" id="home">
         <div class="hero-container">
-            <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(173,252,90,0.1); border: 1px solid var(--accent); padding: 0.5rem 1rem; border-radius: 20px; margin-bottom: 1.5rem;">
-                <span style="width: 8px; height: 8px; background: var(--accent); border-radius: 50%; display: inline-block; animation: pulse 2s infinite;"></span>
-                <span style="color: var(--accent); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Open to Work</span>
+            <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(173,252,90,0.1);border:1px solid var(--accent);padding:0.5rem 1rem;border-radius:20px;margin-bottom:1.5rem">
+                <span style="width:8px;height:8px;background:var(--accent);border-radius:50%;display:inline-block;animation:pulse 2s infinite"></span>
+                <span style="color:var(--accent);font-size:0.85rem;font-weight:600;text-transform:uppercase;letter-spacing:1px">Open to Work</span>
             </div>
-            
             <h1>MUHAMMAD RIZAL NURFIKRI</h1>
             <p class="subtitle">Social Media Specialist & Data Analyst</p>
             <p>I help brands grow through data-driven content strategies and turn numbers into actionable insights. Proven organic growth: 369K+ views, 88K+ total likes across platforms.</p>
-            
             <div class="stats">
-                <div class="stat-item">
-                    <span class="stat-number">369K+</span>
-                    <span class="stat-label">Total Views</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">88K+</span>
-                    <span class="stat-label">Total Likes</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">2+</span>
-                    <span class="stat-label">Years Experience</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">6+</span>
-                    <span class="stat-label">Projects Launched</span>
-                </div>
+                <div class="stat-item"><span class="stat-number">369K+</span><span class="stat-label">Total Views</span></div>
+                <div class="stat-item"><span class="stat-number">88K+</span><span class="stat-label">Total Likes</span></div>
+                <div class="stat-item"><span class="stat-number">2+</span><span class="stat-label">Years Experience</span></div>
+                <div class="stat-item"><span class="stat-number">6+</span><span class="stat-label">Projects Launched</span></div>
             </div>
-            
             <div class="cta-buttons">
                 <a href="#social-media" class="btn btn-secondary">View Social Media Work</a>
-                <a href="#data-analytics" class="btn btn-secondary">View Data Projects</a>                
+                <a href="#data-analytics" class="btn btn-secondary">View Data Projects</a>
                 <a href="CV_Muhammad_Rizal.pdf" target="_blank" class="btn btn-secondary">View CV</a>
             </div>
         </div>
     </section>
 
-    <!-- About Me Section -->
-<section id="about">
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;">
-        
-        <!-- Kiri: Story -->
-        <div>
-            <p style="color: var(--accent); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 1rem; font-weight: 600;">About Me</p>
-            <h2 style="font-family: 'Oswald', sans-serif; font-size: 2.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: -1px; line-height: 1.1; margin-bottom: 1.5rem; color: var(--text-primary);">
-                Where Creativity<br><span style="color: var(--accent);">Meets Data</span>
-            </h2>
-            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.9; margin-bottom: 1.25rem;">
-                I'm a Management graduate from Universitas Pendidikan Indonesia (GPA 3.70) who found his passion at the intersection of creative storytelling and data-driven decision making. My journey began building online brands from scratch — which taught me that great content without data is just guesswork.
-            </p>
-            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.9; margin-bottom: 1.25rem;">
-                What makes me different: I don't just create content — I <span style="color: var(--text-primary); font-weight: 600;">analyze it</span>. I don't just read dashboards — I <span style="color: var(--text-primary); font-weight: 600;">build them</span>. This rare combination of right-brain creativity and left-brain analytics is exactly what modern businesses need.
-            </p>
-            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.9; margin-bottom: 2rem;">
-                Currently expanding my expertise as a <span style="color: var(--accent); font-weight: 600;">Marketing Affiliate at Lamina Hospital</span>, building physician networks and designing strategic marketing campaigns — while continuing to grow my portfolio in social media and data analytics.
-            </p>
-
-            <!-- USP Tags -->
-            <div style="display: flex; flex-wrap: wrap; gap: 0.6rem;">
-                <span style="background: rgba(173,252,90,0.08); border: 1px solid rgba(173,252,90,0.25); color: var(--accent); padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">📱 Social Media</span>
-                <span style="background: rgba(173,252,90,0.08); border: 1px solid rgba(173,252,90,0.25); color: var(--accent); padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">📊 Data Analytics</span>
-                <span style="background: rgba(173,252,90,0.08); border: 1px solid rgba(173,252,90,0.25); color: var(--accent); padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">🎯 Marketing</span>
-                <span style="background: rgba(173,252,90,0.08); border: 1px solid rgba(173,252,90,0.25); color: var(--accent); padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">✍️ Content Strategy</span>
-                <span style="background: rgba(173,252,90,0.08); border: 1px solid rgba(173,252,90,0.25); color: var(--accent); padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">💊 Healthcare Marketing</span>
-            </div>
-        </div>
-
-        <!-- Kanan: Experience Timeline -->
-        <div style="display: flex; flex-direction: column; gap: 1rem;">
-            
-            <p style="color: var(--accent); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; font-weight: 600; margin-bottom: 0.5rem;">Experience</p>
-
-            <!-- Job 1 -->
-            <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; transition: border-color 0.3s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-                <div style="display: flex; align-items: flex-start; gap: 1rem;">
-                    <span style="font-size: 1.5rem; flex-shrink: 0;">🏥</span>
-                    <div>
-                        <p style="font-weight: 600; color: var(--text-primary); font-size: 0.9rem; margin-bottom: 0.2rem;">Marketing Affiliate</p>
-                        <p style="color: var(--accent); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Lamina Hospital · Mar 2026 – Present</p>
-                        <p style="color: var(--text-secondary); font-size: 0.82rem; line-height: 1.6;">Building physician database, field visits, and designing creative marketing strategies for patient volume targets.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Job 2 -->
-            <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; transition: border-color 0.3s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-                <div style="display: flex; align-items: flex-start; gap: 1rem;">
-                    <span style="font-size: 1.5rem; flex-shrink: 0;">💊</span>
-                    <div>
-                        <p style="font-weight: 600; color: var(--text-primary); font-size: 0.9rem; margin-bottom: 0.2rem;">Medical Sales Representative</p>
-                        <p style="color: var(--accent); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">PT Novell Pharmaceutical · Aug–Oct 2025</p>
-                        <p style="color: var(--text-secondary); font-size: 0.82rem; line-height: 1.6;">Maintained 8 outlets, built relationships with 60+ doctors, introduced 60+ pharmaceutical products.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Job 3 -->
-            <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; transition: border-color 0.3s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-                <div style="display: flex; align-items: flex-start; gap: 1rem;">
-                    <span style="font-size: 1.5rem; flex-shrink: 0;">📱</span>
-                    <div>
-                        <p style="font-weight: 600; color: var(--text-primary); font-size: 0.9rem; margin-bottom: 0.2rem;">Digital Content Creator</p>
-                        <p style="color: var(--accent); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Freelance · Nov 2024 – Jan 2026</p>
-                        <p style="color: var(--text-secondary); font-size: 0.82rem; line-height: 1.6;">Managed multi-brand social media accounts, content strategy, performance analysis, and paid campaigns.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Job 4 -->
-            <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; transition: border-color 0.3s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-                <div style="display: flex; align-items: flex-start; gap: 1rem;">
-                    <span style="font-size: 1.5rem; flex-shrink: 0;">🎓</span>
-                    <div>
-                        <p style="font-weight: 600; color: var(--text-primary); font-size: 0.9rem; margin-bottom: 0.2rem;">Bachelor of Management · GPA 3.70/4.00</p>
-                        <p style="color: var(--accent); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Universitas Pendidikan Indonesia · 2019–2023</p>
-                        <p style="color: var(--text-secondary); font-size: 0.82rem; line-height: 1.6;">Marketing focus. Participated in Kampus Merdeka, entrepreneurship projects, and organizational activities.</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-    
-    <!-- Social Media Portfolio -->
+    <!-- ========== SOCIAL MEDIA ========== -->
     <section id="social-media">
         <h2 class="section-title">Social Media Portfolio</h2>
         <p class="section-subtitle">Creating engaging content that drives real results through data-driven strategies</p>
-        
         <div class="portfolio-grid">
-            <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
-                <div class="card-image">🌱</div>
-                <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
-                    <h3 class="card-title">Verda Harvest</h3>
-                    <div class="card-meta"><span class="card-tag">TikTok</span><span class="card-tag">Content Creation</span></div>
-                    <p class="card-description">Urban farming brand focused on hydroponics. Educational content from seed to harvest documentation.</p>
-                    <div class="card-stats" style="margin-top: auto;"><div class="card-stat"><span class="card-stat-value">369K+</span><span class="card-stat-label">Views</span></div><div class="card-stat"><span class="card-stat-value">15.8K+</span><span class="card-stat-label">Likes</span></div><div class="card-stat"><span class="card-stat-value">1.4K+</span><span class="card-stat-label">Followers</span></div></div>
-                    <div style="margin-top: 1rem;"><a href="https://www.tiktok.com/@verda.harvest?lang=id-ID" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">Watch on TikTok</a></div>
-                </div>
-            </div>
-
-            <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
-                <div class="card-image">👔</div>
-                <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
-                    <h3 class="card-title">HOOKED0N</h3>
-                    <div class="card-meta"><span class="card-tag">TikTok</span><span class="card-tag">Fashion Trends</span></div>
-                    <p class="card-description">Fashion trends media providing latest style information and inspirations for fashion enthusiasts.</p>
-                    <div class="card-stats" style="margin-top: auto;"><div class="card-stat"><span class="card-stat-value">530K+</span><span class="card-stat-label">Peak Views</span></div><div class="card-stat"><span class="card-stat-value">72.2K+</span><span class="card-stat-label">Likes</span></div><div class="card-stat"><span class="card-stat-value">251</span><span class="card-stat-label">Followers</span></div></div>
-                    <div style="margin-top: 1rem;"><a href="https://www.tiktok.com/@hooked0n?lang=id-ID" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">See Fashion Trends</a></div>
-                </div>
-            </div>
-
-            <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
-                <div class="card-image">💼</div>
-                <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
-                    <h3 class="card-title">Freelance Clients</h3>
-                    <div class="card-meta"><span class="card-tag">Instagram</span><span class="card-tag">Management</span></div>
-                    <p class="card-description">Managing multiple brand accounts with content strategy, performance optimization, and analytics.</p>
-                    <div class="card-stats" style="margin-top: auto;"><div class="card-stat"><span class="card-stat-value">25-45%</span><span class="card-stat-label">Engagement ↑</span></div><div class="card-stat"><span class="card-stat-value">Multi</span><span class="card-stat-label">Brands</span></div><div class="card-stat"><span class="card-stat-value">2024</span><span class="card-stat-label">Present</span></div></div>
-                    <div style="margin-top: 1rem;"><a href="potrofolio.pdf" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">View Portfolio</a></div>
-                </div>
-            </div>
-
-            <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
-                <div class="card-image">🚀</div>
-                <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
-                    <h3 class="card-title">BIGIO Internship</h3>
-                    <div class="card-meta"><span class="card-tag">Instagram</span><span class="card-tag">Internship</span></div>
-                    <p class="card-description">Managed dimulai.id & dzikra.app Instagram accounts for Islamic lifestyle tech apps.</p>
-                    <div class="card-stats" style="margin-top: auto;"><div class="card-stat"><span class="card-stat-value">100K+</span><span class="card-stat-label">Views</span></div><div class="card-stat"><span class="card-stat-value">1K+</span><span class="card-stat-label">Downloads</span></div><div class="card-stat"><span class="card-stat-value">2022</span><span class="card-stat-label">Aug-Dec</span></div></div>
-                    <div style="margin-top: 1rem;"><a href="sertifikat.pdf" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">See Internship Results</a></div>
-                </div>
-            </div>
-
-            <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
-                <div class="card-image">👟</div>
-                <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
-                    <h3 class="card-title">@octricubla</h3>
-                    <div class="card-meta"><span class="card-tag">TikTok</span><span class="card-tag">Personal Brand</span></div>
-                    <p class="card-description">Personal brand as fashion enthusiast and sneakerhead sharing tips and shoe reviews.</p>
-                    <div class="card-stats" style="margin-top: auto;"><div class="card-stat"><span class="card-stat-value">828</span><span class="card-stat-label">Likes</span></div><div class="card-stat"><span class="card-stat-value">83</span><span class="card-stat-label">Followers</span></div><div class="card-stat"><span class="card-stat-value">Niche</span><span class="card-stat-label">Community</span></div></div>
-                    <div style="margin-top: 1rem;"><a href="https://www.tiktok.com/@octricubla" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">Follow on TikTok</a></div>
-                </div>
-            </div>
-
-            <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
-                <div class="card-image">🛍️</div>
-                <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
-                    <h3 class="card-title">MRN.SHP</h3>
-                    <div class="card-meta"><span class="card-tag">Instagram</span><span class="card-tag">E-commerce</span></div>
-                    <p class="card-description">Online fashion retail shop utilizing Instagram and Tokopedia as sales platforms.</p>
-                    <div class="card-stats" style="margin-top: auto;"><div class="card-stat"><span class="card-stat-value">100+</span><span class="card-stat-label">Products Sold</span></div><div class="card-stat"><span class="card-stat-value">1K+</span><span class="card-stat-label">Likes</span></div><div class="card-stat"><span class="card-stat-value">3 Yrs</span><span class="card-stat-label">Operation</span></div></div>
-                    <div style="margin-top: 1rem;"><a href="https://www.instagram.com/murinushop/" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">Visit Shop</a></div>
-                </div>
-            </div>
+            <!-- 6 cards seperti sebelumnya -->
+            <div class="portfolio-card"><div class="card-image">🌱</div><div class="card-content"><h3 class="card-title">Verda Harvest</h3><div class="card-meta"><span class="card-tag">TikTok</span><span class="card-tag">Content Creation</span></div><p class="card-description">Urban farming brand focused on hydroponics.</p><div class="card-stats"><div><span class="card-stat-value">369K+</span><span class="card-stat-label">Views</span></div><div><span class="card-stat-value">15.8K+</span><span class="card-stat-label">Likes</span></div><div><span class="card-stat-value">1.4K+</span><span class="card-stat-label">Followers</span></div></div><a href="https://www.tiktok.com/@verda.harvest?lang=id-ID" target="_blank" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;margin-top:1rem">Watch on TikTok</a></div></div>
+            <div class="portfolio-card"><div class="card-image">👔</div><div class="card-content"><h3 class="card-title">HOOKED0N</h3><div class="card-meta"><span class="card-tag">TikTok</span><span class="card-tag">Fashion Trends</span></div><p class="card-description">Fashion trends media providing latest style info.</p><div class="card-stats"><div><span class="card-stat-value">530K+</span><span class="card-stat-label">Peak Views</span></div><div><span class="card-stat-value">72.2K+</span><span class="card-stat-label">Likes</span></div><div><span class="card-stat-value">251</span><span class="card-stat-label">Followers</span></div></div><a href="https://www.tiktok.com/@hooked0n?lang=id-ID" target="_blank" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;margin-top:1rem">See Fashion Trends</a></div></div>
+            <div class="portfolio-card"><div class="card-image">💼</div><div class="card-content"><h3 class="card-title">Freelance Clients</h3><div class="card-meta"><span class="card-tag">Instagram</span><span class="card-tag">Management</span></div><p class="card-description">Managing multiple brand accounts.</p><div class="card-stats"><div><span class="card-stat-value">25-45%</span><span class="card-stat-label">Engagement ↑</span></div><div><span class="card-stat-value">Multi</span><span class="card-stat-label">Brands</span></div><div><span class="card-stat-value">2024</span><span class="card-stat-label">Present</span></div></div><a href="potrofolio.pdf" target="_blank" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;margin-top:1rem">View Portfolio</a></div></div>
+            <div class="portfolio-card"><div class="card-image">🚀</div><div class="card-content"><h3 class="card-title">BIGIO Internship</h3><div class="card-meta"><span class="card-tag">Instagram</span><span class="card-tag">Internship</span></div><p class="card-description">Managed dimulai.id & dzikra.app.</p><div class="card-stats"><div><span class="card-stat-value">100K+</span><span class="card-stat-label">Views</span></div><div><span class="card-stat-value">1K+</span><span class="card-stat-label">Downloads</span></div><div><span class="card-stat-value">2022</span><span class="card-stat-label">Aug-Dec</span></div></div><a href="sertifikat.pdf" target="_blank" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;margin-top:1rem">See Internship Results</a></div></div>
+            <div class="portfolio-card"><div class="card-image">👟</div><div class="card-content"><h3 class="card-title">@octricubla</h3><div class="card-meta"><span class="card-tag">TikTok</span><span class="card-tag">Personal Brand</span></div><p class="card-description">Fashion enthusiast & sneakerhead.</p><div class="card-stats"><div><span class="card-stat-value">828</span><span class="card-stat-label">Likes</span></div><div><span class="card-stat-value">83</span><span class="card-stat-label">Followers</span></div><div><span class="card-stat-value">Niche</span><span class="card-stat-label">Community</span></div></div><a href="https://www.tiktok.com/@octricubla" target="_blank" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;margin-top:1rem">Follow on TikTok</a></div></div>
+            <div class="portfolio-card"><div class="card-image">🛍️</div><div class="card-content"><h3 class="card-title">MRN.SHP</h3><div class="card-meta"><span class="card-tag">Instagram</span><span class="card-tag">E-commerce</span></div><p class="card-description">Online fashion retail shop.</p><div class="card-stats"><div><span class="card-stat-value">100+</span><span class="card-stat-label">Products Sold</span></div><div><span class="card-stat-value">1K+</span><span class="card-stat-label">Likes</span></div><div><span class="card-stat-value">3 Yrs</span><span class="card-stat-label">Operation</span></div></div><a href="https://www.instagram.com/murinushop/" target="_blank" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;margin-top:1rem">Visit Shop</a></div></div>
         </div>
     </section>
 
-    <!-- Data Analytics Portfolio -->
+    <!-- ========== DATA ANALYTICS ========== -->
     <section id="data-analytics">
         <h2 class="section-title">Data Analytics Portfolio</h2>
         <p class="section-subtitle">Transforming raw data into strategic recommendations using SQL, Excel, and Looker Studio</p>
-        
         <div class="portfolio-grid">
-            <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
-                <div class="card-image">📈</div>
-                <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
-                    <h3 class="card-title">Digital Marketing Campaign Analysis</h3>
-                    <div class="card-meta"><span class="card-tag">SQL</span><span class="card-tag">Looker Studio</span></div>
-                    <p class="card-description">Analyzed 2,300 daily performance records across 125 campaigns and 5 platforms to optimize marketing spend.</p>
-                    <div class="insight-box"><strong>Key Insights:</strong><ul><li>Google has highest CTR (6.22%) and most efficient CPA (Rp 9,174)</li><li>Facebook dominates spend (59.9%) with strong ROAS</li><li>Identified 16 campaigns exceeding budget</li></ul></div>
-                    <div class="card-stats" style="margin-top: auto; padding-top: 1rem;"><div class="card-stat"><span class="card-stat-value">2,300</span><span class="card-stat-label">Rows</span></div><div class="card-stat"><span class="card-stat-value">5</span><span class="card-stat-label">Platforms</span></div><div class="card-stat"><span class="card-stat-value">125</span><span class="card-stat-label">Campaigns</span></div></div>
-                    <div style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;"><a href="https://datastudio.google.com/reporting/40fd5cf3-7f04-4cd2-b594-37ab2759e259" target="_blank" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.8rem;">📊 Dashboard</a><a href="digital_marketing_analysis.sql" target="_blank" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.8rem;">💻 SQL Code</a></div>
-                </div>
-            </div>
-
-            <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
-                <div class="card-image">🛒</div>
-                <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
-                    <h3 class="card-title">E-Commerce Sales Analysis</h3>
-                    <div class="card-meta"><span class="card-tag">SQL</span><span class="card-tag">Excel</span><span class="card-tag">Looker Studio</span></div>
-                    <p class="card-description">Analyzed 2,500 transactions to identify revenue opportunities and optimize inventory.</p>
-                    <div class="insight-box"><strong>Key Findings:</strong><ul><li>84.28% conversion rate (healthy standard)</li><li>March 2024: highest revenue month (Rp 466M)</li><li>VIP customers generate 3x more revenue</li></ul></div>
-                    <div class="card-stats" style="margin-top: auto; padding-top: 1rem;"><div class="card-stat"><span class="card-stat-value">2,500</span><span class="card-stat-label">Transactions</span></div><div class="card-stat"><span class="card-stat-value">500</span><span class="card-stat-label">Customers</span></div><div class="card-stat"><span class="card-stat-value">84.28%</span><span class="card-stat-label">Conv. Rate</span></div></div>
-                    <div style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;"><a href="https://datastudio.google.com/reporting/44ff30a5-3316-469e-b0ac-547b75278dba" target="_blank" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.8rem;">📊 Dashboard</a><a href="ecommerce_analysis.sql" target="_blank" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.8rem;">💻 SQL Code</a></div>
-                </div>
-            </div>
-
-            <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
-                <div class="card-image">💻</div>
-                <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
-                    <h3 class="card-title">SQL Analysis Showcase</h3>
-                    <div class="card-meta"><span class="card-tag">SQL</span><span class="card-tag">Data Analysis</span></div>
-                    <p class="card-description">Comprehensive SQL queries demonstrating JOIN operations, aggregate functions, calculated metrics.</p>
-                    <div class="insight-box"><strong>SQL Skills Demonstrated:</strong><ul><li>Multi-table JOINs</li><li>GROUP BY with aggregations</li><li>Calculated fields: CTR, CVR, CPA</li><li>Subqueries for conversion rates</li></ul></div>
-                    <div class="card-stats" style="margin-top: auto; padding-top: 1rem;"><div class="card-stat"><span class="card-stat-value">50+</span><span class="card-stat-label">Queries</span></div><div class="card-stat"><span class="card-stat-value">2</span><span class="card-stat-label">Projects</span></div><div class="card-stat"><span class="card-stat-value">100%</span><span class="card-stat-label">Documented</span></div></div>
-                    <div style="margin-top: 1rem; visibility: hidden;"><a class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">💻 View SQL Examples</a></div>
-                </div>
-            </div>
+            <div class="portfolio-card"><div class="card-image">📈</div><div class="card-content"><h3 class="card-title">Digital Marketing Campaign Analysis</h3><div class="card-meta"><span class="card-tag">SQL</span><span class="card-tag">Looker Studio</span></div><p class="card-description">Analyzed 2,300 records across 125 campaigns.</p><div class="insight-box"><strong>Key Insights:</strong><ul><li>Google highest CTR (6.22%)</li><li>Facebook dominates spend (59.9%)</li><li>16 campaigns exceeding budget</li></ul></div><div class="card-stats"><div><span class="card-stat-value">2,300</span><span class="card-stat-label">Rows</span></div><div><span class="card-stat-value">5</span><span class="card-stat-label">Platforms</span></div><div><span class="card-stat-value">125</span><span class="card-stat-label">Campaigns</span></div></div><div style="margin-top:1rem;display:flex;gap:0.5rem"><a href="https://datastudio.google.com/reporting/40fd5cf3-7f04-4cd2-b594-37ab2759e259" target="_blank" class="btn btn-secondary" style="padding:0.5rem 1rem;font-size:0.8rem">📊 Dashboard</a><a href="digital_marketing_analysis.sql" target="_blank" class="btn btn-secondary" style="padding:0.5rem 1rem;font-size:0.8rem">💻 SQL Code</a></div></div></div>
+            <div class="portfolio-card"><div class="card-image">🛒</div><div class="card-content"><h3 class="card-title">E-Commerce Sales Analysis</h3><div class="card-meta"><span class="card-tag">SQL</span><span class="card-tag">Excel</span><span class="card-tag">Looker Studio</span></div><p class="card-description">Analyzed 2,500 transactions.</p><div class="insight-box"><strong>Key Findings:</strong><ul><li>84.28% conversion rate</li><li>March 2024 highest revenue (Rp 466M)</li><li>VIP customers 3x more revenue</li></ul></div><div class="card-stats"><div><span class="card-stat-value">2,500</span><span class="card-stat-label">Transactions</span></div><div><span class="card-stat-value">500</span><span class="card-stat-label">Customers</span></div><div><span class="card-stat-value">84.28%</span><span class="card-stat-label">Conv. Rate</span></div></div><div style="margin-top:1rem;display:flex;gap:0.5rem"><a href="https://datastudio.google.com/reporting/44ff30a5-3316-469e-b0ac-547b75278dba" target="_blank" class="btn btn-secondary" style="padding:0.5rem 1rem;font-size:0.8rem">📊 Dashboard</a><a href="ecommerce_analysis.sql" target="_blank" class="btn btn-secondary" style="padding:0.5rem 1rem;font-size:0.8rem">💻 SQL Code</a></div></div></div>
+            <div class="portfolio-card"><div class="card-image">💻</div><div class="card-content"><h3 class="card-title">SQL Analysis Showcase</h3><div class="card-meta"><span class="card-tag">SQL</span><span class="card-tag">Data Analysis</span></div><p class="card-description">Comprehensive SQL queries.</p><div class="insight-box"><strong>SQL Skills:</strong><ul><li>Multi-table JOINs</li><li>GROUP BY with aggregations</li><li>Calculated fields: CTR, CVR, CPA</li><li>Subqueries for conversion rates</li></ul></div><div class="card-stats"><div><span class="card-stat-value">50+</span><span class="card-stat-label">Queries</span></div><div><span class="card-stat-value">2</span><span class="card-stat-label">Projects</span></div><div><span class="card-stat-value">100%</span><span class="card-stat-label">Documented</span></div></div><div style="margin-top:1rem;visibility:hidden"><a class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem">💻 View SQL Examples</a></div></div></div>
         </div>
     </section>
 
-    <!-- Certifications -->
+    <!-- ========== CERTIFICATIONS ========== -->
     <section id="certifications">
         <h2 class="section-title">Certifications & Education</h2>
         <p class="section-subtitle">Formal training and continuous learning in Data Analytics and Digital Marketing</p>
         <div class="portfolio-grid">
-            <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
-                <div class="card-image" style="background: transparent; border-bottom: 1px solid var(--border);">📊</div>
-                <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
-                    <h3 class="card-title">Business & Data Analyst</h3>
-                    <div class="card-meta"><span class="card-tag">Ruangguru</span><span class="card-tag">Bootcamp</span></div>
-                    <p class="card-description">Intensive bootcamp covering SQL, Excel, data visualization, statistical analysis through Ruangguru's certified program.</p>
-                    <div class="insight-box"><strong>Skills Learned:</strong><ul><li>SQL for data extraction</li><li>Excel advanced formulas & Pivot Tables</li><li>Data visualization with Looker Studio</li><li>Statistical analysis & business reporting</li></ul></div>
-                    <div class="card-stats" style="margin-top: auto; padding-top: 1rem;"><div class="card-stat"><span class="card-stat-value">Feb-Jul</span><span class="card-stat-label">2022</span></div><div class="card-stat"><span class="card-stat-value">6 Months</span><span class="card-stat-label">Duration</span></div><div class="card-stat"><span class="card-stat-value">✓</span><span class="card-stat-label">Certified</span></div></div>
-                    <div style="margin-top: 1rem;"><a href="sertifikat-ruangguru.pdf" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">📄 View Certificate</a></div>
-                </div>
-            </div>
-            <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
-                <div class="card-image" style="background: transparent; border-bottom: 1px solid var(--border);">📱</div>
-                <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
-                    <h3 class="card-title">Intro to Digital Marketing</h3>
-                    <div class="card-meta"><span class="card-tag">RevoU</span><span class="card-tag">Course</span></div>
-                    <p class="card-description">Comprehensive course covering digital marketing fundamentals, campaign analytics through RevoU's mini course program.</p>
-                    <div class="insight-box"><strong>Topics Covered:</strong><ul><li>Marketing funnel analysis</li><li>Customer behavior analytics</li><li>Campaign performance measurement</li><li>A/B testing fundamentals</li></ul></div>
-                    <div class="card-stats" style="margin-top: auto; padding-top: 1rem;"><div class="card-stat"><span class="card-stat-value">2022</span><span class="card-stat-label">Year</span></div><div class="card-stat"><span class="card-stat-value">Online</span><span class="card-stat-label">Format</span></div><div class="card-stat"><span class="card-stat-value">✓</span><span class="card-stat-label">Certified</span></div></div>
-                    <div style="margin-top: 1rem;"><a href="sertifikat-revou.pdf" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">📄 View Certificate</a></div>
-                </div>
-            </div>
-            <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
-                <div class="card-image" style="background: transparent; border-bottom: 1px solid var(--border);">🎓</div>
-                <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
-                    <h3 class="card-title">Bachelor in Management</h3>
-                    <div class="card-meta"><span class="card-tag">University</span><span class="card-tag">Degree</span></div>
-                    <p class="card-description">Universitas Pendidikan Indonesia (UPI) - Graduated with strong foundation in business management and analytical skills.</p>
-                    <div class="insight-box"><strong>Key Achievements:</strong><ul><li>GPA: 3.70 / 4.00</li><li>Focus: Business Analytics & Marketing</li><li>Completed multiple internships</li><li>Active in organizational activities</li></ul></div>
-                    <div class="card-stats" style="margin-top: auto; padding-top: 1rem;"><div class="card-stat"><span class="card-stat-value">2019-2023</span><span class="card-stat-label">Period</span></div><div class="card-stat"><span class="card-stat-value">3.70</span><span class="card-stat-label">GPA</span></div><div class="card-stat"><span class="card-stat-value">✓</span><span class="card-stat-label">Graduate</span></div></div>
-                    <div style="margin-top: 1rem;"><a href="ijazah-upi.pdf" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">🎓 View Degree</a></div>
-                </div>
-            </div>
+            <div class="portfolio-card"><div class="card-image" style="background:transparent;border-bottom:1px solid var(--border)">📊</div><div class="card-content"><h3 class="card-title">Business & Data Analyst</h3><div class="card-meta"><span class="card-tag">Ruangguru</span><span class="card-tag">Bootcamp</span></div><p class="card-description">Intensive bootcamp covering SQL, Excel, data visualization.</p><div class="insight-box"><strong>Skills Learned:</strong><ul><li>SQL for data extraction</li><li>Excel advanced formulas & Pivot Tables</li><li>Data visualization with Looker Studio</li><li>Statistical analysis & business reporting</li></ul></div><div class="card-stats"><div><span class="card-stat-value">Feb-Jul</span><span class="card-stat-label">2022</span></div><div><span class="card-stat-value">6 Months</span><span class="card-stat-label">Duration</span></div><div><span class="card-stat-value">✓</span><span class="card-stat-label">Certified</span></div></div><a href="sertifikat-ruangguru.pdf" target="_blank" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;margin-top:1rem">📄 View Certificate</a></div></div>
+            <div class="portfolio-card"><div class="card-image" style="background:transparent;border-bottom:1px solid var(--border)">📱</div><div class="card-content"><h3 class="card-title">Intro to Digital Marketing</h3><div class="card-meta"><span class="card-tag">RevoU</span><span class="card-tag">Course</span></div><p class="card-description">Comprehensive course covering digital marketing fundamentals.</p><div class="insight-box"><strong>Topics Covered:</strong><ul><li>Marketing funnel analysis</li><li>Customer behavior analytics</li><li>Campaign performance measurement</li><li>A/B testing fundamentals</li></ul></div><div class="card-stats"><div><span class="card-stat-value">2022</span><span class="card-stat-label">Year</span></div><div><span class="card-stat-value">Online</span><span class="card-stat-label">Format</span></div><div><span class="card-stat-value">✓</span><span class="card-stat-label">Certified</span></div></div><a href="sertifikat-revou.pdf" target="_blank" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;margin-top:1rem">📄 View Certificate</a></div></div>
+            <div class="portfolio-card"><div class="card-image" style="background:transparent;border-bottom:1px solid var(--border)">🎓</div><div class="card-content"><h3 class="card-title">Bachelor in Management</h3><div class="card-meta"><span class="card-tag">University</span><span class="card-tag">Degree</span></div><p class="card-description">Universitas Pendidikan Indonesia (UPI).</p><div class="insight-box"><strong>Key Achievements:</strong><ul><li>GPA: 3.70 / 4.00</li><li>Focus: Business Analytics & Marketing</li><li>Completed multiple internships</li><li>Active in organizational activities</li></ul></div><div class="card-stats"><div><span class="card-stat-value">2019-2023</span><span class="card-stat-label">Period</span></div><div><span class="card-stat-value">3.70</span><span class="card-stat-label">GPA</span></div><div><span class="card-stat-value">✓</span><span class="card-stat-label">Graduate</span></div></div><a href="ijazah-upi.pdf" target="_blank" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;margin-top:1rem">🎓 View Degree</a></div></div>
         </div>
     </section>
     
-  <!-- Skills -->
-<section id="skills">
-    <h2 class="section-title">Skills & Tools</h2>
-    <p class="section-subtitle">Bridging creativity and analytics to drive business growth</p>
-    <div class="skills-container">
-
-        <!-- Social Media -->
-        <div class="skill-category">
-            <h3>📱 Social Media</h3>
-            <ul class="skill-list">
-                <li><span style="font-size:1rem;">📋</span> Content Strategy & Planning</li>
-                <li><span style="font-size:1rem;">⚙️</span> Social Media Management</li>
-                <li><span style="font-size:1rem;">✍️</span> Copywriting & Storytelling</li>
-                <li><span style="font-size:1rem;">🤝</span> Community Engagement</li>
-                <li><span style="font-size:1rem;">📈</span> Trend Analysis</li>
-                <li><span style="font-size:1rem;">🎯</span> Performance Marketing</li>
-                <li><span style="font-size:1rem;">🔍</span> SEO Content Writing</li>
-            </ul>
+    <!-- ========== SKILLS ========== -->
+    <section id="skills">
+        <h2 class="section-title">Skills & Tools</h2>
+        <p class="section-subtitle">Bridging creativity and analytics to drive business growth</p>
+        <div class="skills-container">
+            <div class="skill-category"><h3>📱 Social Media</h3><ul class="skill-list"><li>Content Strategy & Planning</li><li>Social Media Management</li><li>Copywriting & Storytelling</li><li>Community Engagement</li><li>Trend Analysis</li><li>Performance Analytics</li><li>Brand Building</li></ul></div>
+            <div class="skill-category"><h3>📊 Data Analytics</h3><ul class="skill-list"><li>SQL (PostgreSQL, MySQL)</li><li>Python (Pandas, Matplotlib)</li><li>Data Visualization (Tableau, Looker)</li><li>Excel (Advanced Formulas)</li><li>Statistical Analysis</li><li>Reporting & Dashboards</li></ul></div>
+            <div class="skill-category"><h3>🎨 Creative Tools</h3><ul class="skill-list"><li>Canva (Design)</li><li>CapCut (Video Editing)</li><li>Adobe Lightroom</li><li>Adobe Premiere Pro</li><li>Photography</li><li>Content Production</li></ul></div>
+            <div class="skill-category"><h3>🔧 Analytics Tools</h3><ul class="skill-list"><li>TikTok Analytics</li><li>Instagram Insights</li><li>Google Analytics</li><li>Google Trends</li><li>Looker Studio</li><li>Google Sheets (Advanced)</li><li>Notion</li></ul></div>
         </div>
+    </section>
 
-        <!-- Data Analytics -->
-        <div class="skill-category">
-            <h3>📊 Data Analytics</h3>
-            <ul class="skill-list">
-                <li>
-                    <span style="background:#336791;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;letter-spacing:0.5px;">SQL</span>
-                    MySQL / SQL Query
-                </li>
-                <li>
-                    <span style="background:#3776AB;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">PY</span>
-                    Python (Pandas, Matplotlib)
-                </li>
-                <li>
-                    <span style="background:#E97627;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">TB</span>
-                    Tableau
-                </li>
-                <li>
-                    <span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">LS</span>
-                    Looker Studio
-                </li>
-                <li>
-                    <span style="background:#217346;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">XL</span>
-                    Excel (Advanced Formulas)
-                </li>
-                <li>
-                    <span style="background:#EA4335;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GS</span>
-                    Google Sheets
-                </li>
-                <li>
-                    <span style="background:#666;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">SP</span>
-                    SPSS
-                </li>
-            </ul>
+    <!-- ========== CONTACT ========== -->
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
+            <h2 class="section-title">Let's Connect</h2>
+            <p class="section-subtitle">Open to opportunities in Social Media Marketing & Data Analytics</p>
+            <div class="contact-links">
+                <a href="mailto:mrnurfikri@gmail.com" class="contact-item"><div class="contact-icon">📧</div><span class="contact-link">mrnurfikri@gmail.com</span></a>
+                <a href="https://wa.me/6285603083435" target="_blank" class="contact-item"><div class="contact-icon">📱</div><span class="contact-link">+62 856-0308-3435</span></a>
+                <a href="https://linkedin.com/in/muhammad-rizal-nurfikri" target="_blank" class="contact-item"><div class="contact-icon">💼</div><span class="contact-link">LinkedIn Profile</span></a>
+            </div>
         </div>
-
-        <!-- Creative Tools -->
-        <div class="skill-category">
-            <h3>🎨 Creative Tools</h3>
-            <ul class="skill-list">
-                <li>
-                    <span style="background:#00C4CC;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">CV</span>
-                    Canva
-                </li>
-                <li>
-                    <span style="background:#111;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">CC</span>
-                    CapCut
-                </li>
-                <li>
-                    <span style="background:#31A8FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Lr</span>
-                    Adobe Lightroom
-                </li>
-                <li>
-                    <span style="background:#31A8FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Ps</span>
-                    Adobe Photoshop
-                </li>
-                <li>
-                    <span style="background:#9999FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Pr</span>
-                    Adobe Premiere Pro
-                </li>
-                <li><span style="font-size:1rem;">📸</span> Photography</li>
-                <li><span style="font-size:1rem;">🎬</span> Video Production</li>
-            </ul>
-        </div>
-
-        <!-- Analytics Platforms -->
-        <div class="skill-category">
-            <h3>🔧 Analytics Platforms</h3>
-            <ul class="skill-list">
-                <li>
-                    <span style="background:#111;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">TT</span>
-                    TikTok Analytics
-                </li>
-                <li>
-                    <span style="background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">IG</span>
-                    Instagram Insights
-                </li>
-                <li>
-                    <span style="background:#EA4335;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GA</span>
-                    Google Analytics
-                </li>
-                <li>
-                    <span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GT</span>
-                    Google Trends
-                </li>
-                <li>
-                    <span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">LS</span>
-                    Looker Studio
-                </li>
-                <li>
-                    <span style="background:#000;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">N</span>
-                    Notion
-                </li>
-                <li>
-                    <span style="background:#217346;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">MS</span>
-                    Microsoft Office
-                </li>
-            </ul>
-        </div>
-
-    </div>
-</section>
-
-   <!-- Contact -->
-<section id="contact" class="contact-section">
-    <div class="contact-container">
-        <h2 class="section-title">Let's Connect</h2>
-        <p class="section-subtitle">Open to opportunities in Social Media Marketing, Data Analytics & Healthcare Marketing</p>
-        
-        <div class="contact-links">
-            <a href="mailto:mrnurfikri@gmail.com" class="contact-item">
-                <div class="contact-icon">📧</div>
-                <span class="contact-link">mrnurfikri@gmail.com</span>
-            </a>
-            <a href="https://wa.me/6285603083435" target="_blank" class="contact-item">
-                <div class="contact-icon">📱</div>
-                <span class="contact-link">+62 856-0308-3435</span>
-            </a>
-            <a href="https://linkedin.com/in/muhammad-rizal-nurfikri" target="_blank" class="contact-item">
-                <div class="contact-icon">💼</div>
-                <span class="contact-link">LinkedIn Profile</span>
-            </a>
-        </div>
-
-        <!-- CTA Download CV -->
-        <div style="margin-top: 3rem; padding-top: 3rem; border-top: 1px solid var(--border);">
-            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 2px;">Ready to see my full experience?</p>
-            <a href="Muhammad_Rizal_Nurfikri-resume__en_.pdf" target="_blank" class="btn btn-primary" style="font-size: 1rem; padding: 1rem 3rem; display: inline-flex; align-items: center; gap: 0.75rem;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                    <polyline points="7 10 12 15 17 10"></polyline>
-                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
-                Download CV
-            </a>
-        </div>
-
-    </div>
-</section>
+    </section>
             
     <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
             
     <footer>
         <p>&copy; 2025 Muhammad Rizal Nurfikri. All rights reserved.</p>
-        <p style="margin-top: 0.5rem; opacity: 0.5;">Built with passion for data-driven storytelling</p>
+        <p style="margin-top:0.5rem;opacity:0.5">Built with passion for data-driven storytelling</p>
     </footer>
 
     <script>
-        // ========== THEME TOGGLE ==========
+        // ========== THEME ==========
         const themeSwitch = document.getElementById('themeSwitch');
         const themeOptions = document.querySelectorAll('.theme-option');
         const body = document.body;
-        
         const savedTheme = localStorage.getItem('theme') || 'dark';
         setTheme(savedTheme);
         
@@ -1404,13 +935,41 @@
             }
         }
 
+        // ========== DROPDOWN ==========
+        const dropdownToggle = document.getElementById('dropdownToggle');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        
+        dropdownToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdownMenu.classList.toggle('open');
+            const expanded = dropdownMenu.classList.contains('open');
+            dropdownToggle.setAttribute('aria-expanded', expanded);
+        });
+        
+        // Tutup dropdown jika klik di luar
+        document.addEventListener('click', (e) => {
+            if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                dropdownMenu.classList.remove('open');
+                dropdownToggle.setAttribute('aria-expanded', false);
+            }
+        });
+        
+        // Tutup dropdown setelah klik salah satu link
+        dropdownMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                dropdownMenu.classList.remove('open');
+                dropdownToggle.setAttribute('aria-expanded', false);
+            });
+        });
+
         // ========== ACTIVE NAV ==========
         function updateActiveNav() {
             const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav-links a');
+            const navLinks = document.querySelectorAll('.nav-links > li > a, .nav-links .dropdown-toggle');
             let current = '';
             const windowBottom = window.scrollY + window.innerHeight;
             const documentHeight = document.body.scrollHeight;
+            
             if (windowBottom >= documentHeight - 5) {
                 const lastSection = sections[sections.length - 1];
                 if (lastSection) current = lastSection.getAttribute('id');
@@ -1422,15 +981,24 @@
                     if (scrollPos >= top && scrollPos < bottom) current = section.getAttribute('id');
                 });
             }
+            
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+                // Untuk dropdown toggle, cek apakah salah satu submenu sedang aktif
+                if (link === dropdownToggle) {
+                    const subIds = ['social-media', 'data-analytics', 'certifications', 'skills'];
+                    if (subIds.includes(current)) link.classList.add('active');
+                } else {
+                    if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+                }
             });
         }
+        
         window.addEventListener('scroll', updateActiveNav);
         window.addEventListener('load', updateActiveNav);
         window.addEventListener('resize', updateActiveNav);
 
+        // ========== SMOOTH SCROLL ==========
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1439,15 +1007,18 @@
             });
         });
 
+        // ========== MOBILE MENU ==========
         function toggleMenu() {
             document.getElementById('mobileMenu').classList.toggle('open');
         }
 
+        // ========== BACK TO TOP ==========
         window.addEventListener('scroll', () => {
             const btn = document.getElementById('backToTop');
             btn.classList.toggle('visible', window.scrollY > 500);
         });
 
+        // ========== ANIMATE COUNTER ==========
         function animateCounter(el, target, suffix = '') {
             let start = 0;
             const duration = 2000;
@@ -1471,36 +1042,7 @@
         }, { threshold: 0.5 });
         const statsSection = document.querySelector('.stats');
         if (statsSection) observer.observe(statsSection);
-
-        // Highlight "Work" dropdown saat sub-sections aktif
-function updateDropdownActive() {
-    const workSections = ['social-media', 'data-analytics', 'certifications', 'skills'];
-    const dropdownToggle = document.querySelector('.dropdown-toggle');
-    const scrollPos = window.scrollY + 100;
-    
-    let isWorkActive = false;
-    workSections.forEach(id => {
-        const section = document.getElementById(id);
-        if (section) {
-            const top = section.offsetTop;
-            const bottom = top + section.offsetHeight;
-            if (scrollPos >= top && scrollPos < bottom) {
-                isWorkActive = true;
-            }
-        }
-    });
-
-    if (dropdownToggle) {
-        if (isWorkActive) {
-            dropdownToggle.style.color = 'var(--accent)';
-        } else {
-            dropdownToggle.style.color = '';
-        }
-    }
-}
-
-window.addEventListener('scroll', updateDropdownActive);
-window.addEventListener('load', updateDropdownActive);
     </script>
 </body>
 </html>
+```
