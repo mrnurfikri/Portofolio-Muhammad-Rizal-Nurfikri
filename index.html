@@ -113,7 +113,7 @@
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
             z-index: 1000;
-            padding: 1rem 0;
+            padding: 0.5rem 0;
             transition: background 0.3s ease;
         }
         
@@ -138,13 +138,33 @@
             gap: 1rem;
         }
         
+        /* Logo image */
         .logo {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--accent);
+            display: flex;
+            align-items: center;
             text-decoration: none;
-            letter-spacing: -1px;
+        }
+        
+        .logo img {
+            height: 48px;
+            width: auto;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+        
+        /* Tampilkan gambar sesuai tema */
+        .logo .logo-light {
+            display: none;
+        }
+        .logo .logo-dark {
+            display: block;
+        }
+        
+        body.light-mode .logo .logo-light {
+            display: block;
+        }
+        body.light-mode .logo .logo-dark {
+            display: none;
         }
         
         .nav-links {
@@ -179,7 +199,6 @@
             color: var(--accent);
         }
         
-        /* Garis bawah dihapus seluruhnya */
         .nav-links a.active::after {
             display: none;
         }
@@ -542,8 +561,6 @@
             border-bottom: none;
         }
         
-        /* Ikon segitiga tidak digunakan, ikon sudah ada di HTML */
-        
         .contact-section {
             background: var(--bg-primary);
             text-align: center;
@@ -752,7 +769,7 @@
                 display: flex;
             }
             .theme-switch {
-                display: flex; /* tetap muncul */
+                display: flex;
             }
         }
         
@@ -772,7 +789,10 @@
     <nav>
         <div class="nav-container">
             <div class="nav-left">
-                <a href="#home" class="logo">RN</a>
+                <a href="#home" class="logo">
+                    <img src="bg-dark.png" alt="RN Logo" class="logo-dark">
+                    <img src="bg-normal.png" alt="RN Logo" class="logo-light">
+                </a>
                 <div class="theme-switch" id="themeSwitch" role="switch" aria-checked="false" tabindex="0" aria-label="Toggle theme">
                     <button class="theme-option active" data-theme="dark" aria-label="Dark mode">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1312,7 +1332,6 @@
                 });
             }
 
-            // Array section yang termasuk dalam "Work"
             const workSections = ['social-media', 'data-analytics', 'certifications', 'skills'];
             
             navLinks.forEach(link => {
@@ -1321,7 +1340,6 @@
                 if (href === '#' + current) {
                     link.classList.add('active');
                 }
-                // Jika current adalah salah satu work section, aktifkan juga link "Work"
                 if (workSections.includes(current) && href === '#social-media' && link.classList.contains('dropdown-trigger')) {
                     link.classList.add('active');
                 }
