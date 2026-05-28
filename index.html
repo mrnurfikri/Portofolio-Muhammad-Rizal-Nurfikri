@@ -494,6 +494,7 @@
             border-color: var(--accent);
         }
         
+        /* Arrow dasar */
         .carousel-arrow {
             position: absolute;
             top: 50%;
@@ -507,26 +508,17 @@
             font-size: 1.2rem;
             cursor: pointer;
             z-index: 10;
-            transition: all 0.3s;
+            transition: background 0.1s, color 0.1s, transform 0.1s;
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0.7;
-        }
-        .carousel-arrow:hover {
-            background: var(--accent);
-            color: var(--bg-primary);
-            border-color: var(--accent);
-            opacity: 1;
-        }
-        .carousel-arrow-left {
-            left: -20px;
-        }
-        .carousel-arrow-right {
-            right: -20px;
+            -webkit-tap-highlight-color: transparent; /* hilangkan highlight biru di mobile */
+            outline: none;
+            user-select: none;
         }
         
-        /* Hapus hover sticky di mobile */
+        /* Hover hanya untuk desktop (mouse) */
         @media (hover: hover) and (pointer: fine) {
             .carousel-arrow:hover {
                 background: var(--accent);
@@ -536,18 +528,26 @@
             }
         }
         
-        /* Hanya gunakan :active untuk touch */
+        /* Efek tap di mobile */
         .carousel-arrow:active {
             background: var(--accent);
             color: var(--bg-primary);
             border-color: var(--accent);
             opacity: 1;
+            transform: translateY(-50%) scale(0.95);
+        }
+        
+        .carousel-arrow-left {
+            left: -20px;
+        }
+        .carousel-arrow-right {
+            right: -20px;
         }
         
         @media (max-width: 768px) {
             .carousel-card {
                 flex: 0 0 280px;
-                scroll-snap-align: center; /* biar pas di tengah layar */
+                scroll-snap-align: center;
             }
             .carousel-arrow {
                 width: 35px;
@@ -1579,14 +1579,14 @@
             btn.classList.toggle('visible', window.scrollY > 500);
         });
 
-        // ========== CAROUSEL ARROWS (presisi 1 kartu) ==========
+        // ========== CAROUSEL ARROWS ==========
         const carousel = document.getElementById('carouselContainer');
         const leftBtn = document.getElementById('carouselLeft');
         const rightBtn = document.getElementById('carouselRight');
         
         function getStep() {
             const card = carousel.querySelector('.carousel-card');
-            if (!card) return 340; // fallback
+            if (!card) return 340;
             const cardWidth = card.offsetWidth;
             const gap = parseInt(getComputedStyle(carousel).gap) || 24;
             return cardWidth + gap;
