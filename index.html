@@ -145,7 +145,7 @@
         .carousel-wrapper { position: relative; z-index: 1; max-width: 100%; margin-top: 2rem; }
         .carousel-container {
             display: flex; gap: 1.5rem; overflow-x: auto; overflow-y: visible;
-            -webkit-overflow-scrolling: touch; scroll-behavior: auto; /* JS handles smoothness */
+            -webkit-overflow-scrolling: touch; scroll-behavior: auto;
             overscroll-behavior-x: contain; padding: 2rem 2rem 2.5rem 2rem; margin: 0 30px;
             scrollbar-width: none; -ms-overflow-style: none; justify-content: flex-start;
             mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
@@ -261,7 +261,8 @@
             <div class="nav-right">
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
-                    <li><a href="#social-media" class="dropdown-trigger">Work ▾</a>
+                    <li>
+                        <a href="#social-media" class="dropdown-trigger">Work ▾</a>
                         <ul class="dropdown">
                             <li><a href="#social-media">Social Media</a></li>
                             <li><a href="#data-analytics">Data Analytics</a></li>
@@ -271,7 +272,9 @@
                     </li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+                <div class="hamburger" onclick="toggleMenu()">
+                    <span></span><span></span><span></span>
+                </div>
             </div>
         </div>
     </nav>
@@ -279,7 +282,8 @@
     <div class="mobile-menu" id="mobileMenu">
         <ul>
             <li><a href="#about" onclick="toggleMenu()">About</a></li>
-            <li><a href="#social-media" onclick="toggleMenu()">Work</a>
+            <li>
+                <a href="#social-media" onclick="toggleMenu()">Work</a>
                 <div class="mobile-submenu">
                     <a href="#social-media" onclick="toggleMenu()">· Social Media</a>
                     <a href="#data-analytics" onclick="toggleMenu()">· Data Analytics</a>
@@ -315,7 +319,7 @@
         </div>
     </section>
 
-    <!-- About Section (sama) -->
+    <!-- About Section -->
     <section id="about">
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;">
             <div>
@@ -495,11 +499,12 @@
             btn.classList.toggle('visible', window.scrollY > 500);
         });
 
-        // ========== CAROUSEL: SMOOTH ANIMATION + EDGE BOUNCE ==========
+        // ========== CAROUSEL: SMOOTH ANIMATION + INSTAGRAM-STYLE EDGE BOUNCE ==========
         const carousel = document.getElementById('carouselContainer');
         const leftBtn = document.getElementById('carouselLeft');
         const rightBtn = document.getElementById('carouselRight');
         let isAnimating = false;
+        const cards = carousel.querySelectorAll('.carousel-card');
 
         function getCardWidth() {
             const card = carousel.querySelector('.carousel-card');
@@ -531,26 +536,36 @@
             window.requestAnimationFrame(step);
         }
 
-        function performEdgeBounce(direction) {
-            const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-            const current = carousel.scrollLeft;
-            if ((direction === 'left' && current <= 0) || (direction === 'right' && current >= maxScroll - 1)) {
-                carousel.style.transition = 'transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1)';
-                carousel.style.transform = 'scaleX(0.96)';
-                setTimeout(() => { carousel.style.transform = 'scaleX(1)'; }, 150);
-                setTimeout(() => { carousel.style.transition = ''; }, 400);
-                return true;
-            }
-            return false;
+        function bounceCard(card, direction) {
+            // Hanya kartu tertentu yang bergerak, sisanya tetap
+            const offset = direction === 'left' ? 15 : -15; // kiri: geser kanan, kanan: geser kiri
+            card.style.transition = 'transform 0.2s ease';
+            card.style.transform = `translateX(${offset}px)`;
+            setTimeout(() => {
+                card.style.transform = 'translateX(0)';
+                setTimeout(() => {
+                    card.style.transition = '';
+                }, 200);
+            }, 100);
         }
 
         function navigateCarousel(direction) {
             if (isAnimating) return;
-            if (performEdgeBounce(direction)) return;
-            const cardWidth = getCardWidth();
             const currentScroll = carousel.scrollLeft;
             const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+            const cardWidth = getCardWidth();
             let target = direction === 'left' ? currentScroll - cardWidth : currentScroll + cardWidth;
+
+            // Deteksi jika sudah di ujung
+            if (target < 0 || target > maxScroll) {
+                // Bounce kartu pertama/terakhir
+                if (direction === 'left' && currentScroll <= 0) {
+                    bounceCard(cards[0], 'left');
+                } else if (direction === 'right' && currentScroll >= maxScroll - 1) {
+                    bounceCard(cards[cards.length - 1], 'right');
+                }
+                return;
+            }
             target = Math.max(0, Math.min(target, maxScroll));
             smoothScrollTo(target);
         }
