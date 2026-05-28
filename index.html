@@ -238,8 +238,10 @@
             .stat-number { font-size: 1.8rem; }
             .stat-label { font-size: 0.7rem; }
             .hero p { font-size: 0.9rem; }
-            .cta-buttons { flex-direction: column; }
-            .btn { width: 100%; text-align: center; padding: 0.7rem 1.5rem; font-size: 0.8rem; }
+            .cta-buttons { flex-direction: column; align-items: stretch; }
+            .btn { width: 100%; text-align: center; padding: 0.7rem 1.5rem; font-size: 0.8rem; display: block; }
+            /* biar teks tombol center */
+            .btn { text-align: center; }
 
             /* Sembunyikan panah di mobile */
             .carousel-arrow { display: none; }
@@ -256,29 +258,16 @@
             }
             .portfolio-grid::-webkit-scrollbar { display: none; }
             
-            /* Card di mobile – ukuran disamakan */
+            /* Card seragam: ambil ukuran paling besar (flex: 0 0 80%) */
             .portfolio-grid .portfolio-card {
-                flex: 0 0 75%; scroll-snap-align: start;
-                height: auto !important; /* Biarkan tinggi alami dulu */
-            }
-            /* Paksa semua card dalam satu row punya tinggi yang sama */
-            .portfolio-grid {
-                align-items: stretch;
-            }
-            .portfolio-grid .portfolio-card .card-content {
-                flex-grow: 1;
-                display: flex;
-                flex-direction: column;
-            }
-            .portfolio-grid .portfolio-card .card-content .insight-box {
-                flex-grow: 1;
+                flex: 0 0 80%; scroll-snap-align: start;
             }
             
             /* Override untuk carousel Social Media yang sudah ada */
             .carousel-container {
                 padding: 1.5rem 0.5rem; margin: 0 15px;
             }
-            .carousel-card { flex: 0 0 75%; }
+            .carousel-card { flex: 0 0 80%; }
 
             /* Card lebih pendek & padat di mobile */
             .card-image { height: 100px; font-size: 2rem; }
@@ -295,10 +284,10 @@
             .insight-box strong { margin-bottom: 0.3rem; }
             .btn-small { padding: 0.4rem 0.8rem; font-size: 0.7rem; }
 
-            /* Skills infinite scroll */
+            /* Skills infinite scroll smooth */
             .skills-container {
                 display: flex; gap: 1rem; overflow-x: auto; overflow-y: visible;
-                -webkit-overflow-scrolling: touch; scroll-behavior: auto;
+                -webkit-overflow-scrolling: touch; scroll-behavior: smooth;
                 overscroll-behavior-x: contain; padding: 1rem 0.5rem; margin: 0;
                 scrollbar-width: none; -ms-overflow-style: none;
                 mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
@@ -306,7 +295,8 @@
             }
             .skills-container::-webkit-scrollbar { display: none; }
             .skill-category {
-                flex: 0 0 75%; padding: 1.2rem;
+                flex: 0 0 80%; padding: 1.2rem;
+                scroll-snap-align: none; /* tidak snap */
             }
             .skill-category h3 { font-size: 1.1rem; margin-bottom: 1rem; }
             .skill-list li { padding: 0.4rem 0; font-size: 0.8rem; }
@@ -388,7 +378,7 @@
             <div class="cta-buttons">
                 <a href="#social-media" class="btn btn-secondary">View Social Media Work</a>
                 <a href="#data-analytics" class="btn btn-secondary">View Data Projects</a>
-                <a href="CV_Muhammad_Rizal.pdf" target="_blank" class="btn btn-secondary">View CV</a>
+                <a href="CV_Muhammad_Rizal.pdf" target="_blank" class="btn btn-secondary">Download CV</a>
             </div>
         </div>
     </section>
@@ -457,7 +447,7 @@
         </div>
     </section>
 
-    <!-- Skills (Infinite loop di mobile) -->
+    <!-- Skills (Infinite loop smooth di mobile) -->
     <section id="skills">
         <h2 class="section-title">Skills & Tools</h2>
         <p class="section-subtitle">Bridging creativity and analytics to drive business growth</p>
@@ -670,66 +660,57 @@
         const statsSection = document.querySelector('.stats');
         if (statsSection) statsObserver.observe(statsSection);
 
-        // ========== SKILLS INFINITE SCROLL (MOBILE) - SMOOTH LOOP ==========
+        // ========== SKILLS INFINITE SCROLL (MOBILE) ==========
         function setupInfiniteScroll() {
             if (window.innerWidth > 768) return;
-            const container = document.querySelector('#skills .skills-container');
-            if (!container || container.dataset.infiniteSetup) return;
-            container.dataset.infiniteSetup = 'true';
+            const skillsContainer = document.querySelector('#skills .skills-container');
+            if (!skillsContainer || skillsContainer.dataset.infiniteSetup) return;
+            skillsContainer.dataset.infiniteSetup = 'true';
             
-            const originalCards = Array.from(container.children);
-            const cardWidth = originalCards[0].offsetWidth;
-            const gap = parseInt(getComputedStyle(container).gap) || 16;
-            const setWidth = originalCards.length * (cardWidth + gap);
+            const originalCards = Array.from(skillsContainer.children);
+            const totalCards = originalCards.length;
             
-            // Hapus clone lama jika ada
-            const allCards = container.querySelectorAll('.skill-category');
-            if (allCards.length > originalCards.length) {
-                for (let i = originalCards.length; i < allCards.length; i++) {
-                    allCards[i].remove();
-                }
-            }
-            
-            // Clone original cards
+            // Clone twice for smoother loop
             originalCards.forEach(card => {
                 const clone = card.cloneNode(true);
-                container.appendChild(clone);
+                skillsContainer.appendChild(clone);
+            });
+            originalCards.forEach(card => {
+                const clone = card.cloneNode(true);
+                skillsContainer.appendChild(clone);
             });
             
-            // Set posisi awal di tengah (setelah original)
-            container.scrollLeft = setWidth;
+            const cardWidth = originalCards[0].offsetWidth;
+            const gap = parseInt(getComputedStyle(skillsContainer).gap) || 16;
+            const setWidth = totalCards * (cardWidth + gap);
             
-            // Flag untuk mencegah recursive scroll event
-            let scrolling = false;
+            // Mulai dari set kedua (tengah)
+            skillsContainer.scrollLeft = setWidth;
             
-            container.addEventListener('scroll', () => {
-                if (scrolling) return;
-                const scrollLeft = container.scrollLeft;
-                const maxScroll = container.scrollWidth - container.clientWidth;
+            skillsContainer.addEventListener('scroll', () => {
+                const scrollLeft = skillsContainer.scrollLeft;
+                const maxScroll = skillsContainer.scrollWidth - skillsContainer.clientWidth;
                 
-                // Jika di ujung kiri, lompat ke kanan
-                if (scrollLeft <= 5) {
-                    scrolling = true;
-                    container.scrollLeft = setWidth - (cardWidth + gap) * 0.5; // sedikit offset agar tidak mentok
-                    setTimeout(() => { scrolling = false; }, 50);
-                }
-                // Jika di ujung kanan, lompat ke kiri
-                else if (scrollLeft >= maxScroll - 5) {
-                    scrolling = true;
-                    container.scrollLeft = setWidth + (cardWidth + gap) * 0.5;
-                    setTimeout(() => { scrolling = false; }, 50);
+                if (scrollLeft <= setWidth - cardWidth) {
+                    skillsContainer.scrollLeft = setWidth + (setWidth - scrollLeft);
+                } else if (scrollLeft >= setWidth * 2 - cardWidth) {
+                    skillsContainer.scrollLeft = setWidth - (maxScroll - scrollLeft);
                 }
             }, { passive: true });
-            
-            // Gunakan scroll-behavior smooth untuk native scroll
-            container.style.scrollBehavior = 'smooth';
         }
         
         window.addEventListener('load', setupInfiniteScroll);
         window.addEventListener('resize', () => {
-            const container = document.querySelector('#skills .skills-container');
-            if (container) {
-                delete container.dataset.infiniteSetup;
+            const skillsContainer = document.querySelector('#skills .skills-container');
+            if (skillsContainer) {
+                delete skillsContainer.dataset.infiniteSetup;
+                const cards = skillsContainer.querySelectorAll('.skill-category');
+                const originalCount = cards.length / 3;
+                if (originalCount > 0) {
+                    while (cards.length > originalCount) {
+                        cards[cards.length - 1].remove();
+                    }
+                }
                 setupInfiniteScroll();
             }
         });
