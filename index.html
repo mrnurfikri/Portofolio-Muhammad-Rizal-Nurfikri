@@ -68,9 +68,8 @@
             max-width: 1200px; margin: 0 auto; padding: 0 2rem;
             display: flex; justify-content: space-between; align-items: center;
         }
-        .nav-left { display: flex; align-items: center; }
-        .nav-right { display: flex; align-items: center; gap: 1.5rem; }
         
+        /* Logo */
         .logo {
             display: flex; align-items: center; text-decoration: none;
             transition: all 0.3s ease-out; backface-visibility: hidden; transform: translateZ(0);
@@ -219,15 +218,19 @@
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
         html { scroll-behavior: smooth; }
         
+        /* ========== RESPONSIVE ========== */
+        /* Sembunyikan theme switch mobile di desktop, dan desktop di mobile */
+        .theme-switch.desktop { display: flex; }
+        .theme-switch.mobile { display: none; }
+        
         @media (max-width: 768px) {
+            .theme-switch.desktop { display: none; }
+            .theme-switch.mobile { display: flex; }
             .nav-links { display: none; }
             .hamburger { display: flex; }
-            /* Susunan mobile: kiri theme, tengah logo, kanan hamburger */
+            /* Urutan mobile: kiri theme, tengah logo, kanan hamburger */
             .nav-container { justify-content: space-between; }
-            .nav-left { order: 1; display: flex; align-items: center; gap: 0.5rem; }
-            .nav-left .theme-switch { display: flex; }
-            .logo { order: 2; position: absolute; left: 50%; transform: translateX(-50%); }
-            .nav-right { order: 3; }
+            .logo { position: absolute; left: 50%; transform: translateX(-50%); }
             section { padding: 4rem 1rem; }
             .hero h1 { font-size: 2.5rem; }
             .hero .subtitle { font-size: 1.2rem; }
@@ -248,8 +251,7 @@
                 -webkit-overflow-scrolling: touch; scroll-behavior: smooth;
                 overscroll-behavior-x: contain; padding: 1.5rem 0.5rem; margin: 0;
                 scrollbar-width: none; -ms-overflow-style: none; justify-content: flex-start;
-                scroll-snap-type: x mandatory;
-                align-items: stretch; /* tinggi seragam */
+                scroll-snap-type: x mandatory; align-items: stretch;
             }
             .portfolio-grid::-webkit-scrollbar { display: none; }
             .portfolio-grid .portfolio-card { flex: 0 0 80%; scroll-snap-align: start; height: auto; }
@@ -290,22 +292,17 @@
 <body>
     <nav>
         <div class="nav-container">
-            <!-- KIRI: logo saja (desktop), mobile: theme + logo -->
-            <div class="nav-left">
-                <a href="#home" class="logo">
-                </a>
-                <!-- theme switch hanya di mobile via CSS order, di desktop tidak muncul di sini -->
-                <div class="theme-switch mobile-only" id="themeSwitchMobile" role="switch" aria-checked="false" tabindex="0" aria-label="Toggle theme">
-                    <button class="theme-option active" data-theme="dark" aria-label="Dark mode">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-                    </button>
-                    <button class="theme-option" data-theme="light" aria-label="Light mode">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                    </button>
-                </div>
-            </div>
-            <!-- KANAN: navbar + theme switch (desktop), hamburger (mobile) -->
-            <div class="nav-right">
+            <!-- Logo di kiri (desktop & mobile via absolute centering) -->
+            <a href="#home" class="logo">
+                <img src="bg-dark.png" alt="RN Logo" class="logo-dark">
+                <img src="bg-normal.png" alt="RN Logo" class="logo-light">
+            </a>
+
+            <!-- Kosong (tengah) di desktop, diisi theme mobile nanti -->
+            <div></div>
+
+            <!-- Kanan desktop: navbar + theme switch desktop -->
+            <div style="display: flex; align-items: center; gap: 1.5rem;">
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
                     <li>
@@ -319,8 +316,8 @@
                     </li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <!-- theme switch di desktop -->
-                <div class="theme-switch desktop-only" id="themeSwitch" role="switch" aria-checked="false" tabindex="0" aria-label="Toggle theme">
+                <!-- Theme switch desktop -->
+                <div class="theme-switch desktop" id="themeSwitchDesktop" role="switch" aria-checked="false" tabindex="0" aria-label="Toggle theme">
                     <button class="theme-option active" data-theme="dark" aria-label="Dark mode">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
                     </button>
@@ -328,10 +325,20 @@
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
                     </button>
                 </div>
-                <!-- hamburger (mobile) -->
+                <!-- Hamburger hanya mobile -->
                 <div class="hamburger" onclick="toggleMenu()">
                     <span></span><span></span><span></span>
                 </div>
+            </div>
+
+            <!-- Theme switch mobile (di kiri, sebelum logo) -->
+            <div class="theme-switch mobile" id="themeSwitchMobile" role="switch" aria-checked="false" tabindex="0" aria-label="Toggle theme">
+                <button class="theme-option active" data-theme="dark" aria-label="Dark mode">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+                <button class="theme-option" data-theme="light" aria-label="Light mode">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                </button>
             </div>
         </div>
     </nav>
@@ -406,6 +413,7 @@
         <div class="carousel-wrapper">
             <button class="carousel-arrow carousel-arrow-left" id="carouselLeft" aria-label="Scroll left"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
             <div class="carousel-container" id="carouselContainer">
+                <!-- 7 kartu seperti biasa -->
                 <div class="carousel-card"><div class="portfolio-card"><div class="card-image">👔</div><div class="card-content"><h3 class="card-title">HOOKED0N</h3><div class="card-meta"><span class="card-tag">TikTok</span><span class="card-tag">Fashion Trends</span></div><p class="card-description">Fashion trends media providing latest style information and inspirations for fashion enthusiasts.</p><div class="card-stats"><div class="card-stat"><span class="card-stat-value">530K+</span><span class="card-stat-label">Peak Views</span></div><div class="card-stat"><span class="card-stat-value">72.2K+</span><span class="card-stat-label">Likes</span></div><div class="card-stat"><span class="card-stat-value">251</span><span class="card-stat-label">Followers</span></div></div><div style="margin-top:1rem;"><a href="https://www.tiktok.com/@hooked0n?lang=id-ID" target="_blank" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;">See Fashion Trends</a></div></div></div></div>
                 <div class="carousel-card"><div class="portfolio-card"><div class="card-image">💼</div><div class="card-content"><h3 class="card-title">Freelance Clients</h3><div class="card-meta"><span class="card-tag">Instagram</span><span class="card-tag">Management</span></div><p class="card-description">Managing multiple brand accounts with content strategy, performance optimization, and analytics.</p><div class="card-stats"><div class="card-stat"><span class="card-stat-value">25-45%</span><span class="card-stat-label">Engagement ↑</span></div><div class="card-stat"><span class="card-stat-value">Multi</span><span class="card-stat-label">Brands</span></div><div class="card-stat"><span class="card-stat-value">2024</span><span class="card-stat-label">Present</span></div></div><div style="margin-top:1rem;"><a href="potrofolio.pdf" target="_blank" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;">View Portfolio</a></div></div></div></div>
                 <div class="carousel-card"><div class="portfolio-card"><div class="card-image">🌱</div><div class="card-content"><h3 class="card-title">Verda Harvest</h3><div class="card-meta"><span class="card-tag">TikTok</span><span class="card-tag">Content Creation</span></div><p class="card-description">Urban farming brand focused on hydroponics. Educational content from seed to harvest documentation.</p><div class="card-stats"><div class="card-stat"><span class="card-stat-value">369K+</span><span class="card-stat-label">Views</span></div><div class="card-stat"><span class="card-stat-value">15.8K+</span><span class="card-stat-label">Likes</span></div><div class="card-stat"><span class="card-stat-value">1.4K+</span><span class="card-stat-label">Followers</span></div></div><div style="margin-top:1rem;"><a href="https://www.tiktok.com/@verda.harvest?lang=id-ID" target="_blank" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;">Watch on TikTok</a></div></div></div></div>
@@ -440,7 +448,7 @@
         </div>
     </section>
 
-    <!-- Skills (tanpa loop) -->
+    <!-- Skills -->
     <section id="skills">
         <h2 class="section-title">Skills & Tools</h2>
         <p class="section-subtitle">Bridging creativity and analytics to drive business growth</p>
@@ -477,22 +485,21 @@
 
     <script>
         // ========== THEME TOGGLE (DUA TOMBOL, SALING SINKRON) ==========
-        const themeSwitchDesktop = document.getElementById('themeSwitch');
-        const themeSwitchMobile = document.getElementById('themeSwitchMobile');
-        const body = document.body;
+        const themeDesktop = document.getElementById('themeSwitchDesktop');
+        const themeMobile = document.getElementById('themeSwitchMobile');
+        const bodyEl = document.body;
         const savedTheme = localStorage.getItem('theme') || 'dark';
         
         function setTheme(theme) {
             if (theme === 'light') {
-                body.classList.add('light-mode');
-                // Update kedua tombol
-                [themeSwitchDesktop, themeSwitchMobile].forEach(el => {
+                bodyEl.classList.add('light-mode');
+                [themeDesktop, themeMobile].forEach(el => {
                     el.querySelector('[data-theme="dark"]').classList.remove('active');
                     el.querySelector('[data-theme="light"]').classList.add('active');
                 });
             } else {
-                body.classList.remove('light-mode');
-                [themeSwitchDesktop, themeSwitchMobile].forEach(el => {
+                bodyEl.classList.remove('light-mode');
+                [themeDesktop, themeMobile].forEach(el => {
                     el.querySelector('[data-theme="dark"]').classList.add('active');
                     el.querySelector('[data-theme="light"]').classList.remove('active');
                 });
@@ -500,7 +507,7 @@
         }
         setTheme(savedTheme);
         
-        [themeSwitchDesktop, themeSwitchMobile].forEach(el => {
+        [themeDesktop, themeMobile].forEach(el => {
             el.querySelectorAll('.theme-option').forEach(option => {
                 option.addEventListener('click', () => {
                     const theme = option.dataset.theme;
@@ -511,7 +518,7 @@
             el.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    const currentTheme = body.classList.contains('light-mode') ? 'light' : 'dark';
+                    const currentTheme = bodyEl.classList.contains('light-mode') ? 'light' : 'dark';
                     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
                     setTheme(newTheme);
                     localStorage.setItem('theme', newTheme);
