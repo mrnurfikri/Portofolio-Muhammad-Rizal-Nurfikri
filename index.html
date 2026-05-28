@@ -138,10 +138,8 @@
         .section-title { font-family: 'Oswald', sans-serif; font-size: 3rem; font-weight: 700; text-transform: uppercase; letter-spacing: -1px; margin-bottom: 1rem; text-align: center; color: var(--text-primary); }
         .section-subtitle { text-align: center; color: var(--text-secondary); margin-bottom: 4rem; font-size: 1rem; max-width: 600px; margin-left: auto; margin-right: auto; }
         
-        /* === GRID DEFAULT (DESKTOP) === */
         .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
         
-        /* ========== CAROUSEL (DESKTOP + MOBILE) ========== */
         .carousel-wrapper { position: relative; z-index: 1; max-width: 100%; margin-top: 2rem; }
         .carousel-container {
             display: flex; gap: 1.5rem; overflow-x: auto; overflow-y: visible;
@@ -223,7 +221,6 @@
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
         html { scroll-behavior: smooth; }
         
-        /* === MOBILE OPTIMIZATION === */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .hero .subtitle { font-size: 1.2rem; }
@@ -240,13 +237,9 @@
             .hero p { font-size: 0.9rem; }
             .cta-buttons { flex-direction: column; align-items: stretch; }
             .btn { width: 100%; text-align: center; padding: 0.7rem 1.5rem; font-size: 0.8rem; display: block; }
-            /* biar teks tombol center */
-            .btn { text-align: center; }
 
-            /* Sembunyikan panah di mobile */
             .carousel-arrow { display: none; }
 
-            /* Jadikan semua section carousel di mobile */
             .portfolio-grid {
                 display: flex; gap: 1rem; overflow-x: auto; overflow-y: visible;
                 -webkit-overflow-scrolling: touch; scroll-behavior: smooth;
@@ -258,18 +251,11 @@
             }
             .portfolio-grid::-webkit-scrollbar { display: none; }
             
-            /* Card seragam: ambil ukuran paling besar (flex: 0 0 80%) */
-            .portfolio-grid .portfolio-card {
-                flex: 0 0 80%; scroll-snap-align: start;
-            }
+            .portfolio-grid .portfolio-card { flex: 0 0 80%; scroll-snap-align: start; }
             
-            /* Override untuk carousel Social Media yang sudah ada */
-            .carousel-container {
-                padding: 1.5rem 0.5rem; margin: 0 15px;
-            }
+            .carousel-container { padding: 1.5rem 0.5rem; margin: 0 15px; }
             .carousel-card { flex: 0 0 80%; }
 
-            /* Card lebih pendek & padat di mobile */
             .card-image { height: 100px; font-size: 2rem; }
             .card-content { padding: 1rem; }
             .card-title { font-size: 1.2rem; margin-bottom: 0.3rem; }
@@ -284,7 +270,6 @@
             .insight-box strong { margin-bottom: 0.3rem; }
             .btn-small { padding: 0.4rem 0.8rem; font-size: 0.7rem; }
 
-            /* Skills infinite scroll smooth */
             .skills-container {
                 display: flex; gap: 1rem; overflow-x: auto; overflow-y: visible;
                 -webkit-overflow-scrolling: touch; scroll-behavior: smooth;
@@ -294,10 +279,7 @@
                 -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
             }
             .skills-container::-webkit-scrollbar { display: none; }
-            .skill-category {
-                flex: 0 0 80%; padding: 1.2rem;
-                scroll-snap-align: none; /* tidak snap */
-            }
+            .skill-category { flex: 0 0 80%; padding: 1.2rem; }
             .skill-category h3 { font-size: 1.1rem; margin-bottom: 1rem; }
             .skill-list li { padding: 0.4rem 0; font-size: 0.8rem; }
         }
@@ -425,7 +407,7 @@
         </div>
     </section>
 
-    <!-- Data Analytics Portfolio (Grid → Carousel di mobile) -->
+    <!-- Data Analytics Portfolio -->
     <section id="data-analytics">
         <h2 class="section-title">Data Analytics Portfolio</h2>
         <p class="section-subtitle">Transforming raw data into strategic recommendations using SQL, Excel, and Looker Studio</p>
@@ -436,7 +418,7 @@
         </div>
     </section>
 
-    <!-- Certifications (Grid → Carousel di mobile) -->
+    <!-- Certifications -->
     <section id="certifications">
         <h2 class="section-title">Certifications & Education</h2>
         <p class="section-subtitle">Formal training and continuous learning in Data Analytics and Digital Marketing</p>
@@ -660,7 +642,7 @@
         const statsSection = document.querySelector('.stats');
         if (statsSection) statsObserver.observe(statsSection);
 
-        // ========== SKILLS INFINITE SCROLL (MOBILE) ==========
+        // ========== SKILLS INFINITE SCROLL (MOBILE) - SAFE VERSION ==========
         function setupInfiniteScroll() {
             if (window.innerWidth > 768) return;
             const skillsContainer = document.querySelector('#skills .skills-container');
@@ -668,9 +650,10 @@
             skillsContainer.dataset.infiniteSetup = 'true';
             
             const originalCards = Array.from(skillsContainer.children);
+            if (originalCards.length === 0) return;
+            
             const totalCards = originalCards.length;
-            
-            // Clone twice for smoother loop
+            // Clone original cards to create seamless loop
             originalCards.forEach(card => {
                 const clone = card.cloneNode(true);
                 skillsContainer.appendChild(clone);
@@ -680,6 +663,7 @@
                 skillsContainer.appendChild(clone);
             });
             
+            // Pastikan card sudah dirender
             const cardWidth = originalCards[0].offsetWidth;
             const gap = parseInt(getComputedStyle(skillsContainer).gap) || 16;
             const setWidth = totalCards * (cardWidth + gap);
@@ -690,11 +674,10 @@
             skillsContainer.addEventListener('scroll', () => {
                 const scrollLeft = skillsContainer.scrollLeft;
                 const maxScroll = skillsContainer.scrollWidth - skillsContainer.clientWidth;
-                
                 if (scrollLeft <= setWidth - cardWidth) {
-                    skillsContainer.scrollLeft = setWidth + (setWidth - scrollLeft);
+                    skillsContainer.scrollLeft = setWidth * 2 - cardWidth;
                 } else if (scrollLeft >= setWidth * 2 - cardWidth) {
-                    skillsContainer.scrollLeft = setWidth - (maxScroll - scrollLeft);
+                    skillsContainer.scrollLeft = setWidth;
                 }
             }, { passive: true });
         }
