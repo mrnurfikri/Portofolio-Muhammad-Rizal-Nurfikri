@@ -423,11 +423,35 @@
             margin-right: auto;
         }
         
+        /* Grid biasa (untuk Data Analytics dan Certifications) */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 1.5rem;
             margin-top: 2rem;
+        }
+        
+        /* === HORIZONTAL CAROUSEL UNTUK SOCIAL MEDIA === */
+        .carousel-container {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 1rem;
+            margin-top: 2rem;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .carousel-container::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .carousel-card {
+            flex: 0 0 320px;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
         }
         
         .portfolio-card {
@@ -800,6 +824,9 @@
             .theme-switch {
                 display: flex;
             }
+            .carousel-card {
+                flex: 0 0 280px;
+            }
         }
         
         html {
@@ -992,114 +1019,119 @@
         </div>
     </section>
     
-    <!-- Social Media Portfolio -->
+    <!-- Social Media Portfolio dengan Carousel -->
     <section id="social-media">
         <h2 class="section-title">Social Media Portfolio</h2>
         <p class="section-subtitle">Creating engaging content that drives real results through data-driven strategies</p>
         
-        <div class="portfolio-grid">
+        <div class="carousel-container">
             <!-- Card 1: Verda Harvest -->
-            <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
-                <div class="card-image">🌱</div>
-                <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
-                    <h3 class="card-title">Verda Harvest</h3>
-                    <div class="card-meta"><span class="card-tag">TikTok</span><span class="card-tag">Content Creation</span></div>
-                    <p class="card-description">Urban farming brand focused on hydroponics. Educational content from seed to harvest documentation.</p>
-                    <div class="card-stats" style="margin-top: auto;"><div class="card-stat"><span class="card-stat-value">369K+</span><span class="card-stat-label">Views</span></div><div class="card-stat"><span class="card-stat-value">15.8K+</span><span class="card-stat-label">Likes</span></div><div class="card-stat"><span class="card-stat-value">1.4K+</span><span class="card-stat-label">Followers</span></div></div>
-                    <div style="margin-top: 1rem;"><a href="https://www.tiktok.com/@verda.harvest?lang=id-ID" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">Watch on TikTok</a></div>
+            <div class="carousel-card">
+                <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
+                    <div class="card-image">🌱</div>
+                    <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
+                        <h3 class="card-title">Verda Harvest</h3>
+                        <div class="card-meta"><span class="card-tag">TikTok</span><span class="card-tag">Content Creation</span></div>
+                        <p class="card-description">Urban farming brand focused on hydroponics. Educational content from seed to harvest documentation.</p>
+                        <div class="card-stats" style="margin-top: auto;"><div class="card-stat"><span class="card-stat-value">369K+</span><span class="card-stat-label">Views</span></div><div class="card-stat"><span class="card-stat-value">15.8K+</span><span class="card-stat-label">Likes</span></div><div class="card-stat"><span class="card-stat-value">1.4K+</span><span class="card-stat-label">Followers</span></div></div>
+                        <div style="margin-top: 1rem;"><a href="https://www.tiktok.com/@verda.harvest?lang=id-ID" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">Watch on TikTok</a></div>
+                    </div>
                 </div>
             </div>
 
             <!-- Card 2: HOOKED0N -->
-            <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
-                <div class="card-image">👔</div>
-                <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
-                    <h3 class="card-title">HOOKED0N</h3>
-                    <div class="card-meta"><span class="card-tag">TikTok</span><span class="card-tag">Fashion Trends</span></div>
-                    <p class="card-description">Fashion trends media providing latest style information and inspirations for fashion enthusiasts.</p>
-                    <div class="card-stats" style="margin-top: auto;"><div class="card-stat"><span class="card-stat-value">530K+</span><span class="card-stat-label">Peak Views</span></div><div class="card-stat"><span class="card-stat-value">72.2K+</span><span class="card-stat-label">Likes</span></div><div class="card-stat"><span class="card-stat-value">251</span><span class="card-stat-label">Followers</span></div></div>
-                    <div style="margin-top: 1rem;"><a href="https://www.tiktok.com/@hooked0n?lang=id-ID" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">See Fashion Trends</a></div>
+            <div class="carousel-card">
+                <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
+                    <div class="card-image">👔</div>
+                    <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
+                        <h3 class="card-title">HOOKED0N</h3>
+                        <div class="card-meta"><span class="card-tag">TikTok</span><span class="card-tag">Fashion Trends</span></div>
+                        <p class="card-description">Fashion trends media providing latest style information and inspirations for fashion enthusiasts.</p>
+                        <div class="card-stats" style="margin-top: auto;"><div class="card-stat"><span class="card-stat-value">530K+</span><span class="card-stat-label">Peak Views</span></div><div class="card-stat"><span class="card-stat-value">72.2K+</span><span class="card-stat-label">Likes</span></div><div class="card-stat"><span class="card-stat-value">251</span><span class="card-stat-label">Followers</span></div></div>
+                        <div style="margin-top: 1rem;"><a href="https://www.tiktok.com/@hooked0n?lang=id-ID" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">See Fashion Trends</a></div>
+                    </div>
                 </div>
             </div>
 
             <!-- Card 3: Begajul Gaming -->
-            <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
-                <div class="card-image">🎮</div>
-                <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
-                    <h3 class="card-title">Begajul Gaming</h3>
-                    <div class="card-meta">
-                        <span class="card-tag">TikTok</span>
-                        <span class="card-tag">Live Streaming</span>
-                    </div>
-                    <p class="card-description">Gaming TikTok account as Live Streamer & Content Creator. Real-time audience interaction with highlight content from various game sessions.</p>
-                    <div class="card-stats" style="margin-top: auto;">
-                        <div class="card-stat"><span class="card-stat-value">1.3M+</span><span class="card-stat-label">Peak Views</span></div>
-                        <div class="card-stat"><span class="card-stat-value">167.5K+</span><span class="card-stat-label">Likes</span></div>
-                        <div class="card-stat"><span class="card-stat-value">1,310</span><span class="card-stat-label">Followers</span></div>
-                    </div>
-                    <div style="margin-top: 1rem;">
-                        <a href="https://www.tiktok.com/@vibraint?lang=id-ID" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">Watch on TikTok</a>
+            <div class="carousel-card">
+                <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
+                    <div class="card-image">🎮</div>
+                    <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
+                        <h3 class="card-title">Begajul Gaming</h3>
+                        <div class="card-meta"><span class="card-tag">TikTok</span><span class="card-tag">Live Streaming</span></div>
+                        <p class="card-description">Gaming TikTok account as Live Streamer & Content Creator. Real-time audience interaction with highlight content from various game sessions.</p>
+                        <div class="card-stats" style="margin-top: auto;"><div class="card-stat"><span class="card-stat-value">1.3M+</span><span class="card-stat-label">Peak Views</span></div><div class="card-stat"><span class="card-stat-value">167.5K+</span><span class="card-stat-label">Likes</span></div><div class="card-stat"><span class="card-stat-value">1,310</span><span class="card-stat-label">Followers</span></div></div>
+                        <div style="margin-top: 1rem;"><a href="https://www.tiktok.com/@vibraint?lang=id-ID" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">Watch on TikTok</a></div>
                     </div>
                 </div>
             </div>
-         
+
             <!-- Card 4: Freelance Clients -->
-            <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
-                <div class="card-image">💼</div>
-                <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
-                    <h3 class="card-title">Freelance Clients</h3>
-                    <div class="card-meta"><span class="card-tag">Instagram</span><span class="card-tag">Management</span></div>
-                    <p class="card-description">Managing multiple brand accounts with content strategy, performance optimization, and analytics.</p>
-                    <div class="card-stats" style="margin-top: auto;"><div class="card-stat"><span class="card-stat-value">25-45%</span><span class="card-stat-label">Engagement ↑</span></div><div class="card-stat"><span class="card-stat-value">Multi</span><span class="card-stat-label">Brands</span></div><div class="card-stat"><span class="card-stat-value">2024</span><span class="card-stat-label">Present</span></div></div>
-                    <div style="margin-top: 1rem;"><a href="potrofolio.pdf" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">View Portfolio</a></div>
+            <div class="carousel-card">
+                <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
+                    <div class="card-image">💼</div>
+                    <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
+                        <h3 class="card-title">Freelance Clients</h3>
+                        <div class="card-meta"><span class="card-tag">Instagram</span><span class="card-tag">Management</span></div>
+                        <p class="card-description">Managing multiple brand accounts with content strategy, performance optimization, and analytics.</p>
+                        <div class="card-stats" style="margin-top: auto;"><div class="card-stat"><span class="card-stat-value">25-45%</span><span class="card-stat-label">Engagement ↑</span></div><div class="card-stat"><span class="card-stat-value">Multi</span><span class="card-stat-label">Brands</span></div><div class="card-stat"><span class="card-stat-value">2024</span><span class="card-stat-label">Present</span></div></div>
+                        <div style="margin-top: 1rem;"><a href="potrofolio.pdf" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">View Portfolio</a></div>
+                    </div>
                 </div>
             </div>
 
             <!-- Card 5: BIGIO Internship -->
-            <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
-                <div class="card-image">🚀</div>
-                <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
-                    <h3 class="card-title">BIGIO Internship</h3>
-                    <div class="card-meta"><span class="card-tag">Instagram</span><span class="card-tag">Internship</span></div>
-                    <p class="card-description">Managed dimulai.id & dzikra.app Instagram accounts for Islamic lifestyle tech apps.</p>
-                    <div class="card-stats" style="margin-top: auto;"><div class="card-stat"><span class="card-stat-value">100K+</span><span class="card-stat-label">Views</span></div><div class="card-stat"><span class="card-stat-value">1K+</span><span class="card-stat-label">Downloads</span></div><div class="card-stat"><span class="card-stat-value">2022</span><span class="card-stat-label">Aug-Dec</span></div></div>
-                    <div style="margin-top: 1rem;"><a href="sertifikat.pdf" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">See Internship Results</a></div>
+            <div class="carousel-card">
+                <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
+                    <div class="card-image">🚀</div>
+                    <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
+                        <h3 class="card-title">BIGIO Internship</h3>
+                        <div class="card-meta"><span class="card-tag">Instagram</span><span class="card-tag">Internship</span></div>
+                        <p class="card-description">Managed dimulai.id & dzikra.app Instagram accounts for Islamic lifestyle tech apps.</p>
+                        <div class="card-stats" style="margin-top: auto;"><div class="card-stat"><span class="card-stat-value">100K+</span><span class="card-stat-label">Views</span></div><div class="card-stat"><span class="card-stat-value">1K+</span><span class="card-stat-label">Downloads</span></div><div class="card-stat"><span class="card-stat-value">2022</span><span class="card-stat-label">Aug-Dec</span></div></div>
+                        <div style="margin-top: 1rem;"><a href="sertifikat.pdf" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">See Internship Results</a></div>
+                    </div>
                 </div>
             </div>
 
             <!-- Card 6: @octricubla -->
-            <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
-                <div class="card-image">👟</div>
-                <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
-                    <h3 class="card-title">@octricubla</h3>
-                    <div class="card-meta"><span class="card-tag">TikTok</span><span class="card-tag">Personal Brand</span></div>
-                    <p class="card-description">Personal brand as fashion enthusiast and sneakerhead sharing tips and shoe reviews.</p>
-                    <div class="card-stats" style="margin-top: auto;"><div class="card-stat"><span class="card-stat-value">828</span><span class="card-stat-label">Likes</span></div><div class="card-stat"><span class="card-stat-value">83</span><span class="card-stat-label">Followers</span></div><div class="card-stat"><span class="card-stat-value">Niche</span><span class="card-stat-label">Community</span></div></div>
-                    <div style="margin-top: 1rem;"><a href="https://www.tiktok.com/@octricubla" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">Follow on TikTok</a></div>
+            <div class="carousel-card">
+                <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
+                    <div class="card-image">👟</div>
+                    <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
+                        <h3 class="card-title">@octricubla</h3>
+                        <div class="card-meta"><span class="card-tag">TikTok</span><span class="card-tag">Personal Brand</span></div>
+                        <p class="card-description">Personal brand as fashion enthusiast and sneakerhead sharing tips and shoe reviews.</p>
+                        <div class="card-stats" style="margin-top: auto;"><div class="card-stat"><span class="card-stat-value">828</span><span class="card-stat-label">Likes</span></div><div class="card-stat"><span class="card-stat-value">83</span><span class="card-stat-label">Followers</span></div><div class="card-stat"><span class="card-stat-value">Niche</span><span class="card-stat-label">Community</span></div></div>
+                        <div style="margin-top: 1rem;"><a href="https://www.tiktok.com/@octricubla" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">Follow on TikTok</a></div>
+                    </div>
                 </div>
             </div>
 
             <!-- Card 7: MRN.SHP -->
-            <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
-                <div class="card-image">🛍️</div>
-                <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
-                    <h3 class="card-title">MRN.SHP</h3>
-                    <div class="card-meta"><span class="card-tag">Instagram</span><span class="card-tag">E-commerce</span></div>
-                    <p class="card-description">Online fashion retail shop utilizing Instagram and Tokopedia as sales platforms.</p>
-                    <div class="card-stats" style="margin-top: auto;"><div class="card-stat"><span class="card-stat-value">100+</span><span class="card-stat-label">Products Sold</span></div><div class="card-stat"><span class="card-stat-value">1K+</span><span class="card-stat-label">Likes</span></div><div class="card-stat"><span class="card-stat-value">3 Yrs</span><span class="card-stat-label">Operation</span></div></div>
-                    <div style="margin-top: 1rem;"><a href="https://www.instagram.com/murinushop/" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">Visit Shop</a></div>
+            <div class="carousel-card">
+                <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
+                    <div class="card-image">🛍️</div>
+                    <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
+                        <h3 class="card-title">MRN.SHP</h3>
+                        <div class="card-meta"><span class="card-tag">Instagram</span><span class="card-tag">E-commerce</span></div>
+                        <p class="card-description">Online fashion retail shop utilizing Instagram and Tokopedia as sales platforms.</p>
+                        <div class="card-stats" style="margin-top: auto;"><div class="card-stat"><span class="card-stat-value">100+</span><span class="card-stat-label">Products Sold</span></div><div class="card-stat"><span class="card-stat-value">1K+</span><span class="card-stat-label">Likes</span></div><div class="card-stat"><span class="card-stat-value">3 Yrs</span><span class="card-stat-label">Operation</span></div></div>
+                        <div style="margin-top: 1rem;"><a href="https://www.instagram.com/murinushop/" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">Visit Shop</a></div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Data Analytics Portfolio -->
+    <!-- Data Analytics Portfolio (Grid) -->
     <section id="data-analytics">
         <h2 class="section-title">Data Analytics Portfolio</h2>
         <p class="section-subtitle">Transforming raw data into strategic recommendations using SQL, Excel, and Looker Studio</p>
         
         <div class="portfolio-grid">
-            <!-- Card 1: Digital Marketing Campaign Analysis -->
+            <!-- Card 1 -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image">📈</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
@@ -1112,7 +1144,7 @@
                 </div>
             </div>
 
-            <!-- Card 2: E-Commerce Sales Analysis -->
+            <!-- Card 2 -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image">🛒</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
@@ -1125,7 +1157,7 @@
                 </div>
             </div>
 
-            <!-- Card 3: SQL Analysis Showcase -->
+            <!-- Card 3 -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image">💻</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
@@ -1140,12 +1172,11 @@
         </div>
     </section>
 
-    <!-- Certifications -->
+    <!-- Certifications (Grid) -->
     <section id="certifications">
         <h2 class="section-title">Certifications & Education</h2>
         <p class="section-subtitle">Formal training and continuous learning in Data Analytics and Digital Marketing</p>
         <div class="portfolio-grid">
-            <!-- Card 1: Ruangguru -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image" style="background: transparent; border-bottom: 1px solid var(--border);">📊</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
@@ -1157,7 +1188,6 @@
                     <div style="margin-top: 1rem;"><a href="sertifikat-ruangguru.pdf" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">📄 View Certificate</a></div>
                 </div>
             </div>
-            <!-- Card 2: RevoU -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image" style="background: transparent; border-bottom: 1px solid var(--border);">📱</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
@@ -1169,7 +1199,6 @@
                     <div style="margin-top: 1rem;"><a href="sertifikat-revou.pdf" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">📄 View Certificate</a></div>
                 </div>
             </div>
-            <!-- Card 3: UPI -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image" style="background: transparent; border-bottom: 1px solid var(--border);">🎓</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
