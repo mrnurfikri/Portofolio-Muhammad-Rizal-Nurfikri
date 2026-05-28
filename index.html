@@ -282,7 +282,7 @@
             .insight-box strong { margin-bottom: 0.3rem; }
             .btn-small { padding: 0.4rem 0.8rem; font-size: 0.7rem; }
 
-            /* Skills infinite scroll */
+            /* Skills infinite scroll tanpa snap */
             .skills-container {
                 display: flex; gap: 1rem; overflow-x: auto; overflow-y: visible;
                 -webkit-overflow-scrolling: touch; scroll-behavior: auto;
@@ -293,8 +293,8 @@
             }
             .skills-container::-webkit-scrollbar { display: none; }
             .skill-category {
-                flex: 0 0 75%; scroll-snap-align: start;
-                padding: 1.2rem;
+                flex: 0 0 75%; padding: 1.2rem;
+                /* Hapus scroll-snap agar tidak mengunci */
             }
             .skill-category h3 { font-size: 1.1rem; margin-bottom: 1rem; }
             .skill-list li { padding: 0.4rem 0; font-size: 0.8rem; }
@@ -665,23 +665,35 @@
             if (!skillsContainer || skillsContainer.dataset.infiniteSetup) return;
             skillsContainer.dataset.infiniteSetup = 'true';
             const originalCards = Array.from(skillsContainer.children);
+            // Clone original cards to make the loop seamless
             originalCards.forEach(card => {
                 const clone = card.cloneNode(true);
                 skillsContainer.appendChild(clone);
             });
-            const halfWidth = skillsContainer.scrollWidth / 2;
+            // Calculate total width of one set (original cards)
+            const cardWidth = originalCards[0].offsetWidth;
+            const gap = parseInt(getComputedStyle(skillsContainer).gap) || 16;
+            const totalSetWidth = originalCards.length * (cardWidth + gap);
+            // Start at the beginning of the second set (the clones)
+            skillsContainer.scrollLeft = totalSetWidth;
+            // Handle scroll to create infinite loop
             skillsContainer.addEventListener('scroll', () => {
                 const scrollLeft = skillsContainer.scrollLeft;
-                if (scrollLeft >= halfWidth + 10) {
-                    skillsContainer.scrollLeft = scrollLeft - halfWidth;
+                const maxScroll = skillsContainer.scrollWidth - skillsContainer.clientWidth;
+                if (scrollLeft <= 10) {
+                    skillsContainer.scrollLeft = totalSetWidth;
+                } else if (scrollLeft >= maxScroll - 10) {
+                    skillsContainer.scrollLeft = totalSetWidth - (cardWidth + gap);
                 }
-            });
+            }, { passive: true });
         }
         window.addEventListener('load', setupInfiniteScroll);
         window.addEventListener('resize', () => {
             const skillsContainer = document.querySelector('#skills .skills-container');
             if (skillsContainer) {
+                // Reset setup on resize to recalculate widths
                 delete skillsContainer.dataset.infiniteSetup;
+                // Remove clones if any
                 const cards = skillsContainer.querySelectorAll('.skill-category');
                 const half = cards.length / 2;
                 if (half > 0 && cards.length > half) {
