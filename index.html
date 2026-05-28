@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -448,12 +449,12 @@
             margin-top: 2rem;
         }
         
-        /* === CAROUSEL (REVAMPED – PROXIMITY SNAP + RUBBER BAND) === */
+        /* ========== CAROUSEL (REVAMPED) ========== */
         .carousel-wrapper {
             position: relative;
+            z-index: 1;
             max-width: 100%;
             margin-top: 2rem;
-            overflow: hidden;           /* ghost card dihilangkan */
         }
         
         .carousel-container {
@@ -462,42 +463,27 @@
             overflow-x: auto;
             overflow-y: visible;
             -webkit-overflow-scrolling: touch;
-            scroll-behavior: smooth;    /* animasi slide cair oleh browser */
+            scroll-behavior: smooth;
             overscroll-behavior-x: contain;
-            /* padding hanya atas-bawah, kiri-kanan diatur via pseudo-elements */
-            padding: 2rem 0 2.5rem 0;
+            padding: 2rem 2rem 2.5rem 2rem;
             margin: 0 30px;
             scrollbar-width: none;
             -ms-overflow-style: none;
-            /* snap proximity (lembut) */
-            scroll-snap-type: x proximity;
-            scroll-padding: 2rem;
-            /* transisi untuk efek bounce */
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            /* mask fade */
-            mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+            /* Bersihkan pinggiran dengan mask */
+            mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
         }
         .carousel-container::-webkit-scrollbar {
             display: none;
         }
         
-        /* pseudo-elements sebagai pengganti padding kiri/kanan */
-        .carousel-container::before,
-        .carousel-container::after {
-            content: '';
-            flex: 0 0 2rem;
-        }
-        
         .carousel-card {
             flex: 0 0 320px;
-            scroll-snap-align: start;
             transition: opacity 0.3s ease, transform 0.3s ease;
             opacity: 1;
             will-change: transform;
         }
         
-        /* efek hover kartu */
         .carousel-container:hover .carousel-card {
             opacity: 0.5;
             filter: none;
@@ -512,6 +498,7 @@
             border-color: var(--accent);
         }
         
+        /* Panah: posisikan agar tidak terpotong mask atau overflow */
         .carousel-arrow {
             position: absolute;
             top: 50%;
@@ -525,12 +512,12 @@
             border-radius: 50%;
             font-size: 1.2rem;
             cursor: pointer;
-            z-index: 10;
+            z-index: 100;               /* di atas mask */
             transition: background 0.1s, color 0.1s, transform 0.1s ease-out;
             display: flex;
             align-items: center;
             justify-content: center;
-            opacity: 0.8;
+            opacity: 0.9;
             -webkit-tap-highlight-color: transparent;
             outline: none;
             user-select: none;
@@ -551,14 +538,13 @@
             color: var(--bg-primary);
             opacity: 1;
             transform: translateY(-50%) scale(0.95);
-            transition: transform 0.1s ease-out;
         }
         
         .carousel-arrow-left {
-            left: -20px;
+            left: -10px;
         }
         .carousel-arrow-right {
-            right: -20px;
+            right: -10px;
         }
         
         @media (max-width: 768px) {
@@ -570,14 +556,14 @@
                 height: 35px;
             }
             .carousel-arrow-left {
-                left: -10px;
+                left: -5px;
             }
             .carousel-arrow-right {
-                right: -10px;
+                right: -5px;
             }
             .carousel-container {
                 margin: 0 20px;
-                scroll-padding: 1.5rem;
+                padding: 1.5rem 1.5rem 2rem 1.5rem;
             }
         }
         
@@ -1148,7 +1134,7 @@
         </div>
     </section>
     
-    <!-- Social Media Portfolio dengan Carousel dan Panah Navigasi (Urutan Baru) -->
+    <!-- Social Media Portfolio dengan Carousel dan Panah Navigasi (7 KARTU) -->
     <section id="social-media">
         <h2 class="section-title">Social Media Portfolio</h2>
         <p class="section-subtitle">Creating engaging content that drives real results through data-driven strategies</p>
@@ -1482,44 +1468,17 @@
             btn.classList.toggle('visible', window.scrollY > 500);
         });
 
-        // ========== CAROUSEL NAVIGATION (CAIR, OFFSETLEFT) ==========
+        // ========== CAROUSEL NAVIGATION (SMOOTH SCROLLBY) ==========
         const carousel = document.getElementById('carouselContainer');
         const leftBtn = document.getElementById('carouselLeft');
         const rightBtn = document.getElementById('carouselRight');
         
-        function getCards() {
-            return Array.from(carousel.querySelectorAll('.carousel-card'));
-        }
-        
-        function handleArrow(direction) {
-            const cards = getCards();
-            if (cards.length === 0) return;
-            
-            const scrollPadding = parseFloat(getComputedStyle(carousel).scrollPaddingLeft) || 32; // 2rem
-            const currentScroll = carousel.scrollLeft;
-            
-            // Cari kartu yang paling dekat dengan posisi scroll saat ini (berdasarkan offsetLeft)
-            let activeIndex = 0;
-            for (let i = 0; i < cards.length; i++) {
-                const cardLeft = cards[i].offsetLeft - scrollPadding;
-                if (currentScroll >= cardLeft - 10) {
-                    activeIndex = i;
-                }
-            }
-            
-            const nextIndex = direction === 'left' ? Math.max(0, activeIndex - 1) : Math.min(cards.length - 1, activeIndex + 1);
-            const targetCard = cards[nextIndex];
-            const targetScrollLeft = targetCard.offsetLeft - scrollPadding;
-            
-            // Gunakan scrollTo dengan behavior smooth – browser akan menganimasikan dengan halus
-            carousel.scrollTo({
-                left: targetScrollLeft,
-                behavior: 'smooth'
-            });
-        }
-        
-        leftBtn.addEventListener('click', () => handleArrow('left'));
-        rightBtn.addEventListener('click', () => handleArrow('right'));
+        leftBtn.addEventListener('click', () => {
+            carousel.scrollBy({ left: -carousel.offsetWidth * 0.8, behavior: 'smooth' });
+        });
+        rightBtn.addEventListener('click', () => {
+            carousel.scrollBy({ left: carousel.offsetWidth * 0.8, behavior: 'smooth' });
+        });
     </script>
 </body>
 </html>
