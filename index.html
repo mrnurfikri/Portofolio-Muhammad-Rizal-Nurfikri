@@ -448,7 +448,7 @@
             margin-top: 2rem;
         }
         
-        /* === CAROUSEL === */
+        /* === CAROUSEL (REVISED) === */
         .carousel-wrapper {
             position: relative;
             max-width: 100%;
@@ -462,15 +462,17 @@
             overflow-x: auto;
             overflow-y: visible;
             -webkit-overflow-scrolling: touch;
-            scroll-behavior: auto;
+            scroll-behavior: smooth;
             overscroll-behavior-x: contain;
-            padding-top: 2rem;
-            padding-bottom: 2.5rem;
-            /* padding kiri-kanan dihapus, diganti margin pada kartu pertama/terakhir */
+            /* padding hanya atas-bawah, kiri-kanan dihapus */
+            padding: 2rem 0 2.5rem 0;
             margin: 0 30px;
             scrollbar-width: none;
             -ms-overflow-style: none;
-            scroll-padding-left: 2rem;   /* agar snap point tidak mentok di tepi viewport */
+            /* snap */
+            scroll-snap-type: x mandatory;
+            scroll-padding: 2rem;   /* titik snap dimulai setelah 2rem dari tepi */
+            /* mask fade */
             mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
             -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
         }
@@ -478,18 +480,19 @@
             display: none;
         }
         
+        /* Pseudo-element pengganti padding kiri/kanan */
+        .carousel-container::before,
+        .carousel-container::after {
+            content: '';
+            flex: 0 0 2rem;        /* lebar ruang kosong */
+        }
+        
         .carousel-card {
             flex: 0 0 320px;
-            scroll-snap-align: start;   /* kartu pertama nempel di kiri kontainer */
+            scroll-snap-align: start;   /* snap di kiri */
             transition: opacity 0.3s ease, transform 0.3s ease;
             opacity: 1;
             will-change: transform;
-        }
-        .carousel-card:first-child {
-            margin-left: 2rem;
-        }
-        .carousel-card:last-child {
-            margin-right: 2rem;
         }
         
         .carousel-container:hover .carousel-card {
@@ -571,13 +574,7 @@
             }
             .carousel-container {
                 margin: 0 20px;
-                scroll-padding-left: 1.5rem;
-            }
-            .carousel-card:first-child {
-                margin-left: 1.5rem;
-            }
-            .carousel-card:last-child {
-                margin-right: 1.5rem;
+                scroll-padding: 1.5rem;
             }
         }
         
@@ -1482,93 +1479,43 @@
             btn.classList.toggle('visible', window.scrollY > 500);
         });
 
-        // ========== CAROUSEL LOGIC (SMOOTH SLIDING + EDGE BOUNCE) ==========
+        // ========== CAROUSEL NAVIGATION (BASED ON OFFSETLEFT) ==========
         const carousel = document.getElementById('carouselContainer');
         const leftBtn = document.getElementById('carouselLeft');
         const rightBtn = document.getElementById('carouselRight');
         
-        function getStep() {
-            const card = carousel.querySelector('.carousel-card');
-            if (!card) return 340;
-            const cardWidth = card.offsetWidth;
-            const gap = parseInt(getComputedStyle(carousel).gap) || 24;
-            return cardWidth + gap;
-        }
-        
-        function animateScrollTo(targetLeft) {
-            const startLeft = carousel.scrollLeft;
-            const change = targetLeft - startLeft;
-            const duration = 400;
-            let startTime = null;
-            
-            function easeOutCubic(t) {
-                return 1 - Math.pow(1 - t, 3);
-            }
-            
-            function step(timestamp) {
-                if (!startTime) startTime = timestamp;
-                const elapsed = timestamp - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                const easedProgress = easeOutCubic(progress);
-                carousel.scrollLeft = startLeft + change * easedProgress;
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                }
-            }
-            
-            window.requestAnimationFrame(step);
-        }
-        
-        function bounceAtEdge(direction) {
-            const bounceDistance = 30;
-            const startLeft = carousel.scrollLeft;
-            const target = direction === 'left' ? startLeft - bounceDistance : startLeft + bounceDistance;
-            const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-            const clampedTarget = Math.max(0, Math.min(target, maxScroll));
-            
-            function animateBounce(to, callback) {
-                const from = carousel.scrollLeft;
-                const change = to - from;
-                const duration = 200;
-                let startTime = null;
-                function step(timestamp) {
-                    if (!startTime) startTime = timestamp;
-                    const elapsed = timestamp - startTime;
-                    const progress = Math.min(elapsed / duration, 1);
-                    const c1 = 1.70158;
-                    const c3 = c1 + 1;
-                    const val = 1 + c3 * Math.pow(progress - 1, 3) + c1 * Math.pow(progress - 1, 2);
-                    carousel.scrollLeft = from + change * val;
-                    if (progress < 1) {
-                        window.requestAnimationFrame(step);
-                    } else {
-                        if (callback) callback();
-                    }
-                }
-                window.requestAnimationFrame(step);
-            }
-            
-            animateBounce(clampedTarget, () => {
-                animateBounce(startLeft);
-            });
+        function getCards() {
+            return Array.from(carousel.querySelectorAll('.carousel-card'));
         }
         
         function handleArrow(direction) {
-            const step = getStep();
+            const cards = getCards();
+            if (cards.length === 0) return;
+            
             const currentScroll = carousel.scrollLeft;
-            const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-            let target = direction === 'left' ? currentScroll - step : currentScroll + step;
+            const containerWidth = carousel.clientWidth;
+            const scrollPadding = parseFloat(getComputedStyle(carousel).scrollPaddingLeft) || 32; // 2rem
             
-            if (target < 0) {
-                bounceAtEdge('left');
-                return;
-            }
-            if (target > maxScroll) {
-                bounceAtEdge('right');
-                return;
+            // Cari kartu yang paling dekat dengan posisi scroll saat ini (berdasarkan offsetLeft)
+            let activeIndex = 0;
+            for (let i = 0; i < cards.length; i++) {
+                const cardLeft = cards[i].offsetLeft - scrollPadding;
+                if (currentScroll >= cardLeft - 10) {
+                    activeIndex = i;
+                }
             }
             
-            animateScrollTo(target);
+            // Tentukan target index
+            const nextIndex = direction === 'left' ? Math.max(0, activeIndex - 1) : Math.min(cards.length - 1, activeIndex + 1);
+            const targetCard = cards[nextIndex];
+            
+            // Hitung posisi scroll yang diinginkan (offsetLeft - scrollPadding)
+            const targetScrollLeft = targetCard.offsetLeft - scrollPadding;
+            
+            carousel.scrollTo({
+                left: targetScrollLeft,
+                behavior: 'smooth'
+            });
         }
         
         leftBtn.addEventListener('click', () => handleArrow('left'));
