@@ -465,12 +465,14 @@
             -webkit-overflow-scrolling: touch;
             scroll-behavior: smooth;
             overscroll-behavior-x: contain;
-            padding: 2rem 1.5rem 2.5rem 1.5rem;
+            padding: 2rem 2rem 2.5rem 2rem;
             margin: 0 30px;
             scrollbar-width: none;
             -ms-overflow-style: none;
-            scroll-padding: 0 1.5rem;
-            transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            scroll-padding: 0 2rem;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
         }
         .carousel-container::-webkit-scrollbar {
             display: none;
@@ -478,7 +480,7 @@
         
         .carousel-card {
             flex: 0 0 320px;
-            scroll-snap-align: start;
+            scroll-snap-align: center;
             transition: opacity 0.3s ease, transform 0.3s ease;
             opacity: 1;
             will-change: transform;
@@ -498,7 +500,6 @@
             border-color: var(--accent);
         }
         
-        /* Arrow dasar */
         .carousel-arrow {
             position: absolute;
             top: 50%;
@@ -524,7 +525,6 @@
             pointer-events: auto;
         }
         
-        /* Hover hanya untuk desktop (mouse) */
         @media (hover: hover) and (pointer: fine) {
             .carousel-arrow:hover {
                 background: var(--accent);
@@ -534,7 +534,6 @@
             }
         }
         
-        /* Efek tap di mobile */
         .carousel-arrow:active {
             background: var(--accent);
             color: var(--bg-primary);
@@ -553,7 +552,6 @@
         @media (max-width: 768px) {
             .carousel-card {
                 flex: 0 0 280px;
-                scroll-snap-align: center;
             }
             .carousel-arrow {
                 width: 35px;
@@ -567,8 +565,8 @@
             }
             .carousel-container {
                 margin: 0 20px;
-                padding: 1.5rem 1rem 2rem 1rem;
-                scroll-padding: 0 1rem;
+                padding: 1.5rem 1.5rem 2rem 1.5rem;
+                scroll-padding: 0 1.5rem;
                 scroll-snap-type: x mandatory;
             }
         }
@@ -1260,7 +1258,6 @@
         <p class="section-subtitle">Transforming raw data into strategic recommendations using SQL, Excel, and Looker Studio</p>
         
         <div class="portfolio-grid">
-            <!-- Card 1 -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image">📈</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
@@ -1273,7 +1270,6 @@
                 </div>
             </div>
 
-            <!-- Card 2 -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image">🛒</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
@@ -1286,7 +1282,6 @@
                 </div>
             </div>
 
-            <!-- Card 3 -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image">💻</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
@@ -1347,8 +1342,6 @@
         <h2 class="section-title">Skills & Tools</h2>
         <p class="section-subtitle">Bridging creativity and analytics to drive business growth</p>
         <div class="skills-container">
-
-            <!-- Social Media -->
             <div class="skill-category">
                 <h3>📱 Social Media</h3>
                 <ul class="skill-list">
@@ -1361,106 +1354,42 @@
                     <li><span style="font-size:1rem;">🔍</span> SEO Content Writing</li>
                 </ul>
             </div>
-
-            <!-- Data Analytics -->
             <div class="skill-category">
                 <h3>📊 Data Analytics</h3>
                 <ul class="skill-list">
-                    <li>
-                        <span style="background:#336791;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;letter-spacing:0.5px;">SQL</span>
-                        MySQL / SQL Query
-                    </li>
-                    <li>
-                        <span style="background:#3776AB;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">PY</span>
-                        Python (Pandas, Matplotlib)
-                    </li>
-                    <li>
-                        <span style="background:#E97627;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">TB</span>
-                        Tableau
-                    </li>
-                    <li>
-                        <span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">LS</span>
-                        Looker Studio
-                    </li>
-                    <li>
-                        <span style="background:#217346;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">XL</span>
-                        Excel (Advanced Formulas)
-                    </li>
-                    <li>
-                        <span style="background:#EA4335;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GS</span>
-                        Google Sheets
-                    </li>
-                    <li>
-                        <span style="background:#666;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">SP</span>
-                        SPSS
-                    </li>
+                    <li><span style="background:#336791;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;letter-spacing:0.5px;">SQL</span> MySQL / SQL Query</li>
+                    <li><span style="background:#3776AB;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">PY</span> Python (Pandas, Matplotlib)</li>
+                    <li><span style="background:#E97627;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">TB</span> Tableau</li>
+                    <li><span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">LS</span> Looker Studio</li>
+                    <li><span style="background:#217346;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">XL</span> Excel (Advanced Formulas)</li>
+                    <li><span style="background:#EA4335;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GS</span> Google Sheets</li>
+                    <li><span style="background:#666;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">SP</span> SPSS</li>
                 </ul>
             </div>
-
-            <!-- Creative Tools -->
             <div class="skill-category">
                 <h3>🎨 Creative Tools</h3>
                 <ul class="skill-list">
-                    <li>
-                        <span style="background:#00C4CC;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">CV</span>
-                        Canva
-                    </li>
-                    <li>
-                        <span style="background:#111;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">CC</span>
-                        CapCut
-                    </li>
-                    <li>
-                        <span style="background:#31A8FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Lr</span>
-                        Adobe Lightroom
-                    </li>
-                    <li>
-                        <span style="background:#31A8FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Ps</span>
-                        Adobe Photoshop
-                    </li>
-                    <li>
-                        <span style="background:#9999FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Pr</span>
-                        Adobe Premiere Pro
-                    </li>
+                    <li><span style="background:#00C4CC;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">CV</span> Canva</li>
+                    <li><span style="background:#111;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">CC</span> CapCut</li>
+                    <li><span style="background:#31A8FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Lr</span> Adobe Lightroom</li>
+                    <li><span style="background:#31A8FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Ps</span> Adobe Photoshop</li>
+                    <li><span style="background:#9999FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Pr</span> Adobe Premiere Pro</li>
                     <li><span style="font-size:1rem;">📸</span> Photography</li>
                     <li><span style="font-size:1rem;">🎬</span> Video Production</li>
                 </ul>
             </div>
-
-            <!-- Analytics Platforms -->
             <div class="skill-category">
                 <h3>🔧 Analytics Platforms</h3>
                 <ul class="skill-list">
-                    <li>
-                        <span style="background:#111;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">TT</span>
-                        TikTok Analytics
-                    </li>
-                    <li>
-                        <span style="background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">IG</span>
-                        Instagram Insights
-                    </li>
-                    <li>
-                        <span style="background:#EA4335;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GA</span>
-                        Google Analytics
-                    </li>
-                    <li>
-                        <span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GT</span>
-                        Google Trends
-                    </li>
-                    <li>
-                        <span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">LS</span>
-                        Looker Studio
-                    </li>
-                    <li>
-                        <span style="background:#000;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">N</span>
-                        Notion
-                    </li>
-                    <li>
-                        <span style="background:#217346;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">MS</span>
-                        Microsoft Office
-                    </li>
+                    <li><span style="background:#111;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">TT</span> TikTok Analytics</li>
+                    <li><span style="background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">IG</span> Instagram Insights</li>
+                    <li><span style="background:#EA4335;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GA</span> Google Analytics</li>
+                    <li><span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GT</span> Google Trends</li>
+                    <li><span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">LS</span> Looker Studio</li>
+                    <li><span style="background:#000;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">N</span> Notion</li>
+                    <li><span style="background:#217346;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">MS</span> Microsoft Office</li>
                 </ul>
             </div>
-
         </div>
     </section>
 
@@ -1604,16 +1533,15 @@
                 if (direction === 'left') {
                     newScroll = currentScroll - step;
                     if (newScroll <= 0) {
-                        // bounce effect
                         carousel.style.transform = 'scaleX(0.95)';
-                        setTimeout(() => { carousel.style.transform = 'scaleX(1)'; }, 150);
+                        setTimeout(() => { carousel.style.transform = 'scaleX(1)'; }, 300);
                         newScroll = 0;
                     }
                 } else {
                     newScroll = currentScroll + step;
                     if (newScroll >= maxScroll) {
                         carousel.style.transform = 'scaleX(0.95)';
-                        setTimeout(() => { carousel.style.transform = 'scaleX(1)'; }, 150);
+                        setTimeout(() => { carousel.style.transform = 'scaleX(1)'; }, 300);
                         newScroll = maxScroll;
                     }
                 }
@@ -1638,7 +1566,7 @@
             const maxScroll = carousel.scrollWidth - carousel.clientWidth;
             
             if (currentScroll <= 0 || currentScroll >= maxScroll) {
-                carousel.style.transition = 'transform 0.2s ease-out';
+                carousel.style.transition = 'transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1)';
             } else {
                 carousel.style.transition = '';
             }
