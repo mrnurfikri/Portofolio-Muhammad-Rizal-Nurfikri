@@ -146,11 +146,9 @@
             -webkit-overflow-scrolling: touch; scroll-behavior: auto;
             overscroll-behavior-x: contain; padding: 2rem 2rem 2.5rem 2rem; margin: 0 30px;
             scrollbar-width: none; -ms-overflow-style: none; justify-content: flex-start;
-            mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
         }
         .carousel-container::-webkit-scrollbar { display: none; }
-        .carousel-card { flex: 0 0 320px; transition: opacity 0.3s ease, transform 0.3s ease; opacity: 1; will-change: transform; }
+        .carousel-card { flex: 0 0 320px; transition: opacity 0.3s ease, transform 0.3s ease; opacity: 1; }
         .carousel-container:hover .carousel-card { opacity: 0.5; filter: none; }
         .carousel-container .carousel-card:hover { opacity: 1; z-index: 2; }
         .carousel-card:hover .portfolio-card { transform: translateY(-10px) scale(1.03); box-shadow: 0 20px 30px rgba(0,0,0,0.12); border-color: var(--accent); }
@@ -246,8 +244,6 @@
                 overscroll-behavior-x: contain; padding: 1.5rem 0.5rem; margin: 0;
                 scrollbar-width: none; -ms-overflow-style: none; justify-content: flex-start;
                 scroll-snap-type: x mandatory;
-                mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-                -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
             }
             .portfolio-grid::-webkit-scrollbar { display: none; }
             
@@ -275,11 +271,10 @@
                 -webkit-overflow-scrolling: touch; scroll-behavior: smooth;
                 overscroll-behavior-x: contain; padding: 1rem 0.5rem; margin: 0;
                 scrollbar-width: none; -ms-overflow-style: none;
-                mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-                -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+                scroll-snap-type: x mandatory;
             }
             .skills-container::-webkit-scrollbar { display: none; }
-            .skill-category { flex: 0 0 80%; padding: 1.2rem; }
+            .skill-category { flex: 0 0 80%; scroll-snap-align: start; padding: 1.2rem; }
             .skill-category h3 { font-size: 1.1rem; margin-bottom: 1rem; }
             .skill-list li { padding: 0.4rem 0; font-size: 0.8rem; }
         }
@@ -388,7 +383,7 @@
         </div>
     </section>
 
-    <!-- Social Media Portfolio (Carousel) -->
+    <!-- Social Media Portfolio -->
     <section id="social-media">
         <h2 class="section-title">Social Media Portfolio</h2>
         <p class="section-subtitle">Creating engaging content that drives real results through data-driven strategies</p>
@@ -429,7 +424,7 @@
         </div>
     </section>
 
-    <!-- Skills (Infinite loop smooth di mobile) -->
+    <!-- Skills (simple carousel mobile) -->
     <section id="skills">
         <h2 class="section-title">Skills & Tools</h2>
         <p class="section-subtitle">Bridging creativity and analytics to drive business growth</p>
@@ -641,62 +636,6 @@
         }, { threshold: 0.5 });
         const statsSection = document.querySelector('.stats');
         if (statsSection) statsObserver.observe(statsSection);
-
-        // ========== SKILLS INFINITE SCROLL (MOBILE) - SAFE VERSION ==========
-        function setupInfiniteScroll() {
-            if (window.innerWidth > 768) return;
-            const skillsContainer = document.querySelector('#skills .skills-container');
-            if (!skillsContainer || skillsContainer.dataset.infiniteSetup) return;
-            skillsContainer.dataset.infiniteSetup = 'true';
-            
-            const originalCards = Array.from(skillsContainer.children);
-            if (originalCards.length === 0) return;
-            
-            const totalCards = originalCards.length;
-            // Clone original cards to create seamless loop
-            originalCards.forEach(card => {
-                const clone = card.cloneNode(true);
-                skillsContainer.appendChild(clone);
-            });
-            originalCards.forEach(card => {
-                const clone = card.cloneNode(true);
-                skillsContainer.appendChild(clone);
-            });
-            
-            // Pastikan card sudah dirender
-            const cardWidth = originalCards[0].offsetWidth;
-            const gap = parseInt(getComputedStyle(skillsContainer).gap) || 16;
-            const setWidth = totalCards * (cardWidth + gap);
-            
-            // Mulai dari set kedua (tengah)
-            skillsContainer.scrollLeft = setWidth;
-            
-            skillsContainer.addEventListener('scroll', () => {
-                const scrollLeft = skillsContainer.scrollLeft;
-                const maxScroll = skillsContainer.scrollWidth - skillsContainer.clientWidth;
-                if (scrollLeft <= setWidth - cardWidth) {
-                    skillsContainer.scrollLeft = setWidth * 2 - cardWidth;
-                } else if (scrollLeft >= setWidth * 2 - cardWidth) {
-                    skillsContainer.scrollLeft = setWidth;
-                }
-            }, { passive: true });
-        }
-        
-        window.addEventListener('load', setupInfiniteScroll);
-        window.addEventListener('resize', () => {
-            const skillsContainer = document.querySelector('#skills .skills-container');
-            if (skillsContainer) {
-                delete skillsContainer.dataset.infiniteSetup;
-                const cards = skillsContainer.querySelectorAll('.skill-category');
-                const originalCount = cards.length / 3;
-                if (originalCount > 0) {
-                    while (cards.length > originalCount) {
-                        cards[cards.length - 1].remove();
-                    }
-                }
-                setupInfiniteScroll();
-            }
-        });
     </script>
 </body>
 </html>
