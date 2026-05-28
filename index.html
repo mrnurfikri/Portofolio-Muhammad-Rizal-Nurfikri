@@ -1,10 +1,3 @@
-Saya paham tiga masalahnya: (1) animasi angka tidak berulang saat section terlihat lagi, (2) navigasi panah carousel masih terasa kaku, dan (3) efek bounce hanya muncul di ujung card. Berikut script lengkap dengan perbaikan:
-
-- **Animasi angka**: angka akan direset saat keluar viewport dan dianimasikan ulang setiap kali section terlihat.
-- **Navigasi panah carousel**: menggunakan `requestAnimationFrame` dengan easing `easeOutCubic` agar smooth.
-- **Bounce hanya di ujung**: logika bounce diperbaiki, hanya aktif jika tepat di card pertama atau terakhir.
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
