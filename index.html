@@ -68,8 +68,12 @@
             max-width: 1200px; margin: 0 auto; padding: 0 2rem;
             display: flex; justify-content: space-between; align-items: center;
         }
-        .nav-left { display: flex; align-items: center; gap: 1.5rem; }
-        .nav-right { display: flex; align-items: center; gap: 1rem; }
+        
+        /* Default order untuk desktop */
+        .logo { order: 1; }
+        .nav-links { order: 2; }
+        .theme-switch { order: 3; }
+        .hamburger { order: 4; }
         
         .logo {
             display: flex; align-items: center; text-decoration: none;
@@ -220,13 +224,16 @@
         html { scroll-behavior: smooth; }
         
         @media (max-width: 768px) {
+            .nav-container { justify-content: space-between; }
+            .logo { order: 2; }          /* tengah */
+            .nav-links { display: none; } /* hidden */
+            .theme-switch { order: 1; }  /* kiri */
+            .hamburger { display: flex; order: 3; } /* kanan */
+            
             .hero h1 { font-size: 2.5rem; }
             .hero .subtitle { font-size: 1.2rem; }
             .section-title { font-size: 2rem; margin-bottom: 0.5rem; }
             .section-subtitle { font-size: 0.85rem; margin-bottom: 2rem; }
-            .nav-links { display: none; }
-            .hamburger { display: flex; }
-            .theme-switch { display: flex; }
             section { padding: 4rem 1rem; }
             .stats { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
             .stat-item { padding: 1rem; }
@@ -246,7 +253,6 @@
                 scroll-snap-type: x mandatory;
             }
             .portfolio-grid::-webkit-scrollbar { display: none; }
-            
             .portfolio-grid .portfolio-card { flex: 0 0 80%; scroll-snap-align: start; }
             
             .carousel-container { padding: 1.5rem 0.5rem; margin: 0 15px; }
@@ -285,37 +291,40 @@
 <body>
     <nav>
         <div class="nav-container">
-            <div class="nav-left">
-                <a href="#home" class="logo">
-                    <img src="bg-dark.png" alt="RN Logo" class="logo-dark">
-                    <img src="bg-normal.png" alt="RN Logo" class="logo-light">
-                </a>
-                <div class="theme-switch" id="themeSwitch" role="switch" aria-checked="false" tabindex="0" aria-label="Toggle theme">
-                    <button class="theme-option active" data-theme="dark" aria-label="Dark mode">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-                    </button>
-                    <button class="theme-option" data-theme="light" aria-label="Light mode">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                    </button>
-                </div>
+            <!-- Logo (kiri desktop, tengah mobile) -->
+            <a href="#home" class="logo">
+                <img src="bg-dark.png" alt="RN Logo" class="logo-dark">
+                <img src="bg-normal.png" alt="RN Logo" class="logo-light">
+            </a>
+            
+            <!-- Navigasi desktop -->
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li>
+                    <a href="#social-media" class="dropdown-trigger">Work ▾</a>
+                    <ul class="dropdown">
+                        <li><a href="#social-media">Social Media</a></li>
+                        <li><a href="#data-analytics">Data Analytics</a></li>
+                        <li><a href="#certifications">Certifications</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                    </ul>
+                </li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            
+            <!-- Dark mode toggle (kanan desktop, kiri mobile) -->
+            <div class="theme-switch" id="themeSwitch" role="switch" aria-checked="false" tabindex="0" aria-label="Toggle theme">
+                <button class="theme-option active" data-theme="dark" aria-label="Dark mode">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+                <button class="theme-option" data-theme="light" aria-label="Light mode">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                </button>
             </div>
-            <div class="nav-right">
-                <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li>
-                        <a href="#social-media" class="dropdown-trigger">Work ▾</a>
-                        <ul class="dropdown">
-                            <li><a href="#social-media">Social Media</a></li>
-                            <li><a href="#data-analytics">Data Analytics</a></li>
-                            <li><a href="#certifications">Certifications</a></li>
-                            <li><a href="#skills">Skills</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <div class="hamburger" onclick="toggleMenu()">
-                    <span></span><span></span><span></span>
-                </div>
+            
+            <!-- Hamburger (kanan mobile) -->
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
             </div>
         </div>
     </nav>
@@ -424,7 +433,7 @@
         </div>
     </section>
 
-    <!-- Skills (simple carousel mobile) -->
+    <!-- Skills -->
     <section id="skills">
         <h2 class="section-title">Skills & Tools</h2>
         <p class="section-subtitle">Bridging creativity and analytics to drive business growth</p>
