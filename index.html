@@ -151,15 +151,18 @@
             gap: 1rem;
         }
         
+        /* Logo - animasi halus */
         .logo {
             display: flex;
             align-items: center;
             text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transition: all 0.3s ease-out;
+            backface-visibility: hidden;
+            transform: translateZ(0);
         }
         .logo:hover {
-            transform: translateY(-2px) scale(1.05);
-            filter: brightness(1.2);
+            transform: translateY(-1px) translateZ(0);
+            filter: brightness(1.05);
         }
         
         .logo img {
@@ -194,6 +197,7 @@
             position: relative;
         }
         
+        /* Link menu - animasi halus tanpa scale besar */
         .nav-links a {
             color: var(--text-secondary);
             text-decoration: none;
@@ -201,16 +205,18 @@
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transition: all 0.3s ease-out;
             position: relative;
             padding-bottom: 5px;
             cursor: pointer;
             display: inline-block;
+            backface-visibility: hidden;
+            transform: translateZ(0);
         }
         
         .nav-links a:hover {
             color: var(--accent);
-            transform: translateY(-2px) scale(1.05);
+            transform: translateY(-1px) translateZ(0);
         }
         
         .nav-links a.active {
@@ -221,7 +227,7 @@
             display: none;
         }
         
-        /* Dropdown */
+        /* Dropdown - animasi smooth */
         .dropdown {
             position: absolute;
             top: 120%;
@@ -257,8 +263,9 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             white-space: nowrap;
-            transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transition: all 0.2s ease-out;
             background: transparent;
+            transform: translateX(0);
         }
         
         .dropdown a:hover {
@@ -459,7 +466,7 @@
             overflow-y: visible;
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
-            padding: 2rem 1.5rem 2.5rem 1.5rem;
+            padding: 2rem 1.5rem 2.5rem 1.5rem; /* padding bawah lebih besar */
             margin: 0 30px;
             scrollbar-width: none;
             -ms-overflow-style: none;
@@ -486,7 +493,7 @@
         }
         .carousel-card:hover .portfolio-card {
             transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15); /* shadow lebih kecil, tidak terpotong */
             border-color: var(--accent);
         }
         
@@ -684,6 +691,8 @@
         .skill-list li:last-child {
             border-bottom: none;
         }
+        
+        /* Simbol segitiga dihapus - ikon sudah ada di HTML */
         
         .contact-section {
             background: var(--bg-primary);
