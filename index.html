@@ -499,7 +499,7 @@
             btn.classList.toggle('visible', window.scrollY > 500);
         });
 
-        // ========== CAROUSEL: SMOOTH ANIMATION + INSTAGRAM-STYLE EDGE BOUNCE ==========
+        // ========== CAROUSEL: SMOOTH + BOUNCE (FIXED LAST CARD REACH) ==========
         const carousel = document.getElementById('carouselContainer');
         const leftBtn = document.getElementById('carouselLeft');
         const rightBtn = document.getElementById('carouselRight');
@@ -537,15 +537,12 @@
         }
 
         function bounceCard(card, direction) {
-            // Hanya kartu tertentu yang bergerak, sisanya tetap
-            const offset = direction === 'left' ? 15 : -15; // kiri: geser kanan, kanan: geser kiri
+            const offset = direction === 'left' ? 15 : -15;
             card.style.transition = 'transform 0.2s ease';
             card.style.transform = `translateX(${offset}px)`;
             setTimeout(() => {
                 card.style.transform = 'translateX(0)';
-                setTimeout(() => {
-                    card.style.transition = '';
-                }, 200);
+                setTimeout(() => { card.style.transition = ''; }, 200);
             }, 100);
         }
 
@@ -555,18 +552,17 @@
             const maxScroll = carousel.scrollWidth - carousel.clientWidth;
             const cardWidth = getCardWidth();
             let target = direction === 'left' ? currentScroll - cardWidth : currentScroll + cardWidth;
-
-            // Deteksi jika sudah di ujung
-            if (target < 0 || target > maxScroll) {
-                // Bounce kartu pertama/terakhir
-                if (direction === 'left' && currentScroll <= 0) {
+            // Clamp target ke batas kontainer
+            target = Math.max(0, Math.min(target, maxScroll));
+            // Jika target tidak berubah (sudah di ujung), lakukan bounce
+            if (Math.abs(target - currentScroll) < 1) {
+                if (direction === 'left') {
                     bounceCard(cards[0], 'left');
-                } else if (direction === 'right' && currentScroll >= maxScroll - 1) {
+                } else {
                     bounceCard(cards[cards.length - 1], 'right');
                 }
                 return;
             }
-            target = Math.max(0, Math.min(target, maxScroll));
             smoothScrollTo(target);
         }
 
@@ -591,7 +587,6 @@
         const statsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Reset lalu animasikan
                     statNumbers.forEach((el, i) => { if (i < defaultValues.length) el.textContent = defaultValues[i]; });
                     if (statNumbers.length >= 2) {
                         animateCounter(statNumbers[0], 1300, 'K+');
