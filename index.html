@@ -448,7 +448,7 @@
             margin-top: 2rem;
         }
         
-        /* === CAROUSEL === */
+        /* === CAROUSEL (REVAMPED) === */
         .carousel-wrapper {
             position: relative;
             max-width: 100%;
@@ -461,16 +461,14 @@
             gap: 1.5rem;
             overflow-x: auto;
             overflow-y: visible;
-            scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
-            scroll-behavior: smooth;
+            scroll-behavior: auto; /* JS yang atur */
             overscroll-behavior-x: contain;
             padding: 2rem 2rem 2.5rem 2rem;
             margin: 0 30px;
             scrollbar-width: none;
             -ms-overflow-style: none;
-            scroll-padding: 0 2rem;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            /* mask fade kiri/kanan */
             mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
             -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
         }
@@ -480,7 +478,6 @@
         
         .carousel-card {
             flex: 0 0 320px;
-            scroll-snap-align: center;
             transition: opacity 0.3s ease, transform 0.3s ease;
             opacity: 1;
             will-change: transform;
@@ -566,8 +563,6 @@
             .carousel-container {
                 margin: 0 20px;
                 padding: 1.5rem 1.5rem 2rem 1.5rem;
-                scroll-padding: 0 1.5rem;
-                scroll-snap-type: x mandatory;
             }
         }
         
@@ -1342,54 +1337,10 @@
         <h2 class="section-title">Skills & Tools</h2>
         <p class="section-subtitle">Bridging creativity and analytics to drive business growth</p>
         <div class="skills-container">
-            <div class="skill-category">
-                <h3>📱 Social Media</h3>
-                <ul class="skill-list">
-                    <li><span style="font-size:1rem;">📋</span> Content Strategy & Planning</li>
-                    <li><span style="font-size:1rem;">⚙️</span> Social Media Management</li>
-                    <li><span style="font-size:1rem;">✍️</span> Copywriting & Storytelling</li>
-                    <li><span style="font-size:1rem;">🤝</span> Community Engagement</li>
-                    <li><span style="font-size:1rem;">📈</span> Trend Analysis</li>
-                    <li><span style="font-size:1rem;">🎯</span> Performance Marketing</li>
-                    <li><span style="font-size:1rem;">🔍</span> SEO Content Writing</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3>📊 Data Analytics</h3>
-                <ul class="skill-list">
-                    <li><span style="background:#336791;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;letter-spacing:0.5px;">SQL</span> MySQL / SQL Query</li>
-                    <li><span style="background:#3776AB;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">PY</span> Python (Pandas, Matplotlib)</li>
-                    <li><span style="background:#E97627;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">TB</span> Tableau</li>
-                    <li><span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">LS</span> Looker Studio</li>
-                    <li><span style="background:#217346;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">XL</span> Excel (Advanced Formulas)</li>
-                    <li><span style="background:#EA4335;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GS</span> Google Sheets</li>
-                    <li><span style="background:#666;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">SP</span> SPSS</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3>🎨 Creative Tools</h3>
-                <ul class="skill-list">
-                    <li><span style="background:#00C4CC;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">CV</span> Canva</li>
-                    <li><span style="background:#111;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">CC</span> CapCut</li>
-                    <li><span style="background:#31A8FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Lr</span> Adobe Lightroom</li>
-                    <li><span style="background:#31A8FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Ps</span> Adobe Photoshop</li>
-                    <li><span style="background:#9999FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Pr</span> Adobe Premiere Pro</li>
-                    <li><span style="font-size:1rem;">📸</span> Photography</li>
-                    <li><span style="font-size:1rem;">🎬</span> Video Production</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3>🔧 Analytics Platforms</h3>
-                <ul class="skill-list">
-                    <li><span style="background:#111;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">TT</span> TikTok Analytics</li>
-                    <li><span style="background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">IG</span> Instagram Insights</li>
-                    <li><span style="background:#EA4335;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GA</span> Google Analytics</li>
-                    <li><span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GT</span> Google Trends</li>
-                    <li><span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">LS</span> Looker Studio</li>
-                    <li><span style="background:#000;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">N</span> Notion</li>
-                    <li><span style="background:#217346;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">MS</span> Microsoft Office</li>
-                </ul>
-            </div>
+            <div class="skill-category"><h3>📱 Social Media</h3><ul class="skill-list"><li><span style="font-size:1rem;">📋</span> Content Strategy & Planning</li><li><span style="font-size:1rem;">⚙️</span> Social Media Management</li><li><span style="font-size:1rem;">✍️</span> Copywriting & Storytelling</li><li><span style="font-size:1rem;">🤝</span> Community Engagement</li><li><span style="font-size:1rem;">📈</span> Trend Analysis</li><li><span style="font-size:1rem;">🎯</span> Performance Marketing</li><li><span style="font-size:1rem;">🔍</span> SEO Content Writing</li></ul></div>
+            <div class="skill-category"><h3>📊 Data Analytics</h3><ul class="skill-list"><li><span style="background:#336791;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;letter-spacing:0.5px;">SQL</span> MySQL / SQL Query</li><li><span style="background:#3776AB;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">PY</span> Python (Pandas, Matplotlib)</li><li><span style="background:#E97627;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">TB</span> Tableau</li><li><span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">LS</span> Looker Studio</li><li><span style="background:#217346;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">XL</span> Excel (Advanced Formulas)</li><li><span style="background:#EA4335;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GS</span> Google Sheets</li><li><span style="background:#666;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">SP</span> SPSS</li></ul></div>
+            <div class="skill-category"><h3>🎨 Creative Tools</h3><ul class="skill-list"><li><span style="background:#00C4CC;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">CV</span> Canva</li><li><span style="background:#111;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">CC</span> CapCut</li><li><span style="background:#31A8FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Lr</span> Adobe Lightroom</li><li><span style="background:#31A8FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Ps</span> Adobe Photoshop</li><li><span style="background:#9999FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Pr</span> Adobe Premiere Pro</li><li><span style="font-size:1rem;">📸</span> Photography</li><li><span style="font-size:1rem;">🎬</span> Video Production</li></ul></div>
+            <div class="skill-category"><h3>🔧 Analytics Platforms</h3><ul class="skill-list"><li><span style="background:#111;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">TT</span> TikTok Analytics</li><li><span style="background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">IG</span> Instagram Insights</li><li><span style="background:#EA4335;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GA</span> Google Analytics</li><li><span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GT</span> Google Trends</li><li><span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">LS</span> Looker Studio</li><li><span style="background:#000;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">N</span> Notion</li><li><span style="background:#217346;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">MS</span> Microsoft Office</li></ul></div>
         </div>
     </section>
 
@@ -1516,38 +1467,10 @@
             btn.classList.toggle('visible', window.scrollY > 500);
         });
 
-        // ========== CAROUSEL ARROWS (dengan debounce & bounce effect) ==========
+        // ========== CAROUSEL LOGIC (SMOOTH SLIDING + EDGE BOUNCE) ==========
         const carousel = document.getElementById('carouselContainer');
         const leftBtn = document.getElementById('carouselLeft');
         const rightBtn = document.getElementById('carouselRight');
-        
-        let debounceTimer;
-        function debounceScroll(direction) {
-            clearTimeout(debounceTimer);
-            debounceTimer = setTimeout(() => {
-                const step = getStep();
-                const currentScroll = carousel.scrollLeft;
-                const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-                
-                let newScroll;
-                if (direction === 'left') {
-                    newScroll = currentScroll - step;
-                    if (newScroll <= 0) {
-                        carousel.style.transform = 'scaleX(0.95)';
-                        setTimeout(() => { carousel.style.transform = 'scaleX(1)'; }, 300);
-                        newScroll = 0;
-                    }
-                } else {
-                    newScroll = currentScroll + step;
-                    if (newScroll >= maxScroll) {
-                        carousel.style.transform = 'scaleX(0.95)';
-                        setTimeout(() => { carousel.style.transform = 'scaleX(1)'; }, 300);
-                        newScroll = maxScroll;
-                    }
-                }
-                carousel.scrollTo({ left: newScroll, behavior: 'smooth' });
-            }, 100);
-        }
         
         function getStep() {
             const card = carousel.querySelector('.carousel-card');
@@ -1557,44 +1480,92 @@
             return cardWidth + gap;
         }
         
-        leftBtn.addEventListener('click', () => debounceScroll('left'));
-        rightBtn.addEventListener('click', () => debounceScroll('right'));
+        function animateScrollTo(targetLeft) {
+            const startLeft = carousel.scrollLeft;
+            const change = targetLeft - startLeft;
+            const duration = 400; // ms
+            let startTime = null;
+            
+            function easeOutCubic(t) {
+                return 1 - Math.pow(1 - t, 3);
+            }
+            
+            function step(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const elapsed = timestamp - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easedProgress = easeOutCubic(progress);
+                carousel.scrollLeft = startLeft + change * easedProgress;
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            }
+            
+            window.requestAnimationFrame(step);
+        }
         
-        // Bounce effect untuk overscroll manual
-        carousel.addEventListener('scroll', () => {
-            const currentScroll = carousel.scrollLeft;
+        function bounceAtEdge(direction) {
+            // small bounce animation: move a bit and return
+            const bounceDistance = 30;
+            const startLeft = carousel.scrollLeft;
+            const target = direction === 'left' ? startLeft - bounceDistance : startLeft + bounceDistance;
             const maxScroll = carousel.scrollWidth - carousel.clientWidth;
             
-            if (currentScroll <= 0 || currentScroll >= maxScroll) {
-                carousel.style.transition = 'transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1)';
-            } else {
-                carousel.style.transition = '';
-            }
-        });
-
-        function animateCounter(el, target, suffix = '') {
-            let start = 0;
-            const duration = 2000;
-            const step = target / (duration / 16);
-            const timer = setInterval(() => {
-                start += step;
-                if (start >= target) { start = target; clearInterval(timer); }
-                el.textContent = Math.floor(start).toLocaleString() + suffix;
-            }, 16);
-        }
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const statNumbers = document.querySelectorAll('.stat-number');
-                    if (statNumbers.length >= 2) {
-                        animateCounter(statNumbers[0], 1300, 'K+');
-                        animateCounter(statNumbers[1], 257, 'K+');
+            // clamp target
+            const clampedTarget = Math.max(0, Math.min(target, maxScroll));
+            
+            // animate to clampedTarget then back to startLeft
+            function animateBounce(to, callback) {
+                const from = carousel.scrollLeft;
+                const change = to - from;
+                const duration = 200;
+                let startTime = null;
+                function step(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    const elapsed = timestamp - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    // easeOutBack
+                    const c1 = 1.70158;
+                    const c3 = c1 + 1;
+                    const val = 1 + c3 * Math.pow(progress - 1, 3) + c1 * Math.pow(progress - 1, 2);
+                    carousel.scrollLeft = from + change * val;
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    } else {
+                        if (callback) callback();
                     }
                 }
+                window.requestAnimationFrame(step);
+            }
+            
+            animateBounce(clampedTarget, () => {
+                animateBounce(startLeft);
             });
-        }, { threshold: 0.5 });
-        const statsSection = document.querySelector('.stats');
-        if (statsSection) observer.observe(statsSection);
+        }
+        
+        function handleArrow(direction) {
+            const step = getStep();
+            const currentScroll = carousel.scrollLeft;
+            const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+            let target = direction === 'left' ? currentScroll - step : currentScroll + step;
+            
+            // if target out of bounds, bounce
+            if (target < 0) {
+                bounceAtEdge('left');
+                return;
+            }
+            if (target > maxScroll) {
+                bounceAtEdge('right');
+                return;
+            }
+            
+            animateScrollTo(target);
+        }
+        
+        leftBtn.addEventListener('click', () => handleArrow('left'));
+        rightBtn.addEventListener('click', () => handleArrow('right'));
+        
+        // also allow touch scroll naturally, no snap interference
     </script>
 </body>
 </html>
