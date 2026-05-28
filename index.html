@@ -68,12 +68,12 @@
             max-width: 1200px; margin: 0 auto; padding: 0 2rem;
             display: flex; justify-content: space-between; align-items: center;
         }
-        
-        /* Default order untuk desktop */
-        .logo { order: 1; }
-        .nav-links { order: 2; }
-        .theme-switch { order: 3; }
-        .hamburger { order: 4; }
+        .nav-left {
+            display: flex; align-items: center; gap: 1.5rem;
+        }
+        .nav-right {
+            display: flex; align-items: center; gap: 1rem;
+        }
         
         .logo {
             display: flex; align-items: center; text-decoration: none;
@@ -132,7 +132,7 @@
         .stat-number { font-family: 'Oswald', sans-serif; font-size: 2.5rem; font-weight: 700; color: var(--accent); display: block; margin-bottom: 0.5rem; }
         .stat-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary); }
         .cta-buttons { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
-        .btn { padding: 0.9rem 2rem; text-decoration: none; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s; display: inline-block; border: 1px solid transparent; border-radius: 12px; }
+        .btn { padding: 0.9rem 2rem; text-decoration: none; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s; display: inline-block; border: 1px solid transparent; border-radius: 12px; text-align: center; }
         .btn-primary { background: var(--accent); color: var(--bg-primary); border-color: var(--accent); }
         .btn-primary:hover { background: transparent; color: var(--accent); }
         .btn-secondary { background: transparent; color: var(--text-primary); border: 1px solid var(--border); }
@@ -224,24 +224,21 @@
         html { scroll-behavior: smooth; }
         
         @media (max-width: 768px) {
-            .nav-container { justify-content: space-between; }
-            .logo { order: 2; }          /* tengah */
-            .nav-links { display: none; } /* hidden */
-            .theme-switch { order: 1; }  /* kiri */
-            .hamburger { display: flex; order: 3; } /* kanan */
-            
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .theme-switch { display: flex; }
+            section { padding: 4rem 1rem; }
             .hero h1 { font-size: 2.5rem; }
             .hero .subtitle { font-size: 1.2rem; }
             .section-title { font-size: 2rem; margin-bottom: 0.5rem; }
             .section-subtitle { font-size: 0.85rem; margin-bottom: 2rem; }
-            section { padding: 4rem 1rem; }
             .stats { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
             .stat-item { padding: 1rem; }
             .stat-number { font-size: 1.8rem; }
             .stat-label { font-size: 0.7rem; }
             .hero p { font-size: 0.9rem; }
             .cta-buttons { flex-direction: column; align-items: stretch; }
-            .btn { width: 100%; text-align: center; padding: 0.7rem 1.5rem; font-size: 0.8rem; display: block; }
+            .btn { width: 100%; padding: 0.7rem 1.5rem; font-size: 0.8rem; display: block; text-align: center; }
 
             .carousel-arrow { display: none; }
 
@@ -253,7 +250,7 @@
                 scroll-snap-type: x mandatory;
             }
             .portfolio-grid::-webkit-scrollbar { display: none; }
-            .portfolio-grid .portfolio-card { flex: 0 0 80%; scroll-snap-align: start; }
+            .portfolio-grid .portfolio-card { flex: 0 0 80%; scroll-snap-align: start; min-height: 100%; }
             
             .carousel-container { padding: 1.5rem 0.5rem; margin: 0 15px; }
             .carousel-card { flex: 0 0 80%; }
@@ -274,13 +271,13 @@
 
             .skills-container {
                 display: flex; gap: 1rem; overflow-x: auto; overflow-y: visible;
-                -webkit-overflow-scrolling: touch; scroll-behavior: smooth;
+                -webkit-overflow-scrolling: touch; scroll-behavior: auto;
                 overscroll-behavior-x: contain; padding: 1rem 0.5rem; margin: 0;
                 scrollbar-width: none; -ms-overflow-style: none;
-                scroll-snap-type: x mandatory;
+                scroll-snap-type: none;
             }
             .skills-container::-webkit-scrollbar { display: none; }
-            .skill-category { flex: 0 0 80%; scroll-snap-align: start; padding: 1.2rem; }
+            .skill-category { flex: 0 0 80%; padding: 1.2rem; }
             .skill-category h3 { font-size: 1.1rem; margin-bottom: 1rem; }
             .skill-list li { padding: 0.4rem 0; font-size: 0.8rem; }
         }
@@ -291,40 +288,39 @@
 <body>
     <nav>
         <div class="nav-container">
-            <!-- Logo (kiri desktop, tengah mobile) -->
-            <a href="#home" class="logo">
-                <img src="bg-dark.png" alt="RN Logo" class="logo-dark">
-                <img src="bg-normal.png" alt="RN Logo" class="logo-light">
-            </a>
-            
-            <!-- Navigasi desktop -->
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li>
-                    <a href="#social-media" class="dropdown-trigger">Work ▾</a>
-                    <ul class="dropdown">
-                        <li><a href="#social-media">Social Media</a></li>
-                        <li><a href="#data-analytics">Data Analytics</a></li>
-                        <li><a href="#certifications">Certifications</a></li>
-                        <li><a href="#skills">Skills</a></li>
-                    </ul>
-                </li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            
-            <!-- Dark mode toggle (kanan desktop, kiri mobile) -->
-            <div class="theme-switch" id="themeSwitch" role="switch" aria-checked="false" tabindex="0" aria-label="Toggle theme">
-                <button class="theme-option active" data-theme="dark" aria-label="Dark mode">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-                </button>
-                <button class="theme-option" data-theme="light" aria-label="Light mode">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                </button>
+            <!-- Kiri: Logo, Nav Links, Theme Switch -->
+            <div class="nav-left">
+                <a href="#home" class="logo">
+                    <img src="bg-dark.png" alt="RN Logo" class="logo-dark">
+                    <img src="bg-normal.png" alt="RN Logo" class="logo-light">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li>
+                        <a href="#social-media" class="dropdown-trigger">Work ▾</a>
+                        <ul class="dropdown">
+                            <li><a href="#social-media">Social Media</a></li>
+                            <li><a href="#data-analytics">Data Analytics</a></li>
+                            <li><a href="#certifications">Certifications</a></li>
+                            <li><a href="#skills">Skills</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="theme-switch" id="themeSwitch" role="switch" aria-checked="false" tabindex="0" aria-label="Toggle theme">
+                    <button class="theme-option active" data-theme="dark" aria-label="Dark mode">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    </button>
+                    <button class="theme-option" data-theme="light" aria-label="Light mode">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    </button>
+                </div>
             </div>
-            
-            <!-- Hamburger (kanan mobile) -->
-            <div class="hamburger" onclick="toggleMenu()">
-                <span></span><span></span><span></span>
+            <!-- Kanan: hanya hamburger (mobile) -->
+            <div class="nav-right">
+                <div class="hamburger" onclick="toggleMenu()">
+                    <span></span><span></span><span></span>
+                </div>
             </div>
         </div>
     </nav>
@@ -433,14 +429,15 @@
         </div>
     </section>
 
-    <!-- Skills -->
+    <!-- Skills (Infinite smooth loop) -->
     <section id="skills">
         <h2 class="section-title">Skills & Tools</h2>
         <p class="section-subtitle">Bridging creativity and analytics to drive business growth</p>
-        <div class="skills-container">
-            <div class="skill-category"><h3>📱 Social Media</h3><ul class="skill-list"><li><span style="font-size:1rem;">📋</span> Content Strategy & Planning</li><li><span style="font-size:1rem;">⚙️</span> Social Media Management</li><li><span style="font-size:1rem;">✍️</span> Copywriting & Storytelling</li><li><span style="font-size:1rem;">🤝</span> Community Engagement</li><li><span style="font-size:1rem;">📈</span> Trend Analysis</li><li><span style="font-size:1rem;">🎯</span> Performance Marketing</li><li><span style="font-size:1rem;">🔍</span> SEO Content Writing</li></ul></div>
-            <div class="skill-category"><h3>📊 Data Analytics</h3><ul class="skill-list"><li><span style="background:#336791;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;letter-spacing:0.5px;">SQL</span> MySQL / SQL Query</li><li><span style="background:#3776AB;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">PY</span> Python (Pandas, Matplotlib)</li><li><span style="background:#E97627;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">TB</span> Tableau</li><li><span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">LS</span> Looker Studio</li><li><span style="background:#217346;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">XL</span> Excel (Advanced Formulas)</li><li><span style="background:#EA4335;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GS</span> Google Sheets</li><li><span style="background:#666;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">SP</span> SPSS</li></ul></div>
-            <div class="skill-category"><h3>🎨 Creative Tools</h3><ul class="skill-list"><li><span style="background:#00C4CC;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">CV</span> Canva</li><li><span style="background:#111;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">CC</span> CapCut</li><li><span style="background:#31A8FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Lr</span> Adobe Lightroom</li><li><span style="background:#31A8FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Ps</span> Adobe Photoshop</li><li><span style="background:#9999FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Pr</span> Adobe Premiere Pro</li><li><span style="font-size:1rem;">📸</span> Photography</li><li><span style="font-size:1rem;">🎬</span> Video Production</li></ul></div>
+        <div class="skills-container" id="skillsContainer">
+            <!-- Kartu asli (4 kartu) -->
+            <div class="skill-category"><h3>📱 Social Media</h3><ul class="skill-list"><li>Content Strategy & Planning</li><li>Social Media Management</li><li>Copywriting & Storytelling</li><li>Community Engagement</li><li>Trend Analysis</li><li>Performance Marketing</li><li>SEO Content Writing</li></ul></div>
+            <div class="skill-category"><h3>📊 Data Analytics</h3><ul class="skill-list"><li><span style="background:#336791;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">SQL</span> MySQL / SQL Query</li><li><span style="background:#3776AB;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">PY</span> Python (Pandas, Matplotlib)</li><li><span style="background:#E97627;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">TB</span> Tableau</li><li><span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">LS</span> Looker Studio</li><li><span style="background:#217346;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">XL</span> Excel (Advanced Formulas)</li><li><span style="background:#EA4335;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GS</span> Google Sheets</li><li><span style="background:#666;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">SP</span> SPSS</li></ul></div>
+            <div class="skill-category"><h3>🎨 Creative Tools</h3><ul class="skill-list"><li><span style="background:#00C4CC;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">CV</span> Canva</li><li><span style="background:#111;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">CC</span> CapCut</li><li><span style="background:#31A8FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Lr</span> Adobe Lightroom</li><li><span style="background:#31A8FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Ps</span> Adobe Photoshop</li><li><span style="background:#9999FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Pr</span> Adobe Premiere Pro</li><li>📸 Photography</li><li>🎬 Video Production</li></ul></div>
             <div class="skill-category"><h3>🔧 Analytics Platforms</h3><ul class="skill-list"><li><span style="background:#111;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">TT</span> TikTok Analytics</li><li><span style="background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">IG</span> Instagram Insights</li><li><span style="background:#EA4335;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GA</span> Google Analytics</li><li><span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GT</span> Google Trends</li><li><span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">LS</span> Looker Studio</li><li><span style="background:#000;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">N</span> Notion</li><li><span style="background:#217346;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">MS</span> Microsoft Office</li></ul></div>
         </div>
     </section>
@@ -617,7 +614,7 @@
         leftBtn.addEventListener('click', () => navigateCarousel('left'));
         rightBtn.addEventListener('click', () => navigateCarousel('right'));
 
-        // ========== ANIMATED COUNTER (RESET EVERY TIME) ==========
+        // ========== ANIMATED COUNTER ==========
         const statNumbers = document.querySelectorAll('.stat-number');
         const defaultValues = ['1.3M+', '257K+', '3+', '7+'];
 
@@ -645,6 +642,61 @@
         }, { threshold: 0.5 });
         const statsSection = document.querySelector('.stats');
         if (statsSection) statsObserver.observe(statsSection);
+
+        // ========== SKILLS INFINITE SMOOTH LOOP (MOBILE) ==========
+        function setupSkillsLoop() {
+            if (window.innerWidth > 768) return;
+            const container = document.getElementById('skillsContainer');
+            if (!container || container.dataset.loopReady) return;
+            container.dataset.loopReady = 'true';
+
+            const originalCards = Array.from(container.children);
+            const total = originalCards.length;
+            // Duplikasi set kartu: tambahkan di depan dan belakang
+            originalCards.forEach(card => {
+                const clone = card.cloneNode(true);
+                container.appendChild(clone);
+            });
+            originalCards.forEach(card => {
+                const clone = card.cloneNode(true);
+                container.insertBefore(clone, container.firstChild);
+            });
+
+            const cardWidth = originalCards[0].offsetWidth;
+            const gap = parseInt(getComputedStyle(container).gap) || 16;
+            const setWidth = total * (cardWidth + gap);
+
+            // Mulai di set tengah (set asli)
+            container.scrollLeft = setWidth;
+
+            container.addEventListener('scroll', () => {
+                const scrollLeft = container.scrollLeft;
+                const maxScroll = container.scrollWidth - container.clientWidth;
+                // Jika terlalu dekat dengan set pertama (kiri), lompat ke set kedua
+                if (scrollLeft <= setWidth - cardWidth) {
+                    container.scrollLeft = setWidth * 2 - cardWidth - gap;
+                }
+                // Jika terlalu dekat dengan set ketiga (kanan), lompat ke set kedua
+                else if (scrollLeft >= setWidth * 2 - cardWidth) {
+                    container.scrollLeft = setWidth;
+                }
+            }, { passive: true });
+        }
+
+        window.addEventListener('load', setupSkillsLoop);
+        window.addEventListener('resize', () => {
+            const container = document.getElementById('skillsContainer');
+            if (container) {
+                container.dataset.loopReady = '';
+                // Hapus kloningan
+                const cards = container.querySelectorAll('.skill-category');
+                const originalCount = cards.length / 3;
+                while (cards.length > originalCount) {
+                    cards[cards.length - 1].remove();
+                }
+                setupSkillsLoop();
+            }
+        });
     </script>
 </body>
 </html>
