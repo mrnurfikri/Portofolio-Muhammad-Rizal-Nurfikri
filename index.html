@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
- 
+<head>
     <meta property="og:title" content="Muhammad Rizal Nurfikri - Social Media & Data Analyst">
     <meta property="og:description" content="Social Media Specialist & Data Analyst. 369K+ views, 88K+ likes organic growth.">
     <meta property="og:image" content="https://mrnurfikri.github.io/Portofolio-Muhammad-Rizal-Nurfikri/bg-dark.png">
@@ -30,13 +29,17 @@
             --text-secondary: #a0a0a0;
             --accent: #ADFC5A;
             --accent-hover: #c1e831;
+            --accent-rgb: 173, 252, 90;
             --border: #222222;
             --card-bg: #111111;
             --nav-bg: rgba(10, 10, 10, 0.95);
-            --hero-gradient: rgba(173,252,90,0.03);
+            --hero-gradient: rgba(var(--accent-rgb), 0.03);
             --shadow: 0 4px 6px rgba(0,0,0,0.3);
             --theme-toggle-bg: rgba(255,255,255,0.05);
             --dropdown-bg: #1a1a1a;
+            --badge-bg: rgba(var(--accent-rgb), 0.1);
+            --tag-bg: rgba(var(--accent-rgb), 0.05);
+            --tag-border: rgba(var(--accent-rgb), 0.25);
         }
         
         body.light-mode {
@@ -46,13 +49,17 @@
             --text-secondary: #555555;
             --accent: #106FFF;
             --accent-hover: #0a5cd9;
+            --accent-rgb: 16, 111, 255;
             --border: #d5d3d1;
             --card-bg: #ffffff;
             --nav-bg: rgba(241, 239, 238, 0.95);
-            --hero-gradient: rgba(16,111,255,0.03);
+            --hero-gradient: rgba(var(--accent-rgb), 0.03);
             --shadow: 0 4px 6px rgba(0,0,0,0.05);
             --theme-toggle-bg: rgba(0,0,0,0.05);
             --dropdown-bg: #ffffff;
+            --badge-bg: rgba(var(--accent-rgb), 0.1);
+            --tag-bg: rgba(var(--accent-rgb), 0.05);
+            --tag-border: rgba(var(--accent-rgb), 0.25);
         }
         
         body {
@@ -144,7 +151,6 @@
             gap: 1rem;
         }
         
-        /* Logo image */
         .logo {
             display: flex;
             align-items: center;
@@ -158,7 +164,6 @@
             transition: opacity 0.3s ease;
         }
         
-        /* Tampilkan gambar sesuai tema */
         .logo .logo-light {
             display: none;
         }
@@ -479,8 +484,8 @@
         }
         
         .card-tag {
-            background: transparent;
-            border: 1px solid var(--border);
+            background: var(--tag-bg);
+            border: 1px solid var(--tag-border);
             padding: 0.2rem 0.8rem;
             border-radius: 8px;
             font-size: 0.7rem;
@@ -756,6 +761,24 @@
             margin-top: 0.4rem;
         }
         
+        .badge-open {
+            background: var(--badge-bg);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+        }
+        
+        .about-tag {
+            background: var(--tag-bg);
+            border: 1px solid var(--tag-border);
+            color: var(--accent);
+            padding: 0.4rem 1rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.3; }
@@ -862,16 +885,16 @@
     <!-- Hero -->
     <section class="hero" id="home">
         <div class="hero-container">
-            <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(173,252,90,0.1); border: 1px solid var(--accent); padding: 0.5rem 1rem; border-radius: 20px; margin-bottom: 1.5rem;">
+            <div class="badge-open" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 20px; margin-bottom: 1.5rem;">
                 <span style="width: 8px; height: 8px; background: var(--accent); border-radius: 50%; display: inline-block; animation: pulse 2s infinite;"></span>
-                <span style="color: var(--accent); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Open to Collaboration</span>
+                <span style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Open to Collaboration</span>
             </div>
             
             <h1>MUHAMMAD RIZAL NURFIKRI</h1>
             <p class="subtitle">Social Media Specialist & Data Analyst</p>
             <p>I help brands grow through data-driven content strategies and turn numbers into actionable insights. Proven organic growth: <strong>1.3M+ peak views</strong>, 257K+ total likes across platforms.</p>
             
-                        <div class="stats">
+            <div class="stats">
                 <div class="stat-item">
                     <span class="stat-number">1.3M+</span>
                     <span class="stat-label">Peak Views</span>
@@ -916,11 +939,11 @@
                     Currently expanding my expertise as a <span style="color: var(--accent); font-weight: 600;">Marketing Affiliate at Lamina Hospital</span>, building physician networks and designing strategic marketing campaigns while continuing to grow my portfolio in social media and data analytics.
                 </p>
                 <div style="display: flex; flex-wrap: wrap; gap: 0.6rem;">
-                    <span style="background: rgba(173,252,90,0.08); border: 1px solid rgba(173,252,90,0.25); color: var(--accent); padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">📱 Social Media</span>
-                    <span style="background: rgba(173,252,90,0.08); border: 1px solid rgba(173,252,90,0.25); color: var(--accent); padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">📊 Data Analytics</span>
-                    <span style="background: rgba(173,252,90,0.08); border: 1px solid rgba(173,252,90,0.25); color: var(--accent); padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">🎯 Marketing</span>
-                    <span style="background: rgba(173,252,90,0.08); border: 1px solid rgba(173,252,90,0.25); color: var(--accent); padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">✍️ Content Strategy</span>
-                    <span style="background: rgba(173,252,90,0.08); border: 1px solid rgba(173,252,90,0.25); color: var(--accent); padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">💊 Healthcare Marketing</span>
+                    <span class="about-tag">📱 Social Media</span>
+                    <span class="about-tag">📊 Data Analytics</span>
+                    <span class="about-tag">🎯 Marketing</span>
+                    <span class="about-tag">✍️ Content Strategy</span>
+                    <span class="about-tag">💊 Healthcare Marketing</span>
                 </div>
             </div>
             <div style="display: flex; flex-direction: column; gap: 1rem;">
@@ -975,6 +998,7 @@
         <p class="section-subtitle">Creating engaging content that drives real results through data-driven strategies</p>
         
         <div class="portfolio-grid">
+            <!-- Card 1: Verda Harvest -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image">🌱</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
@@ -986,6 +1010,7 @@
                 </div>
             </div>
 
+            <!-- Card 2: HOOKED0N -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image">👔</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
@@ -997,7 +1022,7 @@
                 </div>
             </div>
 
-                     <!-- Begajul Gaming Card - DISERAGAMKAN -->
+            <!-- Card 3: Begajul Gaming -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image">🎮</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
@@ -1018,6 +1043,7 @@
                 </div>
             </div>
          
+            <!-- Card 4: Freelance Clients -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image">💼</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
@@ -1029,6 +1055,7 @@
                 </div>
             </div>
 
+            <!-- Card 5: BIGIO Internship -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image">🚀</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
@@ -1040,6 +1067,7 @@
                 </div>
             </div>
 
+            <!-- Card 6: @octricubla -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image">👟</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
@@ -1051,6 +1079,7 @@
                 </div>
             </div>
 
+            <!-- Card 7: MRN.SHP -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image">🛍️</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
@@ -1070,6 +1099,7 @@
         <p class="section-subtitle">Transforming raw data into strategic recommendations using SQL, Excel, and Looker Studio</p>
         
         <div class="portfolio-grid">
+            <!-- Card 1: Digital Marketing Campaign Analysis -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image">📈</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
@@ -1082,6 +1112,7 @@
                 </div>
             </div>
 
+            <!-- Card 2: E-Commerce Sales Analysis -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image">🛒</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
@@ -1094,6 +1125,7 @@
                 </div>
             </div>
 
+            <!-- Card 3: SQL Analysis Showcase -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image">💻</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
@@ -1113,6 +1145,7 @@
         <h2 class="section-title">Certifications & Education</h2>
         <p class="section-subtitle">Formal training and continuous learning in Data Analytics and Digital Marketing</p>
         <div class="portfolio-grid">
+            <!-- Card 1: Ruangguru -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image" style="background: transparent; border-bottom: 1px solid var(--border);">📊</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
@@ -1124,6 +1157,7 @@
                     <div style="margin-top: 1rem;"><a href="sertifikat-ruangguru.pdf" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">📄 View Certificate</a></div>
                 </div>
             </div>
+            <!-- Card 2: RevoU -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image" style="background: transparent; border-bottom: 1px solid var(--border);">📱</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
@@ -1135,6 +1169,7 @@
                     <div style="margin-top: 1rem;"><a href="sertifikat-revou.pdf" target="_blank" class="btn btn-secondary" style="display: block; text-align: center; padding: 0.5rem 1rem; font-size: 0.8rem;">📄 View Certificate</a></div>
                 </div>
             </div>
+            <!-- Card 3: UPI -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image" style="background: transparent; border-bottom: 1px solid var(--border);">🎓</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
@@ -1154,8 +1189,6 @@
         <h2 class="section-title">Skills & Tools</h2>
         <p class="section-subtitle">Bridging creativity and analytics to drive business growth</p>
         <div class="skills-container">
-
-            <!-- Social Media -->
             <div class="skill-category">
                 <h3>📱 Social Media</h3>
                 <ul class="skill-list">
@@ -1168,106 +1201,42 @@
                     <li><span style="font-size:1rem;">🔍</span> SEO Content Writing</li>
                 </ul>
             </div>
-
-            <!-- Data Analytics -->
             <div class="skill-category">
                 <h3>📊 Data Analytics</h3>
                 <ul class="skill-list">
-                    <li>
-                        <span style="background:#336791;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;letter-spacing:0.5px;">SQL</span>
-                        MySQL / SQL Query
-                    </li>
-                    <li>
-                        <span style="background:#3776AB;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">PY</span>
-                        Python (Pandas, Matplotlib)
-                    </li>
-                    <li>
-                        <span style="background:#E97627;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">TB</span>
-                        Tableau
-                    </li>
-                    <li>
-                        <span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">LS</span>
-                        Looker Studio
-                    </li>
-                    <li>
-                        <span style="background:#217346;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">XL</span>
-                        Excel (Advanced Formulas)
-                    </li>
-                    <li>
-                        <span style="background:#EA4335;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GS</span>
-                        Google Sheets
-                    </li>
-                    <li>
-                        <span style="background:#666;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">SP</span>
-                        SPSS
-                    </li>
+                    <li><span style="background:#336791;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;letter-spacing:0.5px;">SQL</span> MySQL / SQL Query</li>
+                    <li><span style="background:#3776AB;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">PY</span> Python (Pandas, Matplotlib)</li>
+                    <li><span style="background:#E97627;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">TB</span> Tableau</li>
+                    <li><span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">LS</span> Looker Studio</li>
+                    <li><span style="background:#217346;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">XL</span> Excel (Advanced Formulas)</li>
+                    <li><span style="background:#EA4335;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GS</span> Google Sheets</li>
+                    <li><span style="background:#666;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">SP</span> SPSS</li>
                 </ul>
             </div>
-
-            <!-- Creative Tools -->
             <div class="skill-category">
                 <h3>🎨 Creative Tools</h3>
                 <ul class="skill-list">
-                    <li>
-                        <span style="background:#00C4CC;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">CV</span>
-                        Canva
-                    </li>
-                    <li>
-                        <span style="background:#111;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">CC</span>
-                        CapCut
-                    </li>
-                    <li>
-                        <span style="background:#31A8FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Lr</span>
-                        Adobe Lightroom
-                    </li>
-                    <li>
-                        <span style="background:#31A8FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Ps</span>
-                        Adobe Photoshop
-                    </li>
-                    <li>
-                        <span style="background:#9999FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Pr</span>
-                        Adobe Premiere Pro
-                    </li>
+                    <li><span style="background:#00C4CC;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">CV</span> Canva</li>
+                    <li><span style="background:#111;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">CC</span> CapCut</li>
+                    <li><span style="background:#31A8FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Lr</span> Adobe Lightroom</li>
+                    <li><span style="background:#31A8FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Ps</span> Adobe Photoshop</li>
+                    <li><span style="background:#9999FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Pr</span> Adobe Premiere Pro</li>
                     <li><span style="font-size:1rem;">📸</span> Photography</li>
                     <li><span style="font-size:1rem;">🎬</span> Video Production</li>
                 </ul>
             </div>
-
-            <!-- Analytics Platforms -->
             <div class="skill-category">
                 <h3>🔧 Analytics Platforms</h3>
                 <ul class="skill-list">
-                    <li>
-                        <span style="background:#111;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">TT</span>
-                        TikTok Analytics
-                    </li>
-                    <li>
-                        <span style="background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">IG</span>
-                        Instagram Insights
-                    </li>
-                    <li>
-                        <span style="background:#EA4335;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GA</span>
-                        Google Analytics
-                    </li>
-                    <li>
-                        <span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GT</span>
-                        Google Trends
-                    </li>
-                    <li>
-                        <span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">LS</span>
-                        Looker Studio
-                    </li>
-                    <li>
-                        <span style="background:#000;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">N</span>
-                        Notion
-                    </li>
-                    <li>
-                        <span style="background:#217346;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">MS</span>
-                        Microsoft Office
-                    </li>
+                    <li><span style="background:#111;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">TT</span> TikTok Analytics</li>
+                    <li><span style="background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">IG</span> Instagram Insights</li>
+                    <li><span style="background:#EA4335;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GA</span> Google Analytics</li>
+                    <li><span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GT</span> Google Trends</li>
+                    <li><span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">LS</span> Looker Studio</li>
+                    <li><span style="background:#000;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">N</span> Notion</li>
+                    <li><span style="background:#217346;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">MS</span> Microsoft Office</li>
                 </ul>
             </div>
-
         </div>
     </section>
 
