@@ -435,6 +435,7 @@
             position: relative;
             max-width: 100%;
             margin-top: 2rem;
+            overflow: visible;
         }
         
         .carousel-container {
@@ -443,10 +444,11 @@
             overflow-x: auto;
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
-            padding: 2rem 1rem;
+            padding: 2rem 0;
+            margin: 0 30px;
             scrollbar-width: none;
             -ms-overflow-style: none;
-            scroll-padding: 0 1rem;
+            scroll-padding: 0 30px;
         }
         .carousel-container::-webkit-scrollbar {
             display: none;
@@ -455,17 +457,16 @@
         .carousel-card {
             flex: 0 0 320px;
             scroll-snap-align: start;
-            display: flex;
-            flex-direction: column;
-            transition: filter 0.3s, transform 0.3s;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            opacity: 1;
         }
         
-        /* Efek hover redup & blur pada semua kartu */
         .carousel-container:hover .carousel-card {
-            filter: blur(2px) brightness(0.8);
+            opacity: 0.5;
+            filter: none;
         }
         .carousel-container .carousel-card:hover {
-            filter: none;
+            opacity: 1;
             z-index: 2;
         }
         .carousel-card:hover .portfolio-card {
@@ -474,7 +475,6 @@
             border-color: var(--accent);
         }
         
-        /* Panah navigasi */
         .carousel-arrow {
             position: absolute;
             top: 50%;
@@ -501,10 +501,10 @@
             opacity: 1;
         }
         .carousel-arrow-left {
-            left: -5px;
+            left: -20px;
         }
         .carousel-arrow-right {
-            right: -5px;
+            right: -20px;
         }
         
         @media (max-width: 768px) {
@@ -514,6 +514,15 @@
             .carousel-arrow {
                 width: 35px;
                 height: 35px;
+            }
+            .carousel-arrow-left {
+                left: -10px;
+            }
+            .carousel-arrow-right {
+                right: -10px;
+            }
+            .carousel-container {
+                margin: 0 20px;
             }
         }
         
@@ -1202,7 +1211,6 @@
         <p class="section-subtitle">Transforming raw data into strategic recommendations using SQL, Excel, and Looker Studio</p>
         
         <div class="portfolio-grid">
-            <!-- Card 1 -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image">📈</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
@@ -1215,7 +1223,6 @@
                 </div>
             </div>
 
-            <!-- Card 2 -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image">🛒</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
@@ -1228,7 +1235,6 @@
                 </div>
             </div>
 
-            <!-- Card 3 -->
             <div class="portfolio-card" style="display: flex; flex-direction: column; height: 100%;">
                 <div class="card-image">💻</div>
                 <div class="card-content" style="display: flex; flex-direction: column; flex-grow: 1;">
