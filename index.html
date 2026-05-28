@@ -445,11 +445,11 @@
             overflow-y: visible;
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
-            padding: 2rem 1.5rem; /* Safe area untuk hover dan shadow */
-            margin: 0 30px; /* Ruang untuk panah */
+            padding: 2rem 1.5rem 2.5rem 1.5rem; /* padding bawah lebih besar */
+            margin: 0 30px;
             scrollbar-width: none;
             -ms-overflow-style: none;
-            scroll-padding: 0 1.5rem; /* Sinkronisasi dengan padding kiri/kanan */
+            scroll-padding: 0 1.5rem;
         }
         .carousel-container::-webkit-scrollbar {
             display: none;
@@ -472,7 +472,7 @@
         }
         .carousel-card:hover .portfolio-card {
             transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 20px 35px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15); /* shadow lebih kecil */
             border-color: var(--accent);
         }
         
@@ -524,7 +524,7 @@
             }
             .carousel-container {
                 margin: 0 20px;
-                padding: 1.5rem 1rem;
+                padding: 1.5rem 1rem 2rem 1rem;
                 scroll-padding: 0 1rem;
             }
         }
@@ -534,7 +534,7 @@
             border: 1px solid var(--border);
             border-radius: 8px;
             overflow: hidden;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
             height: 100%;
@@ -670,6 +670,8 @@
         .skill-list li:last-child {
             border-bottom: none;
         }
+        
+        /* Simbol segitiga dihapus, ikon sudah ada di HTML */
         
         .contact-section {
             background: var(--bg-primary);
@@ -1301,10 +1303,120 @@
         <h2 class="section-title">Skills & Tools</h2>
         <p class="section-subtitle">Bridging creativity and analytics to drive business growth</p>
         <div class="skills-container">
-            <div class="skill-category"><h3>📱 Social Media</h3><ul class="skill-list"><li>Content Strategy & Planning</li><li>Social Media Management</li><li>Copywriting & Storytelling</li><li>Community Engagement</li><li>Trend Analysis</li><li>Performance Analytics</li><li>Brand Building</li></ul></div>
-            <div class="skill-category"><h3>📊 Data Analytics</h3><ul class="skill-list"><li>SQL (PostgreSQL, MySQL)</li><li>Python (Pandas, Matplotlib)</li><li>Data Visualization (Tableau, Looker)</li><li>Excel (Advanced Formulas)</li><li>Statistical Analysis</li><li>Reporting & Dashboards</li></ul></div>
-            <div class="skill-category"><h3>🎨 Creative Tools</h3><ul class="skill-list"><li>Canva (Design)</li><li>CapCut (Video Editing)</li><li>Adobe Lightroom</li><li>Adobe Premiere Pro</li><li>Photography</li><li>Content Production</li></ul></div>
-            <div class="skill-category"><h3>🔧 Analytics Tools</h3><ul class="skill-list"><li>TikTok Analytics</li><li>Instagram Insights</li><li>Google Analytics</li><li>Google Trends</li><li>Looker Studio</li><li>Google Sheets (Advanced)</li><li>Notion</li></ul></div>
+
+            <!-- Social Media -->
+            <div class="skill-category">
+                <h3>📱 Social Media</h3>
+                <ul class="skill-list">
+                    <li><span style="font-size:1rem;">📋</span> Content Strategy & Planning</li>
+                    <li><span style="font-size:1rem;">⚙️</span> Social Media Management</li>
+                    <li><span style="font-size:1rem;">✍️</span> Copywriting & Storytelling</li>
+                    <li><span style="font-size:1rem;">🤝</span> Community Engagement</li>
+                    <li><span style="font-size:1rem;">📈</span> Trend Analysis</li>
+                    <li><span style="font-size:1rem;">🎯</span> Performance Marketing</li>
+                    <li><span style="font-size:1rem;">🔍</span> SEO Content Writing</li>
+                </ul>
+            </div>
+
+            <!-- Data Analytics -->
+            <div class="skill-category">
+                <h3>📊 Data Analytics</h3>
+                <ul class="skill-list">
+                    <li>
+                        <span style="background:#336791;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;letter-spacing:0.5px;">SQL</span>
+                        MySQL / SQL Query
+                    </li>
+                    <li>
+                        <span style="background:#3776AB;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">PY</span>
+                        Python (Pandas, Matplotlib)
+                    </li>
+                    <li>
+                        <span style="background:#E97627;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">TB</span>
+                        Tableau
+                    </li>
+                    <li>
+                        <span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">LS</span>
+                        Looker Studio
+                    </li>
+                    <li>
+                        <span style="background:#217346;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">XL</span>
+                        Excel (Advanced Formulas)
+                    </li>
+                    <li>
+                        <span style="background:#EA4335;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GS</span>
+                        Google Sheets
+                    </li>
+                    <li>
+                        <span style="background:#666;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">SP</span>
+                        SPSS
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Creative Tools -->
+            <div class="skill-category">
+                <h3>🎨 Creative Tools</h3>
+                <ul class="skill-list">
+                    <li>
+                        <span style="background:#00C4CC;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">CV</span>
+                        Canva
+                    </li>
+                    <li>
+                        <span style="background:#111;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">CC</span>
+                        CapCut
+                    </li>
+                    <li>
+                        <span style="background:#31A8FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Lr</span>
+                        Adobe Lightroom
+                    </li>
+                    <li>
+                        <span style="background:#31A8FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Ps</span>
+                        Adobe Photoshop
+                    </li>
+                    <li>
+                        <span style="background:#9999FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Pr</span>
+                        Adobe Premiere Pro
+                    </li>
+                    <li><span style="font-size:1rem;">📸</span> Photography</li>
+                    <li><span style="font-size:1rem;">🎬</span> Video Production</li>
+                </ul>
+            </div>
+
+            <!-- Analytics Platforms -->
+            <div class="skill-category">
+                <h3>🔧 Analytics Platforms</h3>
+                <ul class="skill-list">
+                    <li>
+                        <span style="background:#111;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">TT</span>
+                        TikTok Analytics
+                    </li>
+                    <li>
+                        <span style="background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">IG</span>
+                        Instagram Insights
+                    </li>
+                    <li>
+                        <span style="background:#EA4335;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GA</span>
+                        Google Analytics
+                    </li>
+                    <li>
+                        <span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GT</span>
+                        Google Trends
+                    </li>
+                    <li>
+                        <span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">LS</span>
+                        Looker Studio
+                    </li>
+                    <li>
+                        <span style="background:#000;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">N</span>
+                        Notion
+                    </li>
+                    <li>
+                        <span style="background:#217346;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">MS</span>
+                        Microsoft Office
+                    </li>
+                </ul>
+            </div>
+
         </div>
     </section>
 
