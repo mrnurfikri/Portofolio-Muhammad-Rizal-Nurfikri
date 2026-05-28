@@ -69,7 +69,7 @@
             display: flex; justify-content: space-between; align-items: center;
         }
         .nav-left {
-            display: flex; align-items: center;
+            display: flex; align-items: center; gap: 1rem;
         }
         .nav-right {
             display: flex; align-items: center; gap: 1.5rem;
@@ -225,11 +225,12 @@
         
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .nav-right .theme-switch { display: none; }
-            .nav-left { order: 2; }
-            .nav-right { order: 3; }
-            .hamburger { display: flex; order: 3; }
+            .hamburger { display: flex; }
             .nav-container { justify-content: space-between; }
+            .nav-left { order: 1; } /* theme switch di kiri */
+            .nav-left .logo { order: 2; margin: 0 auto; } /* logo di tengah */
+            .nav-right { order: 3; } /* hamburger di kanan */
+            .nav-left .theme-switch { order: 1; }
             section { padding: 4rem 1rem; }
             .hero h1 { font-size: 2.5rem; }
             .hero .subtitle { font-size: 1.2rem; }
@@ -251,9 +252,10 @@
                 overscroll-behavior-x: contain; padding: 1.5rem 0.5rem; margin: 0;
                 scrollbar-width: none; -ms-overflow-style: none; justify-content: flex-start;
                 scroll-snap-type: x mandatory;
+                align-items: stretch; /* tinggi seragam */
             }
             .portfolio-grid::-webkit-scrollbar { display: none; }
-            .portfolio-grid .portfolio-card { flex: 0 0 80%; scroll-snap-align: start; min-height: 100%; }
+            .portfolio-grid .portfolio-card { flex: 0 0 80%; scroll-snap-align: start; height: auto; }
             
             .carousel-container { padding: 1.5rem 0.5rem; margin: 0 15px; }
             .carousel-card { flex: 0 0 80%; }
@@ -291,14 +293,13 @@
 <body>
     <nav>
         <div class="nav-container">
-            <!-- KIRI: Logo (desktop & mobile) -->
+            <!-- Kiri: logo + theme switch -->
             <div class="nav-left">
                 <a href="#home" class="logo">
                     <img src="bg-dark.png" alt="RN Logo" class="logo-dark">
                     <img src="bg-normal.png" alt="RN Logo" class="logo-light">
                 </a>
-                <!-- Dark mode di mobile: pindah ke sini -->
-                <div class="theme-switch mobile-theme" id="themeSwitchMobile" role="switch" aria-checked="false" tabindex="0" aria-label="Toggle theme">
+                <div class="theme-switch" id="themeSwitch" role="switch" aria-checked="false" tabindex="0" aria-label="Toggle theme">
                     <button class="theme-option active" data-theme="dark" aria-label="Dark mode">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
                     </button>
@@ -307,9 +308,7 @@
                     </button>
                 </div>
             </div>
-            <!-- TENGAH: Kosong -->
-            <div></div>
-            <!-- KANAN: Navbar desktop + Dark mode desktop + Hamburger mobile -->
+            <!-- Kanan: navbar + hamburger (mobile) -->
             <div class="nav-right">
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
@@ -324,16 +323,6 @@
                     </li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <!-- Dark mode desktop -->
-                <div class="theme-switch desktop-theme" id="themeSwitch" role="switch" aria-checked="false" tabindex="0" aria-label="Toggle theme">
-                    <button class="theme-option active" data-theme="dark" aria-label="Dark mode">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-                    </button>
-                    <button class="theme-option" data-theme="light" aria-label="Light mode">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                    </button>
-                </div>
-                <!-- Hamburger -->
                 <div class="hamburger" onclick="toggleMenu()">
                     <span></span><span></span><span></span>
                 </div>
@@ -445,7 +434,7 @@
         </div>
     </section>
 
-    <!-- Skills -->
+    <!-- Skills (tanpa loop) -->
     <section id="skills">
         <h2 class="section-title">Skills & Tools</h2>
         <p class="section-subtitle">Bridging creativity and analytics to drive business growth</p>
@@ -481,53 +470,41 @@
     </footer>
 
     <script>
-        // ========== THEME TOGGLE (DESKTOP + MOBILE) ==========
-        function syncThemes() {
-            const desktopSwitch = document.getElementById('themeSwitch');
-            const mobileSwitch = document.getElementById('themeSwitchMobile');
-            const body = document.body;
-            const savedTheme = localStorage.getItem('theme') || 'dark';
-            
-            function setTheme(theme) {
-                if (theme === 'light') {
-                    body.classList.add('light-mode');
-                    // Update desktop
-                    desktopSwitch.querySelector('[data-theme="dark"]').classList.remove('active');
-                    desktopSwitch.querySelector('[data-theme="light"]').classList.add('active');
-                    // Update mobile
-                    mobileSwitch.querySelector('[data-theme="dark"]').classList.remove('active');
-                    mobileSwitch.querySelector('[data-theme="light"]').classList.add('active');
-                } else {
-                    body.classList.remove('light-mode');
-                    desktopSwitch.querySelector('[data-theme="dark"]').classList.add('active');
-                    desktopSwitch.querySelector('[data-theme="light"]').classList.remove('active');
-                    mobileSwitch.querySelector('[data-theme="dark"]').classList.add('active');
-                    mobileSwitch.querySelector('[data-theme="light"]').classList.remove('active');
-                }
-            }
-            
-            setTheme(savedTheme);
-            
-            [desktopSwitch, mobileSwitch].forEach(switchEl => {
-                switchEl.querySelectorAll('.theme-option').forEach(option => {
-                    option.addEventListener('click', () => {
-                        const theme = option.dataset.theme;
-                        setTheme(theme);
-                        localStorage.setItem('theme', theme);
-                    });
-                });
-                switchEl.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        const currentTheme = body.classList.contains('light-mode') ? 'light' : 'dark';
-                        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-                        setTheme(newTheme);
-                        localStorage.setItem('theme', newTheme);
-                    }
-                });
+        // ========== THEME TOGGLE ==========
+        const themeSwitch = document.getElementById('themeSwitch');
+        const themeOptions = document.querySelectorAll('.theme-option');
+        const body = document.body;
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        setTheme(savedTheme);
+        themeOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const theme = option.dataset.theme;
+                setTheme(theme);
+                localStorage.setItem('theme', theme);
             });
+        });
+        themeSwitch.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const currentTheme = body.classList.contains('light-mode') ? 'light' : 'dark';
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                setTheme(newTheme);
+                localStorage.setItem('theme', newTheme);
+            }
+        });
+        function setTheme(theme) {
+            if (theme === 'light') {
+                body.classList.add('light-mode');
+                themeOptions[0].classList.remove('active');
+                themeOptions[1].classList.add('active');
+                themeSwitch.setAttribute('aria-checked', 'true');
+            } else {
+                body.classList.remove('light-mode');
+                themeOptions[0].classList.add('active');
+                themeOptions[1].classList.remove('active');
+                themeSwitch.setAttribute('aria-checked', 'false');
+            }
         }
-        syncThemes();
 
         // ========== ACTIVE NAV ==========
         function updateActiveNav() {
