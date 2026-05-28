@@ -185,88 +185,7 @@
         .card-stat-value { font-family: 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--accent); }
         .card-stat-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary); }
         
-        /* === MOBILE OPTIMIZATION === */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .hero .subtitle { font-size: 1.2rem; }
-            .section-title { font-size: 2rem; margin-bottom: 0.5rem; }
-            .section-subtitle { font-size: 0.85rem; margin-bottom: 2rem; }
-            .nav-links { display: none; }
-            .hamburger { display: flex; }
-            .theme-switch { display: flex; }
-            section { padding: 4rem 1rem; }
-            .stats { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
-            .stat-item { padding: 1rem; }
-            .stat-number { font-size: 1.8rem; }
-            .stat-label { font-size: 0.7rem; }
-            .hero p { font-size: 0.9rem; }
-            .cta-buttons { flex-direction: column; }
-            .btn { width: 100%; text-align: center; padding: 0.7rem 1.5rem; font-size: 0.8rem; }
-
-            /* Jadikan semua section carousel di mobile */
-            .portfolio-grid {
-                display: flex; gap: 1rem; overflow-x: auto; overflow-y: visible;
-                -webkit-overflow-scrolling: touch; scroll-behavior: smooth;
-                overscroll-behavior-x: contain; padding: 1.5rem 0.5rem 1.5rem 0.5rem; margin: 0;
-                scrollbar-width: none; -ms-overflow-style: none; justify-content: flex-start;
-                scroll-snap-type: x mandatory;
-                mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-                -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-            }
-            .portfolio-grid::-webkit-scrollbar { display: none; }
-            
-            /* Card di mobile carousel */
-            .portfolio-grid .portfolio-card {
-                flex: 0 0 75%; scroll-snap-align: start;
-            }
-            
-            /* Override untuk carousel Social Media yang sudah ada */
-            .carousel-container {
-                padding: 1.5rem 0.5rem 1.5rem 0.5rem; margin: 0 15px;
-            }
-            .carousel-card { flex: 0 0 75%; }
-
-            /* Card lebih pendek & padat di mobile */
-            .card-image { height: 100px; font-size: 2rem; }
-            .card-content { padding: 1rem; }
-            .card-title { font-size: 1.2rem; margin-bottom: 0.3rem; }
-            .card-description { font-size: 0.8rem; margin-bottom: 0.7rem; }
-            .card-meta { gap: 0.4rem; margin-bottom: 0.6rem; }
-            .card-tag { font-size: 0.65rem; padding: 0.15rem 0.6rem; }
-            .card-stats { gap: 1rem; padding-top: 0.7rem; }
-            .card-stat-value { font-size: 1.1rem; }
-            .card-stat-label { font-size: 0.65rem; }
-            .insight-box { padding: 0.7rem; font-size: 0.78rem; margin: 0.6rem 0; }
-            .insight-box ul { padding-left: 1rem; }
-            .insight-box strong { margin-bottom: 0.3rem; }
-            .btn-small { padding: 0.4rem 0.8rem; font-size: 0.7rem; }
-
-            /* Arrow lebih kecil */
-            .carousel-arrow { width: 32px; height: 32px; font-size: 1rem; }
-            .carousel-arrow-left { left: -8px; }
-            .carousel-arrow-right { right: -8px; }
-        }
-        
         .skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-        @media (max-width: 768px) {
-            .skills-container {
-                display: flex; gap: 1rem; overflow-x: auto; overflow-y: visible;
-                -webkit-overflow-scrolling: touch; scroll-behavior: smooth;
-                overscroll-behavior-x: contain; padding: 1rem 0.5rem; margin: 0;
-                scrollbar-width: none; -ms-overflow-style: none; justify-content: flex-start;
-                scroll-snap-type: x mandatory;
-                mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-                -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-            }
-            .skills-container::-webkit-scrollbar { display: none; }
-            .skill-category {
-                flex: 0 0 75%; scroll-snap-align: start;
-                padding: 1.2rem;
-            }
-            .skill-category h3 { font-size: 1.1rem; margin-bottom: 1rem; }
-            .skill-list li { padding: 0.4rem 0; font-size: 0.8rem; }
-        }
-        
         .skill-category { background: var(--card-bg); border: none; box-shadow: var(--shadow); border-radius: 12px; padding: 2rem; }
         .skill-category h3 { font-family: 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem; color: var(--accent); }
         .skill-list { list-style: none; }
@@ -274,7 +193,6 @@
         .skill-list li:last-child { border-bottom: none; }
         
         .contact-section { background: var(--bg-primary); text-align: center; padding: 6rem 2rem; transition: background 0.3s ease; }
-        @media (max-width: 768px) { .contact-section { padding: 4rem 1rem; } }
         .contact-container { max-width: 1200px; margin: 0 auto; }
         .contact-links { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin-top: 3rem; }
         .contact-item { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; text-decoration: none; color: inherit; transition: all 0.3s; }
@@ -301,10 +219,87 @@
         .mobile-submenu { padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.4rem; }
         .badge-open { background: var(--badge-bg); border: 1px solid var(--accent); color: var(--accent); }
         .about-tag { background: var(--tag-bg); border: 1px solid var(--tag-border); color: var(--accent); padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-        @media (max-width: 768px) { .about-tag { font-size: 0.65rem; padding: 0.3rem 0.7rem; } }
         
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
         html { scroll-behavior: smooth; }
+        
+        /* === MOBILE OPTIMIZATION === */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero .subtitle { font-size: 1.2rem; }
+            .section-title { font-size: 2rem; margin-bottom: 0.5rem; }
+            .section-subtitle { font-size: 0.85rem; margin-bottom: 2rem; }
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .theme-switch { display: flex; }
+            section { padding: 4rem 1rem; }
+            .stats { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+            .stat-item { padding: 1rem; }
+            .stat-number { font-size: 1.8rem; }
+            .stat-label { font-size: 0.7rem; }
+            .hero p { font-size: 0.9rem; }
+            .cta-buttons { flex-direction: column; }
+            .btn { width: 100%; text-align: center; padding: 0.7rem 1.5rem; font-size: 0.8rem; }
+
+            /* Sembunyikan panah di mobile */
+            .carousel-arrow { display: none; }
+
+            /* Jadikan semua section carousel di mobile */
+            .portfolio-grid {
+                display: flex; gap: 1rem; overflow-x: auto; overflow-y: visible;
+                -webkit-overflow-scrolling: touch; scroll-behavior: smooth;
+                overscroll-behavior-x: contain; padding: 1.5rem 0.5rem; margin: 0;
+                scrollbar-width: none; -ms-overflow-style: none; justify-content: flex-start;
+                scroll-snap-type: x mandatory;
+                mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+                -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+            }
+            .portfolio-grid::-webkit-scrollbar { display: none; }
+            
+            /* Card lebih kecil & seragam */
+            .portfolio-grid .portfolio-card {
+                flex: 0 0 75%; scroll-snap-align: start;
+            }
+            
+            /* Override untuk carousel Social Media yang sudah ada */
+            .carousel-container {
+                padding: 1.5rem 0.5rem; margin: 0 15px;
+            }
+            .carousel-card { flex: 0 0 75%; }
+
+            /* Card lebih pendek & padat di mobile */
+            .card-image { height: 100px; font-size: 2rem; }
+            .card-content { padding: 1rem; }
+            .card-title { font-size: 1.2rem; margin-bottom: 0.3rem; }
+            .card-description { font-size: 0.8rem; margin-bottom: 0.7rem; }
+            .card-meta { gap: 0.4rem; margin-bottom: 0.6rem; }
+            .card-tag { font-size: 0.65rem; padding: 0.15rem 0.6rem; }
+            .card-stats { gap: 1rem; padding-top: 0.7rem; }
+            .card-stat-value { font-size: 1.1rem; }
+            .card-stat-label { font-size: 0.65rem; }
+            .insight-box { padding: 0.7rem; font-size: 0.78rem; margin: 0.6rem 0; }
+            .insight-box ul { padding-left: 1rem; }
+            .insight-box strong { margin-bottom: 0.3rem; }
+            .btn-small { padding: 0.4rem 0.8rem; font-size: 0.7rem; }
+
+            /* Skills infinite scroll */
+            .skills-container {
+                display: flex; gap: 1rem; overflow-x: auto; overflow-y: visible;
+                -webkit-overflow-scrolling: touch; scroll-behavior: auto;
+                overscroll-behavior-x: contain; padding: 1rem 0.5rem; margin: 0;
+                scrollbar-width: none; -ms-overflow-style: none;
+                mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+                -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+            }
+            .skills-container::-webkit-scrollbar { display: none; }
+            .skill-category {
+                flex: 0 0 75%; scroll-snap-align: start;
+                padding: 1.2rem;
+            }
+            .skill-category h3 { font-size: 1.1rem; margin-bottom: 1rem; }
+            .skill-list li { padding: 0.4rem 0; font-size: 0.8rem; }
+        }
+        
         @media (max-width: 768px) { #about > div { grid-template-columns: 1fr !important; gap: 2rem !important; } }
     </style>
 </head>
@@ -416,13 +411,13 @@
         <div class="carousel-wrapper">
             <button class="carousel-arrow carousel-arrow-left" id="carouselLeft" aria-label="Scroll left"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
             <div class="carousel-container" id="carouselContainer">
-                <!-- 1. HOOKED0N --><div class="carousel-card"><div class="portfolio-card"><div class="card-image">👔</div><div class="card-content"><h3 class="card-title">HOOKED0N</h3><div class="card-meta"><span class="card-tag">TikTok</span><span class="card-tag">Fashion Trends</span></div><p class="card-description">Fashion trends media providing latest style information and inspirations for fashion enthusiasts.</p><div class="card-stats"><div class="card-stat"><span class="card-stat-value">530K+</span><span class="card-stat-label">Peak Views</span></div><div class="card-stat"><span class="card-stat-value">72.2K+</span><span class="card-stat-label">Likes</span></div><div class="card-stat"><span class="card-stat-value">251</span><span class="card-stat-label">Followers</span></div></div><div style="margin-top:1rem;"><a href="https://www.tiktok.com/@hooked0n?lang=id-ID" target="_blank" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;">See Fashion Trends</a></div></div></div></div>
-                <!-- 2. Freelance Clients --><div class="carousel-card"><div class="portfolio-card"><div class="card-image">💼</div><div class="card-content"><h3 class="card-title">Freelance Clients</h3><div class="card-meta"><span class="card-tag">Instagram</span><span class="card-tag">Management</span></div><p class="card-description">Managing multiple brand accounts with content strategy, performance optimization, and analytics.</p><div class="card-stats"><div class="card-stat"><span class="card-stat-value">25-45%</span><span class="card-stat-label">Engagement ↑</span></div><div class="card-stat"><span class="card-stat-value">Multi</span><span class="card-stat-label">Brands</span></div><div class="card-stat"><span class="card-stat-value">2024</span><span class="card-stat-label">Present</span></div></div><div style="margin-top:1rem;"><a href="potrofolio.pdf" target="_blank" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;">View Portfolio</a></div></div></div></div>
-                <!-- 3. Verda Harvest --><div class="carousel-card"><div class="portfolio-card"><div class="card-image">🌱</div><div class="card-content"><h3 class="card-title">Verda Harvest</h3><div class="card-meta"><span class="card-tag">TikTok</span><span class="card-tag">Content Creation</span></div><p class="card-description">Urban farming brand focused on hydroponics. Educational content from seed to harvest documentation.</p><div class="card-stats"><div class="card-stat"><span class="card-stat-value">369K+</span><span class="card-stat-label">Views</span></div><div class="card-stat"><span class="card-stat-value">15.8K+</span><span class="card-stat-label">Likes</span></div><div class="card-stat"><span class="card-stat-value">1.4K+</span><span class="card-stat-label">Followers</span></div></div><div style="margin-top:1rem;"><a href="https://www.tiktok.com/@verda.harvest?lang=id-ID" target="_blank" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;">Watch on TikTok</a></div></div></div></div>
-                <!-- 4. Begajul Gaming --><div class="carousel-card"><div class="portfolio-card"><div class="card-image">🎮</div><div class="card-content"><h3 class="card-title">Begajul Gaming</h3><div class="card-meta"><span class="card-tag">TikTok</span><span class="card-tag">Live Streaming</span></div><p class="card-description">Gaming TikTok account as Live Streamer & Content Creator. Real-time audience interaction with highlight content from various game sessions.</p><div class="card-stats"><div class="card-stat"><span class="card-stat-value">1.3M+</span><span class="card-stat-label">Peak Views</span></div><div class="card-stat"><span class="card-stat-value">167.5K+</span><span class="card-stat-label">Likes</span></div><div class="card-stat"><span class="card-stat-value">1,310</span><span class="card-stat-label">Followers</span></div></div><div style="margin-top:1rem;"><a href="https://www.tiktok.com/@vibraint?lang=id-ID" target="_blank" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;">Watch on TikTok</a></div></div></div></div>
-                <!-- 5. @octricubla --><div class="carousel-card"><div class="portfolio-card"><div class="card-image">👟</div><div class="card-content"><h3 class="card-title">@octricubla</h3><div class="card-meta"><span class="card-tag">TikTok</span><span class="card-tag">Personal Brand</span></div><p class="card-description">Personal brand as fashion enthusiast and sneakerhead sharing tips and shoe reviews.</p><div class="card-stats"><div class="card-stat"><span class="card-stat-value">828</span><span class="card-stat-label">Likes</span></div><div class="card-stat"><span class="card-stat-value">83</span><span class="card-stat-label">Followers</span></div><div class="card-stat"><span class="card-stat-value">Niche</span><span class="card-stat-label">Community</span></div></div><div style="margin-top:1rem;"><a href="https://www.tiktok.com/@octricubla" target="_blank" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;">Follow on TikTok</a></div></div></div></div>
-                <!-- 6. BIGIO Internship --><div class="carousel-card"><div class="portfolio-card"><div class="card-image">🚀</div><div class="card-content"><h3 class="card-title">BIGIO Internship</h3><div class="card-meta"><span class="card-tag">Instagram</span><span class="card-tag">Internship</span></div><p class="card-description">Managed dimulai.id & dzikra.app Instagram accounts for Islamic lifestyle tech apps.</p><div class="card-stats"><div class="card-stat"><span class="card-stat-value">100K+</span><span class="card-stat-label">Views</span></div><div class="card-stat"><span class="card-stat-value">1K+</span><span class="card-stat-label">Downloads</span></div><div class="card-stat"><span class="card-stat-value">2022</span><span class="card-stat-label">Aug-Dec</span></div></div><div style="margin-top:1rem;"><a href="sertifikat.pdf" target="_blank" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;">See Internship Results</a></div></div></div></div>
-                <!-- 7. MRN.SHP --><div class="carousel-card"><div class="portfolio-card"><div class="card-image">🛍️</div><div class="card-content"><h3 class="card-title">MRN.SHP</h3><div class="card-meta"><span class="card-tag">Instagram</span><span class="card-tag">E-commerce</span></div><p class="card-description">Online fashion retail shop utilizing Instagram and Tokopedia as sales platforms.</p><div class="card-stats"><div class="card-stat"><span class="card-stat-value">100+</span><span class="card-stat-label">Products Sold</span></div><div class="card-stat"><span class="card-stat-value">1K+</span><span class="card-stat-label">Likes</span></div><div class="card-stat"><span class="card-stat-value">3 Yrs</span><span class="card-stat-label">Operation</span></div></div><div style="margin-top:1rem;"><a href="https://www.instagram.com/murinushop/" target="_blank" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;">Visit Shop</a></div></div></div></div>
+                <div class="carousel-card"><div class="portfolio-card"><div class="card-image">👔</div><div class="card-content"><h3 class="card-title">HOOKED0N</h3><div class="card-meta"><span class="card-tag">TikTok</span><span class="card-tag">Fashion Trends</span></div><p class="card-description">Fashion trends media providing latest style information and inspirations for fashion enthusiasts.</p><div class="card-stats"><div class="card-stat"><span class="card-stat-value">530K+</span><span class="card-stat-label">Peak Views</span></div><div class="card-stat"><span class="card-stat-value">72.2K+</span><span class="card-stat-label">Likes</span></div><div class="card-stat"><span class="card-stat-value">251</span><span class="card-stat-label">Followers</span></div></div><div style="margin-top:1rem;"><a href="https://www.tiktok.com/@hooked0n?lang=id-ID" target="_blank" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;">See Fashion Trends</a></div></div></div></div>
+                <div class="carousel-card"><div class="portfolio-card"><div class="card-image">💼</div><div class="card-content"><h3 class="card-title">Freelance Clients</h3><div class="card-meta"><span class="card-tag">Instagram</span><span class="card-tag">Management</span></div><p class="card-description">Managing multiple brand accounts with content strategy, performance optimization, and analytics.</p><div class="card-stats"><div class="card-stat"><span class="card-stat-value">25-45%</span><span class="card-stat-label">Engagement ↑</span></div><div class="card-stat"><span class="card-stat-value">Multi</span><span class="card-stat-label">Brands</span></div><div class="card-stat"><span class="card-stat-value">2024</span><span class="card-stat-label">Present</span></div></div><div style="margin-top:1rem;"><a href="potrofolio.pdf" target="_blank" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;">View Portfolio</a></div></div></div></div>
+                <div class="carousel-card"><div class="portfolio-card"><div class="card-image">🌱</div><div class="card-content"><h3 class="card-title">Verda Harvest</h3><div class="card-meta"><span class="card-tag">TikTok</span><span class="card-tag">Content Creation</span></div><p class="card-description">Urban farming brand focused on hydroponics. Educational content from seed to harvest documentation.</p><div class="card-stats"><div class="card-stat"><span class="card-stat-value">369K+</span><span class="card-stat-label">Views</span></div><div class="card-stat"><span class="card-stat-value">15.8K+</span><span class="card-stat-label">Likes</span></div><div class="card-stat"><span class="card-stat-value">1.4K+</span><span class="card-stat-label">Followers</span></div></div><div style="margin-top:1rem;"><a href="https://www.tiktok.com/@verda.harvest?lang=id-ID" target="_blank" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;">Watch on TikTok</a></div></div></div></div>
+                <div class="carousel-card"><div class="portfolio-card"><div class="card-image">🎮</div><div class="card-content"><h3 class="card-title">Begajul Gaming</h3><div class="card-meta"><span class="card-tag">TikTok</span><span class="card-tag">Live Streaming</span></div><p class="card-description">Gaming TikTok account as Live Streamer & Content Creator. Real-time audience interaction with highlight content from various game sessions.</p><div class="card-stats"><div class="card-stat"><span class="card-stat-value">1.3M+</span><span class="card-stat-label">Peak Views</span></div><div class="card-stat"><span class="card-stat-value">167.5K+</span><span class="card-stat-label">Likes</span></div><div class="card-stat"><span class="card-stat-value">1,310</span><span class="card-stat-label">Followers</span></div></div><div style="margin-top:1rem;"><a href="https://www.tiktok.com/@vibraint?lang=id-ID" target="_blank" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;">Watch on TikTok</a></div></div></div></div>
+                <div class="carousel-card"><div class="portfolio-card"><div class="card-image">👟</div><div class="card-content"><h3 class="card-title">@octricubla</h3><div class="card-meta"><span class="card-tag">TikTok</span><span class="card-tag">Personal Brand</span></div><p class="card-description">Personal brand as fashion enthusiast and sneakerhead sharing tips and shoe reviews.</p><div class="card-stats"><div class="card-stat"><span class="card-stat-value">828</span><span class="card-stat-label">Likes</span></div><div class="card-stat"><span class="card-stat-value">83</span><span class="card-stat-label">Followers</span></div><div class="card-stat"><span class="card-stat-value">Niche</span><span class="card-stat-label">Community</span></div></div><div style="margin-top:1rem;"><a href="https://www.tiktok.com/@octricubla" target="_blank" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;">Follow on TikTok</a></div></div></div></div>
+                <div class="carousel-card"><div class="portfolio-card"><div class="card-image">🚀</div><div class="card-content"><h3 class="card-title">BIGIO Internship</h3><div class="card-meta"><span class="card-tag">Instagram</span><span class="card-tag">Internship</span></div><p class="card-description">Managed dimulai.id & dzikra.app Instagram accounts for Islamic lifestyle tech apps.</p><div class="card-stats"><div class="card-stat"><span class="card-stat-value">100K+</span><span class="card-stat-label">Views</span></div><div class="card-stat"><span class="card-stat-value">1K+</span><span class="card-stat-label">Downloads</span></div><div class="card-stat"><span class="card-stat-value">2022</span><span class="card-stat-label">Aug-Dec</span></div></div><div style="margin-top:1rem;"><a href="sertifikat.pdf" target="_blank" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;">See Internship Results</a></div></div></div></div>
+                <div class="carousel-card"><div class="portfolio-card"><div class="card-image">🛍️</div><div class="card-content"><h3 class="card-title">MRN.SHP</h3><div class="card-meta"><span class="card-tag">Instagram</span><span class="card-tag">E-commerce</span></div><p class="card-description">Online fashion retail shop utilizing Instagram and Tokopedia as sales platforms.</p><div class="card-stats"><div class="card-stat"><span class="card-stat-value">100+</span><span class="card-stat-label">Products Sold</span></div><div class="card-stat"><span class="card-stat-value">1K+</span><span class="card-stat-label">Likes</span></div><div class="card-stat"><span class="card-stat-value">3 Yrs</span><span class="card-stat-label">Operation</span></div></div><div style="margin-top:1rem;"><a href="https://www.instagram.com/murinushop/" target="_blank" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;">Visit Shop</a></div></div></div></div>
             </div>
             <button class="carousel-arrow carousel-arrow-right" id="carouselRight" aria-label="Scroll right"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
         </div>
@@ -450,7 +445,7 @@
         </div>
     </section>
 
-    <!-- Skills (Grid → Carousel di mobile) -->
+    <!-- Skills (Infinite loop di mobile) -->
     <section id="skills">
         <h2 class="section-title">Skills & Tools</h2>
         <p class="section-subtitle">Bridging creativity and analytics to drive business growth</p>
@@ -566,7 +561,7 @@
             btn.classList.toggle('visible', window.scrollY > 500);
         });
 
-        // ========== CAROUSEL: SMOOTH + BOUNCE (FIXED LAST CARD REACH) ==========
+        // ========== CAROUSEL: SMOOTH + BOUNCE ==========
         const carousel = document.getElementById('carouselContainer');
         const leftBtn = document.getElementById('carouselLeft');
         const rightBtn = document.getElementById('carouselRight');
@@ -660,9 +655,41 @@
                 }
             });
         }, { threshold: 0.5 });
-
         const statsSection = document.querySelector('.stats');
         if (statsSection) statsObserver.observe(statsSection);
+
+        // ========== SKILLS INFINITE SCROLL (MOBILE) ==========
+        function setupInfiniteScroll() {
+            if (window.innerWidth > 768) return;
+            const skillsContainer = document.querySelector('#skills .skills-container');
+            if (!skillsContainer || skillsContainer.dataset.infiniteSetup) return;
+            skillsContainer.dataset.infiniteSetup = 'true';
+            const originalCards = Array.from(skillsContainer.children);
+            originalCards.forEach(card => {
+                const clone = card.cloneNode(true);
+                skillsContainer.appendChild(clone);
+            });
+            const halfWidth = skillsContainer.scrollWidth / 2;
+            skillsContainer.addEventListener('scroll', () => {
+                const scrollLeft = skillsContainer.scrollLeft;
+                if (scrollLeft >= halfWidth + 10) {
+                    skillsContainer.scrollLeft = scrollLeft - halfWidth;
+                }
+            });
+        }
+        window.addEventListener('load', setupInfiniteScroll);
+        window.addEventListener('resize', () => {
+            const skillsContainer = document.querySelector('#skills .skills-container');
+            if (skillsContainer) {
+                delete skillsContainer.dataset.infiniteSetup;
+                const cards = skillsContainer.querySelectorAll('.skill-category');
+                const half = cards.length / 2;
+                if (half > 0 && cards.length > half) {
+                    for (let i = half; i < cards.length; i++) cards[i].remove();
+                }
+                setupInfiniteScroll();
+            }
+        });
     </script>
 </body>
 </html>
