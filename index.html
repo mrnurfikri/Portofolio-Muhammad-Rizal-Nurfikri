@@ -34,7 +34,7 @@
             --card-bg: #111111;
             --nav-bg: rgba(10, 10, 10, 0.95);
             --hero-gradient: rgba(var(--accent-rgb), 0.03);
-            --shadow: 0 4px 6px rgba(0,0,0,0.3);
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
             --theme-toggle-bg: rgba(255,255,255,0.05);
             --dropdown-bg: #1a1a1a;
             --badge-bg: rgba(var(--accent-rgb), 0.1);
@@ -54,7 +54,7 @@
             --card-bg: #ffffff;
             --nav-bg: rgba(241, 239, 238, 0.95);
             --hero-gradient: rgba(var(--accent-rgb), 0.03);
-            --shadow: 0 4px 6px rgba(0,0,0,0.05);
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
             --theme-toggle-bg: rgba(0,0,0,0.05);
             --dropdown-bg: #ffffff;
             --badge-bg: rgba(var(--accent-rgb), 0.1);
@@ -346,7 +346,7 @@
             padding: 1.5rem;
             background: var(--bg-secondary);
             text-align: center;
-            border-radius: 8px;
+            border-radius: 12px;
             transition: all 0.3s;
             box-shadow: var(--shadow);
         }
@@ -388,7 +388,7 @@
             transition: all 0.3s;
             display: inline-block;
             border: 1px solid transparent;
-            border-radius: 8px;
+            border-radius: 12px;
         }
         
         .btn-primary {
@@ -463,11 +463,14 @@
             overflow-y: visible;
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+            overscroll-behavior-x: contain;
             padding: 2rem 1.5rem 2.5rem 1.5rem;
             margin: 0 30px;
             scrollbar-width: none;
             -ms-overflow-style: none;
             scroll-padding: 0 1.5rem;
+            transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
         .carousel-container::-webkit-scrollbar {
             display: none;
@@ -478,6 +481,7 @@
             scroll-snap-align: start;
             transition: opacity 0.3s ease, transform 0.3s ease;
             opacity: 1;
+            will-change: transform;
         }
         
         .carousel-container:hover .carousel-card {
@@ -490,7 +494,7 @@
         }
         .carousel-card:hover .portfolio-card {
             transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.12);
             border-color: var(--accent);
         }
         
@@ -500,7 +504,8 @@
             top: 50%;
             transform: translateY(-50%);
             background: var(--card-bg);
-            border: 1px solid var(--border);
+            border: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             color: var(--text-primary);
             width: 40px;
             height: 40px;
@@ -508,14 +513,15 @@
             font-size: 1.2rem;
             cursor: pointer;
             z-index: 10;
-            transition: background 0.1s, color 0.1s, transform 0.1s;
+            transition: background 0.1s, color 0.1s, transform 0.1s ease-out;
             display: flex;
             align-items: center;
             justify-content: center;
-            opacity: 0.7;
-            -webkit-tap-highlight-color: transparent; /* hilangkan highlight biru di mobile */
+            opacity: 0.8;
+            -webkit-tap-highlight-color: transparent;
             outline: none;
             user-select: none;
+            pointer-events: auto;
         }
         
         /* Hover hanya untuk desktop (mouse) */
@@ -523,8 +529,8 @@
             .carousel-arrow:hover {
                 background: var(--accent);
                 color: var(--bg-primary);
-                border-color: var(--accent);
                 opacity: 1;
+                transform: translateY(-50%) scale(1.1);
             }
         }
         
@@ -532,9 +538,9 @@
         .carousel-arrow:active {
             background: var(--accent);
             color: var(--bg-primary);
-            border-color: var(--accent);
             opacity: 1;
             transform: translateY(-50%) scale(0.95);
+            transition: transform 0.1s ease-out;
         }
         
         .carousel-arrow-left {
@@ -569,14 +575,14 @@
         
         .portfolio-card {
             background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
+            border: none;
+            box-shadow: var(--shadow);
+            border-radius: 12px;
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             display: flex;
             flex-direction: column;
             height: 100%;
-            box-shadow: var(--shadow);
         }
         
         .portfolio-card:hover {
@@ -593,7 +599,7 @@
             justify-content: center;
             font-size: 2.5rem;
             border-bottom: 1px solid var(--border);
-            border-radius: 8px 8px 0 0;
+            border-radius: 12px 12px 0 0;
         }
         
         .card-content {
@@ -624,7 +630,7 @@
             background: var(--tag-bg);
             border: 1px solid var(--tag-border);
             padding: 0.2rem 0.8rem;
-            border-radius: 8px;
+            border-radius: 12px;
             font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -675,10 +681,10 @@
         
         .skill-category {
             background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 2rem;
+            border: none;
             box-shadow: var(--shadow);
+            border-radius: 12px;
+            padding: 2rem;
         }
         
         .skill-category h3 {
@@ -775,7 +781,7 @@
             padding: 1rem;
             background: var(--bg-secondary);
             border: 1px solid var(--border);
-            border-radius: 8px;
+            border-radius: 12px;
             font-size: 0.9rem;
         }
         
@@ -799,10 +805,11 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            border: 1px solid var(--accent);
-            border-radius: 8px;
+            border: none;
+            border-radius: 12px;
             transition: all 0.3s;
             display: inline-block;
+            box-shadow: var(--shadow);
         }
         
         .btn-small:hover {
@@ -819,7 +826,7 @@
             background: var(--accent);
             color: var(--bg-primary);
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             font-size: 1.2rem;
             cursor: pointer;
             opacity: 0;
@@ -829,6 +836,7 @@
             align-items: center;
             justify-content: center;
             font-weight: 700;
+            box-shadow: var(--shadow);
         }
         
         .back-to-top.visible {
@@ -1088,7 +1096,7 @@
             </div>
             <div style="display: flex; flex-direction: column; gap: 1rem;">
                 <p style="color: var(--accent); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; font-weight: 600; margin-bottom: 0.5rem;">Experience</p>
-                <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; transition: border-color 0.3s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="background: var(--card-bg); border: none; box-shadow: var(--shadow); border-radius: 12px; padding: 1.25rem; transition: border-color 0.3s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
                     <div style="display: flex; align-items: flex-start; gap: 1rem;">
                         <span style="font-size: 1.5rem; flex-shrink: 0;">🏥</span>
                         <div>
@@ -1098,7 +1106,7 @@
                         </div>
                     </div>
                 </div>
-                <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; transition: border-color 0.3s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="background: var(--card-bg); border: none; box-shadow: var(--shadow); border-radius: 12px; padding: 1.25rem; transition: border-color 0.3s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
                     <div style="display: flex; align-items: flex-start; gap: 1rem;">
                         <span style="font-size: 1.5rem; flex-shrink: 0;">💊</span>
                         <div>
@@ -1108,7 +1116,7 @@
                         </div>
                     </div>
                 </div>
-                <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; transition: border-color 0.3s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="background: var(--card-bg); border: none; box-shadow: var(--shadow); border-radius: 12px; padding: 1.25rem; transition: border-color 0.3s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
                     <div style="display: flex; align-items: flex-start; gap: 1rem;">
                         <span style="font-size: 1.5rem; flex-shrink: 0;">📱</span>
                         <div>
@@ -1118,7 +1126,7 @@
                         </div>
                     </div>
                 </div>
-                <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; transition: border-color 0.3s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="background: var(--card-bg); border: none; box-shadow: var(--shadow); border-radius: 12px; padding: 1.25rem; transition: border-color 0.3s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
                     <div style="display: flex; align-items: flex-start; gap: 1rem;">
                         <span style="font-size: 1.5rem; flex-shrink: 0;">🎓</span>
                         <div>
@@ -1579,10 +1587,39 @@
             btn.classList.toggle('visible', window.scrollY > 500);
         });
 
-        // ========== CAROUSEL ARROWS ==========
+        // ========== CAROUSEL ARROWS (dengan debounce & bounce effect) ==========
         const carousel = document.getElementById('carouselContainer');
         const leftBtn = document.getElementById('carouselLeft');
         const rightBtn = document.getElementById('carouselRight');
+        
+        let debounceTimer;
+        function debounceScroll(direction) {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => {
+                const step = getStep();
+                const currentScroll = carousel.scrollLeft;
+                const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+                
+                let newScroll;
+                if (direction === 'left') {
+                    newScroll = currentScroll - step;
+                    if (newScroll <= 0) {
+                        // bounce effect
+                        carousel.style.transform = 'scaleX(0.95)';
+                        setTimeout(() => { carousel.style.transform = 'scaleX(1)'; }, 150);
+                        newScroll = 0;
+                    }
+                } else {
+                    newScroll = currentScroll + step;
+                    if (newScroll >= maxScroll) {
+                        carousel.style.transform = 'scaleX(0.95)';
+                        setTimeout(() => { carousel.style.transform = 'scaleX(1)'; }, 150);
+                        newScroll = maxScroll;
+                    }
+                }
+                carousel.scrollTo({ left: newScroll, behavior: 'smooth' });
+            }, 100);
+        }
         
         function getStep() {
             const card = carousel.querySelector('.carousel-card');
@@ -1592,13 +1629,19 @@
             return cardWidth + gap;
         }
         
-        leftBtn.addEventListener('click', () => {
-            const step = getStep();
-            carousel.scrollBy({ left: -step, behavior: 'smooth' });
-        });
-        rightBtn.addEventListener('click', () => {
-            const step = getStep();
-            carousel.scrollBy({ left: step, behavior: 'smooth' });
+        leftBtn.addEventListener('click', () => debounceScroll('left'));
+        rightBtn.addEventListener('click', () => debounceScroll('right'));
+        
+        // Bounce effect untuk overscroll manual
+        carousel.addEventListener('scroll', () => {
+            const currentScroll = carousel.scrollLeft;
+            const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+            
+            if (currentScroll <= 0 || currentScroll >= maxScroll) {
+                carousel.style.transition = 'transform 0.2s ease-out';
+            } else {
+                carousel.style.transition = '';
+            }
         });
 
         function animateCounter(el, target, suffix = '') {
