@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -449,7 +448,7 @@
             margin-top: 2rem;
         }
         
-        /* ========== CAROUSEL (REVAMPED) ========== */
+        /* ========== CAROUSEL (REFINED) ========== */
         .carousel-wrapper {
             position: relative;
             z-index: 1;
@@ -469,7 +468,7 @@
             margin: 0 30px;
             scrollbar-width: none;
             -ms-overflow-style: none;
-            /* Bersihkan pinggiran dengan mask */
+            justify-content: flex-start;
             mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
             -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
         }
@@ -498,7 +497,6 @@
             border-color: var(--accent);
         }
         
-        /* Panah: posisikan agar tidak terpotong mask atau overflow */
         .carousel-arrow {
             position: absolute;
             top: 50%;
@@ -512,7 +510,7 @@
             border-radius: 50%;
             font-size: 1.2rem;
             cursor: pointer;
-            z-index: 100;               /* di atas mask */
+            z-index: 100;
             transition: background 0.1s, color 0.1s, transform 0.1s ease-out;
             display: flex;
             align-items: center;
@@ -549,7 +547,7 @@
         
         @media (max-width: 768px) {
             .carousel-card {
-                flex: 0 0 280px;
+                flex: 0 0 85%;
             }
             .carousel-arrow {
                 width: 35px;
@@ -563,7 +561,7 @@
             }
             .carousel-container {
                 margin: 0 20px;
-                padding: 1.5rem 1.5rem 2rem 1.5rem;
+                padding: 1.5rem 1rem 2rem 1rem;
             }
         }
         
@@ -939,9 +937,6 @@
             .theme-switch {
                 display: flex;
             }
-            .carousel-card {
-                flex: 0 0 280px;
-            }
         }
         
         html {
@@ -1134,7 +1129,7 @@
         </div>
     </section>
     
-    <!-- Social Media Portfolio dengan Carousel dan Panah Navigasi (7 KARTU) -->
+    <!-- Social Media Portfolio dengan Carousel dan Panah Navigasi -->
     <section id="social-media">
         <h2 class="section-title">Social Media Portfolio</h2>
         <p class="section-subtitle">Creating engaging content that drives real results through data-driven strategies</p>
@@ -1468,17 +1463,60 @@
             btn.classList.toggle('visible', window.scrollY > 500);
         });
 
-        // ========== CAROUSEL NAVIGATION (SMOOTH SCROLLBY) ==========
+        // ========== CAROUSEL NAVIGATION ==========
         const carousel = document.getElementById('carouselContainer');
         const leftBtn = document.getElementById('carouselLeft');
         const rightBtn = document.getElementById('carouselRight');
         
+        function getCardWidth() {
+            const card = carousel.querySelector('.carousel-card');
+            if (!card) return 320 + 24;
+            const style = getComputedStyle(carousel);
+            const gap = parseInt(style.gap) || 24;
+            return card.offsetWidth + gap;
+        }
+        
         leftBtn.addEventListener('click', () => {
-            carousel.scrollBy({ left: -carousel.offsetWidth * 0.8, behavior: 'smooth' });
+            const cardWidth = getCardWidth();
+            carousel.scrollBy({ left: -cardWidth, behavior: 'smooth' });
         });
         rightBtn.addEventListener('click', () => {
-            carousel.scrollBy({ left: carousel.offsetWidth * 0.8, behavior: 'smooth' });
+            const cardWidth = getCardWidth();
+            carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
         });
+
+        // ========== ANIMATED COUNTER ==========
+        function animateCounter(el, target, suffix = '') {
+            let start = 0;
+            const duration = 2000;
+            const step = target / (duration / 16);
+            const timer = setInterval(() => {
+                start += step;
+                if (start >= target) {
+                    start = target;
+                    clearInterval(timer);
+                }
+                el.textContent = Math.floor(start).toLocaleString() + suffix;
+            }, 16);
+        }
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = document.querySelectorAll('.stat-number');
+                    if (statNumbers.length >= 2) {
+                        animateCounter(statNumbers[0], 1300, 'K+');  // Peak Views: 1.3M+
+                        animateCounter(statNumbers[1], 257, 'K+');   // Total Likes: 257K+
+                    }
+                    statsObserver.unobserve(entry.target); // hanya sekali animasi
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
     </script>
 </body>
 </html>
