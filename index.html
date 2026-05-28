@@ -1463,7 +1463,7 @@
             btn.classList.toggle('visible', window.scrollY > 500);
         });
 
-        // ========== CAROUSEL NAVIGATION ==========
+        // ========== CAROUSEL NAVIGATION (SMOOTH + BOUNCE) ==========
         const carousel = document.getElementById('carouselContainer');
         const leftBtn = document.getElementById('carouselLeft');
         const rightBtn = document.getElementById('carouselRight');
@@ -1476,14 +1476,45 @@
             return card.offsetWidth + gap;
         }
         
-        leftBtn.addEventListener('click', () => {
+        function performBounce(direction) {
+            const container = carousel;
+            const maxScroll = container.scrollWidth - container.clientWidth;
+            const current = container.scrollLeft;
+            
+            // hanya bounce jika di ujung
+            if ((direction === 'left' && current <= 0) || (direction === 'right' && current >= maxScroll - 1)) {
+                container.style.transition = 'transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1)';
+                container.style.transform = 'scaleX(0.96)';
+                setTimeout(() => {
+                    container.style.transform = 'scaleX(1)';
+                }, 150);
+                setTimeout(() => {
+                    container.style.transition = '';
+                }, 400);
+                return true; // bounce dilakukan
+            }
+            return false;
+        }
+        
+        function navigateCarousel(direction) {
+            // Coba bounce dulu
+            if (performBounce(direction)) return;
+            
             const cardWidth = getCardWidth();
-            carousel.scrollBy({ left: -cardWidth, behavior: 'smooth' });
-        });
-        rightBtn.addEventListener('click', () => {
-            const cardWidth = getCardWidth();
-            carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
-        });
+            const currentScroll = carousel.scrollLeft;
+            const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+            
+            let target = direction === 'left' ? currentScroll - cardWidth : currentScroll + cardWidth;
+            target = Math.max(0, Math.min(target, maxScroll));
+            
+            carousel.scrollTo({
+                left: target,
+                behavior: 'smooth'
+            });
+        }
+        
+        leftBtn.addEventListener('click', () => navigateCarousel('left'));
+        rightBtn.addEventListener('click', () => navigateCarousel('right'));
 
         // ========== ANIMATED COUNTER ==========
         function animateCounter(el, target, suffix = '') {
@@ -1505,10 +1536,10 @@
                 if (entry.isIntersecting) {
                     const statNumbers = document.querySelectorAll('.stat-number');
                     if (statNumbers.length >= 2) {
-                        animateCounter(statNumbers[0], 1300, 'K+');  // Peak Views: 1.3M+
-                        animateCounter(statNumbers[1], 257, 'K+');   // Total Likes: 257K+
+                        animateCounter(statNumbers[0], 1300, 'K+');  // Peak Views
+                        animateCounter(statNumbers[1], 257, 'K+');   // Total Likes
                     }
-                    statsObserver.unobserve(entry.target); // hanya sekali animasi
+                    statsObserver.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.5 });
