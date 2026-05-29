@@ -228,7 +228,22 @@
         .mobile-menu a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
         .mobile-menu a:hover { color: var(--accent); }
         .mobile-submenu { padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.4rem; }
-        .badge-open { background: var(--badge-bg); border: 1px solid var(--accent); color: var(--accent); transition: opacity 0.6s ease; }
+        .badge-open { 
+            background: var(--badge-bg); 
+            border: 1px solid var(--accent); 
+            color: var(--accent); 
+            opacity: 0;
+            transform: scale(0.5);
+            transition: none; /* akan di-override oleh animasi */
+        }
+        .badge-open.show {
+            animation: badgePop 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+        }
+        @keyframes badgePop {
+            0% { opacity: 0; transform: scale(0.5); }
+            70% { opacity: 1; transform: scale(1.15); }
+            100% { opacity: 1; transform: scale(1); }
+        }
         .about-tag { background: var(--tag-bg); border: 1px solid var(--tag-border); color: var(--accent); padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
 
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
@@ -396,7 +411,7 @@
     <!-- Hero -->
     <section class="hero" id="home">
         <div class="hero-container">
-            <div class="badge-open" id="badgeCollab" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 20px; margin-bottom: 1.5rem; opacity: 0;">
+            <div class="badge-open" id="badgeCollab" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 20px; margin-bottom: 1.5rem;">
                 <span style="width: 8px; height: 8px; background: var(--accent); border-radius: 50%; display: inline-block; animation: pulse 2s infinite;"></span>
                 <span style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Open to Collaboration</span>
             </div>
@@ -814,7 +829,7 @@
             }
         });
 
-        // ========== TYPEWRITER EFFECT HERO (SUPER FAST, SYNCHRONOUS) ==========
+        // ========== TYPEWRITER EFFECT HERO (FAST, WITH POP BADGE) ==========
         (function() {
             const h1 = document.getElementById('heroName');
             const subtitle = document.getElementById('heroSubtitle');
@@ -822,12 +837,12 @@
             const badge = document.getElementById('badgeCollab');
             if (!h1 || !subtitle || !desc || !badge) return;
 
-            const nameText = "MUHAMMAD RIZAL NURFIKRI"; // 27 chars
-            const subText = "Social Media Specialist & Data Analyst"; // 42 chars
-            const descText = "I help brands grow through data-driven content strategies and turn numbers into actionable insights. Proven organic growth: 1.3M+ peak views, 257K+ total likes across platforms."; // 172 chars
+            const nameText = "MUHAMMAD RIZAL NURFIKRI";
+            const subText = "Social Media Specialist & Data Analyst";
+            const descText = "I help brands grow through data-driven content strategies and turn numbers into actionable insights. Proven organic growth: 1.3M+ peak views, 257K+ total likes across platforms.";
 
             let cursorSpan = null;
-            const speed = 6; // ms per character, total ~1446ms, selesai sebelum countdown 2000ms
+            const speed = 4; // 4ms per karakter, total ~964ms (lebih cepat dari countdown 2000ms)
 
             function addCursorTo(el) {
                 if (cursorSpan) cursorSpan.remove();
@@ -852,11 +867,10 @@
                 type();
             }
 
-            // Langsung mulai tanpa jeda awal
             typeElement(h1, nameText, () => {
                 typeElement(subtitle, subText, () => {
                     typeElement(desc, descText, () => {
-                        badge.style.opacity = '1';
+                        badge.classList.add('show');
                     });
                 });
             });
