@@ -117,22 +117,8 @@
             pointer-events: none;
         }
         .hero-container { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; position: relative; z-index: 1; }
-        .hero h1 { font-family: 'Oswald', sans-serif; font-size: 4.5rem; font-weight: 700; line-height: 1.1; text-transform: uppercase; letter-spacing: -2px; margin-bottom: 1rem; color: var(--text-primary); }
-        .hero .subtitle { font-family: 'Oswald', sans-serif; font-size: 1.8rem; font-weight: 500; color: var(--accent); margin-bottom: 2rem; letter-spacing: 2px; text-transform: uppercase; position: relative; display: inline-block; }
-        /* Kursor ketik */
-        .hero .subtitle::after {
-            content: '|';
-            animation: blink 0.8s infinite;
-            color: var(--accent);
-            font-weight: 400;
-        }
-        .hero .subtitle.done::after {
-            display: none;
-        }
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
+        .hero h1 { font-family: 'Oswald', sans-serif; font-size: 4.5rem; font-weight: 700; line-height: 1.1; text-transform: uppercase; letter-spacing: -2px; margin-bottom: 1rem; color: var(--text-primary); min-height: 5rem; }
+        .hero .subtitle { font-family: 'Oswald', sans-serif; font-size: 1.8rem; font-weight: 500; color: var(--accent); margin-bottom: 2rem; letter-spacing: 2px; text-transform: uppercase; min-height: 2.5rem; }
         .hero p { font-size: 1.1rem; max-width: 600px; margin-bottom: 2rem; color: var(--text-secondary); }
         .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.5rem; margin: 3rem 0; }
         .stat-item { border: 1px solid var(--border); padding: 1.5rem; background: var(--bg-secondary); text-align: center; border-radius: 12px; transition: all 0.3s; box-shadow: var(--shadow); }
@@ -252,6 +238,19 @@
         .theme-switch.desktop { display: flex; }
         .theme-switch.mobile { display: none; }
 
+        /* Kursor animasi */
+        .typewriter-cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: var(--accent);
+            animation: blink 0.8s infinite;
+            margin-left: 2px;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
         @media (max-width: 768px) {
             .theme-switch.desktop { display: none; }
             .theme-switch.mobile { display: flex; }
@@ -260,8 +259,8 @@
             .nav-container { justify-content: space-between; position: relative; }
             .logo { position: absolute; left: 50%; transform: translateX(-50%); }
             section { padding: 4rem 1rem; }
-            .hero h1 { font-size: 2.5rem; }
-            .hero .subtitle { font-size: 1.2rem; }
+            .hero h1 { font-size: 2.5rem; min-height: 3.5rem; }
+            .hero .subtitle { font-size: 1.2rem; min-height: 2rem; }
             .section-title { font-size: 2rem; margin-bottom: 0.5rem; }
             .section-subtitle { font-size: 0.85rem; margin-bottom: 2rem; }
             .stats { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
@@ -404,9 +403,8 @@
                 <span style="width: 8px; height: 8px; background: var(--accent); border-radius: 50%; display: inline-block; animation: pulse 2s infinite;"></span>
                 <span style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Open to Collaboration</span>
             </div>
-            <h1>MUHAMMAD RIZAL NURFIKRI</h1>
-            <!-- Subtitle akan diketik otomatis -->
-            <p class="subtitle" id="heroSubtitle">Social Media Specialist &amp; Data Analyst</p>
+            <h1 id="heroName"></h1>
+            <p class="subtitle" id="heroSubtitle"></p>
             <p>I help brands grow through data-driven content strategies and turn numbers into actionable insights. Proven organic growth: <strong>1.3M+ peak views</strong>, 257K+ total likes across platforms.</p>
             <div class="stats">
                 <div class="stat-item"><span class="stat-number">1.3M+</span><span class="stat-label">Peak Views</span></div>
@@ -495,18 +493,7 @@
             <div class="skill-category"><h3>📊 Data Analytics</h3><ul class="skill-list"><li><span style="background:#336791;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;letter-spacing:0.5px;">SQL</span> MySQL / SQL Query</li><li><span style="background:#3776AB;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">PY</span> Python (Pandas, Matplotlib)</li><li><span style="background:#E97627;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">TB</span> Tableau</li><li><span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">LS</span> Looker Studio</li><li><span style="background:#217346;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">XL</span> Excel (Advanced Formulas)</li><li><span style="background:#EA4335;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GS</span> Google Sheets</li><li><span style="background:#666;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">SP</span> SPSS</li></ul></div>
             <div class="skill-category"><h3>🎨 Creative Tools</h3><ul class="skill-list"><li><span style="background:#00C4CC;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">CV</span> Canva</li><li><span style="background:#111;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">CC</span> CapCut</li><li><span style="background:#31A8FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Lr</span> Adobe Lightroom</li><li><span style="background:#31A8FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Ps</span> Adobe Photoshop</li><li><span style="background:#9999FF;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">Pr</span> Adobe Premiere Pro</li><li><span style="font-size:1rem;">📸</span> Photography</li><li><span style="font-size:1rem;">🎬</span> Video Production</li></ul></div>
             <div class="skill-category"><h3>🔧 Analytics Platforms</h3><ul class="skill-list"><li><span style="background:#111;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">TT</span> TikTok Analytics</li><li><span style="background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">IG</span> Instagram Insights</li><li><span style="background:#EA4335;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GA</span> Google Analytics</li><li><span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">GT</span> Google Trends</li><li><span style="background:#4285F4;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">LS</span> Looker Studio</li><li><span style="background:#000;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">N</span> Notion</li><li><span style="background:#217346;color:white;padding:1px 5px;border-radius:3px;font-size:0.65rem;font-weight:700;">MS</span> Microsoft Office</li></ul></div>
-            <div class="skill-category">
-    <h3>🧠 Soft Skills</h3>
-    <ul class="skill-list">
-        <li><span style="font-size:1rem;">💬</span> Communication</li>
-        <li><span style="font-size:1rem;">🔄</span> Adaptability</li>
-        <li><span style="font-size:1rem;">🤝</span> Teamwork</li>
-        <li><span style="font-size:1rem;">🧩</span> Problem Solving</li>
-        <li><span style="font-size:1rem;">⏱️</span> Time Management</li>
-        <li><span style="font-size:1rem;">🗣️</span> Negotiation</li>
-        <li><span style="font-size:1rem;">🎯</span> Persuasion</li>
-    </ul>
-</div>
+            <div class="skill-category"><h3>🧠 Soft Skills</h3><ul class="skill-list"><li><span style="font-size:1rem;">💬</span> Communication</li><li><span style="font-size:1rem;">🔄</span> Adaptability</li><li><span style="font-size:1rem;">🤝</span> Teamwork</li><li><span style="font-size:1rem;">🧩</span> Problem Solving</li><li><span style="font-size:1rem;">⏱️</span> Time Management</li><li><span style="font-size:1rem;">🗣️</span> Negotiation</li><li><span style="font-size:1rem;">🎯</span> Persuasion</li></ul></div>
         </div>
     </section>
 
@@ -736,29 +723,6 @@
             resizeTimer = setTimeout(equalizeCardHeights, 200);
         });
 
-        // ========== TYPEWRITER EFFECT (HERO SUBTITLE) ==========
-        const heroSubtitle = document.getElementById('heroSubtitle');
-        if (heroSubtitle) {
-            const text = heroSubtitle.textContent.trim();
-            heroSubtitle.textContent = '';
-            let i = 0;
-            const speed = 70; // ms per karakter
-            function typeWriter() {
-                if (i < text.length) {
-                    heroSubtitle.textContent += text.charAt(i);
-                    i++;
-                    setTimeout(typeWriter, speed);
-                } else {
-                    // Selesai mengetik, hilangkan kursor
-                    heroSubtitle.classList.add('done');
-                }
-            }
-            // Mulai setelah halaman dimuat
-            window.addEventListener('load', () => {
-                setTimeout(typeWriter, 600); // jeda sebentar sebelum mulai
-            });
-        }
-
         // ========== INFINITE SCROLL SKILLS (MOBILE) - ULTRA SMOOTH ==========
         (function() {
             const container = document.getElementById('skillsContainer');
@@ -768,7 +732,7 @@
             let originalItems = [];
             let clones = [];
             let setWidth = 0;
-            const cloneSets = 2; // 2 set kiri, 2 set kanan
+            const cloneSets = 2;
 
             function clearClones() {
                 clones.forEach(clone => clone.remove());
@@ -788,7 +752,6 @@
                 const itemWidth = originalItems[0].offsetWidth;
                 setWidth = originalItems.length * (itemWidth + gap);
 
-                // Clone kiri (insert before, urutan terbalik)
                 for (let s = 0; s < cloneSets; s++) {
                     for (let i = originalItems.length - 1; i >= 0; i--) {
                         const clone = originalItems[i].cloneNode(true);
@@ -798,7 +761,6 @@
                     }
                 }
 
-                // Clone kanan (append)
                 for (let s = 0; s < cloneSets; s++) {
                     originalItems.forEach(item => {
                         const clone = item.cloneNode(true);
@@ -808,11 +770,9 @@
                     });
                 }
 
-                // Mulai di tengah (set asli)
                 container.scrollLeft = cloneSets * setWidth;
             }
 
-            // Reset posisi hanya setelah scroll benar-benar berhenti
             let resetTimer;
             function handleScrollEnd() {
                 if (!isMobile) return;
@@ -829,7 +789,6 @@
 
             function onScroll() {
                 clearTimeout(resetTimer);
-                // Set timer untuk mendeteksi momentum berhenti (cukup 200ms)
                 resetTimer = setTimeout(handleScrollEnd, 200);
             }
 
@@ -857,6 +816,59 @@
                 mobileMenu.classList.remove('open');
             }
         });
+
+        // ========== TYPEWRITER EFFECT HERO ==========
+        (function() {
+            const h1 = document.getElementById('heroName');
+            const subtitle = document.getElementById('heroSubtitle');
+            if (!h1 || !subtitle) return;
+
+            const nameText = "MUHAMMAD RIZAL NURFIKRI";
+            const subText = "Social Media Specialist & Data Analyst";
+
+            let i = 0;
+            let j = 0;
+            const speed = 80;
+            let cursorSpan = null;
+
+            // Tambahkan kursor ke h1
+            function addCursorTo(el) {
+                if (cursorSpan) cursorSpan.remove();
+                cursorSpan = document.createElement('span');
+                cursorSpan.className = 'typewriter-cursor';
+                el.appendChild(cursorSpan);
+            }
+
+            function typeName() {
+                if (i < nameText.length) {
+                    h1.textContent = nameText.substring(0, i + 1);
+                    addCursorTo(h1);
+                    i++;
+                    setTimeout(typeName, speed);
+                } else {
+                    // Hapus kursor dari h1, selesai
+                    if (cursorSpan) cursorSpan.remove();
+                    subtitle.textContent = '';
+                    addCursorTo(subtitle);
+                    setTimeout(typeSubtitle, 300);
+                }
+            }
+
+            function typeSubtitle() {
+                if (j < subText.length) {
+                    subtitle.textContent = subText.substring(0, j + 1);
+                    addCursorTo(subtitle);
+                    j++;
+                    setTimeout(typeSubtitle, speed);
+                } else {
+                    // Hapus kursor setelah selesai
+                    if (cursorSpan) cursorSpan.remove();
+                }
+            }
+
+            // Mulai animasi setelah 500ms
+            setTimeout(typeName, 500);
+        })();
     </script>
 </body>
 </html>
