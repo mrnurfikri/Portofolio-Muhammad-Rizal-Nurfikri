@@ -10,14 +10,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhammad Rizal Nurfikri - Social Media Specialist &amp; Data Analyst</title>
     <meta name="description" content="Social Media Specialist &amp; Data Analyst with proven organic growth: 369K+ views, 88K+ likes. Specializing in data-driven content strategies.">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
-
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         :root {
             --bg-primary: #0a0a0a; --bg-secondary: #111111; --text-primary: #ffffff;
             --text-secondary: #a0a0a0; --accent: #ADFC5A; --accent-hover: #c1e831;
@@ -27,7 +24,6 @@
             --dropdown-bg: #1a1a1a; --badge-bg: rgba(var(--accent-rgb), 0.1);
             --tag-bg: rgba(var(--accent-rgb), 0.05); --tag-border: rgba(var(--accent-rgb), 0.25);
         }
-
         body.light-mode {
             --bg-primary: #F1EFEE; --bg-secondary: #E8E6E4; --text-primary: #0a0a0a;
             --text-secondary: #555555; --accent: #106FFF; --accent-hover: #0a5cd9;
@@ -37,13 +33,11 @@
             --dropdown-bg: #ffffff; --badge-bg: rgba(var(--accent-rgb), 0.1);
             --tag-bg: rgba(var(--accent-rgb), 0.05); --tag-border: rgba(var(--accent-rgb), 0.25);
         }
-
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6; color: var(--text-primary); background: var(--bg-primary);
             transition: background 0.3s ease, color 0.3s ease;
         }
-
         .theme-switch {
             position: relative; display: flex; align-items: center; background: var(--theme-toggle-bg);
             border: 1px solid var(--border); border-radius: 30px; padding: 4px; gap: 2px;
@@ -58,7 +52,6 @@
         .theme-option.active { background: var(--accent); color: var(--bg-primary); }
         .theme-option:not(.active) { color: var(--text-secondary); opacity: 0.5; }
         .theme-option:hover:not(.active) { opacity: 0.8; }
-
         nav {
             position: fixed; top: 0; width: 100%; background: var(--nav-bg);
             backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); z-index: 1000;
@@ -68,7 +61,6 @@
             max-width: 1200px; margin: 0 auto; padding: 0 2rem;
             display: flex; justify-content: space-between; align-items: center;
         }
-
         .logo {
             display: flex; align-items: center; text-decoration: none;
             transition: all 0.3s ease-out; backface-visibility: hidden; transform: translateZ(0);
@@ -77,7 +69,6 @@
         .logo img { height: 48px; width: auto; display: block; transition: opacity 0.3s ease; }
         .logo .logo-light { display: none; } .logo .logo-dark { display: block; }
         body.light-mode .logo .logo-light { display: block; } body.light-mode .logo .logo-dark { display: none; }
-
         .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
         .nav-links > li { position: relative; }
         .nav-links a {
@@ -89,7 +80,6 @@
         .nav-links a:hover { color: var(--accent); transform: translateY(-1px) translateZ(0); }
         .nav-links a.active { color: var(--accent); }
         .nav-links a.active::after { display: none; }
-
         .dropdown {
             position: absolute; top: 120%; left: 0; background: var(--dropdown-bg);
             border: 1px solid var(--border); border-radius: 8px; min-width: 200px; padding: 0.5rem 0;
@@ -106,7 +96,6 @@
         }
         .dropdown a:hover { color: var(--accent); background: rgba(var(--accent-rgb), 0.08); transform: translateX(3px); }
         .dropdown a.active { color: var(--accent); background: transparent; }
-
         .hero {
             margin-top: 80px; min-height: 90vh; display: flex; align-items: center;
             background: var(--bg-primary); position: relative; overflow: hidden; transition: background 0.3s ease;
@@ -131,13 +120,10 @@
         .btn-primary:hover { background: transparent; color: var(--accent); }
         .btn-secondary { background: transparent; color: var(--text-primary); border: 1px solid var(--border); }
         .btn-secondary:hover { background: var(--accent); color: #ffffff; border-color: var(--accent); }
-
         section { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
         .section-title { font-family: 'Oswald', sans-serif; font-size: 3rem; font-weight: 700; text-transform: uppercase; letter-spacing: -1px; margin-bottom: 1rem; text-align: center; color: var(--text-primary); }
         .section-subtitle { text-align: center; color: var(--text-secondary); margin-bottom: 4rem; font-size: 1rem; max-width: 600px; margin-left: auto; margin-right: auto; }
-
         .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-
         .carousel-wrapper { position: relative; z-index: 1; max-width: 100%; margin-top: 2rem; }
         .carousel-container {
             display: flex; gap: 1.5rem; overflow-x: auto; overflow-y: visible;
@@ -150,7 +136,6 @@
         .carousel-container:hover .carousel-card { opacity: 0.5; filter: none; }
         .carousel-container .carousel-card:hover { opacity: 1; z-index: 2; }
         .carousel-card:hover .portfolio-card { transform: translateY(-10px) scale(1.03); box-shadow: 0 20px 30px rgba(0,0,0,0.12); border-color: var(--accent); }
-
         .carousel-arrow {
             position: absolute; top: 50%; transform: translateY(-50%); background: var(--card-bg);
             border: none; box-shadow: 0 2px 8px rgba(0,0,0,0.1); color: var(--text-primary);
@@ -165,7 +150,6 @@
         .carousel-arrow:active { background: var(--accent); color: var(--bg-primary); opacity: 1; transform: translateY(-50%) scale(0.95); }
         .carousel-arrow-left { left: -10px; }
         .carousel-arrow-right { right: -10px; }
-
         .portfolio-card { background: var(--card-bg); border: none; box-shadow: var(--shadow); border-radius: 12px; overflow: hidden; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); display: flex; flex-direction: column; height: 100%; }
         .portfolio-card:hover { border-color: var(--accent); transform: translateY(-5px); }
         .card-image { width: 100%; height: 160px; background: var(--bg-secondary); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; border-bottom: 1px solid var(--border); border-radius: 12px 12px 0 0; }
@@ -178,7 +162,6 @@
         .card-stat { display: flex; flex-direction: column; }
         .card-stat-value { font-family: 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--accent); }
         .card-stat-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary); }
-
         .skills-container {
             display: flex;
             flex-wrap: wrap;
@@ -186,7 +169,6 @@
             gap: 1.5rem;
             margin-top: 2rem;
         }
-
         .skill-category {
             background: var(--card-bg);
             border: none;
@@ -197,12 +179,10 @@
             max-width: 350px;
             min-width: 260px;
         }
-
         .skill-category h3 { font-family: 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem; color: var(--accent); }
         .skill-list { list-style: none; }
         .skill-list li { padding: 0.6rem 0; border-bottom: 1px solid var(--border); color: var(--text-secondary); font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; }
         .skill-list li:last-child { border-bottom: none; }
-
         .contact-section { background: var(--bg-primary); text-align: center; padding: 6rem 2rem; transition: background 0.3s ease; }
         .contact-container { max-width: 1200px; margin: 0 auto; }
         .contact-links { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin-top: 3rem; }
@@ -210,7 +190,6 @@
         .contact-item:hover .contact-icon { transform: scale(1.15); color: var(--accent); }
         .contact-icon { width: auto; height: auto; border: none; font-size: 2.2rem; transition: all 0.3s; background: transparent; color: var(--accent); }
         .contact-link { color: var(--text-secondary); font-size: 0.9rem; font-weight: 500; }
-
         footer { background: var(--bg-secondary); border-top: 1px solid var(--border); color: var(--text-secondary); text-align: center; padding: 2rem; font-size: 0.8rem; transition: background 0.3s ease; }
         .insight-box { margin: 1rem 0; padding: 1rem; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; font-size: 0.9rem; }
         .insight-box strong { color: var(--accent); display: block; margin-bottom: 0.5rem; }
@@ -245,13 +224,10 @@
             100% { opacity: 1; transform: scale(1); }
         }
         .about-tag { background: var(--tag-bg); border: 1px solid var(--tag-border); color: var(--accent); padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
         html { scroll-behavior: smooth; }
-
         .theme-switch.desktop { display: flex; }
         .theme-switch.mobile { display: none; }
-
         .typewriter-cursor {
             display: inline-block;
             width: 3px;
@@ -263,7 +239,6 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
-
         @media (max-width: 768px) {
             .theme-switch.desktop { display: none; }
             .theme-switch.mobile { display: flex; }
@@ -283,9 +258,7 @@
             .hero p { font-size: 0.9rem; }
             .cta-buttons { flex-direction: column; align-items: stretch; }
             .btn { width: 100%; padding: 0.7rem 1.5rem; font-size: 0.8rem; display: block; text-align: center; }
-
             .carousel-arrow { display: none; }
-
             .portfolio-grid {
                 display: flex; gap: 1rem; overflow-x: auto; overflow-y: visible;
                 -webkit-overflow-scrolling: touch; scroll-behavior: smooth;
@@ -299,10 +272,8 @@
                 height: 100%;
                 display: flex; flex-direction: column;
             }
-
             .carousel-container { padding: 1.5rem 0.5rem; margin: 0 15px; }
             .carousel-card { flex: 0 0 80%; }
-
             .card-image { height: 100px; font-size: 2rem; }
             .card-content { padding: 1rem; }
             .card-title { font-size: 1.2rem; margin-bottom: 0.3rem; }
@@ -316,7 +287,6 @@
             .insight-box ul { padding-left: 1rem; }
             .insight-box strong { margin-bottom: 0.3rem; }
             .btn-small { padding: 0.4rem 0.8rem; font-size: 0.7rem; }
-
             .skills-container {
                 display: flex; gap: 1rem; overflow-x: auto; overflow-y: visible;
                 -webkit-overflow-scrolling: touch; scroll-behavior: auto;
@@ -334,7 +304,6 @@
             }
             .skill-category h3 { font-size: 1.1rem; margin-bottom: 1rem; }
             .skill-list li { padding: 0.4rem 0; font-size: 0.8rem; }
-
             .contact-section .btn-primary {
                 display: inline-flex;
                 align-items: center;
@@ -344,7 +313,6 @@
                 max-width: 100%;
             }
         }
-
         @media (max-width: 768px) { #about > div { grid-template-columns: 1fr !important; gap: 2rem !important; } }
     </style>
 </head>
@@ -391,7 +359,6 @@
             </div>
         </div>
     </nav>
-
     <div class="mobile-menu" id="mobileMenu">
         <ul>
             <li><a href="#about" onclick="toggleMenu()">About</a></li>
@@ -407,8 +374,6 @@
             <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
         </ul>
     </div>
-
-    <!-- Hero -->
     <section class="hero" id="home">
         <div class="hero-container">
             <div class="badge-open" id="badgeCollab" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 20px; margin-bottom: 1.5rem;">
@@ -431,8 +396,6 @@
             </div>
         </div>
     </section>
-
-    <!-- About Section -->
     <section id="about">
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;">
             <div>
@@ -454,8 +417,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Social Media Portfolio -->
     <section id="social-media">
         <h2 class="section-title">Social Media Portfolio</h2>
         <p class="section-subtitle">Creating engaging content that drives real results through data-driven strategies</p>
@@ -473,8 +434,6 @@
             <button class="carousel-arrow carousel-arrow-right" id="carouselRight" aria-label="Scroll right"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
         </div>
     </section>
-
-    <!-- Data Analytics Portfolio -->
     <section id="data-analytics">
         <h2 class="section-title">Data Analytics Portfolio</h2>
         <p class="section-subtitle">Transforming raw data into strategic recommendations using SQL, Excel, and Looker Studio</p>
@@ -484,8 +443,6 @@
             <div class="portfolio-card" style="display:flex;flex-direction:column;height:100%;"><div class="card-image">💻</div><div class="card-content"><h3 class="card-title">SQL Analysis Showcase</h3><div class="card-meta"><span class="card-tag">SQL</span><span class="card-tag">Data Analysis</span></div><p class="card-description">Comprehensive SQL queries demonstrating JOIN operations, aggregate functions, calculated metrics.</p><div class="insight-box"><strong>SQL Skills Demonstrated:</strong><ul><li>Multi-table JOINs</li><li>GROUP BY with aggregations</li><li>Calculated fields: CTR, CVR, CPA</li><li>Subqueries for conversion rates</li></ul></div><div class="card-stats"><div class="card-stat"><span class="card-stat-value">50+</span><span class="card-stat-label">Queries</span></div><div class="card-stat"><span class="card-stat-value">2</span><span class="card-stat-label">Projects</span></div><div class="card-stat"><span class="card-stat-value">100%</span><span class="card-stat-label">Documented</span></div></div><div style="margin-top:1rem;visibility:hidden;"><a class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;">💻 View SQL Examples</a></div></div></div>
         </div>
     </section>
-
-    <!-- Certifications -->
     <section id="certifications">
         <h2 class="section-title">Certifications &amp; Education</h2>
         <p class="section-subtitle">Formal training and continuous learning in Data Analytics and Digital Marketing</p>
@@ -495,8 +452,6 @@
             <div class="portfolio-card" style="display:flex;flex-direction:column;height:100%;"><div class="card-image" style="background:transparent;border-bottom:1px solid var(--border);">🎓</div><div class="card-content"><h3 class="card-title">Bachelor in Management</h3><div class="card-meta"><span class="card-tag">University</span><span class="card-tag">Degree</span></div><p class="card-description">Universitas Pendidikan Indonesia (UPI) - Graduated with strong foundation in business management and analytical skills.</p><div class="insight-box"><strong>Key Achievements:</strong><ul><li>GPA: 3.70 / 4.00</li><li>Focus: Business Analytics &amp; Marketing</li><li>Completed multiple internships</li><li>Active in organizational activities</li></ul></div><div class="card-stats"><div class="card-stat"><span class="card-stat-value">2019-2023</span><span class="card-stat-label">Period</span></div><div class="card-stat"><span class="card-stat-value">3.70</span><span class="card-stat-label">GPA</span></div><div class="card-stat"><span class="card-stat-value">✓</span><span class="card-stat-label">Graduate</span></div></div><div style="margin-top:1rem;"><a href="ijazah-upi.pdf" target="_blank" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;">🎓 View Degree</a></div></div></div>
         </div>
     </section>
-
-    <!-- Skills -->
     <section id="skills">
         <h2 class="section-title">Skills &amp; Tools</h2>
         <p class="section-subtitle">Bridging creativity and analytics to drive business growth</p>
@@ -508,8 +463,6 @@
             <div class="skill-category"><h3>🧠 Soft Skills</h3><ul class="skill-list"><li><span style="font-size:1rem;">💬</span> Communication</li><li><span style="font-size:1rem;">🔄</span> Adaptability</li><li><span style="font-size:1rem;">🤝</span> Teamwork</li><li><span style="font-size:1rem;">🧩</span> Problem Solving</li><li><span style="font-size:1rem;">⏱️</span> Time Management</li><li><span style="font-size:1rem;">🗣️</span> Negotiation</li><li><span style="font-size:1rem;">🎯</span> Persuasion</li></ul></div>
         </div>
     </section>
-
-    <!-- Contact -->
     <section id="contact" class="contact-section">
         <div class="contact-container">
             <h2 class="section-title">Let's Connect</h2>
@@ -525,20 +478,17 @@
             </div>
         </div>
     </section>
-
     <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
     <footer>
         <p>&copy; 2026 Muhammad Rizal Nurfikri. All rights reserved.</p>
         <p style="margin-top:0.5rem;opacity:0.5;">Built with passion for data-driven storytelling</p>
     </footer>
-
     <script>
         // ========== THEME TOGGLE ==========
         const themeDesktop = document.getElementById('themeSwitchDesktop');
         const themeMobile = document.getElementById('themeSwitchMobile');
         const bodyEl = document.body;
         const savedTheme = localStorage.getItem('theme') || 'dark';
-
         function setTheme(theme) {
             if (theme === 'light') {
                 bodyEl.classList.add('light-mode');
@@ -555,7 +505,6 @@
             }
         }
         setTheme(savedTheme);
-
         [themeDesktop, themeMobile].forEach(el => {
             el.querySelectorAll('.theme-option').forEach(option => {
                 option.addEventListener('click', () => {
@@ -574,7 +523,6 @@
                 }
             });
         });
-
         // ========== ACTIVE NAV ==========
         function updateActiveNav() {
             const sections = document.querySelectorAll('section');
@@ -618,23 +566,19 @@
             const btn = document.getElementById('backToTop');
             btn.classList.toggle('visible', window.scrollY > 500);
         });
-
         // ========== CAROUSEL ==========
         const carousel = document.getElementById('carouselContainer');
         const leftBtn = document.getElementById('carouselLeft');
         const rightBtn = document.getElementById('carouselRight');
         let isAnimating = false;
         const cards = carousel.querySelectorAll('.carousel-card');
-
         function getCardWidth() {
             const card = carousel.querySelector('.carousel-card');
             if (!card) return 320 + 24;
             const gap = parseInt(getComputedStyle(carousel).gap) || 24;
             return card.offsetWidth + gap;
         }
-
         function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
-
         function smoothScrollTo(targetLeft, duration = 500) {
             if (isAnimating) return;
             isAnimating = true;
@@ -655,7 +599,6 @@
             }
             window.requestAnimationFrame(step);
         }
-
         function bounceCard(card, direction) {
             const offset = direction === 'left' ? 15 : -15;
             card.style.transition = 'transform 0.2s ease';
@@ -665,7 +608,6 @@
                 setTimeout(() => { card.style.transition = ''; }, 200);
             }, 100);
         }
-
         function navigateCarousel(direction) {
             if (isAnimating) return;
             const currentScroll = carousel.scrollLeft;
@@ -683,17 +625,14 @@
             }
             smoothScrollTo(target);
         }
-
         leftBtn.addEventListener('click', () => navigateCarousel('left'));
         rightBtn.addEventListener('click', () => navigateCarousel('right'));
-
-        // ========== ANIMATED COUNTER (2000ms) ==========
+        // ========== ANIMATED COUNTER (2500ms) ==========
         const statNumbers = document.querySelectorAll('.stat-number');
         const defaultValues = ['1.3M+', '257K+', '3+', '7+'];
-
         function animateCounter(el, target, suffix = '') {
             let start = 0;
-            const duration = 2000;
+            const duration = 2500;
             const step = target / (duration / 16);
             const timer = setInterval(() => {
                 start += step;
@@ -701,7 +640,6 @@
                 el.textContent = Math.floor(start).toLocaleString() + suffix;
             }, 16);
         }
-
         const statsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -715,7 +653,6 @@
         }, { threshold: 0.5 });
         const statsSection = document.querySelector('.stats');
         if (statsSection) statsObserver.observe(statsSection);
-
         // ========== EQUALIZE CARD HEIGHTS ==========
         function equalizeCardHeights() {
             const cards = document.querySelectorAll('#data-analytics .portfolio-card, #certifications .portfolio-card');
@@ -734,36 +671,29 @@
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(equalizeCardHeights, 200);
         });
-
         // ========== INFINITE SCROLL SKILLS (MOBILE) ==========
         (function() {
             const container = document.getElementById('skillsContainer');
             if (!container) return;
-
             let isMobile = window.innerWidth <= 768;
             let originalItems = [];
             let clones = [];
             let setWidth = 0;
             const cloneSets = 2;
-
             function clearClones() {
                 clones.forEach(clone => clone.remove());
                 clones = [];
             }
-
             function setupInfinite() {
                 clearClones();
                 originalItems = Array.from(container.querySelectorAll('.skill-category:not(.clone)'));
-
                 if (!isMobile || originalItems.length === 0) {
                     container.scrollLeft = 0;
                     return;
                 }
-
                 const gap = parseInt(getComputedStyle(container).gap) || 16;
                 const itemWidth = originalItems[0].offsetWidth;
                 setWidth = originalItems.length * (itemWidth + gap);
-
                 for (let s = 0; s < cloneSets; s++) {
                     for (let i = originalItems.length - 1; i >= 0; i--) {
                         const clone = originalItems[i].cloneNode(true);
@@ -772,7 +702,6 @@
                         clones.push(clone);
                     }
                 }
-
                 for (let s = 0; s < cloneSets; s++) {
                     originalItems.forEach(item => {
                         const clone = item.cloneNode(true);
@@ -781,31 +710,25 @@
                         clones.push(clone);
                     });
                 }
-
                 container.scrollLeft = cloneSets * setWidth;
             }
-
             let resetTimer;
             function handleScrollEnd() {
                 if (!isMobile) return;
                 const left = container.scrollLeft;
                 const leftThreshold = (cloneSets - 0.5) * setWidth;
                 const rightThreshold = (cloneSets + 0.5) * setWidth;
-
                 if (left < leftThreshold) {
                     container.scrollTo({ left: left + setWidth, behavior: 'instant' });
                 } else if (left > rightThreshold) {
                     container.scrollTo({ left: left - setWidth, behavior: 'instant' });
                 }
             }
-
             function onScroll() {
                 clearTimeout(resetTimer);
                 resetTimer = setTimeout(handleScrollEnd, 200);
             }
-
             container.addEventListener('scroll', onScroll, { passive: true });
-
             window.addEventListener('resize', () => {
                 const newMobile = window.innerWidth <= 768;
                 if (newMobile !== isMobile) {
@@ -815,10 +738,8 @@
                     setupInfinite();
                 }
             });
-
             setupInfinite();
         })();
-
         document.addEventListener('click', (e) => {
             const mobileMenu = document.getElementById('mobileMenu');
             const hamburger = document.querySelector('.hamburger');
@@ -828,7 +749,6 @@
                 mobileMenu.classList.remove('open');
             }
         });
-
         // ========== TYPEWRITER EFFECT HERO (SYNCED WITH COUNTDOWN) ==========
         (function() {
             const h1 = document.getElementById('heroName');
@@ -836,21 +756,17 @@
             const desc = document.getElementById('heroDesc');
             const badge = document.getElementById('badgeCollab');
             if (!h1 || !subtitle || !desc || !badge) return;
-
             const nameText = "MUHAMMAD RIZAL NURFIKRI"; // 27 chars
             const subText = "Social Media Specialist & Data Analyst"; // 42 chars
             const descText = "I help brands grow through data-driven content strategies and turn numbers into actionable insights. Proven organic growth: 1.3M+ peak views, 257K+ total likes across platforms."; // 172 chars
-
             let cursorSpan = null;
-            const speed = 7; // 7ms per karakter, total ~1687ms, dengan delay 300ms jadi ~1987ms (pas dengan countdown)
-
+            const speed = 9; // 9ms/karakter, total type 2169ms, delay 300ms -> 2469ms (pas dengan countdown 2500ms)
             function addCursorTo(el) {
                 if (cursorSpan) cursorSpan.remove();
                 cursorSpan = document.createElement('span');
                 cursorSpan.className = 'typewriter-cursor';
                 el.appendChild(cursorSpan);
             }
-
             function typeElement(el, text, callback) {
                 let i = 0;
                 function type() {
@@ -866,8 +782,7 @@
                 }
                 type();
             }
-
-            // Mulai dengan delay 300ms agar total tepat ~1987ms
+            // Delay awal 300ms
             setTimeout(() => {
                 typeElement(h1, nameText, () => {
                     typeElement(subtitle, subText, () => {
