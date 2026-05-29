@@ -118,7 +118,21 @@
         }
         .hero-container { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; position: relative; z-index: 1; }
         .hero h1 { font-family: 'Oswald', sans-serif; font-size: 4.5rem; font-weight: 700; line-height: 1.1; text-transform: uppercase; letter-spacing: -2px; margin-bottom: 1rem; color: var(--text-primary); }
-        .hero .subtitle { font-family: 'Oswald', sans-serif; font-size: 1.8rem; font-weight: 500; color: var(--accent); margin-bottom: 2rem; letter-spacing: 2px; text-transform: uppercase; }
+        .hero .subtitle { font-family: 'Oswald', sans-serif; font-size: 1.8rem; font-weight: 500; color: var(--accent); margin-bottom: 2rem; letter-spacing: 2px; text-transform: uppercase; position: relative; display: inline-block; }
+        /* Kursor ketik */
+        .hero .subtitle::after {
+            content: '|';
+            animation: blink 0.8s infinite;
+            color: var(--accent);
+            font-weight: 400;
+        }
+        .hero .subtitle.done::after {
+            display: none;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
         .hero p { font-size: 1.1rem; max-width: 600px; margin-bottom: 2rem; color: var(--text-secondary); }
         .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.5rem; margin: 3rem 0; }
         .stat-item { border: 1px solid var(--border); padding: 1.5rem; background: var(--bg-secondary); text-align: center; border-radius: 12px; transition: all 0.3s; box-shadow: var(--shadow); }
@@ -391,7 +405,8 @@
                 <span style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Open to Collaboration</span>
             </div>
             <h1>MUHAMMAD RIZAL NURFIKRI</h1>
-            <p class="subtitle">Social Media Specialist &amp; Data Analyst</p>
+            <!-- Subtitle akan diketik otomatis -->
+            <p class="subtitle" id="heroSubtitle">Social Media Specialist &amp; Data Analyst</p>
             <p>I help brands grow through data-driven content strategies and turn numbers into actionable insights. Proven organic growth: <strong>1.3M+ peak views</strong>, 257K+ total likes across platforms.</p>
             <div class="stats">
                 <div class="stat-item"><span class="stat-number">1.3M+</span><span class="stat-label">Peak Views</span></div>
@@ -720,6 +735,29 @@
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(equalizeCardHeights, 200);
         });
+
+        // ========== TYPEWRITER EFFECT (HERO SUBTITLE) ==========
+        const heroSubtitle = document.getElementById('heroSubtitle');
+        if (heroSubtitle) {
+            const text = heroSubtitle.textContent.trim();
+            heroSubtitle.textContent = '';
+            let i = 0;
+            const speed = 70; // ms per karakter
+            function typeWriter() {
+                if (i < text.length) {
+                    heroSubtitle.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, speed);
+                } else {
+                    // Selesai mengetik, hilangkan kursor
+                    heroSubtitle.classList.add('done');
+                }
+            }
+            // Mulai setelah halaman dimuat
+            window.addEventListener('load', () => {
+                setTimeout(typeWriter, 600); // jeda sebentar sebelum mulai
+            });
+        }
 
         // ========== INFINITE SCROLL SKILLS (MOBILE) - ULTRA SMOOTH ==========
         (function() {
