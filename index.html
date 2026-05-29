@@ -684,7 +684,7 @@
             resizeTimer = setTimeout(equalizeCardHeights, 200);
         });
 
-        // ========== TRULY INFINITE SCROLL SKILLS (MOBILE, NO STUCK) ==========
+        // ========== INFINITE SCROLL SKILLS (MOBILE) - ULTRA SMOOTH ==========
         (function() {
             const container = document.getElementById('skillsContainer');
             if (!container) return;
@@ -693,8 +693,7 @@
             let originalItems = [];
             let clones = [];
             let setWidth = 0;
-            const numSetsLeft = 3;   // banyak duplikat ke kiri
-            const numSetsRight = 3;  // banyak duplikat ke kanan
+            const cloneSets = 2; // 2 set kiri, 2 set kanan
 
             function clearClones() {
                 clones.forEach(clone => clone.remove());
@@ -714,9 +713,8 @@
                 const itemWidth = originalItems[0].offsetWidth;
                 setWidth = originalItems.length * (itemWidth + gap);
 
-                // Tambahkan duplikat ke kiri
-                for (let set = 0; set < numSetsLeft; set++) {
-                    // urutan dibalik agar tampilan natural
+                // Clone kiri (insert before, urutan terbalik)
+                for (let s = 0; s < cloneSets; s++) {
                     for (let i = originalItems.length - 1; i >= 0; i--) {
                         const clone = originalItems[i].cloneNode(true);
                         clone.classList.add('clone');
@@ -725,8 +723,8 @@
                     }
                 }
 
-                // Tambahkan duplikat ke kanan
-                for (let set = 0; set < numSetsRight; set++) {
+                // Clone kanan (append)
+                for (let s = 0; s < cloneSets; s++) {
                     originalItems.forEach(item => {
                         const clone = item.cloneNode(true);
                         clone.classList.add('clone');
@@ -735,50 +733,44 @@
                     });
                 }
 
-                // Mulai di tengah, pada set asli
-                container.scrollLeft = numSetsLeft * setWidth;
+                // Mulai di tengah (set asli)
+                container.scrollLeft = cloneSets * setWidth;
             }
 
-            // Monitor posisi scroll setiap frame
-            function updateScroll() {
+            // Reset posisi hanya setelah scroll benar-benar berhenti
+            let resetTimer;
+            function handleScrollEnd() {
                 if (!isMobile) return;
+                const left = container.scrollLeft;
+                const leftThreshold = (cloneSets - 0.5) * setWidth;
+                const rightThreshold = (cloneSets + 0.5) * setWidth;
 
-                const currentScroll = container.scrollLeft;
-                const leftLimit = (numSetsLeft - 1) * setWidth;
-                const rightLimit = (numSetsLeft + 1) * setWidth;
-
-                // Jika terlalu kiri, geser ke kanan sejauh setWidth
-                if (currentScroll < leftLimit) {
-                    container.scrollLeft += setWidth;
-                }
-                // Jika terlalu kanan, geser ke kiri sejauh setWidth
-                else if (currentScroll > rightLimit) {
-                    container.scrollLeft -= setWidth;
-                }
-
-                requestAnimationFrame(updateScroll);
-            }
-
-            // Mulai monitor setelah setup
-            function startMonitoring() {
-                if (isMobile) {
-                    requestAnimationFrame(updateScroll);
+                if (left < leftThreshold) {
+                    container.scrollTo({ left: left + setWidth, behavior: 'instant' });
+                } else if (left > rightThreshold) {
+                    container.scrollTo({ left: left - setWidth, behavior: 'instant' });
                 }
             }
+
+            function onScroll() {
+                clearTimeout(resetTimer);
+                // Set timer untuk mendeteksi momentum berhenti (cukup 200ms)
+                resetTimer = setTimeout(handleScrollEnd, 200);
+            }
+
+            container.addEventListener('scroll', onScroll, { passive: true });
 
             window.addEventListener('resize', () => {
                 const newMobile = window.innerWidth <= 768;
                 if (newMobile !== isMobile) {
                     isMobile = newMobile;
                     setupInfinite();
-                    if (isMobile) startMonitoring();
                 } else if (isMobile) {
-                    setupInfinite(); // hitung ulang lebar
+                    setupInfinite();
                 }
             });
 
             setupInfinite();
-            startMonitoring();
         })();
     </script>
 </body>
