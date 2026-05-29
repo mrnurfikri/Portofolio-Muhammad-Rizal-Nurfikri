@@ -691,7 +691,76 @@
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimer);
             resizeTimer = setTimeout(equalizeCardHeights, 200);
+        }); 
+        // ========== INFINITE HORIZONTAL SCROLL PADA SKILLS (MOBILE) ==========
+    (function () {
+        const container = document.querySelector('#skills .skills-container');
+        if (!container) return;
+    
+        // Batasi hanya untuk layar mobile
+        let isMobile = window.innerWidth <= 768;
+    
+        // Simpan original items
+        const originalItems = Array.from(container.children);
+        const itemCount = originalItems.length;
+        if (itemCount === 0) return;
+    
+        // Fungsi untuk clone dan atur ulang
+        function setupInfiniteScroll() {
+            // Hapus clone yang sudah ada (jika ada resize ulang)
+            const clones = container.querySelectorAll('.skill-category.clone');
+            clones.forEach(clone => clone.remove());
+    
+            // Hanya aktif di mobile
+            if (!isMobile) {
+                // Kembalikan lebar scroll seperti semula
+                container.scrollLeft = 0;
+                return;
+            }
+    
+            // Clone semua item dan tambahkan ke container
+            originalItems.forEach(item => {
+                const clone = item.cloneNode(true);
+                clone.classList.add('clone');
+                container.appendChild(clone);
+            });
+    
+            // Atur posisi scroll awal
+            container.scrollLeft = 0;
+        }
+    
+        // Loop scroll: saat mencapai ujung, lompat ke sisi lain secara instan
+        function handleScroll() {
+            if (!isMobile) return;
+            const maxScroll = container.scrollWidth - container.clientWidth;
+            const halfScroll = maxScroll / 2; // titik tengah antara set asli dan set clone
+    
+            // Jika scroll mendekati akhir (set clone), lompat ke posisi yang sama di set asli
+            if (container.scrollLeft >= halfScroll) {
+                container.scrollLeft = container.scrollLeft - halfScroll;
+            }
+            // Jika scroll di awal dan user swipe ke kiri (mundur), lompat ke akhir set clone
+            else if (container.scrollLeft <= 10) {
+                // Saat di awal, beri ruang untuk mundur, lompat ke set clone
+                container.scrollLeft = container.scrollLeft + halfScroll;
+            }
+        }
+    
+        // Event listener
+        container.addEventListener('scroll', handleScroll);
+    
+        // Update saat resize
+        window.addEventListener('resize', () => {
+            const newIsMobile = window.innerWidth <= 768;
+            if (newIsMobile !== isMobile) {
+                isMobile = newIsMobile;
+                setupInfiniteScroll();
+            }
         });
+    
+        // Inisialisasi pertama
+        setupInfiniteScroll();
+    })();
     </script>
 </body>
 </html>
