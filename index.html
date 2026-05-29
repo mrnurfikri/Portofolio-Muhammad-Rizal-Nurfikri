@@ -278,7 +278,7 @@
                 -webkit-overflow-scrolling: touch; scroll-behavior: auto;
                 overscroll-behavior-x: contain; padding: 1rem 0.5rem; margin: 0;
                 scrollbar-width: none; -ms-overflow-style: none;
-                flex-wrap: nowrap; scroll-snap-type: none; /* nonaktifkan snap untuk infinite loop */
+                flex-wrap: nowrap; scroll-snap-type: none;
             }
             .skills-container::-webkit-scrollbar { display: none; }
             .skill-category { flex: 0 0 80%; padding: 1.2rem; }
@@ -684,22 +684,21 @@
             resizeTimer = setTimeout(equalizeCardHeights, 200);
         });
 
-        // ========== SMOOTH INFINITE SCROLL SKILLS (MOBILE, NO JERK) ==========
+        // ========== TRULY INFINITE SCROLL SKILLS (MOBILE, NO STUCK) ==========
         (function() {
             const container = document.getElementById('skillsContainer');
             if (!container) return;
 
             let isMobile = window.innerWidth <= 768;
             let originalItems = [];
-            let clonesLeft = [];
-            let clonesRight = [];
+            let clones = [];
             let setWidth = 0;
+            const numSetsLeft = 3;   // banyak duplikat ke kiri
+            const numSetsRight = 3;  // banyak duplikat ke kanan
 
             function clearClones() {
-                clonesLeft.forEach(clone => clone.remove());
-                clonesRight.forEach(clone => clone.remove());
-                clonesLeft = [];
-                clonesRight = [];
+                clones.forEach(clone => clone.remove());
+                clones = [];
             }
 
             function setupInfinite() {
@@ -715,50 +714,56 @@
                 const itemWidth = originalItems[0].offsetWidth;
                 setWidth = originalItems.length * (itemWidth + gap);
 
-                // Clone kanan
-                originalItems.forEach(item => {
-                    const clone = item.cloneNode(true);
-                    clone.classList.add('clone');
-                    container.appendChild(clone);
-                    clonesRight.push(clone);
-                });
-
-                // Clone kiri (urutan dibalik)
-                for (let i = originalItems.length - 1; i >= 0; i--) {
-                    const clone = originalItems[i].cloneNode(true);
-                    clone.classList.add('clone');
-                    container.insertBefore(clone, container.firstChild);
-                    clonesLeft.push(clone);
+                // Tambahkan duplikat ke kiri
+                for (let set = 0; set < numSetsLeft; set++) {
+                    // urutan dibalik agar tampilan natural
+                    for (let i = originalItems.length - 1; i >= 0; i--) {
+                        const clone = originalItems[i].cloneNode(true);
+                        clone.classList.add('clone');
+                        container.insertBefore(clone, container.firstChild);
+                        clones.push(clone);
+                    }
                 }
 
-                // Mulai di tengah (set asli)
-                container.scrollLeft = setWidth;
+                // Tambahkan duplikat ke kanan
+                for (let set = 0; set < numSetsRight; set++) {
+                    originalItems.forEach(item => {
+                        const clone = item.cloneNode(true);
+                        clone.classList.add('clone');
+                        container.appendChild(clone);
+                        clones.push(clone);
+                    });
+                }
+
+                // Mulai di tengah, pada set asli
+                container.scrollLeft = numSetsLeft * setWidth;
             }
 
-            // Reset posisi secara instan setelah scroll berhenti
-            function onScrollEnd() {
+            // Monitor posisi scroll setiap frame
+            function updateScroll() {
                 if (!isMobile) return;
-                const currentScroll = container.scrollLeft;
-                const maxScroll = container.scrollWidth - container.clientWidth;
 
-                if (currentScroll <= 10) {
-                    container.scrollLeft = setWidth;
-                } else if (currentScroll >= maxScroll - 10) {
-                    container.scrollLeft = setWidth + (currentScroll - (2 * setWidth));
+                const currentScroll = container.scrollLeft;
+                const leftLimit = (numSetsLeft - 1) * setWidth;
+                const rightLimit = (numSetsLeft + 1) * setWidth;
+
+                // Jika terlalu kiri, geser ke kanan sejauh setWidth
+                if (currentScroll < leftLimit) {
+                    container.scrollLeft += setWidth;
                 }
+                // Jika terlalu kanan, geser ke kiri sejauh setWidth
+                else if (currentScroll > rightLimit) {
+                    container.scrollLeft -= setWidth;
+                }
+
+                requestAnimationFrame(updateScroll);
             }
 
-            // Gunakan 'scrollend' jika didukung, jika tidak, fallback ke timer setelah scroll berhenti
-            if ('onscrollend' in window) {
-                container.addEventListener('scrollend', onScrollEnd);
-            } else {
-                let scrollEndTimer;
-                container.addEventListener('scroll', () => {
-                    clearTimeout(scrollEndTimer);
-                    scrollEndTimer = setTimeout(() => {
-                        onScrollEnd();
-                    }, 150);
-                });
+            // Mulai monitor setelah setup
+            function startMonitoring() {
+                if (isMobile) {
+                    requestAnimationFrame(updateScroll);
+                }
             }
 
             window.addEventListener('resize', () => {
@@ -766,12 +771,14 @@
                 if (newMobile !== isMobile) {
                     isMobile = newMobile;
                     setupInfinite();
+                    if (isMobile) startMonitoring();
                 } else if (isMobile) {
                     setupInfinite(); // hitung ulang lebar
                 }
             });
 
             setupInfinite();
+            startMonitoring();
         })();
     </script>
 </body>
