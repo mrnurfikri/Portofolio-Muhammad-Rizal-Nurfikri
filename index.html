@@ -10,14 +10,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhammad Rizal Nurfikri - Social Media Specialist &amp; Data Analyst</title>
     <meta name="description" content="Social Media Specialist &amp; Data Analyst with proven organic growth: 369K+ views, 88K+ likes. Specializing in data-driven content strategies.">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
-    
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
         :root {
             --bg-primary: #0a0a0a; --bg-secondary: #111111; --text-primary: #ffffff;
             --text-secondary: #a0a0a0; --accent: #ADFC5A; --accent-hover: #c1e831;
@@ -27,7 +27,7 @@
             --dropdown-bg: #1a1a1a; --badge-bg: rgba(var(--accent-rgb), 0.1);
             --tag-bg: rgba(var(--accent-rgb), 0.05); --tag-border: rgba(var(--accent-rgb), 0.25);
         }
-        
+
         body.light-mode {
             --bg-primary: #F1EFEE; --bg-secondary: #E8E6E4; --text-primary: #0a0a0a;
             --text-secondary: #555555; --accent: #106FFF; --accent-hover: #0a5cd9;
@@ -37,13 +37,13 @@
             --dropdown-bg: #ffffff; --badge-bg: rgba(var(--accent-rgb), 0.1);
             --tag-bg: rgba(var(--accent-rgb), 0.05); --tag-border: rgba(var(--accent-rgb), 0.25);
         }
-        
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6; color: var(--text-primary); background: var(--bg-primary);
             transition: background 0.3s ease, color 0.3s ease;
         }
-        
+
         .theme-switch {
             position: relative; display: flex; align-items: center; background: var(--theme-toggle-bg);
             border: 1px solid var(--border); border-radius: 30px; padding: 4px; gap: 2px;
@@ -58,7 +58,7 @@
         .theme-option.active { background: var(--accent); color: var(--bg-primary); }
         .theme-option:not(.active) { color: var(--text-secondary); opacity: 0.5; }
         .theme-option:hover:not(.active) { opacity: 0.8; }
-        
+
         nav {
             position: fixed; top: 0; width: 100%; background: var(--nav-bg);
             backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); z-index: 1000;
@@ -68,7 +68,7 @@
             max-width: 1200px; margin: 0 auto; padding: 0 2rem;
             display: flex; justify-content: space-between; align-items: center;
         }
-        
+
         .logo {
             display: flex; align-items: center; text-decoration: none;
             transition: all 0.3s ease-out; backface-visibility: hidden; transform: translateZ(0);
@@ -77,7 +77,7 @@
         .logo img { height: 48px; width: auto; display: block; transition: opacity 0.3s ease; }
         .logo .logo-light { display: none; } .logo .logo-dark { display: block; }
         body.light-mode .logo .logo-light { display: block; } body.light-mode .logo .logo-dark { display: none; }
-        
+
         .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
         .nav-links > li { position: relative; }
         .nav-links a {
@@ -89,7 +89,7 @@
         .nav-links a:hover { color: var(--accent); transform: translateY(-1px) translateZ(0); }
         .nav-links a.active { color: var(--accent); }
         .nav-links a.active::after { display: none; }
-        
+
         .dropdown {
             position: absolute; top: 120%; left: 0; background: var(--dropdown-bg);
             border: 1px solid var(--border); border-radius: 8px; min-width: 200px; padding: 0.5rem 0;
@@ -106,7 +106,7 @@
         }
         .dropdown a:hover { color: var(--accent); background: rgba(var(--accent-rgb), 0.08); transform: translateX(3px); }
         .dropdown a.active { color: var(--accent); background: transparent; }
-        
+
         .hero {
             margin-top: 80px; min-height: 90vh; display: flex; align-items: center;
             background: var(--bg-primary); position: relative; overflow: hidden; transition: background 0.3s ease;
@@ -131,13 +131,13 @@
         .btn-primary:hover { background: transparent; color: var(--accent); }
         .btn-secondary { background: transparent; color: var(--text-primary); border: 1px solid var(--border); }
         .btn-secondary:hover { background: var(--accent); color: #ffffff; border-color: var(--accent); }
-        
+
         section { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
         .section-title { font-family: 'Oswald', sans-serif; font-size: 3rem; font-weight: 700; text-transform: uppercase; letter-spacing: -1px; margin-bottom: 1rem; text-align: center; color: var(--text-primary); }
         .section-subtitle { text-align: center; color: var(--text-secondary); margin-bottom: 4rem; font-size: 1rem; max-width: 600px; margin-left: auto; margin-right: auto; }
-        
+
         .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-        
+
         .carousel-wrapper { position: relative; z-index: 1; max-width: 100%; margin-top: 2rem; }
         .carousel-container {
             display: flex; gap: 1.5rem; overflow-x: auto; overflow-y: visible;
@@ -150,7 +150,7 @@
         .carousel-container:hover .carousel-card { opacity: 0.5; filter: none; }
         .carousel-container .carousel-card:hover { opacity: 1; z-index: 2; }
         .carousel-card:hover .portfolio-card { transform: translateY(-10px) scale(1.03); box-shadow: 0 20px 30px rgba(0,0,0,0.12); border-color: var(--accent); }
-        
+
         .carousel-arrow {
             position: absolute; top: 50%; transform: translateY(-50%); background: var(--card-bg);
             border: none; box-shadow: 0 2px 8px rgba(0,0,0,0.1); color: var(--text-primary);
@@ -165,7 +165,7 @@
         .carousel-arrow:active { background: var(--accent); color: var(--bg-primary); opacity: 1; transform: translateY(-50%) scale(0.95); }
         .carousel-arrow-left { left: -10px; }
         .carousel-arrow-right { right: -10px; }
-        
+
         .portfolio-card { background: var(--card-bg); border: none; box-shadow: var(--shadow); border-radius: 12px; overflow: hidden; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); display: flex; flex-direction: column; height: 100%; }
         .portfolio-card:hover { border-color: var(--accent); transform: translateY(-5px); }
         .card-image { width: 100%; height: 160px; background: var(--bg-secondary); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; border-bottom: 1px solid var(--border); border-radius: 12px 12px 0 0; }
@@ -178,14 +178,14 @@
         .card-stat { display: flex; flex-direction: column; }
         .card-stat-value { font-family: 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--accent); }
         .card-stat-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary); }
-        
+
         .skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
         .skill-category { background: var(--card-bg); border: none; box-shadow: var(--shadow); border-radius: 12px; padding: 2rem; }
         .skill-category h3 { font-family: 'Oswald', sans-serif; font-size: 1.4rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem; color: var(--accent); }
         .skill-list { list-style: none; }
         .skill-list li { padding: 0.6rem 0; border-bottom: 1px solid var(--border); color: var(--text-secondary); font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; }
         .skill-list li:last-child { border-bottom: none; }
-        
+
         .contact-section { background: var(--bg-primary); text-align: center; padding: 6rem 2rem; transition: background 0.3s ease; }
         .contact-container { max-width: 1200px; margin: 0 auto; }
         .contact-links { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin-top: 3rem; }
@@ -193,7 +193,7 @@
         .contact-item:hover .contact-icon { transform: scale(1.15); color: var(--accent); }
         .contact-icon { width: auto; height: auto; border: none; font-size: 2.2rem; transition: all 0.3s; background: transparent; color: var(--accent); }
         .contact-link { color: var(--text-secondary); font-size: 0.9rem; font-weight: 500; }
-        
+
         footer { background: var(--bg-secondary); border-top: 1px solid var(--border); color: var(--text-secondary); text-align: center; padding: 2rem; font-size: 0.8rem; transition: background 0.3s ease; }
         .insight-box { margin: 1rem 0; padding: 1rem; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; font-size: 0.9rem; }
         .insight-box strong { color: var(--accent); display: block; margin-bottom: 0.5rem; }
@@ -213,13 +213,13 @@
         .mobile-submenu { padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.4rem; }
         .badge-open { background: var(--badge-bg); border: 1px solid var(--accent); color: var(--accent); }
         .about-tag { background: var(--tag-bg); border: 1px solid var(--tag-border); color: var(--accent); padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-        
+
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
         html { scroll-behavior: smooth; }
-        
+
         .theme-switch.desktop { display: flex; }
         .theme-switch.mobile { display: none; }
-        
+
         @media (max-width: 768px) {
             .theme-switch.desktop { display: none; }
             .theme-switch.mobile { display: flex; }
@@ -250,12 +250,12 @@
                 scroll-snap-type: x mandatory; align-items: stretch;
             }
             .portfolio-grid::-webkit-scrollbar { display: none; }
-            .portfolio-grid .portfolio-card { 
-                flex: 0 0 80%; scroll-snap-align: start; 
+            .portfolio-grid .portfolio-card {
+                flex: 0 0 80%; scroll-snap-align: start;
                 height: 100%;
                 display: flex; flex-direction: column;
             }
-            
+
             .carousel-container { padding: 1.5rem 0.5rem; margin: 0 15px; }
             .carousel-card { flex: 0 0 80%; }
 
@@ -278,7 +278,7 @@
                 -webkit-overflow-scrolling: touch; scroll-behavior: auto;
                 overscroll-behavior-x: contain; padding: 1rem 0.5rem; margin: 0;
                 scrollbar-width: none; -ms-overflow-style: none;
-                flex-wrap: nowrap; scroll-snap-type: none; /* nonaktifkan snap agar infinite loop mulus */
+                flex-wrap: nowrap; scroll-snap-type: none; /* nonaktifkan snap untuk infinite loop */
             }
             .skills-container::-webkit-scrollbar { display: none; }
             .skill-category { flex: 0 0 80%; padding: 1.2rem; }
@@ -294,7 +294,7 @@
                 max-width: 100%;
             }
         }
-        
+
         @media (max-width: 768px) { #about > div { grid-template-columns: 1fr !important; gap: 2rem !important; } }
     </style>
 </head>
@@ -487,7 +487,7 @@
         const themeMobile = document.getElementById('themeSwitchMobile');
         const bodyEl = document.body;
         const savedTheme = localStorage.getItem('theme') || 'dark';
-        
+
         function setTheme(theme) {
             if (theme === 'light') {
                 bodyEl.classList.add('light-mode');
@@ -504,7 +504,7 @@
             }
         }
         setTheme(savedTheme);
-        
+
         [themeDesktop, themeMobile].forEach(el => {
             el.querySelectorAll('.theme-option').forEach(option => {
                 option.addEventListener('click', () => {
@@ -684,20 +684,26 @@
             resizeTimer = setTimeout(equalizeCardHeights, 200);
         });
 
-        // ========== SMOOTH INFINITE SCROLL SKILLS (MOBILE) ==========
+        // ========== SMOOTH INFINITE SCROLL SKILLS (MOBILE, NO JERK) ==========
         (function() {
             const container = document.getElementById('skillsContainer');
             if (!container) return;
 
             let isMobile = window.innerWidth <= 768;
             let originalItems = [];
-            let clones = [];
-            let scrollWidthSet = 0; // lebar satu set konten asli
+            let clonesLeft = [];
+            let clonesRight = [];
+            let setWidth = 0;
+
+            function clearClones() {
+                clonesLeft.forEach(clone => clone.remove());
+                clonesRight.forEach(clone => clone.remove());
+                clonesLeft = [];
+                clonesRight = [];
+            }
 
             function setupInfinite() {
-                // Hapus clone sebelumnya
-                clones.forEach(clone => clone.remove());
-                clones = [];
+                clearClones();
                 originalItems = Array.from(container.querySelectorAll('.skill-category:not(.clone)'));
 
                 if (!isMobile || originalItems.length === 0) {
@@ -705,51 +711,55 @@
                     return;
                 }
 
-                // Hitung lebar satu set (termasuk gap)
                 const gap = parseInt(getComputedStyle(container).gap) || 16;
-                const firstItemWidth = originalItems[0].offsetWidth;
-                scrollWidthSet = originalItems.length * (firstItemWidth + gap);
+                const itemWidth = originalItems[0].offsetWidth;
+                setWidth = originalItems.length * (itemWidth + gap);
 
-                // Clone ke kanan (untuk loop maju)
+                // Clone kanan
                 originalItems.forEach(item => {
-                    const cloneRight = item.cloneNode(true);
-                    cloneRight.classList.add('clone');
-                    container.appendChild(cloneRight);
-                    clones.push(cloneRight);
+                    const clone = item.cloneNode(true);
+                    clone.classList.add('clone');
+                    container.appendChild(clone);
+                    clonesRight.push(clone);
                 });
 
-                // Clone ke kiri (untuk loop mundur)
-                // Urutan dibalik agar posisi visual tetap
+                // Clone kiri (urutan dibalik)
                 for (let i = originalItems.length - 1; i >= 0; i--) {
-                    const cloneLeft = originalItems[i].cloneNode(true);
-                    cloneLeft.classList.add('clone');
-                    container.insertBefore(cloneLeft, container.firstChild);
-                    clones.push(cloneLeft);
+                    const clone = originalItems[i].cloneNode(true);
+                    clone.classList.add('clone');
+                    container.insertBefore(clone, container.firstChild);
+                    clonesLeft.push(clone);
                 }
 
-                // Atur scrollLeft ke tengah (set kiri clone, lalu asli)
-                // Total lebar sekarang: setKiri + asli + setKanan
-                // Kita ingin mulai di set asli (index setelah set kiri)
-                const setLeftWidth = scrollWidthSet; // lebar satu set
-                container.scrollLeft = setLeftWidth;
+                // Mulai di tengah (set asli)
+                container.scrollLeft = setWidth;
             }
 
-            function handleScroll() {
+            // Reset posisi secara instan setelah scroll berhenti
+            function onScrollEnd() {
                 if (!isMobile) return;
                 const currentScroll = container.scrollLeft;
                 const maxScroll = container.scrollWidth - container.clientWidth;
 
-                // Jika mendekati ujung kanan (setelah set kanan) -> lompat ke set kiri (sebelum set asli)
-                if (currentScroll >= scrollWidthSet * 2 - 10) {
-                    container.scrollLeft = scrollWidthSet;
-                }
-                // Jika mendekati ujung kiri (sebelum set kiri) -> lompat ke set kanan (setelah set asli)
-                else if (currentScroll <= 10) {
-                    container.scrollLeft = scrollWidthSet * 2 - container.clientWidth;
+                if (currentScroll <= 10) {
+                    container.scrollLeft = setWidth;
+                } else if (currentScroll >= maxScroll - 10) {
+                    container.scrollLeft = setWidth + (currentScroll - (2 * setWidth));
                 }
             }
 
-            container.addEventListener('scroll', handleScroll);
+            // Gunakan 'scrollend' jika didukung, jika tidak, fallback ke timer setelah scroll berhenti
+            if ('onscrollend' in window) {
+                container.addEventListener('scrollend', onScrollEnd);
+            } else {
+                let scrollEndTimer;
+                container.addEventListener('scroll', () => {
+                    clearTimeout(scrollEndTimer);
+                    scrollEndTimer = setTimeout(() => {
+                        onScrollEnd();
+                    }, 150);
+                });
+            }
 
             window.addEventListener('resize', () => {
                 const newMobile = window.innerWidth <= 768;
@@ -757,12 +767,10 @@
                     isMobile = newMobile;
                     setupInfinite();
                 } else if (isMobile) {
-                    // Jika resize di mobile, hitung ulang lebar
-                    setupInfinite();
+                    setupInfinite(); // hitung ulang lebar
                 }
             });
 
-            // Inisialisasi
             setupInfinite();
         })();
     </script>
