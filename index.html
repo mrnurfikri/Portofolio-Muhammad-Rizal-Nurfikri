@@ -234,7 +234,7 @@
             color: var(--accent); 
             opacity: 0;
             transform: scale(0.5);
-            transition: none; /* akan di-override oleh animasi */
+            transition: none;
         }
         .badge-open.show {
             animation: badgePop 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
@@ -829,7 +829,7 @@
             }
         });
 
-        // ========== TYPEWRITER EFFECT HERO (FAST, WITH POP BADGE) ==========
+        // ========== TYPEWRITER EFFECT HERO (SYNCED WITH COUNTDOWN) ==========
         (function() {
             const h1 = document.getElementById('heroName');
             const subtitle = document.getElementById('heroSubtitle');
@@ -837,12 +837,12 @@
             const badge = document.getElementById('badgeCollab');
             if (!h1 || !subtitle || !desc || !badge) return;
 
-            const nameText = "MUHAMMAD RIZAL NURFIKRI";
-            const subText = "Social Media Specialist & Data Analyst";
-            const descText = "I help brands grow through data-driven content strategies and turn numbers into actionable insights. Proven organic growth: 1.3M+ peak views, 257K+ total likes across platforms.";
+            const nameText = "MUHAMMAD RIZAL NURFIKRI"; // 27 chars
+            const subText = "Social Media Specialist & Data Analyst"; // 42 chars
+            const descText = "I help brands grow through data-driven content strategies and turn numbers into actionable insights. Proven organic growth: 1.3M+ peak views, 257K+ total likes across platforms."; // 172 chars
 
             let cursorSpan = null;
-            const speed = 4; // 4ms per karakter, total ~964ms (lebih cepat dari countdown 2000ms)
+            const speed = 7; // 7ms per karakter, total ~1687ms, dengan delay 300ms jadi ~1987ms (pas dengan countdown)
 
             function addCursorTo(el) {
                 if (cursorSpan) cursorSpan.remove();
@@ -867,14 +867,17 @@
                 type();
             }
 
-            typeElement(h1, nameText, () => {
-                typeElement(subtitle, subText, () => {
-                    typeElement(desc, descText, () => {
-                        badge.classList.add('show');
+            // Mulai dengan delay 300ms agar total tepat ~1987ms
+            setTimeout(() => {
+                typeElement(h1, nameText, () => {
+                    typeElement(subtitle, subText, () => {
+                        typeElement(desc, descText, () => {
+                            badge.classList.add('show');
+                        });
                     });
                 });
-            });
+            }, 300);
         })();
     </script>
 </body>
-</html> 
+</html>
