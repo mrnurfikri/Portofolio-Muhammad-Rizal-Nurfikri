@@ -761,6 +761,76 @@
         // Inisialisasi pertama
         setupInfiniteScroll();
     })();
+
+        // ========== SMOOTH INFINITE SCROLL SKILLS (MOBILE) ==========
+(function() {
+    const container = document.querySelector('#skills .skills-container');
+    if (!container) return;
+
+    let isMobile = window.innerWidth <= 768;
+    let scrollEndTimer = null;
+    let isScrollingBack = false; // agar tidak loop saat animasi balik
+
+    // Aktifkan scroll-snap hanya di mobile (CSS sudah ada, kita pastikan)
+    function applySnap() {
+        if (isMobile) {
+            container.style.scrollSnapType = 'x mandatory';
+            const cards = container.querySelectorAll('.skill-category');
+            cards.forEach(card => card.style.scrollSnapAlign = 'start');
+        } else {
+            container.style.scrollSnapType = '';
+            const cards = container.querySelectorAll('.skill-category');
+            cards.forEach(card => card.style.scrollSnapAlign = '');
+        }
+    }
+
+    function handleScrollEnd() {
+        if (!isMobile || isScrollingBack) return;
+
+        const maxScroll = container.scrollWidth - container.clientWidth;
+        const threshold = 10; // toleransi piksel sebelum dianggap ujung
+
+        // Jika di ujung kanan → scroll halus ke awal
+        if (container.scrollLeft >= maxScroll - threshold) {
+            isScrollingBack = true;
+            container.scrollTo({
+                left: 0,
+                behavior: 'smooth'
+            });
+            // Reset flag setelah animasi selesai (perkiraan durasi animasi smooth = 300-500ms)
+            setTimeout(() => {
+                isScrollingBack = false;
+            }, 600);
+        }
+        // Opsional: jika di ujung kiri & user swipe mundur → scroll ke kanan
+        // Tapi ini jarang dibutuhkan, bisa diabaikan dulu
+    }
+
+    // Deteksi saat scroll berhenti (pakai timer)
+    container.addEventListener('scroll', () => {
+        if (!isMobile) return;
+
+        // Hapus timer sebelumnya
+        clearTimeout(scrollEndTimer);
+
+        // Set timer baru: setelah 200ms tidak ada scroll, anggap berhenti
+        scrollEndTimer = setTimeout(() => {
+            handleScrollEnd();
+        }, 200);
+    });
+
+    // Update status mobile saat resize
+    window.addEventListener('resize', () => {
+        const newMobile = window.innerWidth <= 768;
+        if (newMobile !== isMobile) {
+            isMobile = newMobile;
+            applySnap();
+        }
+    });
+
+    // Inisialisasi
+    applySnap();
+})();
     </script>
 </body>
 </html>
