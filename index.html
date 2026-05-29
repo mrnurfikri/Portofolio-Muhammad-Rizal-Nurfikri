@@ -814,7 +814,7 @@
             }
         });
 
-        // ========== TYPEWRITER EFFECT HERO (SYNCED WITH COUNTDOWN) ==========
+        // ========== TYPEWRITER EFFECT HERO (SUPER FAST, SYNCHRONOUS) ==========
         (function() {
             const h1 = document.getElementById('heroName');
             const subtitle = document.getElementById('heroSubtitle');
@@ -822,12 +822,12 @@
             const badge = document.getElementById('badgeCollab');
             if (!h1 || !subtitle || !desc || !badge) return;
 
-            const nameText = "MUHAMMAD RIZAL NURFIKRI"; // 27 karakter
-            const subText = "Social Media Specialist & Data Analyst"; // 42 karakter
-            const descText = "I help brands grow through data-driven content strategies and turn numbers into actionable insights. Proven organic growth: 1.3M+ peak views, 257K+ total likes across platforms."; // 172 karakter
+            const nameText = "MUHAMMAD RIZAL NURFIKRI"; // 27 chars
+            const subText = "Social Media Specialist & Data Analyst"; // 42 chars
+            const descText = "I help brands grow through data-driven content strategies and turn numbers into actionable insights. Proven organic growth: 1.3M+ peak views, 257K+ total likes across platforms."; // 172 chars
 
             let cursorSpan = null;
-            const speed = 8; // ms per karakter, total (27+42+172)*8 = 1928ms
+            const speed = 6; // ms per character, total ~1446ms, selesai sebelum countdown 2000ms
 
             function addCursorTo(el) {
                 if (cursorSpan) cursorSpan.remove();
@@ -852,7 +852,7 @@
                 type();
             }
 
-            // Mulai langsung tanpa jeda antar elemen, total mendekati 2000ms
+            // Langsung mulai tanpa jeda awal
             typeElement(h1, nameText, () => {
                 typeElement(subtitle, subText, () => {
                     typeElement(desc, descText, () => {
