@@ -248,6 +248,130 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
+        /* ========== CERTIFICATE MODAL ========== */
+        .cert-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 9999;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 2rem;
+            backdrop-filter: blur(8px);
+            overflow-y: auto;
+        }
+        .cert-modal-overlay.open {
+            display: flex;
+        }
+        .cert-modal {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            width: 100%;
+            max-width: 900px;
+            margin: auto;
+            animation: modalIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.88) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .cert-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            background: var(--card-bg);
+            border-radius: 16px 16px 0 0;
+            z-index: 1;
+        }
+        .cert-modal-header-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-primary);
+        }
+        .cert-modal-header-title span {
+            color: var(--accent);
+        }
+        .cert-modal-close {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 1rem;
+            cursor: pointer;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: all 0.2s;
+            font-weight: 700;
+        }
+        .cert-modal-close:hover {
+            background: rgba(var(--accent-rgb), 0.1);
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+        .cert-modal-body {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+        .cert-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .cert-item-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-primary);
+        }
+        .cert-item-subtitle {
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .cert-item-frame {
+            width: 100%;
+            height: 480px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--bg-secondary);
+        }
+        .cert-item-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+        .cert-item-divider {
+            height: 1px;
+            background: var(--border);
+            margin-top: 0.5rem;
+        }
+        .cert-modal-footer {
+            padding: 1.25rem 2rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: center;
+            border-radius: 0 0 16px 16px;
+        }
         @media (max-width: 768px) {
             .theme-switch.desktop { display: none; }
             .theme-switch.mobile { display: flex; }
@@ -321,6 +445,13 @@
                 width: auto;
                 max-width: 100%;
             }
+            .cert-modal-overlay { padding: 0; align-items: flex-start; }
+            .cert-modal { border-radius: 0; min-height: 100vh; margin: 0; }
+            .cert-modal-header { border-radius: 0; padding: 1rem 1.25rem; }
+            .cert-modal-body { padding: 1.25rem; gap: 2rem; }
+            .cert-item-frame { height: 300px; }
+            .cert-item-title { font-size: 0.95rem; }
+            .cert-item-subtitle { font-size: 0.72rem; }
         }
         @media (max-width: 768px) { #about > div { grid-template-columns: 1fr !important; gap: 2rem !important; } }
     </style>
@@ -456,9 +587,9 @@
         <h2 class="section-title">Certifications &amp; Education</h2>
         <p class="section-subtitle">Formal training and continuous learning in Data Analytics and Digital Marketing</p>
         <div class="portfolio-grid">
-            <div class="portfolio-card" style="display:flex;flex-direction:column;height:100%;"><div class="card-image" style="background:transparent;border-bottom:1px solid var(--border);">📊</div><div class="card-content"><h3 class="card-title">Business &amp; Data Analyst</h3><div class="card-meta"><span class="card-tag">Ruangguru</span><span class="card-tag">Bootcamp</span></div><p class="card-description">Intensive bootcamp covering SQL, Excel, data visualization, statistical analysis through Ruangguru's certified program.</p><div class="insight-box"><strong>Skills Learned:</strong><ul><li>SQL for data extraction</li><li>Excel advanced formulas &amp; Pivot Tables</li><li>Data visualization with Looker Studio</li><li>Statistical analysis &amp; business reporting</li></ul></div><div class="card-stats"><div class="card-stat"><span class="card-stat-value">Feb-Jul</span><span class="card-stat-label">2022</span></div><div class="card-stat"><span class="card-stat-value">6 Months</span><span class="card-stat-label">Duration</span></div><div class="card-stat"><span class="card-stat-value">✓</span><span class="card-stat-label">Certified</span></div></div><div style="margin-top:1rem;"><a href="sertifikat-ruangguru.pdf" target="_blank" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;">📄 View Certificate</a></div></div></div>
-            <div class="portfolio-card" style="display:flex;flex-direction:column;height:100%;"><div class="card-image" style="background:transparent;border-bottom:1px solid var(--border);">📱</div><div class="card-content"><h3 class="card-title">Intro to Digital Marketing</h3><div class="card-meta"><span class="card-tag">RevoU</span><span class="card-tag">Course</span></div><p class="card-description">Comprehensive course covering digital marketing fundamentals, campaign analytics through RevoU's mini course program.</p><div class="insight-box"><strong>Topics Covered:</strong><ul><li>Marketing funnel analysis</li><li>Customer behavior analytics</li><li>Campaign performance measurement</li><li>A/B testing fundamentals</li></ul></div><div class="card-stats"><div class="card-stat"><span class="card-stat-value">2022</span><span class="card-stat-label">Year</span></div><div class="card-stat"><span class="card-stat-value">Online</span><span class="card-stat-label">Format</span></div><div class="card-stat"><span class="card-stat-value">✓</span><span class="card-stat-label">Certified</span></div></div><div style="margin-top:1rem;"><a href="sertifikat-revou.pdf" target="_blank" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;">📄 View Certificate</a></div></div></div>
-            <div class="portfolio-card" style="display:flex;flex-direction:column;height:100%;"><div class="card-image" style="background:transparent;border-bottom:1px solid var(--border);">🎓</div><div class="card-content"><h3 class="card-title">Bachelor in Management</h3><div class="card-meta"><span class="card-tag">University</span><span class="card-tag">Degree</span></div><p class="card-description">Universitas Pendidikan Indonesia (UPI) - Graduated with strong foundation in business management and analytical skills.</p><div class="insight-box"><strong>Key Achievements:</strong><ul><li>GPA: 3.70 / 4.00</li><li>Focus: Business Analytics &amp; Marketing</li><li>Completed multiple internships</li><li>Active in organizational activities</li></ul></div><div class="card-stats"><div class="card-stat"><span class="card-stat-value">2019-2023</span><span class="card-stat-label">Period</span></div><div class="card-stat"><span class="card-stat-value">3.70</span><span class="card-stat-label">GPA</span></div><div class="card-stat"><span class="card-stat-value">✓</span><span class="card-stat-label">Graduate</span></div></div><div style="margin-top:1rem;"><a href="ijazah-upi.pdf" target="_blank" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;">🎓 View Degree</a></div></div></div>
+            <div class="portfolio-card" style="display:flex;flex-direction:column;height:100%;"><div class="card-image" style="background:transparent;border-bottom:1px solid var(--border);">📊</div><div class="card-content"><h3 class="card-title">Business &amp; Data Analyst</h3><div class="card-meta"><span class="card-tag">Ruangguru</span><span class="card-tag">Bootcamp</span></div><p class="card-description">Intensive bootcamp covering SQL, Excel, data visualization, statistical analysis through Ruangguru's certified program.</p><div class="insight-box"><strong>Skills Learned:</strong><ul><li>SQL for data extraction</li><li>Excel advanced formulas &amp; Pivot Tables</li><li>Data visualization with Looker Studio</li><li>Statistical analysis &amp; business reporting</li></ul></div><div class="card-stats"><div class="card-stat"><span class="card-stat-value">Feb-Jul</span><span class="card-stat-label">2022</span></div><div class="card-stat"><span class="card-stat-value">6 Months</span><span class="card-stat-label">Duration</span></div><div class="card-stat"><span class="card-stat-value">✓</span><span class="card-stat-label">Certified</span></div></div><div style="margin-top:1rem;"><a href="javascript:void(0)" onclick="openCertModal()" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;">📄 View Certificate</a></div></div></div>
+            <div class="portfolio-card" style="display:flex;flex-direction:column;height:100%;"><div class="card-image" style="background:transparent;border-bottom:1px solid var(--border);">📱</div><div class="card-content"><h3 class="card-title">Intro to Digital Marketing</h3><div class="card-meta"><span class="card-tag">RevoU</span><span class="card-tag">Course</span></div><p class="card-description">Comprehensive course covering digital marketing fundamentals, campaign analytics through RevoU's mini course program.</p><div class="insight-box"><strong>Topics Covered:</strong><ul><li>Marketing funnel analysis</li><li>Customer behavior analytics</li><li>Campaign performance measurement</li><li>A/B testing fundamentals</li></ul></div><div class="card-stats"><div class="card-stat"><span class="card-stat-value">2022</span><span class="card-stat-label">Year</span></div><div class="card-stat"><span class="card-stat-value">Online</span><span class="card-stat-label">Format</span></div><div class="card-stat"><span class="card-stat-value">✓</span><span class="card-stat-label">Certified</span></div></div><div style="margin-top:1rem;"><a href="javascript:void(0)" onclick="openCertModal()" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;">📄 View Certificate</a></div></div></div>
+            <div class="portfolio-card" style="display:flex;flex-direction:column;height:100%;"><div class="card-image" style="background:transparent;border-bottom:1px solid var(--border);">🎓</div><div class="card-content"><h3 class="card-title">Bachelor in Management</h3><div class="card-meta"><span class="card-tag">University</span><span class="card-tag">Degree</span></div><p class="card-description">Universitas Pendidikan Indonesia (UPI) - Graduated with strong foundation in business management and analytical skills.</p><div class="insight-box"><strong>Key Achievements:</strong><ul><li>GPA: 3.70 / 4.00</li><li>Focus: Business Analytics &amp; Marketing</li><li>Completed multiple internships</li><li>Active in organizational activities</li></ul></div><div class="card-stats"><div class="card-stat"><span class="card-stat-value">2019-2023</span><span class="card-stat-label">Period</span></div><div class="card-stat"><span class="card-stat-value">3.70</span><span class="card-stat-label">GPA</span></div><div class="card-stat"><span class="card-stat-value">✓</span><span class="card-stat-label">Graduate</span></div></div><div style="margin-top:1rem;"><a href="javascript:void(0)" onclick="openCertModal()" class="btn btn-secondary" style="display:block;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;">🎓 View Degree</a></div></div></div>
         </div>
     </section>
     <section id="skills">
@@ -487,6 +618,62 @@
             </div>
         </div>
     </section>
+
+    <!-- Certificate Modal -->
+    <div class="cert-modal-overlay" id="certModal">
+        <div class="cert-modal">
+            <!-- Header -->
+            <div class="cert-modal-header">
+                <p class="cert-modal-header-title">
+                    My <span>Certifications</span> & Education
+                </p>
+                <button class="cert-modal-close" onclick="closeCertModal()">✕</button>
+            </div>
+            <!-- Body -->
+            <div class="cert-modal-body">
+                <!-- Certificate 1: Ruangguru -->
+                <div class="cert-item">
+                    <p class="cert-item-title">Business & Data Analyst</p>
+                    <p class="cert-item-subtitle">Ruangguru · Feb–Jul 2022 · Bootcamp</p>
+                    <div class="cert-item-frame">
+                        <iframe src="sertifikat-ruangguru.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                                title="Certificate: Business & Data Analyst">
+                        </iframe>
+                    </div>
+                    <div class="cert-item-divider"></div>
+                </div>
+                <!-- Certificate 2: RevoU -->
+                <div class="cert-item">
+                    <p class="cert-item-title">Intro to Digital Marketing</p>
+                    <p class="cert-item-subtitle">RevoU · 2022 · Mini Course</p>
+                    <div class="cert-item-frame">
+                        <iframe src="sertifikat-revou.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                                title="Certificate: Intro to Digital Marketing">
+                        </iframe>
+                    </div>
+                    <div class="cert-item-divider"></div>
+                </div>
+                <!-- Certificate 3: UPI -->
+                <div class="cert-item">
+                    <p class="cert-item-title">Bachelor in Management</p>
+                    <p class="cert-item-subtitle">Universitas Pendidikan Indonesia · 2019–2023 · GPA 3.70</p>
+                    <div class="cert-item-frame">
+                        <iframe src="ijazah-upi.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                                title="Degree: Bachelor in Management">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer -->
+            <div class="cert-modal-footer">
+                <button onclick="closeCertModal()" class="btn btn-secondary"
+                        style="padding:0.6rem 2rem;font-size:0.85rem;">
+                    ✕ Close
+                </button>
+            </div>
+        </div>
+    </div>
+
     <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
     <footer>
         <p>&copy; 2026 Muhammad Rizal Nurfikri. All rights reserved.</p>
@@ -758,6 +945,29 @@
                 mobileMenu.classList.remove('open');
             }
         });
+        // ========== CERTIFICATE MODAL ==========
+        function openCertModal() {
+            const modal = document.getElementById('certModal');
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCertModal() {
+            const modal = document.getElementById('certModal');
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // Close klik di luar
+        document.getElementById('certModal').addEventListener('click', function(e) {
+            if (e.target === this) closeCertModal();
+        });
+
+        // Close tekan ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeCertModal();
+        });
+
         // ========== TYPEWRITER EFFECT HERO (SYNCED WITH COUNTDOWN) ==========
         (function() {
             const h1 = document.getElementById('heroName');
@@ -765,11 +975,11 @@
             const desc = document.getElementById('heroDesc');
             const badge = document.getElementById('badgeCollab');
             if (!h1 || !subtitle || !desc || !badge) return;
-            const nameText = "MUHAMMAD RIZAL NURFIKRI"; // 27 chars
-            const subText = "Social Media Specialist & Data Analyst"; // 42 chars
-            const descText = "I help brands grow through data-driven content strategies and turn numbers into actionable insights. Proven organic growth: 1.3M+ peak views, 257K+ total likes across platforms."; // 172 chars
+            const nameText = "MUHAMMAD RIZAL NURFIKRI";
+            const subText = "Social Media Specialist & Data Analyst";
+            const descText = "I help brands grow through data-driven content strategies and turn numbers into actionable insights. Proven organic growth: 1.3M+ peak views, 257K+ total likes across platforms.";
             let cursorSpan = null;
-            const speed = 9; // 9ms/karakter, total type 2169ms, delay 300ms -> 2469ms (pas dengan countdown 2500ms)
+            const speed = 9;
             function addCursorTo(el) {
                 if (cursorSpan) cursorSpan.remove();
                 cursorSpan = document.createElement('span');
@@ -791,7 +1001,6 @@
                 }
                 type();
             }
-            // Delay awal 300ms
             setTimeout(() => {
                 typeElement(h1, nameText, () => {
                     typeElement(subtitle, subText, () => {
